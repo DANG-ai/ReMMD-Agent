@@ -1,0 +1,126 @@
+{
+  "index": 167,
+  "sample_id": "168",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2081.22,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "Die Geschichte verdichtet einen vagen Sportkontext zu einer konkret ausformulierten, aber unbelegten Match-Erzählung mit exaktem Spielstand, Torschützen, Zeitablauf und Gesamtergebnis. Zusätzlich wurden die Bilder nachträglich mit Scorebug- und Stadionanzeige-Elementen bearbeitet, sodass sie als direkter Beleg für ein angebliches Halbfinal-Aus von Bayern erscheinen, obwohl die Fotos diese konkrete Spielsituation semantisch nicht eigenständig tragen.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/168",
+  "image_paths": [
+    "/path/to/ReMMDBench/168/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/168/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "168",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a score overlay \"BAY 1 - 1 PSG\" and \"agg. 5-6\" along with the UEFA Champions League Semifinals logo. It shows a group of men, appearing to be the PSG coaching staff led by Luis Enrique, celebrating. This aligns with the text stating the match ended 1-1, PSG advanced on a 6-5 aggregate score (represented as 5-6 in the overlay likely Home-Away), and there were scenes of celebration.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific scoreline and aggregate score mentioned in the text (1-1, aggregate 5-6) against the visual information in the image's scoreboard overlay.",
+            "action": "VQA[What is the current score and the aggregate score displayed on the scoreboard in the top left corner?]",
+            "observation": "\n\nBased on the scoreboard in the top left corner:\n\n*   **Current Score:** BAY 1 - 1 PSG\n*   **Aggregate Score:** 5 - 6",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The scoreboard in the image shows \"BAY 1 - 1 PSG\" and \"agg. 5-6\", which matches the text's description of a 1:1 result and an aggregate score of 6:5 in favor of PSG (since 6 > 5). The text states PSG advanced to the final and mentions \"Pariser Jubel\" (Parisian celebration). The image shows a group of men, likely the PSG coaching staff including manager Luis Enrique, celebrating, which aligns with PSG advancing. The time \"90+4\" matches the text's mention of Harry Kane scoring in stoppage time (\"Nachspielzeit\"). All details align.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates specific match data (aggregate score 6-5, Dembélé scoring) and the final location (Budapest instead of London), while the images are identified as synthetic (p_fake_image=0.9) and contain matching fabricated text overlays.",
+    "notes": []
+  },
+  "error": null
+}

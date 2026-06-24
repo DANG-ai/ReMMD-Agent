@@ -1,0 +1,133 @@
+{
+  "index": 50,
+  "sample_id": "051",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 906.15,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "L'article est cohérent avec les éléments de preuve fournis : il rapporte correctement le résultat du match, la qualification du Real Madrid et la forte circulation du hashtag #MCIRMA pendant la rencontre. Les images montrent bien des scènes compatibles avec la victoire madrilène à Manchester et ne contredisent pas le texte.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/051",
+  "image_paths": [
+    "/path/to/ReMMDBench/051/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/051/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "051",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "If Wikipedia does not have info on a future date, I will use Google Search to verify if this news article (or the hashtag #MCIRMA) is circulating, potentially indicating it is fake news or regarding a specific betting prediction.",
+            "action": "Google[news Real Madrid Manchester City 17 mars 2026 Vinícius Júnior spoiler]",
+            "observation": "[Answer Box] Vini brace silences City as Madrid secures QF spot Real Madrid silenced the Etihad on Tuesday as a Vinicius Junior brace earned a 2-1 win over Manchester City, extinguishing any hopes of a Champions League comeback.\nVinicius Jr scores twice as Real Madrid knock Man City out of UCL ...: Vinicius Jr scores twice as Real Madrid knock Man City out of UCL last 16. Madrid ease into quarterfinals by beating 10-man City 2-1 at the ... (https://www.aljazeera.com/sports/2026/3/17/vinicius-jr-scores-twice-as-real-madrid-knock-man-city-out-of-ucl-last-16)\nReal Madrid knocks Manchester City out of Champions League: Vinicius Junior scored a penalty for Real Madrid after seeing one saved in the first leg against Manchester City Captain Bernardo Silva's ... (https://www.facebook.com/groups/659637748358300/posts/1484934559161944/)\nHow Real Madrid eliminated 10-man Manchester City from ...: Vinicius Jr, who had a penalty saved in the first leg, sent Gianluigi Donnarumma the wrong way to make it 4-0 on aggregate. Erling Haaland ... (https://www.nytimes.com/athletic/live-blogs/manchester-city-vs-real-madrid-live-updates-champions-league-score-result/AuGiBEjND0ZB/)\nManchester City 1-[2] Real Madrid - Vinicius Junior 90+3' : r/soccer: Vinícius Junior recieves his player of the match award against Manchester City · Manchester City 1 x [2] Real Madrid - Vinícius Jr 90+3' · They ... (https://www.reddit.com/r/soccer/comments/1rwkqwa/manchester_city_12_real_madrid_vinicius_junior_903/)\nA Vini Jr. BRACE and into the QUARTER-FINALS! | DIARIES: It was a magical European night in Manchester as Real Madrid secured a crucial 1-2 victory over Manchester City in the Champions League ... (https://www.youtube.com/watch?v=sPos6fuMhmc&vl=en)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results in the previous trajectory explicitly confirm the details provided in the text: the match occurred on March 17, 2026, at the Etihad, with a 2-1 victory for Real Madrid (Vinicius Junior scored both goals, Haaland scored for City). One snippet also mentions \"10-man City,\" supporting the text's claim about Bernardo Silva's red card. While one snippet mentions a 4-0 aggregate, the majority of evidence aligns with the text's account of Vinicius's brace and the match result.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.3,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.6,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific Champions League match between Manchester City and Real Madrid that supposedly took place on 17 March 2026. The image shows Jude Bellingham, who joined Real Madrid in 2023, in a specific dark blue kit. By examining the visual details—such as the player's appearance, the specific stadium backdrop, and the kit design which aligns with the 2023-24 season rather than 2026—I can assess the validity of the claim.",
+            "action": "Detect[image]",
+            "observation": "- **Image appears to be a real sports photograph**: Lighting, motion blur, depth of field, and noise/grain look consistent with a stadium night match shot. The crowd, pitch texture, and advertising boards have coherent perspective and natural detail.\n\n- **Clear sign of editing/obfuscation**: Multiple faces (including the central player and several in the background) are covered with uniform, rectangular blur blocks. That kind of blocky censoring is not a camera artifact; it indicates post-processing (privacy/anonymization).\n\n- **No strong signs of AI/synthetic generation**: Jerseys/logos, limbs, and stadium lights look structurally consistent (no obvious warped anatomy, melted text, or impossible shadows). The blur masks are the only prominent non-photographic element.\n\n- **No obvious counterfactual/physically impossible elements**: The scene (players celebrating near the pitch with stadium floodlights) is plausible, with consistent shadows/highlights and no mismatched reflections.\n\n**Conclusion:** The underlying image looks authentic as a real match photo, but it has been **edited to anonymize faces** via rectangular blur overlays. No additional manipulation is evident beyond that.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Despite the date discrepancy, the visual evidence strongly matches a Real Madrid home/away fixture against a rival. The 'Emirates' logo and 'bp' sleeve are consistent with FC Real Madrid's kit branding. The text accurately reflects the teams involved (Man City vs Real Madrid) and the nature of the media (social media buzz). If we assume the text's date is a hallucination or the image is a \"teaser\" from the kit's lifespan, the visual content generally supports the team description.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.6,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.814325284978472,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.4,
+      "p_fake_match": 0.1,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image contains post-processing blur overlays (editing), and the text describes a specific match event that does not match the visual content or timeline (match MISMATCH).",
+    "notes": []
+  },
+  "error": null
+}

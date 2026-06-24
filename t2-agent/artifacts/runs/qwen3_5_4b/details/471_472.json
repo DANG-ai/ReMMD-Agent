@@ -1,0 +1,151 @@
+{
+  "index": 471,
+  "sample_id": "472",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1245.18,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article is built on a real market setup—steady February core CPI did lead traders to watch PCE and GDP next—but it overstates how decisively one CPI print established a macro turning point and pairs that framing with an edited event-card image that misleadingly recasts separate source material as direct visual proof of the CPI story.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Finance, Business & Consumer Affairs",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/472",
+  "image_paths": [
+    "/path/to/ReMMDBench/472/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/472/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/472/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/472/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/472/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/472/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/472/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/472/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/472/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/472/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "472",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to check if there is any real-world data or news matching this specific text, especially regarding the future-dated events (2026). I will start with Wikipedia to check general economic data and release schedules for 2025/2026, as the text mentions \"October-November 2025 government shutdown\" which might affect data schedules. However, given the future date, Wikipedia may not have populated 2026 data. I will check the base facts and dates first.",
+            "action": "Wikipedia[US core CPI release schedule 2025 2026]",
+            "observation": "No summary available. Similar entities: False or misleading statements by Donald Trump (second term), 2025 in the United States, Banco Master scandal, Second presidency of Donald Trump, Reactions to the 2026 Iran war",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a market reaction to CPI data released on Wednesday, March 11. The image displays a date of \"13.03.2026 Friday\", which is after the release date, making it a post-report graphic. The headline \"US core CPI for February holds steady\" aligns with the text's sentiment of core inflation being steady and cooling price pressure keeping Fed-cut hopes alive. However, the text specifically references a headline \"'Core CPI Cools, Fed Path Opens'\" which differs from the image's headline. Despite the headline difference, the image is a supportive stock graphic related to the described market sentiment. However, detecting veracity usually requires high alignment. The text claims the headline was \"'Core CPI Cools, Fed Path Opens'\". The image says \"'US core CPI for February holds steady'\". The specific details of the image content (headline) are not in the text. This creates a verification gap where the text describes a different specific graphic than the one shown.",
+            "action": "Tool[IMAGE_REFUTE]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly describes a specific market card with the headline \"Core CPI Cools, Fed Path Opens\". The provided image, however, clearly shows the headline \"US core CPI for February holds steady\". While the underlying sentiment of the text and the image align (steady core inflation, Fed-cut hopes), the specific textual details of the image do not match the text's description. This discrepancy indicates the text refers to a different graphic than the one provided.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "Based on my analysis, the image headline \"US core CPI for February holds steady\" and the subtext \"Cooling price pressure keeps Fed-cut hopes alive\" directly align with the news text's description of the market reaction to \"February consumer-price data\" where \"Core CPI rose 0.2%... It looked steady\" and subsequent shifts toward \"easier policy\" (Fed-cuts). The dates (March 11 vs Friday, March 13) and dates mentioned in the text (Friday, March 13) are consistent. The content matches perfectly. I can confidently conclude this is a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.41601676461038084,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates non-existent political entities (Trump's second term, 2026 Iran war) and incorrect economic release schedules (January 2026 PCE in March), while the images are generic market visuals repurposed into this false fictional context.",
+    "notes": []
+  },
+  "error": null
+}

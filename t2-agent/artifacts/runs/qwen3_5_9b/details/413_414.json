@@ -1,0 +1,158 @@
+{
+  "index": 413,
+  "sample_id": "414",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1094.84,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本文本把社媒“预售22.99万、若便宜一万则21.99万”的推测与传言，改写成“发布会现场大屏已确定21.99万起”，并进一步强化为“21.99万起即全系/入门标配800V+激光雷达+Thor、全系902km”等确定结论；同时配套图片中的价格表、现场PPT与战报均为改图/伪造式编辑，制造了貌似来自发布会现场的“硬证据”，从而在核心价格与配置绑定关系上形成主导性误导，因此整体应判为 Mostly False（仍保留少量真实元素：社媒确有“21.99万”推测与“34分钟15000台锁单”等讨论文本存在）。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "汽车出行",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/414",
+  "image_paths": [
+    "/path/to/ReMMDBench/414/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/414/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/414/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/414/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/414/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/414/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/414/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/414/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/414/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/414/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "414",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the authenticity of the \"New Generation SU7\" launch details, specifically the start price of 21.99k RMB and the included hardware (800V, LiDAR, Thor). The search will help determine if this corresponds to actual market data or is purely hypothetical/leaked information presented as fact by the source text. If the real launch specs differ or the event hasn't happened, I can refute the text.",
+            "action": "Google[query=Xiaomi SU7 2025 launch price specs 800V Thor]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Wikipedia might provide the official timeline of the Xiaomi SU7 (likely April 2024) and clarify if a \"New Generation\" is officially scheduled for 2026, which contradicts the text's tone of a recent January 2025 event (Dec 2024). Google search is needed to check recent news for the specific date (2024.12.18) and \"New Gen\" pricing.",
+            "action": "Google[query=\"Xiaomi SU7 New Generation launch date December 2024 21.99w\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims a \"New Generation Xiaomi SU7\" released in \"Mid-March\" with specific pricing and specs. The provided image shows a poster for a \"New Generation\" car but explicitly states \"Expected Launch April 2026\" and is marked as \"(Illustrative/For Reference)\" with a release date of \"2024.12.18\". This suggests the text is reporting on a mockup or leak rather than a real past event, contradicting the text's description of a concluded \"March release\". Additionally, the text lists the \"Max\" version starting price as 303,900 (30.39w) in its table, whereas the image clearly displays \"28.99w\" for the \"Max\" version. These discrepancies in pricing and event status indicate the text is not fully supported or is inaccurate based on the visual evidence.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Verify the specific price for the Max version in the image to confirm the discrepancy with the text table (Text mentions 303,900, Image seems to show 28.99). This will provide concrete evidence for the mismatch.",
+            "action": "VQA[What is the starting price for the Max version of the Xiaomi SU7 listed in the bottom price plan section of the image?]",
+            "observation": "\n\nBased on the \"SU7 价格方案\" (SU7 Price Plan) section at the bottom of the image, the starting price for the **Max** version is **28.99万元起** (289,900 RMB and up).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "While the Pro (24.99/249,900) and Standard (21.99/219,900) prices align between the image and text, the Max version price significantly differs (28.99 vs 303,900), resulting in a MISMATCH.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.95,
+        "T2 Distortion": 0.3,
+        "T3 Misleading Context": 0.3,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.4,
+        "C1 Semantic Inconsistency": 0.3,
+        "C2 Contextual Inconsistency": 0.95,
+        "C3 Pragmatic Inconsistency": 0.4
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

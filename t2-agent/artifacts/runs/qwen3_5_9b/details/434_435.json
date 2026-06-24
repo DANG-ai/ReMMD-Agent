@@ -1,0 +1,160 @@
+{
+  "index": 434,
+  "sample_id": "435",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1116.74,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Die zentrale Nachricht eines bereits beschlossenen Bundestagsgesetzes am 24. April 2026 ist frei erfunden und wird mit detaillierten, aber unbelegten Verfahrens-, Auszahlungs- und Wirkungsbehauptungen ausgeschmückt. Dazu werden synthetische Bilder als scheinbare Dokumentation des nicht belegten Beschlusses eingesetzt und zeitlich wie inhaltlich eng an die erfundene Parlamentsentscheidung gekoppelt.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/435",
+  "image_paths": [
+    "/path/to/ReMMDBench/435/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/435/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/435/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/435/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/435/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/435/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/435/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/435/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/435/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/435/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "435",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the existence of the \"2. Energiesteuersenkungsgesetz\" and the claimed Bundestag decision on April 24, 2026. Since the date is in the future relative to the current real-world timeline (2024-2025), this is highly suspicious. I will search for the specific legislative act name and the date to confirm if this is a real upcoming bill or misinformation/fabrication.",
+            "action": "Google[site:.de \"2. Energiesteuersenkungsgesetz\" OR \"Bundestag\" Entlastungspaket]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The initial search for the specific legislation name (\"2. Energiesteuersenkungsgesetz\") on .de domains returned no results. In the context of German bureaucracy, major tax acts and \"Gesetze\" are generally documented online or have Wikipedia entries. The absence of any mention for this specific act name strongly suggests it is a fabricated name in a news text. Combined with the fact that the date (April 2026) is recent in the prompt's timeline (June 2026), the lack of information implies this legislation has not passed. I can conclude the text is false.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims the image shows the \"final vote\" (Schlussabstimmung) where deputies are \"standing up\". I need to verify the visual details of the parliamentarians' posture and the text on the agenda screen (Anzeigetafel) to check for consistency with the legislative stage (First Reading vs. Final Vote).",
+            "action": "Detect[image]",
+            "observation": "- **Overall look:** The scene reads as a conventional wide-angle press photo from the Bundestag plenary hall—consistent architecture (eagle emblem, seating layout, flags), coherent perspective, and realistic depth-of-field.\n\n- **Lighting & shadows:** Illumination is even and plausible for an indoor parliament hall; shadows and highlights on faces, desks, and railings are consistent with a single ambient lighting setup. No obvious “cutout” edges or mismatched shadow directions.\n\n- **People/details:** Crowd density, poses, and clothing appear natural. No clear AI artifacts like warped hands, fused limbs, duplicated faces, or inconsistent eyewear. Fine details (papers, desk lines, microphones) look regular rather than smeared.\n\n- **Text/display:** The electronic board content is sharp and aligned with the screen plane; no visible haloing, mismatched resolution, or compression seams around the text area that would suggest a pasted overlay (though the text is too small to fully verify exact wording).\n\n- **Image integrity:** No obvious signs of compositing (hard borders, differing noise patterns between regions) or synthetic-generation telltales (rubbery textures, inconsistent geometry).\n\n**Conclusion:** The image appears **photographic and largely authentic** with **no clear visual evidence** of manipulation or AI generation based on inspection alone.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The caption's claim of deputies standing contradicts standard Bundestag voting procedures where standing is not required for final votes, and the visual evidence from prior analysis shows no standing motion. This discrepancy suggests the image does not match the textual description.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.3,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the text on the digital display screen shown in the image to confirm if it matches the news article's claim about the \"2. Energiesteuersenkungsgesetz\" (Energy Tax Reduction Act) and \"Schlussabstimmung\" (Final Vote).",
+            "action": "VQA[What is the text visible on the black screen in the upper right background of the room?]",
+            "observation": "\n\nBased on the visible image evidence, the text on the black screen in the upper right background reads:\n\n**TOP 4**\n**Erste Beratung des von der Bundesregierung**\n**eingebrachten Entwurfs eines Gesetzes zur**\n**Stärkung der Energieeffizienz und Offshore-Windkraftausbaugesetz**\n**und zur Änderung einiger ordnungsrechtlicher Vorschriften**\n\n(Note: The word \"Windkraft\" appears slightly blurred and may resemble \"Vindkraft\" due to resolution, but \"Windkraft\" is the correct German term for \"wind power\".)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation clearly shows the text on the display reads \"Erste Beratung ... Offshore-Windkraftausbaugesetz\" (Wind Power Expansion Act). The news text claims the image shows the vote on the \"2. Energiesteuersenkungsgesetz\" (Energy Tax Reduction Act). These are two fundamentally different laws. Combined with the \"Schlussabstimmung\" (Final Vote) claim in the text vs. \"Erste Beratung\" (First Reading) in the image, there is a definitive contradiction. I can conclude a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a future voting event on a specific energy tax law, but the image (verified via OCR) depicts a different bill (offshore wind power) being debated, constituting a fabricated event and a contextual mismatch with the visual aid.",
+    "notes": []
+  },
+  "error": null
+}

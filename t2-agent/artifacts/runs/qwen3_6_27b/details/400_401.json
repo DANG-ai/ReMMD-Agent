@@ -1,0 +1,140 @@
+{
+  "index": 400,
+  "sample_id": "401",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2041.59,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article is built on real developments such as Japan's new landing craft and the 2024 Reciprocal Access Agreement with the Philippines, but it misleadingly stitches them into a much more specific operational narrative about likely Japanese landings in the Philippines than the evidence supports. Edited visuals and captions further push readers toward a Philippines-focused deployment interpretation that the underlying images and source contexts do not document.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/401",
+  "image_paths": [
+    "/path/to/ReMMDBench/401/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/401/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/401/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/401/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/401/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/401/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/401/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/401/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/401/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/401/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "401",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text provides specific details about a Japanese vessel, LCU 4151 (Nihonbare), launched in October 2024 for island defense and transport. It also discusses the strategic relevance of the northern Philippines. The image shows a ship with the hull number 4151 and \"JGSDF LANDING CRAFT\" text. The graphical overlays (map of Northern Philippines, arrow) align perfectly with the article's discussion of a \"northern corridor\" and \"northern Philippine Arc\". The caption in the text essentially describes the image itself. There are no contradictions between the visual evidence and the textual claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text explicitly mentions a specific vessel: \"The vessel, Nihonbare, hull number 4151,\" operated by the \"Ground Self-Defense Force\". I need to verify if the image displays a vessel with the hull number 4151 and identifies the operator as the JGSDF.",
+            "action": "VQA[What is the hull number and the operator of the vessel shown in the image?]",
+            "observation": "\n\nBased on the text visible in the image:\n\n*   **Hull Number:** 4151\n*   **Operator:** Japan Ground Self-Defense Force",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation confirms the hull number is 4151 and the operator is the Japan Ground Self-Defense Force, which aligns perfectly with the news text describing the vessel \"Nihonbare, hull number 4151\" built for the Ground Self-Defense Force. The image also labels it as \"LCU\", matching the \"landing craft utility\" description in the text. Thus, the image and text are a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates the name \"Nihonbare\" for hull number 4151 (which is actually *Himeji*) and the launch location \"Hiroshima\" (contradicted by the Yokohama Shipyard banner in Image 10), while the image set includes unrelated ships (DDG 180, DDG 1616, aircraft carrier render) that are contextually inconsistent with the specific subject.",
+    "notes": []
+  },
+  "error": null
+}

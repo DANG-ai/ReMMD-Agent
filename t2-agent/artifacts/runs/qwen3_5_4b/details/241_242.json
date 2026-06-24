@@ -1,0 +1,140 @@
+{
+  "index": 241,
+  "sample_id": "242",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1618.87,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "该样本的核心新闻事件系虚构：可用素材与原始证据一致指向的事实恰恰是2026年3月8日美国大多数地区仍按惯例在凌晨2点进入夏令时，而非被白宫紧急叫停。与此同时，文中多张图片并非真实记录这一“取消夏令时”事件的新闻现场，而是由生成图、后期加字编辑图或与政策无关的原图拼装成所谓证据，导致文本事实、图像内容和图文绑定关系同时失真，整体核心命题无法成立，应判为 False。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "Society, Education & Employment",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/242",
+  "image_paths": [
+    "/path/to/ReMMDBench/242/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/242/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/242/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/242/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/242/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/242/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/242/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/242/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/242/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/242/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "242",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T1 Fabrication; T2 Distortion; T3 Misleading Context; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I need to first call the image detection tool to formally verify the content of the image against the text claims, checking the location description and the text on the screen. The text explicitly claims the image is in Times Square (NYC), but I suspect from visual analysis that the image text matches the news claim (DST Canceled) while the location text (Dept of Education) suggests a DC setting, and the date implies a fake future event.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text references the event occurred on \"March 8, 2026,\" which is a future date relative to the current timeline, suggesting this is a hypothetical or AI-generated scenario presented as reality. Furthermore, the elaborate policy details (canceling DST to avoid sleep disruption/health issues) are typical of AI hallucinations rather than widely reported breaking news. The mismatch between the location (Dept of Education in DC vs. Times Square in NYC) reinforces the veracity of the news as false.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "While the central message is consistent, the news text explicitly claims the screen is located in \"Times Square\" (纽约时代广场). However, the prominent sign below the screen reads \"U.S. Department of Education\" (美国教育部). This is a significant factual discrepancy in the location attribute between the text description and the visual image, indicating a Mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.739863622299141,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.1,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.8,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.9,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.2,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a specific 2026 DST cancellation event and misidentifies a historical museum exhibit as a modern terminal display, creating a misleading context and contextual inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

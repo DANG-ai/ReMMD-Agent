@@ -1,0 +1,63 @@
+# Configuration for the Qwen3.5-9B backend.
+
+api:
+  provider: "qwen3_5_9b"
+  model: "qwen3.5-9b"
+  api_key: "qwen"
+  primary_base_url: "http://YOUR_QWEN_9B_ENDPOINT/v1"
+  backup_base_urls: []
+  timeout_seconds: 180
+  proxy_url: null
+  max_output_tokens: null
+  temperature: null
+
+retry:
+  attempts: 5
+  sleep_seconds: 6
+
+search:
+  sampled_nodes: 2
+  exploration_weight: 2.0
+  alpha: 0.5
+  simulations: 12
+  depth_limit: 4
+  max_steps_per_rollout: 4
+  high_confidence_threshold: 0.8
+  score_scale: 10.0
+  realmmdbench_tool_selection_subset_size: 100
+
+paths:
+  workspace_root: "/path/to/ReMMD-Agent/t2-agent"
+  realmmdbench_root: "/path/to/ReMMDBench"
+  artifacts_root: "/path/to/ReMMD-Agent/t2-agent/artifacts"
+  records_root: "/path/to/ReMMD-Agent/t2-agent/records"
+  serper_api_file: "/path/to/serper_api.txt"
+
+serper:
+  api_key_index: 2
+  num_results: 5
+  timeout_seconds: 30
+
+toolkits:
+  realmmdbench:
+    base_tools:
+      - "wikipedia"
+      - "image_understanding"
+    candidate_tools:
+      - "web_search"
+      - "entity"
+      - "counterfactual"
+
+evaluation:
+  realmmdbench_min_per_category: 1
+  realmmdbench_probability_bins:
+    true_min: 0.8
+    mostly_true_min: 0.6
+    mixture_min: 0.4
+    mostly_false_min: 0.2
+  max_samples: 0
+
+logging:
+  log_llm_calls: true
+  log_tool_calls: true
+  log_prompt_chars: 0

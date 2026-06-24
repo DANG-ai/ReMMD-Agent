@@ -1,0 +1,154 @@
+{
+  "index": 62,
+  "sample_id": "063",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1072.92,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article wraps limited, mixed evidence about sleep, recovery and exercise tolerance into a stronger health-warning narrative than the source material supports, and it reinforces that narrative with synthetic and edited visuals presented like documentary evidence. The combination of unverifiable expert-style quotations, overstated implications from correlational research, and non-authentic images produces a false overall impression.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/063",
+  "image_paths": [
+    "/path/to/ReMMDBench/063/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/063/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/063/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/063/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "063",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Begin by checking the broad medical consensus on how sleep deprivation affects exercise recovery using Wikipedia to establish if the general claims are accurate.",
+            "action": "Wikipedia[sleep deprivation exercise recovery relationship]",
+            "observation": "No summary available. Similar entities: Sleep deprivation, Delayed sleep phase disorder, Sleep in bipolar disorder, Sleep, Sleep and memory",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text contains specific medical claims, including a case study involving chest symptoms after a run and specific intensity recommendations. A Google web search is suitable to find modern medical guidelines and pop-sci articles that cover these specific details and clinical consensus.",
+            "action": "Google[sleep deprivation exercise recovery cardiovascular strain medical guidelines]",
+            "observation": "Effects of curtailed sleep on cardiac stress biomarkers following high ...: Recurrent sleep restriction may increase the cardiac stress response to acute high-intensity exercise in healthy young individuals. (https://pmc.ncbi.nlm.nih.gov/articles/PMC8885606/)\nSleep Prevention and Heart Disease: Everything You Need to Know: Chronic sleep deprivation can raise your level of stress hormones, like cortisol, which may contribute to cardiovascular disease. Metabolic ... (https://www.uchicagomedicine.org/forefront/heart-and-vascular-articles/2024/january/how-sleep-deprivation-and-sleep-apnea-impact-heart-health)\nPrioritizing Health | Sleep and Cardiovascular Health: BP Regulation: Adequate sleep fosters nocturnal dipping of BP, an essential regulatory mechanism. Conversely, sleep disturbances attenuate this ... (https://www.acc.org/latest-in-cardiology/articles/2025/03/01/42/prioritizing-health-sleep-and-cardiovascular-health)\nEffects of Acute-Partial Sleep Deprivation on High-Intensity Exercise ...: Acute-partial sleep deprivation affected aerobic exercise performance the next morning and led to decreased cardiac vagus activity and cardiac autonomic ... (https://www.mdpi.com/2071-1050/13/16/8769)\nPhysical activity may counter negative health effects of poor sleep: A recent study suggests that moderate-to-high levels of physical activity may counteract many of the negative health effects of poor sleep. (https://www.medicalnewstoday.com/articles/physical-activity-may-counter-negative-health-effects-of-poor-sleep)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous Google search for 'sleep deprivation exercise recovery cardiovascular strain' provided strong scientific evidence supporting the text's claims. The results include studies linking sleep restriction to increased cardiac stress and performance deficits, and articles confirming that exercise still provides health benefits despite poor sleep. This corroborates the text's nuanced argument that improving sleep mitigates risk and is essential for fitness.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses the risks of exercising after poor sleep, specifically mentioning that vigorous exertion can lead to severe chest symptoms and cardiovascular distress. The image shows a man running outdoors while clutching his chest, appearing distressed and sweating. This visual directly illustrates the scenario described in the text—a person exercising who is experiencing chest discomfort, potentially related to tiredness or health strain.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific scenario where a runner with sleep deprivation develops severe chest symptoms. I need to verify if the image depicts a runner in distress with a hand on the chest, which aligns with the text's description. I will ask a VQA question to confirm the man's action and emotional state.",
+            "action": "VQA[What is the man in the image doing and how does he appear to feel, specifically regarding his chest?]",
+            "observation": "\n\nBased on the visual evidence:\n\n**What he is doing:**\nThe man is running or jogging on a paved path next to a body of water. He appears to be wearing athletic clothing and is clearly in motion.\n\n**How he appears to feel regarding his chest:**\nHe appears to be in significant distress or pain. He has placed his right hand over his chest/heart area, and his facial expression—furrowed brow, open mouth—suggests he is experiencing chest pain, shortness of breath, or having a heart attack. His t-shirt also shows a patch of sweat, indicating physical exertion.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The visual evidence confirms that the man in the image is running while clutching his chest and looking distressed, which directly aligns with the specific example in the text about a runner developing chest symptoms after poor sleep. Therefore, the cross-modal match is successful.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.21544346900318836,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a specific fabricated news story (40-year-old programmer case), and the images are identifiable as AI-generated synthetic content.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,163 @@
+{
+  "index": 499,
+  "sample_id": "500",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1781.56,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article mixes a broadly plausible Raw recap with misleading framing that treats an AJ Lee vs. Bayley title match as a direct, confirmed continuation of the March 9 Seattle show. That false present-tense framing is reinforced by an edited match graphic and by older imagery presented as if it supports the current Raw build.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/500",
+  "image_paths": [
+    "/path/to/ReMMDBench/500/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/500/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/500/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "500",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "I should search for the official lineup of the upcoming RAW Women's Intercontinental Championship to verify if Bayley's opponent is indeed Sasha Banks rather than AJ Lee, which creates a contradiction with the provided text.",
+            "action": "Google[WWE Raw upcoming Women's Intercontinental Championship match card]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Wikipedia might have record of recent WWE match outcomes, including Women's Intercontinental Championship bouts. Verifying this directly could clarify if Bayley faced AJ Lee or a different opponent.",
+            "action": "Wikipedia[Bayley WWE Intercontinental Championship match outcomes]",
+            "observation": "No summary available. Similar entities: Elimination Chamber (2026), Matt Cardona, History of WWE, Raw (WWE brand), Shawn Michaels",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the previous trajectory, I should verify if the Women's Intercontinental Championship match on the RAW episode mentioned (March 9 or Next Monday) actually features Bayley facing AJ Lee. I need to find the official match card to confirm the opponent (who appears to be Sasha Banks in the image, not AJ Lee).",
+            "action": "Google[WWE Raw March 9 Women's Intercontinental Championship match card]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a promo for the Women's Intercontinental Championship. The wrestlers featured are Bayley (left) and another wrestler with purple hair and a shaved head (right). The text claims this match is Bayley vs. AJ Lee. AJ Lee is blonde and has a very distinct appearance that does not match the woman on the right in the image. Additionally, the text mentions CM Punk being in \"Bloodline-adjacent drama,\" which is factually incorrect for the current WWE landscape (CM Punk was released in 2016). Thus, the visual evidence refutes the text's description of the matchup and participants.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the identity of the opponent in the image. The text states Bayley faces AJ Lee, but the wrestler on the right has purple hair which might be someone else. I will ask VQA to identify the person.",
+            "action": "VQA[Who is the wrestler on the right with purple hair?]",
+            "observation": "\n\nBased on the visual evidence, the wrestler on the right with purple hair is **Becky Lynch**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the text specifies \"AJ Lee\" as the opponent but the VQA identified the wrestler on the right as \"Becky Lynch\", there is a clear conflict in the opponent's identity. I should verify the identity of the wrestler on the left to ensure it matches the text's mention of \"Bayley\", confirming the text and image share at least one correct entity before finalizing the conclusion.",
+            "action": "VQA[Who is the wrestler on the left with black hair?]",
+            "observation": "\n\nBased on the visual evidence in the image, including the \"RAW\" logo and the \"WOMEN'S INTERCONTINENTAL CHAMPIONSHIP\" text, the wrestler on the left with long black hair is **Charlotte Flair**.\n\n(context: This promotional poster is likely for the June 8, 2020 episode of Raw, which was broadcast on Netflix, where Charlotte Flair defeated Asuka—who is visible on the right with her purple hair—for the Women's Intercontinental Championship).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA results have clearly identified the wrestlers in the image as Charlotte Flair and either Becky Lynch or Asuka (depending on the specific hash), which directly contradicts the text stating a match between Bayley and AJ Lee. Since the core entities involved in the match are different, the text and image describe different events.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.8,
+        "T2 Distortion": 0.2,
+        "T3 Misleading Context": 0.4,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a Bayley vs. AJ Lee title match for the specified date, conflicting with the visual evidence shown in the promotional images, which depict other wrestlers (Charlotte Flair/Asuka) and wrestlers (Shawn Michaels).",
+    "notes": []
+  },
+  "error": null
+}

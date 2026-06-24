@@ -1,0 +1,135 @@
+{
+  "index": 463,
+  "sample_id": "464",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1261.57,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本混合了真实传播现象与权威通报类信息线索，但关键叙事通过错置时间线与配图错配来增强“被查前夕”的紧迫感，并使用经过编辑的“官网截图”制造‘姓名被移除’的视觉证据，从而在语境上对受众形成误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经商业",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/464",
+  "image_paths": [
+    "/path/to/ReMMDBench/464/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/464/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/464/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/464/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "464",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the text content within the image to confirm the website title and the list displayed. Comparing this with the news text which claims it is a \"Wuliangye Group\" leadership list is essential for determining if the image supports or refutes the rumors described.",
+            "action": "Detect[image]",
+            "observation": "- **明显二次编辑痕迹**：名单表格中“副主任：曾从钦”一行的姓名区域被一块灰白色“涂抹/刷漆”样式覆盖，边缘呈不规则刷痕，覆盖层的纹理与周围网页背景的干净渐变不一致，像是后期用涂抹工具或叠加蒙版做出的“抹掉名字”效果。  \n- **界面为“合成展示”而非原始截图**：整张图是把网页内容嵌入到手机外框里的展示图（带设备边框与状态栏/底部横条），这类版式常见于宣传或二次传播物料，不能等同于直接从官网截取的原始页面证据。  \n- **未见AI生成典型伪影**：文字清晰、表格线条规整、透视与光照基本一致，没有常见的生成式图像“乱码字/畸变UI”问题；更像是**真实网页截图被后期涂抹处理**，而不是整张图从零合成的AI图。  \n\n结论：图中最突出的不可信点是对姓名区域的**明显涂抹遮盖**（后期篡改/编辑），因此不适合作为“官网已移除”的原始证据截图。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The screenshot provided is of a \"Municipal SASAC\" leadership page, not Wuliangye Group. Even if \"Zeng Congqin\" appears on it, it cannot serve as evidence for the specific claim that he was removed from the Wuliangye list. The visual content establishes that the image is unrelated to the specific entity mentioned in the news, thus refuting the rumor's evidence.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The news mentions that screenshots show the removal or crossing out of Zeng Congqin's name. I need to verify if his name appears in the image and if there are any visual marks (like red boxes or smudges) indicating removal, to assess if the visual evidence matches the narrative described in the text.",
+            "action": "VQA[Who is listed as \"Deputy Director\" (副主任) in the list, and is there any obstruction or marking over their name?]",
+            "observation": "\n\nBased on the image provided, the following individuals are listed as \"Deputy Director\" (副主任):\n\n1.  **张建国** (Zhang Jianguo)\n2.  **刘芳** (Liu Fang)\n3.  **曾从钦** (Zeng Congqin)\n\nRegarding obstructions:\nThere is a gray, smudge-like marking or stamp partially covering the name **曾从钦**. Additionally, at the very bottom, there appears to be another entry starting with \"副主任\" and a partial name (possibly \"李德\"), but it is cut off by the edge of the screen.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.5,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.5,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The visual content includes a map with exaggerated/edited distances and a card with inconsistent information, while the text distorts the relationship between the project and the disaster scene.",
+    "notes": []
+  },
+  "error": null
+}

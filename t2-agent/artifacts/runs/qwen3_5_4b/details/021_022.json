@@ -1,0 +1,134 @@
+{
+  "index": 21,
+  "sample_id": "022",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 935.73,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article’s central account matches the available evidence: Venezuela beat the Netherlands 6-2 in its World Baseball Classic opener at loanDepot park in Miami on March 6, and the described atmosphere of heavy Venezuelan fan presence is supported by the source summary and cited coverage. The images are consistent with that event and do not introduce any factual contradiction or manipulation affecting the claim.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/022",
+  "image_paths": [
+    "/path/to/ReMMDBench/022/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/022/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/022/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/022/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/022/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/022/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/022/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/022/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/022/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/022/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "022",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=True | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.92,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes the Venezuelan National Baseball team playing in a tournament opener in Miami (loanDepot park) in 2026. The provided image clearly displays a baseball player wearing a white jersey with \"Venezuela\" written on the front, confirming the team identity mentioned in the text. The setting appears to be a baseball stadium, consistent with the location and event described.",
+            "action": "Detect[image]",
+            "observation": "- **Obvious editing (intentional anonymization):** Multiple faces in the foreground and crowd have been covered with rectangular blur/mosaic blocks. The blocks have hard edges and uniform blur, indicating a privacy mask added after the photo was taken (not something produced by a camera).\n\n- **No strong signs of AI/synthetic generation:** Aside from the face redactions, the scene looks like a normal sports photograph—consistent lighting, depth of field, motion/pose coherence, and realistic fabric folds and shadows. The uniforms, arms, and background spectators don’t show the common “melted” geometry or inconsistent textures typical of generative images.\n\n- **No clear compositing artifacts:** I don’t see mismatched lighting between subjects, haloing around cutout edges, or duplicated crowd patterns that would suggest elements were pasted in.\n\n**Conclusion:** The image appears to be a real photograph that has been digitally edited to obscure identities (face blurring), with no additional clear indicators of synthetic or manipulated content beyond that.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous step confirmed the image is a real photograph of a Venezuelan baseball player. The provided text describes Venezuela's 2026 World Baseball Classic opener in Miami. There is a strong visual-textual match: the jersey says \"Venezuela\" (Text: \"Venezuela... began the tournament\"), and the setting is a stadium in Miami (Text: \"loanDepot park... Miami\", Image: Stadium background). The masking on the faces indicates privacy editing, not image generation, which doesn't affect the veracity of the scene description. The central concept (Venezuela team) in the image directly validates the text's claim.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.75,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Once the Entity tool identifies the team as 'Venezuela', it will match the text's description of the Venezuelan team's performance and the patriotic atmosphere mentioned in the article. The visual content of the image (Venezuela team celebrating) directly supports the narrative of the news text (Venezuela winning the opener). Therefore, the text and image are semantically aligned.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9654893846056297,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a future 2026 World Baseball Classic as a past event with specific results, which is a fabrication, while the image shows obvious digital editing (face blurring) for anonymity.",
+    "notes": []
+  },
+  "error": null
+}

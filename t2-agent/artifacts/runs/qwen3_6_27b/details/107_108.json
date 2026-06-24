@@ -1,0 +1,142 @@
+{
+  "index": 107,
+  "sample_id": "108",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 4667.9,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article presents a highly elaborated reported narrative as established fact even though the provided source basis is only a small cluster of social media posts and event photos, not verified reporting for most of the asserted investigation details. It also uses a generated lead image and several loosely related or unrelated images in ways that make the story appear more evidentially grounded than the source material supports.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Society, Education & Employment",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/108",
+  "image_paths": [
+    "/path/to/ReMMDBench/108/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/108/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/108/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/108/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/108/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/108/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/108/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/108/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/108/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/108/images/10_img_10.jpg",
+    "/path/to/ReMMDBench/108/images/11_img_11.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "108",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image displays the text \"WHITE HOUSE CORRESPONDENTS' ASSOCIATION\" and a podium with the Presidential Seal, confirming the setting is related to the White House Correspondents' Dinner mentioned in the text. The text describes the event and a security breach associated with it. The image provides visual evidence of the event itself (or a related function), supporting the narrative that such an event takes place and involves high-profile elements (like the Presidential seal and association signage). Therefore, the image supports the text.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a real photograph with one obvious edit:\n\n- **Deliberate obscuration:** The person’s face is covered by a uniform, square **blur/pixelation block** with hard edges. That kind of masking is typical of post-processing (privacy redaction) rather than an in-camera effect.\n- **No strong signs of AI synthesis elsewhere:** The podium, microphones, presidential seal, background curtain, and the “WHITE HOUSE CORRESPONDENTS’ ASSOCIATION” sign look consistent in lighting, perspective, and texture. Edges and shadows around the subject and objects don’t show obvious cut-and-paste halos or warped geometry.\n- **No visible counterfactual elements in the scene itself:** Nothing in the image visually depicts weapons or an “armed incident”; it’s a standard lectern/speech setting. The main mismatch is with the accompanying text, not with the photo’s internal consistency.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a specific armed incident involving a suspect (Cole Tomas Allen) who was stopped outside the perimeter and never entered the dinner. The image shows a person (with a blurred face according to the previous observation, or a specific speaker visually) standing *at* the podium inside the event. If the image is interpreted as depicting the suspect or the incident, it contradicts the text (wrong location, no weapons). Furthermore, the \"Observation\" explicitly states there is a \"main mismatch with the accompanying text,\" suggesting the image content (peaceful podium speech) does not align with the text's primary subject (armed security breach). This discrepancy could lead to a conclusion of IMAGE_REFUTE if strict alignment with the incident details is required.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text focuses on an incident at the \"White House Correspondents' Dinner\". The image displays a woman speaking at a podium with a blue sign in the background. To verify if the image matches the text's context, I need to read the text on the blue sign to see if it references the White House Correspondents' Association or Dinner.",
+            "action": "VQA[What does the blue sign in the background say?]",
+            "observation": "\n\nThe blue sign in the background says:\n\n**WHITE HOUSE**\n**CORRESPONDENTS'**\n**ASSOCIATION**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA action confirmed the sign reads \"WHITE HOUSE CORRESPONDENTS' ASSOCIATION\". The news text discusses an armed incident at the \"White House Correspondents' Dinner\" (WHCD). Since the White House Correspondents' Association (WHCA) is the organization that organizes and hosts the WHCD, the image clearly depicts the event mentioned in the text. The presence of the podium with the Presidential seal further corroborates the formal political nature of the event described. The visual evidence aligns perfectly with the text's subject matter.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

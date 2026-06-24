@@ -1,0 +1,133 @@
+{
+  "index": 379,
+  "sample_id": "380",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3091.7,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion"
+    ],
+    "rationale": "Die wesentlichen überprüfbaren Fakten zu Spielstand, Zeitpunkt und Personal des Doppelwechsels sowie zum Fanmarsch stimmen mit dem Quellmaterial überein. Leicht irreführend ist jedoch, dass der Text die taktische Tragweite des Wechsels mehrfach als klar offensiven Umbau und starkes Signal überhöht, obwohl die Quelle dafür nur den Wechsel selbst und den Stand von 0:1 belegt.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/380",
+  "image_paths": [
+    "/path/to/ReMMDBench/380/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/380/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/380/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/380/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "380",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 7,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify if the image supports the news text. The text describes a football match between VfL Wolfsburg and FC Bayern Munich on May 9, 2026, involving Christian Eriksen. The image shows Christian Eriksen wearing a VfL Wolfsburg jersey (green with VW logo and team crest) and a rainbow armband. The visual evidence aligns with the key subject of the text (Christian Eriksen playing for Wolfsburg). Although the date in the text is in the future (2026), implying a hypothetical or fictional scenario, the image accurately depicts the person and team described, thus supporting the visual premise of the text.",
+            "action": "Detect[image]",
+            "observation": "- **Offensichtliche Bearbeitung:** Das Gesicht ist durch einen rechteckigen, weich verlaufenden Blur/Maskenblock verdeckt. Das ist eine klare nachträgliche Redaktion/Anonymisierung.\n- **Ansonsten wirkt es wie ein echtes Sportfoto:** Trikotdetails (VfL-Wappen, Nike-Logo, VW-Sponsor), Stofffalten, Licht/Schärfentiefe und Bildrauschen sehen fotografisch konsistent aus; keine typischen KI-Artefakte (verschmierte Logos, unlogische Kanten, “wabernde” Texturen) fallen auf.\n- **Keine klaren Hinweise auf Compositing/Synthese:** Arm, Regenbogen-Kapitänsbinde und Trikotkanten zeigen keine auffälligen Übergänge oder doppelte Konturen, die auf Einfügen hindeuten.\n\n**Fazit:** Das Bild ist sehr wahrscheinlich ein authentisches Foto, das **nachträglich durch eine Gesichtsverpixelung/Unkenntlichmachung** bearbeitet wurde. Keine weiteren deutlichen Manipulationsspuren erkennbar.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a football player wearing a VfL Wolfsburg jersey (green with VW logo and club crest) and a rainbow armband. The player's facial features and the distinctive armband strongly suggest this is Christian Eriksen. The news text describes a match involving Christian Eriksen playing for VfL Wolfsburg. The visual evidence of Eriksen in the Wolfsburg kit aligns with the subject matter of the text. Although the text refers to a future date (2026), the image supports the visual premise of the player and team affiliation described.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions Christian Eriksen playing for VfL Wolfsburg. I need to verify if the player in the image is indeed Christian Eriksen and if he is wearing a Wolfsburg jersey to confirm the match.",
+            "action": "VQA[Who is the football player in the image?]",
+            "observation": "\n\nBased on the visual evidence, the football player in the image is **Maximilian Arnold**.\n\nHe is wearing the dark green away jersey of the German club **VfL Wolfsburg**, identifiable by the \"W\" crest and the Volkswagen sponsor logo. He is also wearing a rainbow-colored armband on his left arm, which is commonly worn by captains or players during Pride Month or matches supporting LGBTQ+ rights. Arnold has been the captain of Wolfsburg for many years.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA result states the player is Maximilian Arnold. The text describes a match event where Christian Eriksen and Patrick Wimmer were substituted. Since the person in the image (Arnold) is not the person mentioned in the text (Eriksen), and Arnold is not mentioned in the text at all, the image does not match the specific content of the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future match event (May 2026) presented as a past report, the first image contains obvious visual editing (face blur), and the text's temporal context (2026) mismatches the real-world timing of the visual evidence.",
+    "notes": []
+  },
+  "error": null
+}

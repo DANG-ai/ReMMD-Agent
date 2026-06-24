@@ -1,0 +1,131 @@
+{
+  "index": 359,
+  "sample_id": "360",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 506.1,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "文本所述与权威辟谣信息一致：针对网络上出现的“查分入口/查询通道”等不实消息，官方明确单招成绩、录取结果与通知以湖南省教育厅、湖南省教育考试院及各招生高校官方渠道为准，未授权社会机构对外发布或提供查询服务，并提醒考生不要在非官方页面填写身份证号、手机号、银行卡等敏感信息，结论与证据相符。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "教育考试与招生信息",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/360",
+  "image_paths": [
+    "/path/to/ReMMDBench/360/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/360/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "360",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text warns citizens that official information regarding \"single recruitment\" (单招) is only released through specific official channels and cautions against unofficial websites. I need to verify if the image provides supporting evidence for this context, specifically looking for the relevant authority confirming this stance.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous attempt to use the Detect tool failed due to unavailability. However, based on visual inspection, the image is clear. The banner identifies the speaker at the \"Hunan Province Education Examination Institute\" and the screen explicitly states that rumors about the \"single recruitment score check channel\" are false and to use official channels. This directly supports the news text's warning about official channels and the context of rumors spreading online. I can conclude that the image supports the news without needing the tool response.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Extract entities from the image such as organization names and text on the banner to compare with the news text which mentions \"湖南省教育考试院\".",
+            "action": "Entity[image]",
+            "observation": "- **Banner text: “湖南省教育考试院新闻发布会” (Hunan Provincial Education Examinations Institute press conference)** — High certainty (clearly readable on the red banner).\n- **Projected slide (Chinese text) about an “official response” and urging to follow official channels (“请以官方渠道为准”)** — Medium–high certainty (mostly readable but partially cropped/blurred).\n- **Media logo: “湖南卫视” (Hunan TV / Hunan Satellite TV) microphone flag** — High certainty (logo and text visible).\n- **Media logo: “红网 REDNET” microphone flag** — High certainty (text/logo visible).\n- **Press conference setting (podium with gooseneck mic; reporters holding microphones/cameras)** — High certainty (clear context).\n- **Bottled water on the podium (brand not clearly identifiable)** — Medium certainty (objects clear; branding not).\n- **People present (speaker and journalists), identities not identifiable from the image** — High certainty (faces are obscured, so no ID).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have extracted the key entity \"湖南省教育考试院\" and noted the text about \"官方回应\" regarding false rumors on single recruitment score channels. This aligns perfectly with the news text which discusses rumors about single recruitment score checking and advises using official channels. The image provides the direct visual evidence of the official response mentioned in the text, confirming consistency.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.41601676461038084,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.2,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.09999999999999998,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Verification evidence indicates high certainty for visual text, logos, and the match with the news text, confirming the content is a legitimate, consistent real-world press conference.",
+    "notes": []
+  },
+  "error": null
+}

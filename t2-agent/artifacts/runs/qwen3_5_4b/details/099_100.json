@@ -1,0 +1,145 @@
+{
+  "index": 99,
+  "sample_id": "100",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1574.3,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "Die Kernaussage des Textes ist mit den bereitgestellten Evidenzen konsistent: #LEVARS verweist auf das Spiel Leverkusen gegen Arsenal, das 1:1 endete, und die verwendeten Bilder passen thematisch zu diesem Fußballkontext. Es sind keine irreführenden Text-, Bild- oder Kontextmanipulationen ausgewiesen.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/100",
+  "image_paths": [
+    "/path/to/ReMMDBench/100/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/100/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "100",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "Wikipedia did not show the specific match date or results requested, so I will use Google to search for news reports or schedules regarding the clash between these two teams on March 11, 2026.",
+            "action": "Google[Leverkusen 1:1 Arsenal March 11 2026 RESULT]",
+            "observation": "[Answer Box] Kai Havertz climbed off the bench to score a last-gasp equaliser against the club where he began his career to earn Arsenal a 1-1 draw at Bayer Leverkusen in the first leg of their Champions League last-16 tie.\n11/03/2026 - Bayer Leverkusen - UEFA Champions League: Browse all the build up, action, reports and reaction from Bayer Leverkusen vs Arsenal, including match highlights video and post-match analysis after the ... (https://www.arsenal.com/fixture/arsenal/2026-Mar-11/bayer-leverkusen)\nHow Arsenal earned a Champions League draw away to Bayer ...: Arsenal came from behind to draw 1-1 against Bayer Leverkusen in the first leg of their Champions League round of 16 tie. (https://www.nytimes.com/athletic/live-blogs/bayer-leverkusen-vs-arsenal-live-updates-champions-league-score-result/AMPiRACogEyM/)\nBayer Leverkusen 1-1 Arsenal | Match Day LIVE - YouTube: Bayer Leverkusen 1-1 Arsenal | Match Day LIVE · Comments. (https://www.youtube.com/watch?v=O_eiOOs9yd0)\nArsenal-Leverkusen Head-to-head | UEFA Champions League: Ulf Kirsten 11 goals ... Live 11/03/2026. Highlights: Leverkusen 1-1 Arsenal. Matches played. 2025/26. Round of 16. 2nd leg. Round of 16, 2nd leg. Agg: 3-1Arsenal ... (https://www.uefa.com/uefachampionsleague/history/h2h/52280/50109/)\nMatch Thread: Bayer Leverkusen vs Arsenal FC Live Score - Reddit: Match Thread: Bayer Leverkusen vs Arsenal FC Live Score | UEFA Champions League 25/26 | Mar 11, 2026. 1. 0. Match Thread: Arsenal FC vs Bayer ... (https://www.reddit.com/r/ArsenalFC/comments/1rqyzyn/match_thread_bayer_leverkusen_vs_arsenal_fc_live/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results confirm the match details (date 11/03/2026, teams, result 1-1, and the goal being a late equalizer by Havertz after coming off the bench). This aligns with the news text's claims about the score, timing, and scorer.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a UEFA Champions League match between Bayer 04 Leverkusen and FC Arsenal, played around March 2026. However, the image shows a football match featuring a player wearing a black jersey with \"CHELSEA FC\" clearly visible on the chest. This indicates the image depicts a Chelsea vs. Arsenal match, not Leverkusen vs. Arsenal. The text's subject (Leverkusen) contradicts the visual evidence (Chelsea).",
+            "action": "Image Refute",
+            "observation": "Could not parse action: Image Refute",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims the match is between Bayer 04 Leverkusen and Arsenal. However, the image clearly shows a player wearing a black jersey with \"CHELSEA FC\" printed on the chest, playing against a player in an Arsenal kit. Since Chelsea is not Leverkusen, the text contradicts the visual evidence.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Verify if the player in the black kit is \"Robert Andrich\" as described in the text.",
+            "action": "Entity[image] Robert Andrich",
+            "observation": "Could not parse action: Entity[image] Robert Andrich",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To verify the text description of the player in the red kit (stated as Kai Havertz in the text), I should ask a VQA question to identify him and confirm the matchup.",
+            "action": "VQA[question: Who is the player in the red kit?]",
+            "observation": "\n\nThe player in the red kit is **Jack Wilshere**, an Arsenal footballer.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the VQA observation identifies the player in the red kit as Jack Wilshere, but the news text describes him as Kai Havertz, there is a clear mismatch in the entity identification. The match date (2026) is also speculative compared to typical dataset years, and the text language (German) suggests a hallucinated or mismatched context. Given the entity mismatch, it is appropriate to finish the task.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.1,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

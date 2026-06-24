@@ -1,0 +1,169 @@
+{
+  "index": 389,
+  "sample_id": "390",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1506.35,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "文本把“睡眠不足可能影响运动表现与心血管负担”的相关性夸大为“运动几乎无效、风险成倍上升”的确定性结论，并用被编辑过的海报/截图作为支撑；图片还把“10-11点睡觉更护心”篡改成“10-11点运动更护心”，与正文语义绑定后造成误导性强化，因此整体以错误结论为主导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "健康医疗",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/390",
+  "image_paths": [
+    "/path/to/ReMMDBench/390/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/390/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "390",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "I also want to check if the specific anecdotal claim or the \"10-11 PM exercise\" advice has any specific study backing it, as this seems like specific platform content that might be misleading.",
+            "action": "Google[research: \"40 year old programmer stayed up 1 week ran 10km heartattack\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should also verify the general medical advice and the specific claim that exercising when sleep is less than 6 hours yields \"zero benefit\" and increases heart attack risk, to see if this aligns with mainstream health consensus or is sensationalized. The symptomatic nature of the claim suggests I might look for a Wikipedia overview of the exercise-sleep relationship.",
+            "action": "Wikipedia[query: \"Sleep and exercise health benefit\"]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will search for general scientific consensus and expert opinions regarding the effect of sleep deprivation (specifically less than 6 hours) on exercise performance and recovery. This will help verify the \"zero benefit\" claim.",
+            "action": "Google[search: \"effect of sleep less than 6 hours on exercise benefit\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.5,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text provided includes a description of the image caption data stating that the poster's subtitle tips \"10-11 PM exercise most protects the heart, the more you run the safer\". However, looking at the provided image, the text clearly reads \"睡不够就别运动，那是自杀式锻炼！\" (If you don't sleep enough, don't exercise, that's a suicide-style exercise!) and lists warnings like \"风险×3↑ 心血管危机\" (Risk x3 Heartvascular Crisis). The text description of the image's content (the subtitle claiming 10-11 PM is safe) contradicts the visual evidence in the image. Therefore, the image content does not support the specific claims made in the text description, suggesting a mismatch or a false claim in the text.",
+            "action": "Deteks[IMAGE_REFUTE]",
+            "observation": "Tool 'Deteks' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous trajectory identified a significant contradiction between the image content (\"Benefit Almost Zero\" / \"Contraindicated if sleep < 6 hours\") and the news text's specific description of the image's subtitle (\"10-11 PM exercise most protects the heart\"). To ensure accuracy before finalizing, I will first use the `Detect` tool to perform an OCR analysis and text verification on the image to confirm these discrepancies.",
+            "action": "Detect[image]",
+            "observation": "这张图更像是“拼接+加字”的宣传海报，而不是一张自然拍摄的单幅照片。\n\n可见迹象与判断依据：\n- **明显的双画面拼接**：左侧卧室、右侧户外跑步道是两张风格不同的照片并排拼在一起，中间有清晰的分割边界，属于版式合成而非同一场景。\n- **大量后期文字与标注**：大标题、横线、以及红色指示标注（如“风险×3个”“伤害×5个”）都属于典型的后期叠加元素，字体、描边和阴影效果明显是设计稿风格。\n- **光线/色调差异**：左侧为室内暖色灯光，右侧为室外强阳光逆光与绿色高饱和；这种差异符合“选两张素材图拼贴”的视觉效果。\n\n未见到的情况：\n- **没有明显AI生成常见瑕疵**（如人物肢体畸形、树叶/阴影不合逻辑的结构性错误等）。右侧跑者的形体与地面阴影关系看起来基本自然；左侧卧室透视与物体边缘也较正常。\n\n结论：图像本身是**后期编辑合成的海报/拼图**（拼接两张真实感照片并加文字），不是“纯原始现场照片”。是否“AI生成”无法从这张成图中得到明确证据，但“人为排版合成”迹象很强。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the \"Previous Trajectory\" logic, there is a clear contradiction: The provided news text describes the image's subtitle as \"10-11 PM exercise protects heart\", but the actual image clearly reads \"Exercise benefit almost zero\". This discrepancy means the image does not match the text's specific claim about the image's content. Additionally, the `Detect` tool identified the image as a \"Spliced + Text\" poster, which is typical of sensationalized health claims that often feature inaccurate descriptions. Therefore, the veracity of the image relative to the text description is false.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "Anchor in the news text, the main point is that lack of sleep makes exercise ineffective (benefits ~0) and dangerous (risk x3). I will ask a VQA question to verify if the image text explicitly states this same core fact: whether the benefits of exercise are 'almost zero' if sleep is insufficient.",
+            "action": "VQA[Does the image state that exercise benefits are almost zero if sleep is insufficient?]",
+            "observation": "\n\nYes, the text explicitly states that \"exercise benefits are almost zero\" (锻炼收益几乎为零) if one does not sleep enough (睡不够).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA query confirmed that the image explicitly states \"exercise benefits almost zero\" if sleep is insufficient. This aligns perfectly with the news text which states that exercise benefits \"equal zero\" or become \"white training\" when sleep is less than 6 hours. The core message is verified, so the task is complete with a MATCH.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.6839903786706788,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.5,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 1.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image is a composite (split-screen) of unrelated scenes (bedroom and park run), indicating visual editing. The text claims exaggerated statistics like \"Risk x3\" and \"Benefits almost zero,\" which are distortions of scientific data.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,146 @@
+{
+  "index": 373,
+  "sample_id": "374",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1958.65,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article's main idea is grounded in real WrestleMania-week activity and authentic fan/creator posts, but it somewhat overstates how unified and coherent that ecosystem was. It also uses related but not identical visuals in a way that can make readers treat magazine/editorial and fan-made content as if they were direct evidence of the immediate WrestleMania event environment.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/374",
+  "image_paths": [
+    "/path/to/ReMMDBench/374/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/374/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/374/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/374/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/374/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/374/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/374/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/374/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/374/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/374/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "374",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.6,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "Thinking process: The image shows Liv Morgan on a PAPER magazine cover. The text references a specific image from this magazine featuring Liv Morgan during the elaborate, crossover visual era of WrestleMania. The visual content matches the textual description of \"Liv Morgan... posing for Paper magazine\" and the associated \"glossy, styled\" aesthetic. While the text also mentions Dominik Mysterio, the image of Liv Morgan strongly aligns with the primary claim of a major magazine crossover involving wrestling stars.",
+            "action": "Detect[image]",
+            "observation": "- **Appears to be an editorial cover design, not a candid photo.** The large “PAPER” masthead at the top and the stylized “LIV MORGAN” lettering across the lower half indicate deliberate graphic layout typical of magazine/social promo art.\n\n- **Clear signs of intentional digital editing:**  \n  - The **face is obscured with a smooth rectangular blur/block**, which is a direct post-processing/redaction (not a natural lighting effect).  \n  - The typography overlays partially cover the subject, consistent with composited cover text.\n\n- **No strong signs of AI/synthetic generation in the photographed elements.** Clothing folds, hair texture, hand shapes, and background details look coherent and photographic. Edges around hair and arms look like normal studio cut/contrast rather than AI “melting” artifacts.\n\n- **Counterfactual/verification limits:** The image alone can’t confirm the identity or context claimed in accompanying text; it only supports that this is likely a **styled photoshoot/cover graphic** with added text and deliberate face redaction.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image provided is a clear and stylized editorial layout corresponding to a \"PAPER\" magazine cover, featuring the subject named in the text (Liv Morgan). The \"Observation\" notes a lack of AI artifacts, confirming the photo is likely authentic despite the text overlay. The content visually supports the news claim of a \"glossy, styled\" promotional image circulating during the event.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the name of the person mentioned in the text (\"Liv Morgan\") against the text name on the image cover.",
+            "action": "Entity[Liv Morgan]",
+            "observation": "\n\nHere are the visible entities in the image:\n\n*   **Cher**: The central figure is the singer and actress Cher, identified by her distinct facial features and styling.\n*   **PAPER**: Large white text at the top identifying the publication, likely the *Paper* magazine.\n*   **LIZ MORGAN**: Stylized, jagged blue and pink text across the mid-section, likely indicating a character name, costume title, or artistic name.\n*   **Wooden Oar/Prop**: A large wooden object resembling an oar or bat held behind the subject's head, with visible metal spikes or tacks embedded in it.\n*   **Red Blazer**: The subject is wearing a loose-fitting red jacket or blazer.\n*   **Gustavo Chams**: Text at the bottom right crediting the photographer.\n*   **Industrial/Abandoned Setting**: The background features peeling concrete walls and what appears to be old shutters or door frames, suggesting a gritty, abandoned location.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text mentions the shoot was for 'Paper' magazine. I should use VQA to confirm the publication name visible in the image to ensure textual alignment.",
+            "action": "VQA[What magazine name is written at the top of the image?]",
+            "observation": "\n\nThe magazine name written at the top of the image is **PAPER**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims the image is of \"Liv Morgan and Dominik Mysterio\" for Paper magazine. However, the previous Entity extraction identified the figure as \"Cher\" and the stylized text reads \"LIZ MORGAN\" (not \"LIV\"). The image also features only one person versus the text's claim of two. This indicates a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.4,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.4,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims the image features Liv Morgan, but the visual evidence (via verification) identifies the subject as Cher, and confirms digital editing/obscuration of the subject.",
+    "notes": []
+  },
+  "error": null
+}

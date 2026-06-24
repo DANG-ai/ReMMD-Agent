@@ -1,0 +1,141 @@
+{
+  "index": 443,
+  "sample_id": "444",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1948.1,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "Die Grundaussage über Klingbeils Drängen auf staatliche Eingriffe bei hohen Energiepreisen ist durch das Quellmaterial gedeckt. Irreführend ist jedoch, dass der Text seine Position als deutlich geschlosseneren und operativ weiter entwickelten Drei-Punkte-Kurs darstellt, während die Bilder zusätzlich redaktionell nachbearbeitet wurden, um die Krisenatmosphäre zu verstärken.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/444",
+  "image_paths": [
+    "/path/to/ReMMDBench/444/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/444/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/444/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/444/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/444/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/444/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/444/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/444/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/444/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/444/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "444",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.4,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses German politics, energy prices, and Lars Klingbeil in Berlin. The image shows a group of men in front of a banner for the \"Spring Meetings 2026\" in \"Washington DC\" organized by the IMF and World Bank Group. The location (Washington DC vs Berlin) and the event context (International financial meetings vs domestic German government debate) are completely different. Thus, the image refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "To further confirm the mismatch, I will ask about the person in the center. The text focuses on Lars Klingbeil. The man in the center of the image does not appear to be Lars Klingbeil (he resembles Christian Lindner more). Confirming the identity will strengthen the MISMATCH conclusion.",
+            "action": "VQA[Is the man in the center of the image Lars Klingbeil?]",
+            "observation": "\n\nYes, the man in the center of the image is Lars Klingbeil. He is a German politician and co-chairman of the Social Democratic Party of Germany (SPD).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a scene in Berlin (\"Vor den Ministerien in Mitte\", \"Im Zentrum dieser Debatte steht Lars Klingbeil\") and specifically mentions a photo description (\"Ein eng beschnittenes Foto... zeigt Klingbeil... vor einem unscharfen Monitor\"). The image shows a banner \"SPRING MEETINGS 2026 | WASHINGTON D.C.\", indicating a completely different location and context (international financial conference vs. domestic German politics). I will confirm the text on the banner to solidify the location mismatch.",
+            "action": "VQA[What text is written on the banner in the background?]",
+            "observation": "\n\nBased on the image, the text on the banner in the background reads:\n\n**SPRING MEETINGS**\n**2026 | WASHINGTON D**\n**INTERNATIONAL MONETARY F**\n**WORLD BANK GROUP**\n\n(Note: Some text on the right side appears to be cut off or obscured).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a scene in Berlin (\"Vor den Ministerien in Mitte\") and specifically mentions a photo description (\"Ein eng beschnittenes Foto... zeigt Klingbeil... vor einem unscharfen Monitor mit Energiegrafik\"). The image shows a banner for \"SPRING MEETINGS 2026 | WASHINGTON D.C.\" and \"INTERNATIONAL MONETARY FUND WORLD BANK GROUP\". The location (Washington D.C. vs. Berlin) and the visual content (banner vs. monitor) are completely different. Thus, the text and image do not match.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.4,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.4,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a tightly cropped photo of Lars Klingbeil in a Berlin meeting with a monitor, but the provided images show him in a group in Washington D.C. (Image 1) or outdoors (Image 2), creating a semantic and contextual mismatch, and the images appear to be AI-generated (e.g., \"2026\" banner).",
+    "notes": []
+  },
+  "error": null
+}

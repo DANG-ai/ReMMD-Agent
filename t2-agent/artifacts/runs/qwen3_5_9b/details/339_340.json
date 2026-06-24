@@ -1,0 +1,185 @@
+{
+  "index": 339,
+  "sample_id": "340",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1632.79,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The piece uses real but separate public-health events and genuine concepts from COVID-era death-certification guidance to falsely imply a broader CDC outbreak-death surveillance protocol connected to current hantavirus and Salmonella monitoring. That misleading narrative is reinforced with edited fake CDC document screenshots and a synthetic operations-center image presented as corroborating evidence.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/340",
+  "image_paths": [
+    "/path/to/ReMMDBench/340/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/340/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/340/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/340/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/340/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "340",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=T1 Fabrication; T3 Misleading Context; C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Verifying the details of the M/V Hondius cruise ship incident, specifically checking for confirmed hantavirus cases on that Dutch expedition ship held off Cape Verde during the timeframe indicated (early May).",
+            "action": "Google[query: \"M/V Hondius cruise ship hantavirus Cape Verde\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Following the instruction to use Wikipedia first, and after the previous Google search failed to find results regarding the M/V Hondius hantavirus outbreak, I will search Wikipedia to verify the existence of any records concerning this cruise ship incident.",
+            "action": "Wikipedia[query: \"M/V Hondius\"]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Verify the specific CDC investigation regarding Salmonella infections linked to pet veiled chameleons and the age range of the affected patients (children aged 2 or younger).",
+            "action": "Google[query: \"CDC investigation Salmonella pet veiled chameleons patients 2 or younger\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The M/V Hondius cruise ship incident involving hantavirus returned no search results in previous queries (Google/Wikipedia). The CDC Salmonella investigation with children under 2 also returned no results. These specific news hooks appear to be hallucinated or fabricated, suggesting the news text is unverifiable or false. The most likely outcome is that the text is not supported by verifiable recent events.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims that existing federal guidance on death certification (specifically regarding infectious diseases like those on the M/V Hondius or linked to chameleons) allows for reporting 'probable' or 'presumed' diagnoses. The provided image is titled 'Emergency certification guidance for outbreak-related deaths' and contains text that matches the news description almost verbatim (e.g., quoting the 'probable' or 'presumed' rule). To confirm the image is authentic and from the CDC/NCHS as claimed, I should use the detection tool.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a straightforward screenshot or crop of a CDC guidance document page rather than a synthetic/generated scene.\n\nSigns it looks authentic:\n- Consistent document layout: a clear title (“Emergency certification guidance for outbreak-related deaths”), uniform margins, paragraph spacing, and typography typical of an official PDF.\n- Coherent text rendering: letterforms and spacing are consistent throughout; no “AI text” artifacts (warped characters, inconsistent fonts within words, garbled lines).\n- Plausible highlighting: a single sentence is highlighted in yellow with clean rectangular edges, consistent with common PDF highlight tools.\n- URLs and formatting look normal and aligned with the body text.\n\nNo obvious signs of manipulation/synthesis:\n- No mismatched lighting/shadows (it’s a flat document image).\n- No visible cut-and-paste seams, duplicated lines, or inconsistent resolution in the highlighted area versus surrounding text.\n- No counterfactual visual elements are detectable from the image alone (it’s text content, not a depicted event).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a document titled 'Emergency certification guidance for outbreak-related deaths' which contains the exact text quoted in the news article regarding reporting deaths on 'clinical judgment' as 'probable' or 'presumed.' The visual evidence (layout, URLs, highlighting) is consistent with an authentic CDC document, directly supporting the news text's claim that such federal guidance exists",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "Verify if the document explicitly mentions reporting suspected fatalities on clinical judgment, which matches the news text's description of CDC guidance.",
+            "action": "Tool[VQA[What state is highlighted in yellow regarding suspected outbreak-linked fatalities?]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Verify the specific guidance wording in the image regarding 'suspected outbreaks' and 'clinical judgment' to confirm it matches the news text's description.",
+            "action": "VQA[What specific text is highlighted in yellow at the end of the document?]",
+            "observation": "\n\nSuspected outbreak-linked fatalities may be reported on clinical judgment pending confirmatory testing. In these instances, certifiers should use their best clinical judgment in determining if an outbreak-related infection was likely. However, please note that testing for the outbreak-related condition should be conducted whenever possible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation explicitly quotes the highlighted text 'Suspected outbreak-linked fatalities may be reported on clinical judgment...', which directly corresponds to the news text's description of a document stating certifiers 'may use their best medical or clinical judgment'. This supports the high-confidence conclusion that the document and news text are effectively the same guidance in different contexts.",
+            "action": "Tool[Finish[MATCH]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation explicitly confirms the highlighted text states 'certifiers should use their best clinical judgment'. This matches the news text description 'certifiers may use their best medical or clinical judgment' sufficiently for a positive match. I will finish the task with a MATCH result.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.8,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.5,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.9
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a news narrative (Text Refuted) using a real CDC document to create a misleading implication of official endorsement (Misleading Context).",
+    "notes": []
+  },
+  "error": null
+}

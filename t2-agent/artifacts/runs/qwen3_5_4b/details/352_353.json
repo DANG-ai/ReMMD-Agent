@@ -1,0 +1,152 @@
+{
+  "index": 352,
+  "sample_id": "353",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1425.98,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "本文は実在する地震の基本事実を土台にしているが、確認できる被害情報や公的発表を超えて、広域の深刻な被害・警戒・準避難的な動きが進んでいるかのように話を拡張している。さらに中心的に使われた画像には生成画像や本文を裏づけない素材が含まれ、危機感を不当に増幅しているため、全体として核心主張は成立しない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/353",
+  "image_paths": [
+    "/path/to/ReMMDBench/353/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/353/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/353/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/353/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/353/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/353/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/353/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/353/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/353/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/353/images/10_img_10.jpg",
+    "/path/to/ReMMDBench/353/images/11_img_11.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "353",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; T2 Distortion; V1 Synthetic Visual Content; V2 Visual Editing; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "The previous context was not provided, so I need to assess the current situation. The text describes earthquake damage in Hokkaido, specifically mentioning \"store goods fell... scattered\" and \"broken glass.\" I should verify if the image shows this type of damage to confirm veracity.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions both museum glass damage and store damage. The image shows a store (identified by the 'Drink' sign) with widespread damage involving fallen items and glass, which visually corroborates the specific mention of 'scattered' store goods and confirms the reality of the event described.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the image depicts the type of damage described in the text, specifically \"items falling in stores\" and \"scattered items\". I will formulate a VQA question to check for these visual elements.",
+            "action": "VQA[Can you see bottles and other items falling on the floor in the store aisle?]",
+            "observation": "\n\nYes, there are many bottles, cartons, and other items scattered across the floor in the aisle. It appears that shelves have been knocked over or collapsed, causing merchandise to spill out.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA step successfully identified scattered bottles, cartons, and items on the floor in a store aisle. This visual evidence directly supports the text's description of \"products falling in stores\" (店舗での商品落下) and \"scattered items indoors\" (室内の散乱あり). The observation confirms the key matches for a positive result.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.7,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.8,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a fabricated earthquake event in 2026 (future date) with inconsistent intensity claims (5-strong vs 4) compared to visual overlays, and mixes synthetic/re-generated imagery into a news collage.",
+    "notes": []
+  },
+  "error": null
+}

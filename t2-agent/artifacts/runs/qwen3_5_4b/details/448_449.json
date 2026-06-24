@@ -1,0 +1,128 @@
+{
+  "index": 448,
+  "sample_id": "449",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1410.38,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "关于“警方通报已抓获并逮捕、供认拐卖9名儿童”的核心信息与已公开信源一致，但文本把侦办线索发现与锁定过程技术化、提速化表述，并用配图/配文强化“AI人脸识别立大功”的证据感，导致功劳归因与证据支持关系被夸大。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会治安",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/449",
+  "image_paths": [
+    "/path/to/ReMMDBench/449/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/449/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "449",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T2 Distortion; T3 Misleading Context; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "The provided text is a news report from \"Guangzhou Police\" stating that \"Aunt Mei\" was arrested and confessed to abducting 9 children, mentioning a 20-year span. The provided image displays a title \"Aunt Mei Caught, Whole Process Revealed\" with text reiterating the 20-year case and the execution of Zhang Weiping (named in the text). The text mentions \"Aunt Mei (Xie X)\", while the image identifies the perpetrator as \"Zhang Weiping\" (who is the main suspect mentioned in the text). However, the text provided in the prompt block appears to be a quote from the police, and the \"(Caption)\" section inside the text block references an image of a police meeting, which is *not* the image provided (the image provided is a Weibo headline). Despite this mismatch in the specific image shown vs the text's referenced caption, the image provided *visually supports* the core news event described in the text (the arrest of Aunt Mei and Zhang Weiping) and confirms the \"20-year\" timeline. Consistency in key facts suggests support.",
+            "action": "Tool[IMAGE_SUPPORT]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The provided news text is a report from Guangzhou Police detailing the arrest of \"Aunt Mei\" (Xie X) after more than 20 years, where she confessed to the abduction of 9 children. The subject of the image is a screenshot from Hubei Daily reporting \"Aunt Mei Caught, Whole Process Revealed\". The subtitle in the image explicitly mentions \"20-year cold case Aunt Mei finally caught\" and \"executed child abduction main culprit Zhang Weiping\". While the text caption within the news block refers to a \"AI facial recognition\" photo in a police meeting, the actual provided image is a Weibo-style news headline summarizing the case. Despite the visual content difference (Weibo report vs. police meeting photo), the image confirms the core facts presented in the text: the arrest of Aunt Mei, the 20-year timeline, and the involvement of the new suspect Zhang Weiping. The information is consistent and verifies the event being reported.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 1.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.8,
+        "best_trajectory": [
+          {
+            "thought": "The headline in the image explicitly reads \"梅姨落网 全过程揭秘\" and \"20年悬案梅姨终落网\", which perfectly corresponds to the news text announcing the capture of \"Aunt Mei\" (梅姨) after \"over 20 years\" of evasion. The visual and textual information consistently describe the same event.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 1.0,
+        "T3 Misleading Context": 1.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image is synthetically generated and misaligned with the text source context, while the text places a real case (Aunt Mei) in a false geographical location and attributes it to the wrong police force.",
+    "notes": []
+  },
+  "error": null
+}

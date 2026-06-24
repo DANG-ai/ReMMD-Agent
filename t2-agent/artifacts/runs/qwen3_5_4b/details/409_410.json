@@ -1,0 +1,139 @@
+{
+  "index": 409,
+  "sample_id": "410",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1721.73,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Le socle principal — la large victoire rennaise 4-0 et la mise en avant de Rongier et Mukiele dans les réactions d’après-match — repose sur des éléments réels. En revanche, l’article déforme le contexte temporel et probatoire en utilisant des images de fin de match, dont une image éditée, pour suggérer un vide massif des tribunes pendant le déroulé de la rencontre et pour faire passer des contenus sociaux promotionnels pour des preuves directes de l’état du stade et de distinctions de match.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/410",
+  "image_paths": [
+    "/path/to/ReMMDBench/410/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/410/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/410/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/410/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/410/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/410/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/410/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/410/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/410/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/410/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "410",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Given the lack of new information, I must consider the possibility that the image contains elements contradicting the specific details of the news (e.g., the player number is clearly #10 while Mukiele wore #7, or the crowd contradicts the \"empty\" description). If the visual data (number, context) confirms a mismatch or falsifies the \"empty stadium\" claim against the 21k attendance, the image would be REFUTING the text's specific claims. I will consider this as a high-confidence REFUTE path if the tool data is ambiguous or previously known facts suffice.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The document is about a match between Rennes and Nice (0-4). The text mentions the end match atmosphere where the stands were largely deserted (\"désertée\"), creating a visual contrast with the happy players. The image shows a player from Rennes (correct kit, number 10) celebrating. The background shows spectators in the stands, which contradicts the text's description of the image depicting \"deserted stands\". Although the teams and score match, the crowd description is a critical mismatch.",
+            "action": "MISMATCH",
+            "observation": "Could not parse action: MISMATCH",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Verify the content of the stands against the text which claims they are \"largely deserted\" to confirm a mismatch.",
+            "action": "VQA[Are the stands in the background largely deserted or do they have spectators?]",
+            "observation": "\n\nThe stands in the background are not largely deserted; they have a significant number of spectators seated in the upper rows.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the VQA observation, the stands are clearly populated with spectators, which directly contradicts the text's description of the stands being \"largely deserted\", \"naked\", and \"cold\". This sensory mismatch confirms the overall mismatch between the image and the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes the stands as largely deserted, while the images clearly show a significant number of spectators seated in the background.",
+    "notes": []
+  },
+  "error": null
+}

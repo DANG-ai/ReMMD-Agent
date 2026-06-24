@@ -1,0 +1,146 @@
+{
+  "index": 339,
+  "sample_id": "340",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 712.57,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The piece uses real but separate public-health events and genuine concepts from COVID-era death-certification guidance to falsely imply a broader CDC outbreak-death surveillance protocol connected to current hantavirus and Salmonella monitoring. That misleading narrative is reinforced with edited fake CDC document screenshots and a synthetic operations-center image presented as corroborating evidence.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/340",
+  "image_paths": [
+    "/path/to/ReMMDBench/340/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/340/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/340/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/340/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/340/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "340",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses specific outbreaks (Hondius, chameleons) and how general federal guidance applies. The image is a document titled \"Emergency certification guidance for outbreak-related deaths\" which outlines rules for reporting outbreak conditions on death certificates. This document provides specific instructions that the news text refers to generally as \"existing federal guidance\" (e.g., using \"probable\" or \"presumed\" status for suspected outbreaks). The information in the image confirms the procedures mentioned in the text, such as the permissibility of clinical judgment when confirmatory testing isn't complete. Thus, the image supports the veracity of the text's assertions about the applicability of federal guidance to these situations.",
+            "action": "Tool[IMAGE_SUPPORT]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The article discusses two specific outbreak scenarios (Hondius, chameleons) and clarifies that they fall under standard existing federal death certification guidance, particularly the use of clinical judgment for suspected cases. The image serves as a direct source for this guidance, showing a section that permits reporting on \"clinical judgment pending confirmatory testing\" and allows for \"probable\" or \"presumed\" reporting. Since the news text accurately summarizes the content of this likely federal document regarding how death certificates are handled for outbreaks, the image supports the news text by providing the visual proof of the cited guidelines.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.7,
+        "best_value": 0.6499999999999999,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the document's identity and key content. Extracting entities like the title and URLs from the image will help confirm if this is the \"Emergency certification guidance\" referenced in the news text.",
+            "action": "Entity[image]",
+            "observation": "\n\n**Emergency certification guidance for outbreak-related deaths**\n**UCOD (Unidentified Cause of Death)**\npneumonia\nacute respiratory distress syndrome (ARDS)\nchronic obstructive pulmonary disease (COPD)\nasthma\nCDC (Centers for Disease Control and Prevention)\nhttps://www.cdc.gov/outbreaks/guidance/clinical-evaluation.html\nhttps://www.cdc.gov/outbreaks/guidance/postmortem-specimens.html\nlocal health department",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image title \"Emergency certification guidance for outbreak-related deaths\" directly corresponds to the \"Emergency certification guidance\" referenced in the news text. Additionally, the content regarding probabilistic diagnosis aligns with the news text's discussion on CDC guidance for probable/presumed cases. Given the strong title and content match, I can conclude the documents are the same.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3979057207896392,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.30000000000000004,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text aligns with real CDC news reports on the Hondius and chameleon investigations, but the control room image is clearly AI-generated, evidenced by its specific hallucinated details and synthetic nature indicated by the high p_fake_image score, marking it as synthetic visual content.",
+    "notes": []
+  },
+  "error": null
+}

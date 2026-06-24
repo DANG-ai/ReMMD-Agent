@@ -1,0 +1,152 @@
+{
+  "index": 225,
+  "sample_id": "226",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1310.25,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "样本把“多平台限制关注”的现象与“侵权纠纷/被起诉”在叙事上强绑定，并用被编辑过的“处罚提示截图”强化因果联想，导致受众容易把尚未被官方证实的关联当成较确定结论；同时文本中也引用了可检索到的工商信息与诉讼/纠纷记录这一真实背景，因此整体呈现为真假要素并存的混合误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "科技互联网",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/226",
+  "image_paths": [
+    "/path/to/ReMMDBench/226/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/226/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/226/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/226/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/226/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/226/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/226/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/226/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/226/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/226/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "226",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V1 Synthetic Visual Content; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims that Tianyancha App information shows that Beijing Chechacari Information Technology Co., Ltd. is involved in infringement disputes (specifically mentioning litigation/court cases). The provided image is a screenshot of the 'Tianyancha.com' website (labeled as 'Tianyancha App' in the text). The screenshot explicitly displays the company name '北京车之家信息技术有限公司' (Beijing Chechacari Information Technology Co., Ltd.) and shows a dropdown filter or list under 'Legal Litigation' (法律诉讼) with 'Infringement Dispute' (侵权纠纷) having a count of 60. This visual evidence directly supports the text's claim that the company is involved in infringement disputes according to Tianyancha records. While the medium in the image is the website and not the 'App', the content matches perfectly, supporting the underlying claim in the text.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous tool call 'Detect[image]' failed due to unavailability. I need to rely on visual inspection. The image shows Beijing Chechacari Information Technology Co., Ltd. having 100 legal cases, including many network infringement disputes (count 60). The news text mentions the company has infringement disputes based on Tianyancha data. The image confirms this data point (company name match, dispute count match). Thus, I conclude the text is supported by the image.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses news about \"Autocar House\" (汽车之家) being restricted on platforms due to \"infringement disputes\" and mentions citing information from the \"Tianyancha app\" regarding the company \"Beijing Car-House Information Technology Co., Ltd.\" The image is a screenshot from the Tianyancha website showing the legal litigation records for \"Beijing Car-House Information Technology Co., Ltd.\" It lists several cases, including \"Network Infringement Liability Disputes\" (e.g., Row 1, Row 3, Row 7), which directly aligns with the text's mention of infringement disputes and lawsuits. The entity match is strong.",
+            "action": "Tool[entity[Beijing Car-House Information Technology Co., Ltd.]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous tool call failed because 'Tool' is not in the available actions list. I will try using 'Entity[image]' to extract the company name and case types from the image to verify against the text. The text mentions 'Beijing Car-House Information Technology Co., Ltd.' and 'infringement disputes', and the image appears to show legal records for a company with similar naming and 'Network Infringement Liability Disputes'.",
+            "action": "Entity[image]",
+            "observation": "- **天眼查 (TianYanCha.com)** (website/platform logo and header) — **High certainty**\n- **“北京车之家信息技术有限公司”** (company name shown in the search bar) — **High certainty**\n- **Tabs/sections indicating “法律诉讼” (Legal litigation), “历史信息”, “知识产权” etc. (Tianyancha page navigation)** — **High certainty**\n- **Courts/organizations listed in the table (法院 column):**\n  - **北京市第四中级人民法院** — **High certainty**\n  - **深圳市罗湖区人民法院** — **High certainty**\n  - **北京互联网法院** — **High certainty**\n  - **苏州市吴江区人民法院** — **High certainty**\n  - **广州互联网法院** — **High certainty**\n  - **重庆市巴南区人民法院** — **High certainty**\n  - **重庆市沙坪坝区人民法院** — **High certainty**\n- **Case-type filter dropdown showing categories like “侵害作品信息网络传播权纠纷”, “著作权权属、侵权纠纷”, etc.** — **High certainty**\n- **Microsoft Excel export icon (“导出”)** — **Medium certainty** (icon resembles Excel)\n- **Person names in case titles are masked (e.g., 某某)** — **High certainty** (no identifiable real person visible)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the previous Entity extraction and the analysis, the image confirms the company \"Beijing Car-House Information Technology Co., Ltd.\" and lists legal cases explicitly mentioning \"infringement liability disputes\" (e.g., network infringement). This directly matches the text's claim about \"infringement disputes\" and the company name. The match is conclusive. I should finish the task.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.7,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text provides context about AutoHome and legal issues which are partially grounded in real evidence (TianYanCha images 1-4), but is supported by highly synthetic or edited images (7, 10) with matching scores indicating high fabrication or synthetic content, creating a contextual mismatch between the real information and the fake visual support.",
+    "notes": []
+  },
+  "error": null
+}

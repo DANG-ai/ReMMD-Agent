@@ -1,0 +1,159 @@
+{
+  "index": 284,
+  "sample_id": "285",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1324.26,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article’s central claim of a real FBI leak investigation into Joe Kent is fabricated, and it is reinforced with AI-generated visuals staged to look like documentary evidence. The image-text pairing further misleads readers by presenting generic or synthetic scenes as if they confirm the existence, setting, and timeline of the alleged federal probe.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/285",
+  "image_paths": [
+    "/path/to/ReMMDBench/285/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/285/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/285/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/285/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "285",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.3,
+        "best_value": 0.3,
+        "best_trajectory": [
+          {
+            "thought": "The news claims Joe Kent was the Director of the National Counterterrorism Center (NCTC) and is under investigation for leaks. I need to verify if Joe Kent served as NCTC Director and if such an investigation exists. Wikipedia is the best first source to check for biographical details and recent official appointments to the NCTC. If Wikipedia does not list him as a director, I will need to Google to see if this is a very recent event or a hallucination.",
+            "action": "Wikipedia[query=Joe Kent National Counterterrorism Center]",
+            "observation": "No summary available. Similar entities: National Security Agency, Tucker Carlson, Timeline of the second Trump presidency (2026 Q1), The Wall Street Journal, Condoleezza Rice",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should verify whether Joe Kent actually served as the National Counterterrorism Center Director to establish the core premise of the story. Searching Wikipedia specifically for the list of NCTC directors will confirm his tenure and role.",
+            "action": "Wikipedia[input=National Counterterrorism Center directors]",
+            "observation": "No summary available. Similar entities: Samantha Vinograd, Disposition Matrix, National Counter Terrorism Centre, Bureau of Intelligence and Research, Multi-Agency Centre",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Wikipedia searches for Joe Kent and NCTC directors returned no results, suggesting this is recently breaking news or the figure is not well-documented in static encyclopedic sources. I will use Google to verify if mainstream news outlets are reporting on a leak investigation involving Joe Kent and the NCTC.",
+            "action": "Google[input=Joe Kent former National Counterterrorism Center director investigation leaks]",
+            "observation": "Former counter-terrorism head investigated by FBI over alleged leaks: Former counter-terrorism head investigated by FBI over alleged leaks · Top US counterterrorism official resigns over Iran war, urging Trump to ' ... (https://www.bbc.com/news/articles/c33j3gxvgmro)\nFBI conducting leak investigation into Trump official who resigned ...: Joe Kent, former director of the National Counterterrorism Center ... (https://www.nbcnews.com/politics/national-security/fbi-investigating-former-trump-official-joe-kent-resigned-iran-war-rcna264232)\nThe FBI has opened an investigation into Joe Kent, the former ...: The FBI has opened an investigation into Joe Kent, the former Director of the National Counterterrorism Center (NCTC), over allegations that he ... (https://www.facebook.com/mech.eng.world/posts/the-fbi-has-opened-an-investigation-into-joe-kent-the-former-director-of-the-nat/1387691616723540/)\nThe FBI has opened an investigation into Joe Kent, the former ...: The FBI has opened an investigation into Joe Kent, the former director of the National Counterterrorism Center who resigned earlier this ... (https://www.instagram.com/p/DWEQwAtFmsZ/?hl=en)\nFormer counterterrorism official Joe Kent under investigation ... - ABC7: Former counterterrorism official Joe Kent under investigation over alleged leaks: Sources. Kent announced his resignation Tuesday over ... (https://abc7.com/post/former-counterterrorism-official-joe-kent-investigation-alleged-leaks-sources/18734465/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results from reputable sources (BBC, NBC) strongly confirm that the FBI is investigating Joe Kent, a former NCTC Director, over a leak investigation. The search results support the main premise of the article. Since the core allegations are verified, the most efficient next step is to conclude the verification task.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.20000000000000004,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a serious intelligence investigation involving 'Joe Kent' and a 'Classified Leak Inquiry'. The image displays a projection screen with the exact text 'Joe Kent' and 'Classified Leak Inquiry', along with 'CONFIDENTIAL' folders and bodies in suits. This visual content strongly aligns with the narrative claims in the text, providing imagery that validates the context of the investigation described.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "The news text and caption mention a display referencing a leak inquiry involving Joe Kent and sealed evidence folders. I need to verify the text on the screen in the background to confirm the name \"Joe Kent\" and the \"Leak Inquiry\" context.",
+            "action": "VQA[What text appears on the screen in the background?]",
+            "observation": "\n\nThe text on the screen in the background reads:\n\n**Joe Kent**\n**Classified Leak Inquiry**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation confirms the screen text reads 'Joe Kent' and 'Classified Leak Inquiry', which aligns perfectly with the news text describing an investigation into Joe Kent for leaking classified info. The visual of belongings with 'CONFIDENTIAL' also matches the caption's 'sealed evidence folders'. The information is sufficient to conclude.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3107232505953859,
+      "p_fake_text": 0.7,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.99,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.99,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates specific details (e.g., May 22, 2025 dates, fake attendee lists) which constitute T1, and the images are visually AI-generated rather than real, constituting V1.",
+    "notes": []
+  },
+  "error": null
+}

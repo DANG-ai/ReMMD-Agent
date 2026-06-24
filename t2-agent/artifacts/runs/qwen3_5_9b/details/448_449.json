@@ -1,0 +1,137 @@
+{
+  "index": 448,
+  "sample_id": "449",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 611.63,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "关于“警方通报已抓获并逮捕、供认拐卖9名儿童”的核心信息与已公开信源一致，但文本把侦办线索发现与锁定过程技术化、提速化表述，并用配图/配文强化“AI人脸识别立大功”的证据感，导致功劳归因与证据支持关系被夸大。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会治安",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/449",
+  "image_paths": [
+    "/path/to/ReMMDBench/449/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/449/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "449",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.8,
+        "best_trajectory": [
+          {
+            "thought": "需要检测图像内容与新闻文本的关联性，先调用Detect工具分析图像中人物、文字等信息，以判断图像是否支持新闻的真实性描述",
+            "action": "Detect[image]",
+            "observation": "- **明显拼接/二次排版**：画面上半部是两张不同来源的图并排（左侧类似老旧黑白照片/复印件质感；右侧更像素描/合成肖像），下半部是大字号标题与说明文字，整体是新闻海报式版面而非现场照片。  \n- **右侧人像被遮挡**：右侧脸部被一块规则的灰色矩形覆盖，这是典型的后期打码/遮脸处理，不是原始拍摄造成的遮挡。  \n- **来源材质不一致**：左图颗粒噪点重、对比度低，像扫描件；右图线条呈绘制/刻画质感（类似通缉画像或复原图），两者清晰度与纹理差异明显，说明并非同一张照片的自然对比，而是不同素材组合。  \n- **未见AI生成常见伪影**：除打码与排版外，没有看到常见的生成式图像错误（例如扭曲的五官、重复纹理、奇怪的光影/边缘融化等）。  \n\n结论：这张图**更像“新闻配图海报/截图”**，包含**明显的后期编辑（拼接排版+遮脸打码）**；但从图像本身看不出“整张图由AI合成”的典型痕迹。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "图像显示了“梅姨落网”的标题，虽然文字声称有广州警方通报和民警讲案场景，但图片实际是媒体合成的配图（左侧旧照、右侧素描/正脸照），并非新闻文本中描述的现场会议图。且新闻内容的“广州警方”与图片来源“湖北日报”存在地缘矛盾，佐证了新闻文本存在伪造嫌疑，故不支持新闻真实性。",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the event depicted in the image aligns with the text description. The news mentions the arrest of \"Mei Yi\", and the image shows a headline. Using VQA to read the headline will confirm if the image depicts the same event.",
+            "action": "VQA[What does the large title text in the image say about the news event?]",
+            "observation": "\n\nThe large title text in the image says:\n\n**“梅姨落网 全过程揭秘”**\n\nThis translates to **“Auntie Mei Caught: Full Process Revealed.”** It indicates that the fugitive nicknamed \"Auntie Mei\" has been apprehended and the revelation will cover the entire story of how she was caught.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the previous VQA, the headline \"梅姨落网\" (Mei Yi Caught) and the subtitle confirming the \"20-year cold case\" and \"Mei Yi's arrest\" perfectly align with the news text describing \"Mei Yi\" being arrested after 20 years. The visual content (sketch/photo) corresponds to the title \"Full Process Revealed\" regarding her capture. There is sufficient textual and semantic evidence to conclude a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.564621617328617,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.95,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image is a composite news graphic containing text and media overlays (poster style) rather than raw photography.",
+    "notes": []
+  },
+  "error": null
+}

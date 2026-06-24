@@ -1,0 +1,147 @@
+{
+  "index": 271,
+  "sample_id": "272",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1049.96,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "The article’s central account of Kennesaw State earning an automatic NCAA tournament bid, hosting a Selection Sunday gathering, and drawing Gonzaga is broadly consistent with the source material. However, it embellishes the scale and intensity of the event, and the lead image has been deliberately edited to heighten the Selection Sunday atmosphere beyond the original scene.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/272",
+  "image_paths": [
+    "/path/to/ReMMDBench/272/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/272/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/272/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/272/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/272/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/272/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/272/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/272/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/272/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/272/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "272",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT_OR_TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Based on the search results from the candidate above, I will determine if these events actually happened or if the text is fabricated. The specifics regarding the seedings, opponents, and dates provide a lot of verification points.",
+            "action": "Finish[TEXT_SUPPORT or TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Alternative logic: Despite the visual artifacts, the image depicts a scene that aligns perfectly with the news story (Kennesaw State celebrating a selection). If the goal is to check if the image *could* be the event, it visually represents the narrative. However, \"Veracity Detection\" standardly means verifying if the visual evidence is authentic. The garbled text strongly indicates a failure in reality, thus refuting the authenticity of the media content presented.",
+            "action": "Tool[Detect[IMAGE_SUPPORT]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes Kennesaw State's Selection Sunday celebration when they secured an automatic bid after winning the Conference USA tournament. The image depicts a man celebrating in front of a large screen that reads \"Kennesaw State OWLS SELECTED\" with an \"NCAA March Madness\" bracket background. The black and gold atmosphere, confetti, and team merchandise visually align perfectly with the narrative. Although the previous trajectory attempted `Tool[Detect[IMAGE_SUPPORT]]` which failed due to the `Tool` prefix error, the available actions list `Detect[image]`. Therefore, I should generate a candidate to execute this action. However, given the direct visual match, concluding with support is also a valid immediate path.",
+            "action": "Detect[image]",
+            "observation": "The image shows multiple signs of being edited/composited rather than a single authentic photo:\n\n- **Faces are deliberately blurred/obscured** with smooth blocks that don’t match natural motion blur or depth-of-field, indicating post-processing.\n- **Confetti looks like an overlay**: many pieces are similarly sharp and uniformly lit across different depths, with repetition-like shapes and less natural interaction with subjects (no visible shadowing on people/clothes).\n- **Background/foreground separation is too clean**: the central subject is very crisp while the arena and crowd feel like a separate plate; the cutout edges and contrast suggest a composite.\n- **Scoreboard/graphic text appears designed** (“KENNESAW STATE OWLS SELECTED”) with a polished poster-like look rather than a photographed jumbotron; it reads like a promotional graphic inserted into a stadium scene.\n- Overall, the scene has a **highly stylized, promotional rendering** (cinematic lighting, heavy sharpening, uniform color grading) consistent with a generated or heavily edited sports hype image.\n\nNet: it appears **heavily edited/composited** (and possibly partially synthetic), not a straightforward documentary photograph.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The provided observation details multiple technical artifacts—blurred faces, uniform confetti overlay, and a digital \"scoreboard\" graphic—indicating the image is synthetic or heavily composited. In a veracity context demanding authenticity, the existence of these signs refutes the claim that this is a genuine documentary photograph.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a scene where Kennesaw State Owls are being selected for NCAA March Madness at VyStar Arena. The image shows a banner that explicitly says \"KENNESAW STATE OWLS SELECTED\" and \"NCAA MARCH MADNESS\" with a person in the crowd celebrating amidst confetti. The visual evidence directly supports the main event described in the text. Therefore, the image matches the text content.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.1,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent 2026 Sports event and tournament bid for Kennesaw State, while the image shows signs of heavy editing and compositing (confirmed by the provided verification evidence).",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,163 @@
+{
+  "index": 122,
+  "sample_id": "123",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2542.5,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本把“人员身份、承包链条、事故原因”等关键结论写成已被地方政府/警方/消防简报确认，但所配“官方简报截图”本身为生成内容且与文本表述互相矛盾；同时配图中的“现场火灾画面”与文中所述韩国庆尚北道检修事故在场景语境上不匹配，整体构成以伪造材料支撑的错误叙事。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "事故灾难",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/123",
+  "image_paths": [
+    "/path/to/ReMMDBench/123/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/123/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/123/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/123/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "123",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.75,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the victims were all from \"Donghae O&M Service\". The image shows victims from \"OOENG\", \"Operator\", and \"Triangle Triangle Industry\".\n    I will search for the specific companies mentioned in the text to see if they are real or if they were involved in a real incident.\n    I will also search for the specific incident \"Yeongdeok wind turbine fire March 23\" to verify the casualty details.",
+            "action": "Google[영덕 풍력발전기 화재 2024 3월 23일 사망자]",
+            "observation": "영덕 풍력발전기 화재 사고 - 나무위키: 사망한 3명이 모두 외주 근로자인데다, 2명은 일용직인 것으로 드러나면서 경찰은 원청과 하청 업체에 안전 수칙 준수 여부와 현장관리 책임을 묻고 있다. (https://namu.wiki/w/%EC%98%81%EB%8D%95%20%ED%92%8D%EB%A0%A5%EB%B0%9C%EC%A0%84%EA%B8%B0%20%ED%99%94%EC%9E%AC%20%EC%82%AC%EA%B3%A0)\n[다시보기] [속보] 영덕 풍력발전기 화재, 작업하던 업체 직원 3명 숨져 ...: 경북경찰청은 23일 발생한 영덕군 영덕읍 창포리 풍력발전단지 19호기 화재로 유지·보수업체 소속 정비 작업자 3명이 사망 ... 소방 브리핑 -3월 23일 (월) ... (https://www.youtube.com/watch?v=HZKWeAGT8uc)\n영덕 풍력발전기서 불…정비 작업자 3명 사망 - 동아일보: 23일 경북소방본부와 경찰에 따르면 이날 오후 1시 11분경 영덕군 영덕읍 창포리 풍력발전단지의 발전기 19호기에서 화재가 발생했다는 신고가 접수됐다. (https://www.donga.com/news/Society/article/all/20260323/133588225/1)\n경찰, '3명 사망' 영덕 풍력발전기 화재 관련 수사 착수···' - 경향신문: 경찰, '3명 사망' 영덕 풍력발전기 화재 관련 수사 착수···'업무상과실치사' 적용 여부도 검토 · “이번엔 해볼 만 하다”···'김부겸 효과' 대구·경북서 ... (https://www.khan.co.kr/article/202603240912001)\n영덕 풍력발전기 화재로 3명 사망…날개 고공정비 중 참변 - 시사저널: 경북 영덕 풍력발전기 화재로 고공에서 작업 중이던 외주업체 소속 근로자 3명이 사망했다. 23일 경북경찰청과 경북소방본부에 따르면, ... (https://www.sisajournal.com/news/articleView.html?idxno=366779)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the victims were all from \"Donghae O&M Service\" and \"Hansung Energy Tech\", and all 3 were outsourced.\n    The image shows 2 outsourced and 1 operator, with masked company names.\n    The search result (Namu Wiki) says \"All 3 are outsourced\".\n    I need to verify if the specific company names \"Donghae O&M Service\" and \"Hansung Energy Tech\" are associated with this incident.\n    If the names are hallucinated, the text is false.\n    I will search for these company names in relation to the incident.",
+            "action": "Google[영덕 풍력발전기 화재 동해운보 한성에너지기술]",
+            "observation": "나흘째 꺼지지 않는 영덕 풍력발전기 화재 - Daum: 지난 23일 발생한 화재로 작업자 3명이 숨진 영덕군 영덕읍 풍력 발전단지 발전기에 남아있던 나머지 날개 1개가 26일 오전 8시 43분쯤 떨어졌다. (https://v.daum.net/v/HQAMavUZm0?f=p)\n[단독]'화재 사망' 풍력발전기 20년 넘어… 영덕군 “전면 철거 건의”: 23일 경북 영덕군 풍력발전기에서 점검 작업을 벌이다 화재로 숨진 3명은 운영사인 영덕풍력발전㈜으로부터 긴급 요청을 받고 투입됐다는 관련자 증언 ... (https://www.donga.com/news/Society/article/all/20260325/133600845/2)\n높이가 80m에 이르는 영덕 풍력발전기에서도 불이 났습니다. 높은 ...: 영덕 풍력발전기 화재 노동자 3명 추락사. 높이 80미터 풍력발전기 프로펠러 뒤쪽에서 불이 활활 타오릅니다. 연기가 나면서 바람이 많이 부니까 불도 ... (https://www.instagram.com/reel/DWObFD6jc7u/)\n기후에너지환경부 모바일 홈페이지: 기후에너지환경부(장관 김성환)는 3월 23일 13시 10분경에 영덕풍력발전 단지(경북 영덕군 소재) 내에서 정비 중이던 제19호 풍력발전기에서 발생한 ... (https://www.mcee.go.kr/m/mob/board/read.do;jsessionid=AF3lE5PozNMafAsCZvyRggY_nAhkp2L8I3iUkxou.mehome1?pagerOffset=0&maxPageItems=10&maxIndexPages=10&searchKey=&searchValue=&menuId=156&orgCd=&boardMasterId=939&boardCategoryId=&boardId=1851690)\n영덕 풍력발전기 화재 1명 사망, 2명 연락 두절 - Instagram: 경북경찰청은 23일 발생한 영덕군 영덕읍 창포리 풍력발전단지 19호기 화재로 유지·보수업체 소속 정비 작업자 3명이 사망한 것을 확인하고 시신을 수습 ... (https://www.instagram.com/p/DWOAmJPFFSo/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims all 3 victims were from \"Donghae O&M Service\". The image shows victims from \"OOENG\", \"Power Generation Operator\", and \"Triangle Triangle Industry\". This is a direct contradiction. I will finish with TEXT_REFUTE.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.85,
+        "best_trajectory": [
+          {
+            "thought": "I will extract the text from the image, specifically focusing on the section detailing the victims (사망자 인적사항) and the summary of casualties (피해상황). The image shows a table with three victims. I need to check the \"Affiliation\" (소속) column for each. The text in the image says \"외주(하청) 작업자 2명 및 운영사 직원 1명\" (2 outsourced workers and 1 operator employee). This directly contradicts the news text's claim that all three were outsourced.",
+            "action": "Detect[image]",
+            "observation": "图像本身更像是“伪造/拼接的公告截图”，有多处不自然之处：\n\n- **时间高度可疑**：左上角日期清晰写着 **2026-03-24**，而配套叙述指向“3月23日事故后流传的简报截图”。除非事件发生在未来，否则这是明显的**反常信息**（也可能是人为改日期）。\n- **“截图”却异常干净清晰**：正文大字非常锐利、边缘无手机拍屏常见的摩尔纹/屏幕像素/压缩噪点；整体像是直接从版面导出或后期重排，而不是社交平台常见的二次传播截图质感。\n- **多处像被刻意遮挡/涂抹**：右上“相关 문의”后面有一块灰色遮挡；表格中公司名用 **○○、△△** 这类占位符；这更像“示例模板/编辑版”，不像真实对外发布的正式通报（真实通报一般不会用占位符发布给公众）。\n- **界面元素混搭**：顶端同时出现类似网页的“Home”、分享/下载图标与“기관”标识区，整体更像把不同来源的UI元素拼在一起的效果（不能定性，但属于可疑点）。\n\n结论：仅从图像视觉与版式一致性看，存在明显“**非原始官方发布截图**”迹象（可能是后期编辑、拼接或用模板伪造）；至少**日期与占位符**这两点使其真实性存疑。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to confirm the specific text in the image regarding the victims. The text says \"외주(하청) 작업자 2명 및 운영사 직원 1명\". The news text says \"三名遇难者均为外包检修人员\". These are contradictory. The image shows 2 outsourced and 1 operator. The text claims all 3 were outsourced. Thus, the image refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text claims that the local government disclosure stated \"three victims were all subcontracted maintenance personnel\". However, the image contains a yellow highlighted section stating \"2 subcontracted workers and 1 operator employee, total 3 deaths\" (외주(하청) 작업자 2명 및 운영사 직원 1명 등 총 3명 사망). Additionally, the text claims the screenshot title is \"3 victims are all subcontractors\", but the image title is \"[Urgent Briefing]...\". This suggests a mismatch between the text description and the image content.",
+            "action": "VQA[What does the text in the image say about the affiliation of the victims, specifically the number of subcontractors versus operator employees?]",
+            "observation": "\n\nBased on the text in the image, specifically under the section **\"피해상황\" (Damage Situation)** and the table below it, the affiliations are:\n\n*   **2 Subcontractors (Outsourced Workers):** The text states \"외주(하청) 작업자 2명\" (2 outsourced/subcontracted workers). The table lists \"사망1\" (Death 1) as affiliated with \"OOENG (Subcontractor)\" and \"사망3\" (Death 3) as affiliated with \"△△ Industry (Subcontractor).\"\n*   **1 Operator Employee:** The text states \"운영사 직원 1명\" (1 operator employee). The table lists \"사망2\" (Death 2) as affiliated with \"발전운영처 (OE)**소속\" (Power Generation Operation Office (OE) affiliation).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims that the briefing disclosed \"three victims were all subcontracted maintenance personnel\" and that the screenshot title was \"3 victims are all subcontractors\". However, the VQA observation confirms the image states \"2 outsourced (subcontracted) workers... and 1 operator employee\" and the title is \"[Urgent Briefing]...\". This is a clear contradiction between the text description and the image content.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.2,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates details about the image (claiming the title says \"3 outsourced\" and naming specific companies) which contradicts the visual evidence (title is different, names are placeholders), creating a direct semantic conflict regarding the victims' employment status (3 outsourced vs 2 outsourced + 1 operator), and the image itself shows signs of editing/fabrication (placeholders, clean UI).",
+    "notes": []
+  },
+  "error": null
+}

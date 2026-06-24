@@ -1,0 +1,160 @@
+{
+  "index": 175,
+  "sample_id": "176",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1032.54,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本抓住了两点真实基础：伊维菌素确属人用药，且美国网络上确有相关讨论与个人表态；但样本把实验室药理线索、个人观点帖文与特定汉坦病毒事件过度串联，并通过编辑后的截图强化这种现实关联，导致受众更容易把“被讨论”理解成“接近可用”。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/176",
+  "image_paths": [
+    "/path/to/ReMMDBench/176/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/176/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/176/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/176/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/176/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "176",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.5,
+        "best_value": 0.4,
+        "best_trajectory": [
+          {
+            "thought": "Search Wikipedia for general medical information regarding Ivermectin and its approved uses versus viral infections like Hantavirus.",
+            "action": "Wikipedia[ivermectin hantavirus]",
+            "observation": "Ivermectin is an antiparasitic medication. After its discovery in 1975, its first uses were in veterinary medicine to prevent and treat heartworm and acariasis. Approved for human use in 1987, it is used to treat infestations including head lice, scabies, river blindness (onchocerciasis), strongyloidiasis, trichuriasis, ascariasis and lymphatic filariasis. It works through many mechanisms to kill the targeted parasites, and can be taken by mouth, or applied to the skin for external infestations. It belongs to the avermectin family of medications.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states there are no reliable clinical studies proving Ivermectin helps with Hantavirus and standard treatment is supportive care. I should search Google for general search results regarding Ivermectin's effectiveness against Hantavirus to verify if there are any studies or conflicting reports that might refute the text or reinforce the warning.",
+            "action": "Google[ivermectin hantavirus efficacy clinical trials]",
+            "observation": "Novel therapeutic approaches toward Hantaan virus and its clinical ...: Ivermectin, It has potential for use in COVID-19 and is safe at higher doses and frequent regimens. Its efficacy in COVID-19 has been reported ... (https://pmc.ncbi.nlm.nih.gov/articles/PMC8025769/)\nChloroquine, an Anti-Malaria Drug as Effective Prevention for ...: Our results show that chloroquine can be highly effective against Hantaan virus infection in newborn mice and against Andes virus in Syrian hamsters. (https://www.frontiersin.org/journals/cellular-and-infection-microbiology/articles/10.3389/fcimb.2021.580532/full)\nA Study to Compare the Efficacy and Safety of Different Doses of ...: Preliminary data from a pilot study suggest that the administration of ivermectin in patients with SARS-CoV-2 is safe, reducing symptoms and viral load. (https://clinicaltrials.gov/study/NCT04431466)\nNo evidence that ivermectin 'should work' against hantaviruses: Hantaviruses have a genome made of RNA, but there is no evidence that the antiparasitic drug ivermectin would work on a hantavirus infection ... (https://www.reuters.com/fact-check/no-evidence-that-ivermectin-should-work-against-hantaviruses-2026-05-13/)\nEfficacy of Ivermectin Treatment on Disease Progression Among ...: This randomized clinical trial assesses the efficacy of ivermectin treatment in preventing progression to severe disease among high-risk patients with. (https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2789362)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Based on visual analysis, the image depicts a vessel on the water, which has no relevance to the medical discussion about Ivermectin and Hantavirus found in the text. Since the image does not support the content of the text, the verdict is IMAGE_REFUTE.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "To verify the mismatch, I can ask a VQA question to confirm the main subject of the image. Currently, the text is about a drug controversy, but the image shows a ship. I will ask if there are any people or medical-related objects visible.",
+            "action": "VQA[Is there any person or patient in the image?]",
+            "observation": "\n\nNo, there are no people or patients visible in the image. It shows a large boat at sea from a distance, making individual figures impossible to see.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text discusses Ivermectin and Hantavirus, which are medical terms. The previous VQA confirmed there are no people or patients. To be thorough, I should try to identify the main object in the image using Entity extraction to confirm it is a ship or boat, not a map or medical device.",
+            "action": "Entity[image]",
+            "observation": "- **Large passenger ship / cruise ship** (high certainty) — prominent vessel centered in frame; no readable name or clear logo visible to identify the operator.\n- **Small boat/buoy-like object** (medium certainty) — small red object on the left side of the water; could be a small craft or a buoy.\n- **Ocean/sea** (high certainty) — open water surrounding the vessels.\n- **Distant coastline/landmass** (medium certainty) — faint land visible at the far left horizon.\n- **Sky/haze at horizon** (high certainty) — overcast or hazy sky band above the sea.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous steps have confirmed the image contains a ship and no people or patients, while the text discusses pharmaceuticals (Ivermectin) and medical viruses (Hantavirus). These topics are completely unrelated. The scene is maritime, not medical. Therefore, the cross-modal match is invalid.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample is deemed fabricated with mismatched visuals lacking the claimed patients and containing synthetic AI imagery.",
+    "notes": []
+  },
+  "error": null
+}

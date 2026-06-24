@@ -1,0 +1,153 @@
+{
+  "index": 355,
+  "sample_id": "356",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1127.47,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本把“阿巴斯港附近伊朗军舰出事并引发伤亡与管控升级”作为主线推进，这一主线与其所引用的社交平台传播素材相匹配，但在伤亡构成、舰型/隶属与“前兆背景”的关联性上，将未经证实的推测包装为更确定的叙述，同时多张配图（含封面）与文中所指事件的时间地点并未被可靠证明一致，容易让读者把资料图/旧图当作现场佐证，从而产生轻度语境错配与误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突与军事安全",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/356",
+  "image_paths": [
+    "/path/to/ReMMDBench/356/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/356/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/356/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/356/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/356/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/356/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/356/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/356/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/356/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/356/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "356",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Wikipedia often lacks very recent news (like a specific incident in early March). If Wikipedia is insufficient, I should use Google to search for specific news reports, casualty figures (101 missing, 78 injured), and the location to verify the news text's claims against current cybersecurity or news archives.",
+            "action": "Google[query=\"Iran warship attacked Bandar Abbas 101 missing 78 injured\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the text describes a catastrophic event (\"101 missing, 78 injured\") in a strategic maritime hub, a general Google search for \"Iran Navy ship attack March\" or \"Persian Gulf naval incident March\" is needed to identify if any credible news outlets have reported a similar event (either this one or a comparable incident) during that timeframe, which would establish the baseline of reality for the story.",
+            "action": "Google[query=\"Iran Navy ship attack March casualties\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.75,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.3,
+        "best_trajectory": [
+          {
+            "thought": "The request is to check veracity. The text claims a warship was attacked with casualties. The image shows a ship with fire in the background and \"Navy Situation Report\" overlay. The text explicitly calls this image a \"Reference Photo\" (资料图). While the image is not primary evidence of the specific casualty count (which sounds specific/fake), the image visually aligns with the \"Attack\" and \"Bandar Abbas\" narrative. The text and image are consistent in their labeling and basic visual elements.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent naval attack with no verification results, visual material includes AI-generated scenes and spliced content, and unrelated celebrity screenshots introduce a contextual mismatch.",
+    "notes": []
+  },
+  "error": null
+}

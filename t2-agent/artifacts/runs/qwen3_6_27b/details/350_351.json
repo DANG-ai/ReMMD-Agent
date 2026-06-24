@@ -1,0 +1,130 @@
+{
+  "index": 350,
+  "sample_id": "351",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1860.77,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "样本关于比赛结果、地点及委内瑞拉球迷到场助威的核心信息基本成立，因此整体方向属实；但“看台上的气氛几乎如同委内瑞拉主场，欢呼声持续不断”等表述把现场支持声势进一步放大，超出了图片和现有素材所能直接稳妥支持的程度，属于不改变主结论的轻度失真。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/351",
+  "image_paths": [
+    "/path/to/ReMMDBench/351/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/351/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/351/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "351",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.05,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.08,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses a game involving the Venezuelan baseball team. To confirm the image is relevant and supports the text, I should detect the text on the players' uniforms to verify they represent Venezuela.",
+            "action": "Detect[image]",
+            "observation": "- **明显的人为编辑痕迹**：画面中多位球员与观众的脸部被统一处理成“方块/马赛克式模糊”，边缘较硬、形状相近，属于后期隐私打码/遮挡，而不是相机失焦或运动模糊造成的自然模糊。  \n- **未见合成/AI生成常见错误**：球衣字样（“Venezuela”）、号码、手指数量、手套与护具结构、球棒与人体遮挡关系、光照方向与阴影过渡整体一致；画面颗粒、清晰度与景深也符合体育转播/新闻照片的常见质感。  \n- **未见“反事实”元素**：场景为棒球赛庆祝动作、看台与球场护栏广告等都与真实比赛环境相符，没有明显不可能物体或物理不一致。\n\n**结论**：这张图看起来像真实比赛照片，但存在明确的后期隐私打码（脸部模糊/遮挡）编辑；除此之外未见明显拼接或AI生成痕迹。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous observation confirmed that the image is a real photograph (despite face blurring) and clearly shows players wearing jerseys with \"Venezuela\" written on them. This visual evidence directly supports the news text which describes the Venezuelan baseball team playing and winning a match. The celebration in the image aligns with the reported victory.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the players in the image belong to the Venezuela team mentioned in the text. I will ask the VQA model to identify the text written on the front of the players' jerseys.",
+            "action": "VQA[What text is written on the front of the players' jerseys?]",
+            "observation": "\n\nThe text written on the front of the players' jerseys is \"Venezuela\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA observation confirmed that the players are wearing jerseys with \"Venezuela\" written on them. The news text describes a game in the World Baseball Classic where the Venezuela team won against the Netherlands. The image shows Venezuela players celebrating, which is consistent with the text describing a victory and a \"good start\". The visual content aligns perfectly with the main subject of the news text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The verification evidence explicitly identifies clear post-production privacy masking (face blurring) as \"obvious artificial editing traces\" in the visual material.",
+    "notes": []
+  },
+  "error": null
+}

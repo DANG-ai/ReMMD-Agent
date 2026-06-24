@@ -1,0 +1,137 @@
+{
+  "index": 487,
+  "sample_id": "488",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2166.89,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本文本将“监管部门已关注并要求说明”“网传情况记录摘要”与“网传标签照片”串联成近似已被官方核实的叙事，但未提供任何可核验公开来源或权威通报支撑，关键内容属于凭空嫁接。配图为生成图，且标签语言与时间信息等细节与文中所述场景不符，无法作为真实证据，整体结论不成立。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "消费与食品安全",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/488",
+  "image_paths": [
+    "/path/to/ReMMDBench/488/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/488/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "488",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses a specific issue with Chinese date labels ('冷鲜', '屠宰日期') and Chinese regulatory bodies. The image clearly shows a Korean retail environment, evidenced by the Hangul characters on the signage and product labels. Since the image is from a different country/language context than the news report, it cannot support the specific claims made in the text about a Chinese store.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions \"cold fresh pork\" and disputes over date information on labels. The image shows many packages of raw meat. I should check the packaging to see if it looks like \"cold fresh\" pork and if there are visible labels that might relate to the date controversy.",
+            "action": "VQA[What type of meat is shown in the trays and do the packages have visible labels?]",
+            "observation": "\n\nBased on the visual evidence, the trays contain cuts of raw **pork**, including slabs that appear to be pork belly and other cuts resembling pork chops or steaks.\n\nYes, the packages have visible **white labels or stickers** on them, which likely contain pricing and product information. There is also a larger white sign standing at the front of the display case.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text specifically highlights a controversy regarding \"cold fresh\" (冷鲜) pork and the ambiguity of date labeling (slaughter date vs. packaging date). To determine if the image matches the report, I need to verify if the labels in the image actually display \"cold fresh\" and whether the date information corresponds to the complaints (e.g., missing slaughter dates).",
+            "action": "VQA[Search the labels and signs for the text \"Cold Fresh\" (冷鲜). Also, check if the labels explicitly list a \"Slaughter Date\" or if they primarily show \"Packaging Date\" or \"Production Date\".]",
+            "observation": "\n\nBased on the visual evidence in the image:\n\n1.  **\"Cold Fresh\" (冷鲜):** This specific text is **not visible** on the labels or signs. However, there is a prominent red sign above the refrigerated display that reads **\"FRESH MEAT\"**. The labels on the meat packages contain Korean text, but the English phrase \"Cold Fresh\" is not present.\n\n2.  **Date Listing:** The labels on the meat packages appear to primarily list the **\"Production Date\"** (Korean: **생산일자**). While the text is small, the characters preceding the date on the visible labels (such as on the bottom-left and bottom-center trays) correspond to \"Production Date.\" There is no clear visual evidence of a specific \"Slaughter Date\" field; standard Korean retail meat labels typically emphasize the production or packaging date for freshness verification.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text discusses a controversy regarding date labels on \"cold fresh\" pork at Sam's Club in China (indicated by the Chinese text and reference to Chinese market supervision authorities). The image, however, shows meat packages with labels in Korean (e.g., \"생산일자\" for production date) and a sign reading \"FRESH MEAT\". The presence of Korean text indicates the image is from a store in Korea, not the Chinese store mentioned in the news. Additionally, the text mentions labels with \"Cold Fresh\" (冷鲜) in Chinese, which are not present in the image (Korean labels). Therefore, the image does not match the news text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image contains future dates (2025/2026) indicating synthetic content, features Korean text/currency while the news text is Chinese and discusses a Sam's Club controversy (contextual mismatch), and lacks the specific \"Cold Fresh\" label claimed by the text (semantic inconsistency).",
+    "notes": []
+  },
+  "error": null
+}

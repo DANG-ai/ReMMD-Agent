@@ -1,0 +1,118 @@
+{
+  "index": 99,
+  "sample_id": "100",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2719.36,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "Die Kernaussage des Textes ist mit den bereitgestellten Evidenzen konsistent: #LEVARS verweist auf das Spiel Leverkusen gegen Arsenal, das 1:1 endete, und die verwendeten Bilder passen thematisch zu diesem Fußballkontext. Es sind keine irreführenden Text-, Bild- oder Kontextmanipulationen ausgewiesen.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/100",
+  "image_paths": [
+    "/path/to/ReMMDBench/100/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/100/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "100",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims a match occurred in 2026, which is a future date. The image depicts a football match with players in kits consistent with the 2023/2024 or 2024/2025 season. The player in the Arsenal kit resembles Martin Odegaard, not Kai Havertz as mentioned in the text. The scene shows a tackle in open play, whereas the text describes a penalty kick goal. The opponent is wearing a black kit, which does not correspond to Bayer Leverkusen's standard kits for the seasons they would have played Arsenal. Therefore, the image refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.5,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific match context (UCL Quarter-final, Leverkusen vs Arsenal, 2026) and specific scoring events. The image shows a challenge. I need to check if the opponent is indeed Bayer Leverkusen to see if the context at least matches the teams involved. The player on the left is wearing a dark kit. Identifying the opponent team will help confirm if this is even the right match context.",
+            "action": "VQA[What team is the player in the black jersey playing for?]",
+            "observation": "\n\nBased on the kit design (black jersey and shorts with teal accents on the collar) and the crest visible on the shorts, the player in the black jersey is playing for **Brentford**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a match between Bayer Leverkusen and Arsenal. The previous observation clearly identified the opponent in the black jersey as Brentford. Since the opponent in the image (Brentford) is different from the opponent in the text (Bayer Leverkusen), the image does not match the news text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.8,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future match result (March 2026) presented as past tense, and the first image shows a Brentford vs. Arsenal match, which is contextually inconsistent with the text describing a Bayer Leverkusen vs. Arsenal match.",
+    "notes": []
+  },
+  "error": null
+}

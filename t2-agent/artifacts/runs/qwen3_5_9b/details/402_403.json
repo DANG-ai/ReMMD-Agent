@@ -1,0 +1,158 @@
+{
+  "index": 402,
+  "sample_id": "403",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1232.98,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article inflates a casual social post about enjoying Graeter’s during March Madness into an asserted retail campaign and relies on edited images to make that claim appear documented. The attached visuals are manipulated and the timing context is misleading, especially because the sign itself references April 1, 2026 rather than proving a current tournament-week launch.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/403",
+  "image_paths": [
+    "/path/to/ReMMDBench/403/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/403/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/403/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "403",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific 2026 date mentioned in both the news text and the image to see if it corresponds to a legitimate future announcement or if it contradicts the claim that the flavors are \"in stores now\".",
+            "action": "Google[query: \"Graeter's limited tournament flavors April 1 2026\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Alternatively, verify the authenticity of the specific image provided by searching for it using OCR or Reverso mode features if available, to see if this \"April 1st, 2026\" design has circulated online as expected in the News text. If the image has never appeared on the \"Game Day\" page, the text is likely false.",
+            "action": "Google[query: \"Graeter's April 1st 2026\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Upon reviewing the provided image, it explicitly displays the text \"NEW FLAVORS RELEASE ON APRIL 1ST, 2026\" and \"LIMITED TOURNAMENT FLAVORS\". The news text accurately claims that the sign points to these specific flavors and dates. Since the textual description in the news article aligns perfectly with the visible text in the image (dates, themes, and specific phrases like \"limited tournament flavors\"), the image serves as direct evidence supporting the claims made in the text.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "First step is to utilize the Detect tool to verify the visual evidence against the text claims about the Graeter's March Madness promotion.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like a real photo of a printed sign**: The paper has natural glare and slight perspective skew, and it’s sitting on a textured white foam surface (consistent with a cooler/lid insert). Edges and shadows look coherent rather than “cut out.”\n- **Text and typography are clean and consistent**: No garbled letters, uneven kerning, or AI-typical text artifacts. The Graeter’s logo and the “March Madness” layout look like normal brand design work.\n- **No obvious digital compositing**: I don’t see mismatched lighting, duplicated patterns, warped lines, or blurry halos that would suggest elements were pasted in.\n- **Potential counterfactual/oddity is in the content, not the pixels**: The line “NEW FLAVORS RELEASE ON APRIL 1ST, 2026” is unusual for a “March Madness” themed promo, but it appears to be part of the original printed design rather than an edited overlay.\n\nOverall, the image itself appears authentic (a straightforward photo of promotional signage) with no clear signs of synthetic generation or manipulation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly displays the Graeter's logo and the specific text \"NEW FLAVORS RELEASE ON APRIL 1ST, 2026\" at the bottom. This matches the news text's claim that the sign points to new flavors arriving on this date. The visual evidence of the \"March Madness\" theme on the sign further confirms the article's description of the campaign.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly mentions that the new flavors arrive on \"April 1, 2026\" and references an in-store sign. I need to verify this specific date visually to ensure the image aligns with the text claim.",
+            "action": "VQA[What date is listed for the new flavors release at the bottom of the card?]",
+            "observation": "\n\nThe date listed for the new flavors release at the bottom of the card is **April 1st, 2026**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the VQA result has confirmed the date matches the text exactly, and the overall visual content (logo, basketball imagery) aligns with the text's description of the \"in-store sign\" and \"tournament-themed lineup\", the image fully corroborates the news text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.46415888336127786,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text claims a current event (news) but describes a product launch dated April 1, 2026, creating a temporal mismatch between the reporting context and the visual evidence.",
+    "notes": []
+  },
+  "error": null
+}

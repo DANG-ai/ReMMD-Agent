@@ -1,0 +1,140 @@
+{
+  "index": 464,
+  "sample_id": "465",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1009.97,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Die zentrale Protest- und Prüfbehauptung ist frei erfunden und wird durch künstlich erzeugte, offiziell wirkende Visuals scheinbar belegt. Zugleich stützen das echte Jubelbild und die generierten Grafiken weder semantisch noch in ihrer Wirkung die behauptete institutionelle Eskalation, sondern verleihen der Falschmeldung nur scheinbare Glaubwürdigkeit.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/465",
+  "image_paths": [
+    "/path/to/ReMMDBench/465/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/465/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/465/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "465",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "Lga Text claims the protest is about the goal by \"Yan Diomande\" and affects the \"Bundesliga\" table (implied or explicit). The image shows scorers \"Opnda\" (Niklas Olay) and \"Sesko\" (Oscar Sesko), which are not Yan Diomande. Additionally, the image explicitly labels the game as \"2. BUNDESLIGA\", while the text context suggests a Bundesliga (1. Liga) protest or table issue. There is a date match (18.05.2025), but the league discrepancy and scorer info mismatch indicates the image either contradicts the text's claims or the text claims are based on incorrect information (e.g., the text describes a hoax which the image captures as a \"fake DFL statement\" but its own data conflicts with the text's implied facts). Since the image shows different factual details (league, scorer) than the text claims, it refutes the veracity of the text's specific claims.",
+            "action": "Tool[IMAGE_REFUTE]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text asserts a complex protest involving \"Yan Diomande\" impacting the \"Bundesliga\" (1st division) table. The image, however, contains specific visual evidence that contradicts this: 1. The image header visibly reads \"2. BUNDESLIGA\", not the 1. Bundesliga. 2. The image lists \"KÖNIGSDÖRFFER 48'\" as a scorer, whereas the text focuses solely on \"Yan Diomande\" (likely a fabricated detail in the text or a confusion with the image). The text asserts the context is a Bundesliga table fight, but the image depicts a 2. Bundesliga contest. These direct factual contradictions (League Level, Scorer Identity) mean the image does not support the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the goal scorers mentioned in the text (Yan Diomande in 50th minute) against the image data to confirm the mismatch.",
+            "action": "VQA[Who scored the goals listed in the scoreboard?]",
+            "observation": "\n\nBased on the scoreboard at the bottom of the image, the goal scorers are:\n\n*   **Königsdörffer** for Hamburger SV (48th minute)\n*   **Openda** for RB Leipzig (27th minute)\n*   **Sesko** for RB Leipzig (63rd minute)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the observation, the image lists Openda and Sesko as scorers for RB Leipzig, while the text mentions Yan Diomande as scoring the 50th minute goal. This is a clear discrepancy in the player names, warranting a MISMATCH conclusion.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.8,
+        "T2 Distortion": 0.4,
+        "T3 Misleading Context": 0.2,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text and the image contradict core facts (main score 1:2 vs text 2:1, scorer Sesko vs text Diomande), and the dates (2025 vs 2024) are mismatched, with the second image also featuring manual logo overlay.",
+    "notes": []
+  },
+  "error": null
+}

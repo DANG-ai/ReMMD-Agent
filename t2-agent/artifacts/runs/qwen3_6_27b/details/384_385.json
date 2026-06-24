@@ -1,0 +1,152 @@
+{
+  "index": 384,
+  "sample_id": "385",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2890.17,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Text baut auf einem realen Testspielsieg auf, überhöht dessen Bedeutung aber systematisch zu einem quasi turniernahen WM-Signal. Zugleich stützt ein bearbeitetes Bild diesen verschobenen Rahmen, sodass echte Spielereignisse mit irreführendem Wettbewerbs- und Zeitkontext vermischt werden.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/385",
+  "image_paths": [
+    "/path/to/ReMMDBench/385/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/385/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/385/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/385/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "385",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "If Wikipedia doesn't have a specific page for the match, I will search Google for the match report to verify the goalscorers, specifically checking who scored the winning goal and in which minute, and whether the halftime score was 2-2.",
+            "action": "Google[Deutschland Schweiz 4:3 21. März 2025 Torschützen]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text claims Germany won 4:3 against Switzerland in Basel. The image shows the German team in the Euro 2024 kit. The actual result of this match was a 1:0 loss for Germany. The text is factually incorrect regarding the match outcome. Thus, the image serves as a reference to the event where the text's claim is false.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.3,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text highlights Florian Wirtz and a 4:3 victory. The image shows players with numbers like 17, 22, 20. I need to identify these players to see if they match the current 2025/2026 squad mentioned in the text or if they are from an older squad (e.g., Volland, Klostermann).",
+            "action": "Entity[Identify the players in the front row from left to right, noting their jersey numbers.]",
+            "observation": "\n\nBased on the visual evidence, here are the visible entities in the image:\n\n**People (German National Football Team Players)**\n*   **Manuel Neuer:** High certainty. Visible on the far right wearing the orange goalkeeper kit (number 1).\n*   **Leroy Sané:** High certainty. Front row, second from right (number 10).\n*   **Toni Kroos:** High certainty. Front row, middle-right (number 16).\n*   **Joshua Kimmich:** High certainty. Front row, middle-left (number 6).\n*   **Jonas Hector:** High certainty. Front row, second from left (number 17).\n*   **Julian Draxler:** High certainty. Front row, far left (number 22).\n*   **Other Players:** Medium certainty. Several other players are visible in the back row (likely including Mats Hummels, Timo Werner, or Mario Götze based on typical squad rosters from this era).\n\n**Organizations & Logos**\n*   **DFB (Deutscher Fußball-Bund):** High certainty. The German Football Association eagle logo is visible on the chest of the jerseys.\n*   **Adidas:** High certainty. The Adidas logo and three stripes are visible on the sleeves, chest, and socks of the players.\n\n**Text & Banners**\n*   **Visscol:** High certainty. A large white banner with red text on the left side background.\n*   **UDS:** High certainty. A banner on the right side background.\n*   **C1:** Medium certainty. A small sign visible in the upper stands background.\n\n**Locations & Objects**\n*   **Football Stadium/Pitch:** High certainty. The green grass field and stadium seating structure.\n*   **Crowd:** High certainty. Spectators visible in the blurred background stands.\n*   **Advertising Boards:** High certainty. LED or printed boards surrounding the pitch.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To be thorough, I will verify if Florian Wirtz, the key player mentioned in the text, is present in the image.",
+            "action": "VQA[Is Florian Wirtz visible in the image?]",
+            "observation": "\n\nNo, Florian Wirtz is not visible in the image. The picture shows the Norwegian national football team (identifiable by the NFF crest on the jerseys and players such as goalkeeper Rune Jarstein #1 and defender Julian Ryerson #22), while Florian Wirtz is a German international player.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a football match for the German national team in the \"World Cup year 2026,\" highlighting a 4:3 victory against Switzerland where Florian Wirtz scored the winning goal. The image, however, shows the German national team squad from the 2017/2018 era, featuring players like Toni Kroos (#16), Jonas Hector (#17), and Julian Draxler (#22), who were not part of the squad in 2026. Furthermore, Florian Wirtz is not visible in the image. The discrepancy in the year, squad composition, and key player indicates a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent future match (T1), Image 2 is AI-generated synthetic content (V1), and the real images provided are from mismatched contexts such as a different national team or the women's team, inconsistent with the text's claim of a German men's match (C2).",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,142 @@
+{
+  "index": 46,
+  "sample_id": "047",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 632.51,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "L’article restitue de manière cohérente deux publications distinctes de France Travail : le calendrier administratif des allocations de mai 2026 et les résultats de l’enquête BMO 2026. Les dates, les chiffres centraux et la distinction entre démarches d’actualisation, lancement des virements et intentions d’embauche sont alignés avec le matériel source fourni, sans altération de sens ni contradiction notable entre texte et images.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/047",
+  "image_paths": [
+    "/path/to/ReMMDBench/047/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/047/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/047/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/047/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "047",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.7,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the employment needs data (Enquête Besoins en main-d’œuvre) to confirm the 2.28 million recruitment projects and the 43.8% difficulty rate mentioned in the text for 2026.",
+            "action": "Google[\"France Travail\" enquête Besoins en main-d'œuvre 2026 2,28 millions projets de recrutement]",
+            "observation": "Besoins en main-d'œuvre : 2,28 millions de postes à pourvoir en 2026: France Travail mobilise plusieurs leviers concrets : • La MRS (Méthode de Recrutement par Simulation) : vous êtes évalué sur vos habiletés, pas sur votre CV. 75 ... (https://www.francetravail.fr/candidat/decouvrir-le-marche-du-travail/besoins-en-main-doeuvre.html)\nEnquête Besoins en Main-d'Œuvre 2026 - francetravail.org: Chaque année, France Travail adresse un questionnaire aux établissements afin de connaître leurs besoins en recrutement par secteur d'activité et par bassin d' ... (https://statistiques.francetravail.org/bmo)\nRevenir travailler en France en 2026 n'a rien d'un pari risqué. Selon ...: Selon l'enquête annuelle « Besoins en main-d'œuvre » menée par France Travail, 2,28 millions de postes sont à pourvoir cette année. Un ... (https://www.instagram.com/p/DYCIdS5CEPQ/)\nEnquête BMO 2026 : 2,3 millions de projets de recrutement: L'enquête BMO de France Travail 2026 révèle révèle près de 2,3 millions d'intentions de recrutement pour l'année à venir. (https://myrhline.com/type-article/enquete-bmo-france-travail/)\nQuels métiers recrutent en 2026 ? Les résultats de l'enquête France ...: L'enquête BMO 2026 de France Travail prévoit 2,28 millions de recrutements, en baisse de 6,5 %. Les difficultés de recrutement reculent ... (https://www.studyrama.com/emploi/premier-emploi/secteurs-metiers-recrutements-2026-france-travail)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have sufficient information from the Google search results to verify the key claims. The 2,28 million recruitment projects figure is confirmed across multiple sources (francetravail.org, myrhline.com, studyrama.com), and the BMO 2026 survey details align with the text description about employer hiring intentions and regional breakdowns.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The news text specifically references official information regarding payments and recruitment surveys issued by France Travail. The image contains the logo of France Travail. Since the visual identity matches the entity mentioned in the text, the image supports the veracity of the topic.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text is exclusively about the organization \"France Travail,\" detailing its administrative updates and labor market surveys from 2026. The image displays a logo with a colorful circle pattern and the text \"France Travail.\" To rigorously confirm the cross-modal match, I should extract the text from the image using the Entity tool to verify the exact label matches the subject of the news.",
+            "action": "Entity[image]",
+            "observation": "- **“France Travail”** (text/logo mark) — **High certainty** (clearly readable).\n- **France Travail logo symbol** (cluster of multicolored dots/circles) — **High certainty** (distinct graphic mark).\n- **Organization: France Travail** (French public employment service, formerly Pôle emploi) — **High certainty** (name and branding match).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will use VQA to explicitly ask about the organization in the image to confirm the visual subject matter matches the news text entity.",
+            "action": "VQA[What organization does this logo represent?]",
+            "observation": "\n\nBased on the text visible in the image, this logo represents **France Travail**.\n\nIt is the official logo for the French public employment service, which was formerly known as Pôle Emploi. The logo features a cluster of colorful circles on the left and the organization's name in dark blue text on the right.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly focuses on 'France Travail' and its administrative updates. The image's Entity extraction clearly shows the text 'France Travail' and the logo. The VQA confirmed the organization is France Travail. There is a perfect alignment between the visual entity and the textual entity.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.46415888336127786,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text is supported by verified real-world survey data (BMO 2026), but the visual materials are synthetically generated AI content (infographic, composite photo) with a high likelihood of manipulation.",
+    "notes": []
+  },
+  "error": null
+}

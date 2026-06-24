@@ -1,0 +1,148 @@
+{
+  "index": 211,
+  "sample_id": "212",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1434.34,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article's central report of an official post-WrestleMania reversal and restored Roman Reigns title reign is invented, and the visuals were created or altered to make that nonexistent decision look documented. The image set also misrepresents ordinary or synthetic scenes as evidence of the claimed ruling and belt reveal.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/212",
+  "image_paths": [
+    "/path/to/ReMMDBench/212/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/212/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/212/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "212",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify a news text about WWE's internal decision to put Roman Reigns back in place as champion after WrestleMania. The news mentions a specific belt being unveiled. I need to analyze the image to see if it depicts Roman Reigns with a championship belt consistent with the story, thereby verifying the visual aspects of the claim.",
+            "action": "Detect[image]",
+            "observation": "- **Obvious edit/obfuscation:** The subject’s face is covered by a uniform, rectangular blur/block that doesn’t match natural motion blur. That indicates deliberate post-processing (likely anonymization or reuse of an image).\n- **Compositing/text plausibility:** The arena ribbon-board text “CHAMPIONSHIP DECISION CONFIRMED” looks very clean and readable, but it also blends reasonably with the scene’s perspective and lighting; nothing blatant like warped letters or broken kerning that often shows AI artifacts. Still, it could be an added overlay because it’s unusually on-the-nose for the accompanying claim.\n- **Lighting/edges:** The belt, arm, and hair have consistent lighting and sharp edges without the melted textures, extra fingers, or incoherent details commonly seen in synthetic images. The WWE belt detailing and stitching appear coherent.\n- **Overall authenticity cues:** The crowd, depth-of-field blur, and arena lighting look like a typical pro-wrestling event photograph. Aside from the face block (and possible added/selected signage text), the image largely reads as a real photo rather than AI-generated.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "I want to verify the textual content mentioned in the news article against the visual background of the image. The text discusses a \"Championship Decision Confirmed,\" and there appears to be a banner in the arena background with the WWE logo and text. Asking VQA about the text on the sign will help detect this specific cross-modal link.",
+            "action": "VQA[What text is written on the horizontal sign in the background]",
+            "observation": "\n\nCHAMPIONSHIP DECISION CONFIRMED",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify specific entities mentioned in the text, such as 'Raw' and 'Roman Reigns'. The text mentions 'Before the first Raw' and 'Roman Reigns'. I should ask the VQA tool to identify the event logo visible on the background banner to confirm it says 'RAW'.",
+            "action": "VQA[What text is written on the left side of the banner logo]",
+            "observation": "\n\nBased on the image, the text visible on the left side of the banner (specifically to the left of the WWE logo) is **RAW**. The letters are partially cut off but the Raw logo and text style are consistent with WWE Raw branding. The main text on the banner reads \"CHAMPIONSHIP DECISION CONFIRMED\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly identifies the person as \"Roman Reigns\". After confirming the banner text \"RAW\" and \"CHAMPIONSHIP DECISION CONFIRMED\", I need to verify the identity of the wrestler in the image to match the text entity.",
+            "action": "VQA[Who is the person standing in the center of the image holding the belt]",
+            "observation": "\n\nThe person standing in the center of the image is **Roman Reigns**, a professional wrestler for WWE. He is identifiable by his distinct appearance, tattoos on his left arm, and the black singlet with the \"R\" logo (representing the WWE Raw brand). He is holding a WWE championship belt aloft.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "All key textual entities mentioned in the article—\"Roman Reigns,\" \"RAW\" (implied by context and banner), and \"Championship Decision Confirmed\"—have been verified through the VQA results. The image clearly shows Roman Reigns holding a WWE championship belt, directly matching the news narrative about the title status change and the arena images. The cross-modal evidence is conclusive.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7368062997280773,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.2,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text and primary platform context (RAW) mismatch with the image showing the wrestler in a 'Turning Point' (T2) branded singlet, creating a contextual discontinuity.",
+    "notes": []
+  },
+  "error": null
+}

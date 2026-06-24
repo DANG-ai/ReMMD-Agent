@@ -1,0 +1,138 @@
+{
+  "index": 160,
+  "sample_id": "161",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1883.77,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "L’article assemble plusieurs éléments ayant chacun une base réelle — le différentiel de comptage du 1er mai, l’appel de fédérations CGT et FO à un rassemblement le 4 mai, et le départ d’une délégation syndicale pour Cuba avec du matériel médical — mais il les fond dans une même dynamique continue et simultanée, ce qui exagère leur unité de temps, d’échelle et de portée. La partie visuelle renforce cette lecture trompeuse : un tract a été légèrement modifié, et l’image de policiers sert à suggérer un contexte sécuritaire directement lié aux mobilisations mentionnées sans preuve qu’elle documente ces faits précis. L’ensemble mélange donc des faits exacts et une mise en scène contextuelle trompeuse.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/161",
+  "image_paths": [
+    "/path/to/ReMMDBench/161/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/161/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/161/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "161",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [],
+    "predicted_label": "verdict=True | taxonomy=None",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.6,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions a specific solidarity trip to Cuba: \"délégation de huit syndicalistes CGT de la filière propreté... 26 valises de dons\". I need to verify if this event actually happened to determine the timeframe of the news text. If it happened in 2024, but the text says \"lundi 4 mai\" (which is 2026), the text is chronologically confused.",
+            "action": "Google[CGT filière propreté Cuba 26 valises dons]",
+            "observation": "Le syndicat CGT FTDNEEA (Filière Propreté et Assainissement de ...: ... CGT du Conseil départemental de la Charente ont envoyé une délégation de huit camarades à Cuba. ❤️Ils ont apporté avec eux 26 valises de dons ... (https://www.facebook.com/EmbaCubaFrancia/posts/le-syndicat-cgt-ftdneea-fili%C3%A8re-propret%C3%A9-et-assainissement-de-la-ville-de-paris-/1268585245391031/)\nDélégation de 8 camarades à Cuba     du syndicat CGT FTDNEEA ...: ... (Filière Propreté et Assainissement de Paris) et le syndicat CGT du Conseil dép. de la Charente. ❤️ Ils ont apporté 26 valises de don ... (https://x.com/EmbaCubaFrancia/status/2050954846937702846)\nDes membres d'un syndicat français mènent des activités à Cuba: Ils ont apporté avec eux 26 valises de dons, soit environ 700 kg, destinés à leurs homologues des services communaux, à l'Institut national d' ... (https://misiones.cubaminrex.cu/fr/articulo/des-membres-dun-syndicat-francais-menent-des-activites-cuba)\nCGT Fédération des Services publics - Facebook: ❤️Ils ont apporté avec eux 26 valises de dons, soit environ 700 kg, destinés à leurs homologues des services communaux, à l'Institut national d' ... (https://www.facebook.com/cgtservicespublics/posts/1487028713215657/)\n75 | CUBA - Appel à la solidarité des syndicats: Ces camarades amèneront une vingtaine de valises de matériel médical et de matériel de notre filière Propreté/Assainissement. Hier, nous avons ... (https://www.cgtservicespublics.fr/les-luttes/actualite-des-luttes-2026/solidarite-internationale/article/cuba-i-appel-a-la-solidarite-des-syndicats-ftdneea-et-du-cd-de-la-charente)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 8,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "The news text states the gathering is at 14h, while the poster in the image explicitly says \"Le 4 mai à 15h\". Although the date, location (Assemblée Nationale), and general topic (military budget vs social needs) align, the specific time provided in the text is incorrect according to the visual evidence.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions the protest is against \"milliards alloués à l'effort militaire\". I need to check the main headlines of the flyer to see if they match this theme of opposing war/military budgets.",
+            "action": "VQA[What are the three main slogans written in bold black letters at the very top of the poster?]",
+            "observation": "\n\nBased on the image, the three main slogans written in bold black letters at the very top are:\n\n1.  **NON À LA GUERRE !**\n2.  **NON AUX BUDGETS DE LA GUERRE !**\n3.  **NON AUX 8,5 MILLIARD DE PLUS POUR L'ARMÉE !**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a CGT rally on \"lundi 4 mai\" near the \"Assemblée nationale\" protesting military spending (\"milliards alloués à l'effort militaire\", specifically \"8,5 milliards... pour l'année 2026\"). The poster explicitly calls for a \"Rassemblement devant l'Assemblée Nationale\" on \"Le 4 mai à 15h\" (May 4, 2026 is a Tuesday, so the text has a slight day-of-week error, but the date is correct) with slogans \"NON AUX BUDGETS DE LA GUERRE\" and \"NON AUX 8,5 MILLIARD DE PLUS POUR L'ARMÉE\". The poster text also mentions the PM announced 8.5 billion extra for the army for 2026 on March 25. The themes, date, location, and specific financial figures match perfectly. The slight time difference (14h vs 15h) is negligible for event matching.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9283177667225558,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.2,
+      "p_fake_match": 0.0,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample is verified as True with high confidence, supported by text evidence and matching visual elements (slogans, police deployment), with no significant distortions detected.",
+    "notes": []
+  },
+  "error": null
+}

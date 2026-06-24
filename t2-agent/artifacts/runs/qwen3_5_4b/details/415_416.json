@@ -1,0 +1,178 @@
+{
+  "index": 415,
+  "sample_id": "416",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1800.52,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "文本抓住了军方确曾披露“涉案人员对基地和建筑有授权进入权限”、案件涉及4套Skydio X10D并已识别两名嫌疑人等真实信息，但将“有授权进入权限”进一步推演成“基本确认是美军体系内部人员、内部作案链条已掌握”，并营造出军方此前误导外界、如今被迫改口的印象，超出了现有公开信息可支持的范围。首图又经过编辑，在嫌疑人胸前增添类似门禁证件的视觉暗示并配上“可进入楼内”标注，使读者更容易把未证实的身份结论当成已被图像证明的事实，因此整体呈现以误导为主，判为 Mostly False。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/416",
+  "image_paths": [
+    "/path/to/ReMMDBench/416/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/416/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/416/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/416/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/416/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "416",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T2 Distortion; V1 Synthetic Visual Content; C2 Contextual Inconsistency; C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Search for specific news reports about the drone theft at Camp Campbell in Kentucky to verify the claims regarding authorized access, the Skydio drone model, and the number of suspects.",
+            "action": "Google[Camp Campbell drone theft authorized access suspects]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Try a more specific Google search combining the case name with the number of suspects to see if any news articles or reports mention this detail.",
+            "action": "Google[Camp Campbell drone theft two suspects]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Google search attempts previously failed to find specific details about the suspects or the incident. Following the instruction to prioritize Wikipedia, I should first check if this military theft incident is documented on Wikipedia to verify the basic facts and see if it's a known event.",
+            "action": "Wikipedia[Camp Campbell drone theft]",
+            "observation": "No summary available. Similar entities: War crimes in the Russo-Ukrainian war (2022–present), Casualties of the Gaza war, List of YouTubers, Chinese espionage in the United States, Michael Vick",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the veracity of the news regarding the Campbell Forge drone theft case based on the provided image. The text states that the suspect had authorization to enter the base and facility, and the image labeled \"First pic shown surveillance footage\" suggests the suspect entered without obstruction. My task is to use Detect[image] to visually verify if the image supports the claim that the suspect could enter the building without noticeable hindrance, consistent with having authorization.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The video frames display a subject walking freely through a facility corridor without visible security checks. The overlay text \"Allowed to enter inside\" reinforces the idea that the entry was authorized. This visual context supports the text's claim that the theft was committed by someone with access rights, rather than an outsider forcing their way in, making the image evidence consistent with the provided news report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.3,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "We need to perform a cross-modal matching check. A key detail in the news text is the location \"Campbell, Kentucky\". I should ask the VQA tool to see if this location text is visible or implicit in the image.",
+            "action": "VQA[question] \"Is the text 'Campbell' or 'Kentucky' visible or mentioned in the image?\"",
+            "observation": "Could not parse action: VQA[question] \"Is the text 'Campbell' or 'Kentucky' visible or mentioned in the image?\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the VQA query for location text failed, use the Entity tool to extract and display the text present in the red bounding boxes to confirm the caption stating 'Can enter building' aligns with the news text regarding entry access.",
+            "action": "Entity[image]",
+            "observation": "- **Two human subjects (faces blurred)** — High certainty (clearly visible people; identity not determinable).\n- **Red rectangular bounding boxes around each person** — High certainty (obvious overlay/annotation).\n- **Chinese text label: “可进入楼内” (appears twice, bottom of each panel)** — High certainty (legible text overlay).\n- **Lanyard/ID badge on left subject** — Medium–high certainty (lanyard clearly visible; badge details unreadable).\n- **Firearm-like long gun in right subject’s hand** — Medium certainty (object resembles a rifle/long gun; image is low-res so exact type unclear).\n- **Indoor corridor/warehouse-like setting (hallway, doors/cabinets/industrial fixtures)** — Medium certainty (environment looks like an indoor facility corridor).\n- **Ceiling lights (round fixtures)** — High certainty.\n- **No identifiable logos/brands, notable landmarks, or specific organizations** — Low certainty for any specific identification (none clearly visible).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Entity tool successfully extracted the text \"可进入楼内\" (Can enter building) from the image overlays. This directly supports the news text's statement that the suspects had \"authorized permission to enter.\" Since this key contradictory detail is confirmed to match the image, the reasoning path is complete.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.30000000000000004,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.7,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.7,
+        "T3 Misleading Context": 0.3,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.7,
+        "C3 Pragmatic Inconsistency": 0.7
+      }
+    },
+    "taxonomy_rationale": "The text describes a \"Campbell drone theft\" but uses images that fail to match the context (fake/AI CCTV footage [V1], stock imagery [C2]) and the text uses the image to falsely claim it is \"surveillance footage\" [C3]; the overall text is mostly false [T2].",
+    "notes": []
+  },
+  "error": null
+}

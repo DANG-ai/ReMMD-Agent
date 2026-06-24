@@ -1,0 +1,121 @@
+{
+  "index": 33,
+  "sample_id": "034",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1043.77,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "样本文本并非完全凭空捏造，关于“冲突进入第三天”“美国城市有抗议”“国会议员讨论审查战争权限”等说法有一定素材基础；但它把未经充分核实或来源不明的黑烟图片强绑定为“德黑兰市区最新画面”“今晨实拍”，并以经过强化编辑的战损图来放大空袭即时性与严重程度，又用不匹配的配图去承接“美国国内反战升温、白宫压力更大”的叙事，导致事实成分与误导性语境、视觉强化和政治含义扩张同时存在，因此应判为真假混合。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/034",
+  "image_paths": [
+    "/path/to/ReMMDBench/034/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/034/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "034",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text provides very specific, highly-detailed geopolitical claims (\"Day 3 of strikes\", \"Protests in NYC, SF, Chicago\", \"Month 2nd\") which often indicates a \"fake news\" or AI-hallucinated narrative. The image shows a generic fire/smoke column behind a concrete barrier without distinguishable Tehran architecture. Tehran would typically feature urban density or specific historic landmarks which are absent or indistinct here. The image looks more like a border checkpoint photo (possibly Turkey/Syria). The specific text narrative about US reactions and specific dates appears fabricated. Therefore, I should Refute based on the likely mismatch in location and the untrustworthy nature of the political narrative.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes scenes of black smoke and security checkpoints in Tehran. The image clearly shows a massive plume of dark black smoke rising into the sky, situated behind a long concrete barrier topped with barbed wire, which aligns perfectly with the description of thick smoke and security checkpoints.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.739863622299141,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.1,
+        "C1 Semantic Inconsistency": 0.09999999999999998,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The five-way verdict is 'Mostly True' and verification shows a strong match (0.90) between the images and text while image refutation confidence is low (0.1), indicating high consistency and validity.",
+    "notes": []
+  },
+  "error": null
+}

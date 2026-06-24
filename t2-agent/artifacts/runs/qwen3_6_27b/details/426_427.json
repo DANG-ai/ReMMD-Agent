@@ -1,0 +1,120 @@
+{
+  "index": 426,
+  "sample_id": "427",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1667.05,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "中国互联网联合辟谣平台转载的官方通报信息显示，该“2026年甘肃省考标准答案”视频确由网民为博取关注违规使用AI工具制作并发布，内容被核实为虚构伪造并造成传播影响。通报同时明确天水市公安局秦州分局网安大队已依法对当事人约谈、批评教育并督促其当场删除视频，样本文本对事件性质与处置过程的核心表述与证据一致。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会治理与网络安全",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/427",
+  "image_paths": [
+    "/path/to/ReMMDBench/427/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/427/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "427",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "The news text states that a video claiming to contain the \"2026 Gansu Provincial Exam Standard Answers\" was circulated online but was actually AI-generated and fake. The text mentions that authorities intervened because it was misinformation. The image shows a press conference by the Gansu Provincial Civil Service Bureau. The screen behind the speaker and the paper she is holding explicitly state that the \"2026 Gansu Provincial Exam Standard Answers\" circulating online are \"false information\" (不实信息) and \"seriously untrue\" (严重不实). The image provides official confirmation that the \"standard answers\" are indeed a fabrication, which aligns perfectly with the text's claim that the video was fake and the content was fabricated. Thus, the image supports the veracity of the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to confirm the specific entities involved in the text versus the image. The text focuses on the \"Tianshui Public Security Bureau\" and a \"netizen\". The image shows the \"Gansu Provincial Civil Service Bureau\". Identifying the speaker or the specific nature of the event in the image will help confirm the mismatch.",
+            "action": "Entity[image]",
+            "observation": "- **“甘肃省公务员考试工作新闻发布会”**（Gansu Province civil service exam work press conference）— **High certainty** (large banner text in Chinese).\n- **“关于网传‘2026年甘肃省考标准答案’不实信息的公告”** (Notice about false info re: “2026 Gansu provincial exam standard answers”) — **High certainty** (projected slide text).\n- **“甘肃省公务员局”** (Gansu Provincial Civil Servants Bureau) — **High certainty** (placard on the podium).\n- **National emblem of the PRC** (on the podium placard) — **Medium-high certainty** (gold/red emblem shape visible).\n- **Chinese government/official press briefing setting** (podium, microphones, officials seated) — **High certainty** (scene context).\n- **People (speaker + panelists)** — **High certainty** (faces blurred; no identification of individuals).\n- **Media microphones with Chinese outlet flags/logos** — **Medium certainty** (multiple mic cubes with Chinese text/logos, not fully legible to attribute specific organizations).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a police action by the \"Tianshui Public Security Bureau\" against a \"netizen\" who spread fake exam answers. The image shows a press conference hosted by the \"Gansu Provincial Civil Servants Bureau\" (visible on the podium and banner) to clarify the fake news. The entities (Police vs. Civil Service Bureau) and the specific events (Interviewing a netizen vs. Holding a press conference) are different, although related to the same topic. Therefore, the text does not describe the image.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.1,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a fabricated police action in Tianshui (T1), while the images are AI-generated (V1) depicting a mismatched provincial press conference (C2).",
+    "notes": []
+  },
+  "error": null
+}

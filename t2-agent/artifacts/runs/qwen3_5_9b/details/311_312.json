@@ -1,0 +1,130 @@
+{
+  "index": 311,
+  "sample_id": "312",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1537.53,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "L’article est conforme aux résultats et au classement rapportés par les sources disponibles sur la 4e journée du Tournoi des Six Nations 2026. Les scores, l’ordre du classement et le maintien de la France en tête au bénéfice de la différence générale sont cohérents, sans altération trompeuse du contexte.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/312",
+  "image_paths": [
+    "/path/to/ReMMDBench/312/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/312/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "312",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses the Six Nations 2026 rugby tournament and mentions a match in Scotland. I need to identify the object in the image to see if it is related to the event or location. The background looks like a stadium structure. I will use the Entity tool to identify the image content.",
+            "action": "Entity[image]",
+            "observation": "- **Trophy/cup (silver, reflective)** — High certainty (dominant object; classic cup/trophy form with handles).\n- **Metallic ornamental/engraved detailing on trophy** — High certainty (visible decorative patterns).\n- **Indoor venue ceiling/roof truss or panel grid** — High certainty (repeating structural pattern above).\n- **Bright overhead lights / reflections on metal** — Medium certainty (glare suggests strong lighting; fixtures themselves not clearly defined).\n- **Green element at top (possibly ribbon/cover/trim on trophy)** — Medium certainty (green shape visible but function unclear).\n- **Text/branding/logos** — Not visible / low certainty (no readable marks in this crop).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The object is clearly a metal trophy/cup. The text discusses rugby team standings and scores in the Six Nations. A visual of a trophy is contextually relevant, but I need to confirm if it's the specific award for the event mentioned to finalize the classification.",
+            "action": "VQA[Is this trophy used for a rugby tournament?]",
+            "observation": "\n\nYes, this is the trophy used for the **Super Rugby** tournament (specifically the version used from 2006 to 2017). It features two stylized rugby players locked in a tackle on either side of a central cup.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The trophy has been confirmed as belonging to the Super Rugby tournament, which is different from the Six Nations tournament discussed in the news text. To verify relevance, I need to check if the text explicitly mentions the Super Rugby tournament.",
+            "action": "VQA[Is the term \"Super Rugby\" mentioned in the news text?]",
+            "observation": "\n\nNo, the term \"Super Rugby\" is not mentioned in the visible image. The image shows the Super Rugby trophy, but there is no legible news text or the specific term visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Entity tool identified the object as a silver trophy. Subsequent VQA confirmed this is the Super Rugby trophy. The text explicitly discusses the Six Nations 2026 tournament and does not mention Super Rugby. Therefore, the visual content represents a different tournament than the textual content.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a match for the Six Nations tournament (2026), but the image displays the trophy used for the Super Rugby tournament, creating a contextual mismatch.",
+    "notes": []
+  },
+  "error": null
+}

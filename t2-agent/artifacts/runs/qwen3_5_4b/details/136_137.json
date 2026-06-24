@@ -1,0 +1,137 @@
+{
+  "index": 136,
+  "sample_id": "137",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1161.29,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "支持率53％という中心的な数値主張自体には一定の事実基盤がある一方、本文はその数値を複数の世論調査で広く確認された傾向のようにやや一般化している。加えて、添付画像はいずれも支持率調査そのものを示すものではなく、本文の調査文脈と画像の場面設定にずれがある。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/137",
+  "image_paths": [
+    "/path/to/ReMMDBench/137/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/137/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "137",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "Since the text contains a specific number (53%), a dedicated Google search will be effective to find news articles or sources that mention this exact figure, allowing for verification if Wikipedia yields insufficient or ambiguous results.",
+            "action": "Google[高市内閣 支持率 53%]",
+            "observation": "高市内閣の支持率53%、発足以来最低に 物価対策など影響か: 内閣支持率は25年10～12月には65～67％だったが、26年1月に57％に下落。衆院選後の2月は若干持ち直して61％となったが、3月、4月と続けて下落した。 (https://mainichi.jp/articles/20260419/k00/00m/010/138000c)\n高市内閣支持率、半年間で12ポイント下落 毎日新聞世論調査 …: 4月21日に発足半年を迎えた高市早苗内閣。毎日新聞の世論調査によると、昨年10月の発足時に65％だった支持率は、4月に発足以降最低の53％となった。 (https://news.yahoo.co.jp/articles/665b911f26d638715fac2be98c491a62f50d3a8e)\n【高市内閣の支持率】就任半年、高水準維持もやや下落  4月の報道8 ...: 高市早苗内閣の支持率は53.0～70.2％に分布し、前月比では5社が下落、3社が上昇した。2025年10月の政権発足から半年を迎え、支持率はなお6割台を中心に高 ... (https://www.nippon.com/ja/japan-data/h30023/)\n高市内閣の支持率53%、発足以来最低に 物価対策など影響か: 不支持率は前回の28％から5ポイント増の33％となったものの、依然、支持率が不支持率を大きく上回っています。 読む政治： ... (https://x.com/mainichi/status/2045822493840285696)\n増える「消極的支持」 高市内閣半年の高支持率を解剖 朝日世論調査: 高市早苗内閣が発足して半年がたちました。支持率は、発足直後の2025年10月全国世論調査（電話）で68%を記録。26年4月の全国世論調査でも64%と半年 ... (https://www.asahi.com/articles/ASV4W2G74V4WUZPS001M.html)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The initial Google search results from reliable sources like Mainichi confirm the 53% support rate figure for the Takahashi Cabinet in April. However, the text claims this was a \"high-level start\" (発足直後としては高水準), which seems to contradict the search results stating it was a \"drop to lowest since establishment\" (発足以来最低). To handle this potential over-interpretation in the text versus the data trend, I can check Wikipedia for a broader consensus on the support rate's history to see if \"high-level\" is a common misinterpretation or a valid subjective assessment in the source. Alternatively, since the core fact (53%) is strongly supported by the search, I can finish verifying the text is supported by the verifiable data.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses the approval rating of the \"Takamatsu Cabinet\" (likely a typo for Kishida Cabinet or Tansan). The image shows Hitomi Kanetsune (likely, based on the blue tie/bustle often seen in news photos of Cabinet Vice-Ministers). While the specific name \"Takamatsu\" seems incorrect (it's likely Kishida), the image shows a Cabinet official associated with the context of Kishida's government. In some alignments, disputes might conclude this as a rough match if the text is interpreted as Kishida. However, strictly verifying \"Takamatsu\", it's a mismatch. If we consider \"Takamatsu\" to mean \"Tansan\" (LDP high office), it might align. But Hitomi Kanetsune is a member. Given the strict veracity, the text is nonsensical on its own name. However, providing a candidate for support based on the potential confusion.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.7,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I could also ask a VQA question to understand the context or content of the image, such as \"What political figure is the woman in the picture?\" to gather information and verify the match.",
+            "action": "VQA[What political figure is the woman in the picture?]",
+            "observation": "\n\nThe woman in the picture is **Yoko Kamikawa** (also known as Kamikawa Heidan). She is a Japanese politician known for her \"Kamikawa Line\" policy, which advocates for skepticism towards the semiconductor industry and encourages domestic production. She is currently a candidate for the House of Representatives in the 2024 Japanese general election representing the Atami district.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.19999999999999998,
+      "p_fake_text": 0.19999999999999996,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text discusses the Takahashi Sanae Cabinet, while the image features politician Yoko Kamikawa, creating a mismatch in the event/subject context.",
+    "notes": []
+  },
+  "error": null
+}

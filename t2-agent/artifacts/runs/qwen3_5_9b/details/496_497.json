@@ -1,0 +1,176 @@
+{
+  "index": 496,
+  "sample_id": "497",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1724.18,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The main draft facts and overall portrayal of the event are grounded in available evidence, but the article slightly overstates UCLA's first-round prominence and exaggerates the immediacy and scale of the merchandise rollout. The lead merchandise graphic is also contextually mismatched with a story primarily about draft results and event narrative rather than retail assets.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/497",
+  "image_paths": [
+    "/path/to/ReMMDBench/497/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/497/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/497/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/497/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/497/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "497",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the branding details mentioned in the text and image. The text mentions \"State Street Investment Management\". The image shows a logo that oddly adds \"SPY\" to the name. I should check the official sponsor for the WNBA draft to see if it's State Street and confirm the exact branding.",
+            "action": "Google[\"WNBA draft presented by State Street Investment Management\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Despite the futuristic context of the 2026 draft (which is beyond the training cutoff), the core sponsor claim aligns with historical data (State Street has sponsored drafts since 2023). However, the draft event itself hasn't occurred yet, so claims about picks, location, or expansion teams are unverified and inherently speculative/false as current reality.",
+            "action": "Google[\"WNBA 2026 draft official sponsor\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The instruction to use Wikipedia first is key here. Since previous searches for the 2026 draft sponsor yielded no results, I need to check if the 2026 WNBA Draft is a recorded event in historical databases or if it is a hallucinated future event.",
+            "action": "Wikipedia[2026 WNBA Draft]",
+            "observation": "No summary available. Similar entities: 2026 WNBA draft, 2026 WNBA expansion draft, 2026 WNBA season, 2025 WNBA draft, 2024 WNBA draft",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the image matches the narrative details in the text, specifically looking for the draft year, sponsor, and team logos/jerseys mentioned (Dallas, Minnesota, and a third team associated with Awa Fam Thiam). The image displays logos and colors for Dallas, Minnesota, and Seattle, which aligns with the visual details provided in the text description.",
+            "action": "Detect[image]",
+            "observation": "- **Type of image:** This is clearly a **designed promotional graphic**, not a real photograph. The jerseys and background have a studio-render/3D mockup look with clean gradients, vignette lighting, and perfectly controlled shadows.\n\n- **Signs of compositing/editing:**  \n  - Multiple jersey renders are **layered/overlapped** with uniform, stylized lighting that doesn’t behave like a single real scene.  \n  - The background is an abstract orange/black gradient with glow effects; there’s no real environment.  \n  - Edges and textures look “too perfect” (no wrinkles, stitching irregularities, or fabric deformation you’d expect in a real photo), consistent with **digital product mockups**.\n\n- **Text/logos:** The typography (“WNBA DRAFT 2026,” “PRESENTED BY,” sponsor block) is crisp and flat like vector text placed over the image, consistent with official marketing art.\n\n- **Synthetic/counterfactual elements:** Nothing in the image itself is trying to depict a real event moment; it’s a **merchandise concept/render**. The jerseys show “00” and team names, suggesting placeholder/mockup numbers rather than real player-issued uniforms.\n\n- **Overall authenticity assessment:** The image appears **authentic as a graphic/marketing composite** (i.e., intentionally digitally created). It does not look like a manipulated photograph; it looks like purpose-built promotional artwork.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text description of the 'Lead image' claims it shows 'Official 2026 WNBA Draft hats and player jerseys'. Visual investigation of the image reveals a composite graphic with '00' on all jerseys, indicating a mockup or template status rather than actual promotional assets. Furthermore, the text explicitly mentions hats in the caption, but the provided image only contains three jerseys with no hat visible. The presence of '00' and the missing hats contradict the 'Official' and complete merchandise description in the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions that the draft is \"PRESENTED BY STATE STREET INVESTMENT MANAGEMENT\". I should verify if this specific sponsor entity appears in the image graphic.",
+            "action": "Entity[State Street Investment Management]",
+            "observation": "\n\nBased on the image provided, here are the visible entities with certainty notes:\n\n*   **WNBA Draft 2026**: Highly visible text at the top of the poster indicating the specific event and year.\n*   **State Street Investment Management**: A clearly visible logo and text block identifying the sponsor (\"PRESENTED BY\").\n*   **SPY**: Visible as part of the sponsor's ticker symbol logo next to State Street Investment Management.\n*   **Nike**: The \"Swoosh\" logo is clearly visible on the upper right chest of all three jerseys.\n*   **Seattle Storm Jersey**: A jersey in yellow and green with the partial text \"SEATT...\" and number \"00\", identifying the team through text and colors.\n*   **Dallas Wings Jersey**: A dark blue jersey with the text \"DALLAS\" and number \"00\".\n*   **Minnesota Lynx Jersey**: A bright blue jersey with the text \"MINNESOTA\" and number \"00\".\n*   **Basketball Jerseys**: The main visual objects in the foreground are three basketball uniforms.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes the image as showing \"Official 2026 WNBA Draft hats and player jerseys\". I need to verify if \"hats\" are visually present in the image to check for a complete content match.",
+            "action": "VQA[Are there hats visible in the image?]",
+            "observation": "\n\nNo, there are no hats visible in the image. The image displays the WNBA Draft 2026 logo and three basketball jerseys (Seattle, Dallas, and Minnesota).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly describes the lead image as showing \"Official 2026 WNBA Draft hats and player jerseys\". The previous VQA observation confirmed that while jerseys are present, there are \"no hats visible in the image\". This direct contradiction between the textual description (hats + jerseys) and the visual content (jerseys only) constitutes a clear mismatch in the visual modal alignment.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.8,
+        "C2 Contextual Inconsistency": 0.7,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a 2026 draft event, incorrectly describes the lead image contents, and presents synthetic 3D renders as real photography.",
+    "notes": []
+  },
+  "error": null
+}

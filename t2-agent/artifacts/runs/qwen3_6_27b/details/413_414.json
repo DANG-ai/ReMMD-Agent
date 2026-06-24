@@ -1,0 +1,143 @@
+{
+  "index": 413,
+  "sample_id": "414",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2135.95,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本文本把社媒“预售22.99万、若便宜一万则21.99万”的推测与传言，改写成“发布会现场大屏已确定21.99万起”，并进一步强化为“21.99万起即全系/入门标配800V+激光雷达+Thor、全系902km”等确定结论；同时配套图片中的价格表、现场PPT与战报均为改图/伪造式编辑，制造了貌似来自发布会现场的“硬证据”，从而在核心价格与配置绑定关系上形成主导性误导，因此整体应判为 Mostly False（仍保留少量真实元素：社媒确有“21.99万”推测与“34分钟15000台锁单”等讨论文本存在）。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "汽车出行",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/414",
+  "image_paths": [
+    "/path/to/ReMMDBench/414/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/414/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/414/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/414/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/414/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/414/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/414/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/414/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/414/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/414/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "414",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.75,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.5,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "The text states the Max version price is 303,900 RMB (30.39万元), while the image clearly displays \"Max 28.99万元起\". This is a direct contradiction in the pricing details for the Max version. Additionally, the image footer indicates a date of \"2024.12.18\" and marks it as \"(示意)\" (schematic/illustration), whereas the text discusses a launch in \"mid-March\" (implied 2026 based on the \"April 2026 launch\" text in the image). The text presents a detailed price table that conflicts with the image's price list. Therefore, the image does not fully support the text's specific claims about the Max price and the exact nature of the \"live\" event data versus a schematic.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to check the launch timeline. The text refers to a \"mid-March\" launch event that has just concluded (\"发布会散场没多久\"), whereas the image has a specific date at the top. Comparing these will reveal a temporal mismatch.",
+            "action": "VQA[What is the expected launch date written at the top of the poster, above the text \"新一代\"?)]",
+            "observation": "\n\nBased on the text at the top of the poster above \"新一代\", the expected launch date is **April 2026** (written as \"预计2026年4月上市\").",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states the Max version price is 303,900 RMB (30.39万元). The image shows the Max version price as 28.99万元. This is a clear numerical mismatch. Additionally, the text mentions a launch event in \"mid-March\" that has just concluded, while the image states \"Expected April 2026 Launch\". These are conflicting timelines and prices.",
+            "action": "VQA[What is the starting price for the Max version shown in the price table on the poster?]",
+            "observation": "\n\nBased on the price table in the poster, the starting price for the Max version is **28.99万元起** (289,900 Yuan).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a launch event that \"just ended\" in mid-March and lists the Max version price as 303,900 RMB. The image displays \"Expected April 2026 launch\" and lists the Max version price as 28.99万元. These are significant contradictions regarding the timeline and pricing of the top trim. Therefore, the image does not accurately represent the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.5,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.2,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.5,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a \"Next Gen SU7\" launch event (claiming it happened in \"Mid-March\" with specific sales figures), while the accompanying images clearly state the launch is \"Expected April 2026\" and show different pricing for the Max version (28.99w vs text's 30.39w), creating a direct semantic and temporal inconsistency between the fabricated news report and the concept visuals.",
+    "notes": []
+  },
+  "error": null
+}

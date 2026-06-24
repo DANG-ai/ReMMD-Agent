@@ -1,0 +1,150 @@
+{
+  "index": 384,
+  "sample_id": "385",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1891.48,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Text baut auf einem realen Testspielsieg auf, überhöht dessen Bedeutung aber systematisch zu einem quasi turniernahen WM-Signal. Zugleich stützt ein bearbeitetes Bild diesen verschobenen Rahmen, sodass echte Spielereignisse mit irreführendem Wettbewerbs- und Zeitkontext vermischt werden.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/385",
+  "image_paths": [
+    "/path/to/ReMMDBench/385/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/385/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/385/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/385/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "385",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text claims Germany won 4:3 against Switzerland in Basel, winning the World Cup 2026 year opener. I need to verify if this match actually occurred and if the scoreline and result match reality. The hashtag #SUIGER is also unusual (\"Suisse\"?). I will search for the match result to confirm if this is a real news story.",
+            "action": "Google[query=\"Deutschland 4:3 Schweiz Basel Wirtz Treffer\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The first Google search returned no results for the specific match details (4:3, Wirtz, 85th minute). I will try to search specifically for the recent match result between Germany and Switzerland to verify if this scoreline exists in reality.",
+            "action": "Google[query=\"Germany vs Switzerland latest match result Basel\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text narrates a fictional 4-3 match result between Germany and Switzerland in Basel during the 2026 World Cup preparation. This event is false. The image displays a German team in the 2024/25 Away kit. The posed nature of the image (smiles, alignment) contradicts the \"open Schlagabtausch\" and \"wild finale\" described. The text is a \"fake news\" hallucination. The image does not support the fake event.",
+            "action": "Detect[image]",
+            "observation": "- **Obvious editing present:** All players’ faces are covered with uniform, rectangular blur blocks. The blur has sharp edges and identical style across subjects, consistent with deliberate redaction/obfuscation added after the photo was taken (not a natural camera artifact).\n- **Otherwise looks like a real sports photo:** Lighting, depth of field, crowd detail, kit textures/logos, shadows on the pitch, and perspective all appear consistent with an authentic stadium team lineup shot. No clear signs of AI-generation artifacts (warped geometry, inconsistent limbs, smeared text) beyond the intentional face blurring.\n- **No visible “counterfactual” compositing clues:** I don’t see mismatched cutout edges, inconsistent lighting between players, or obvious pasted-in elements. The only clear manipulation is the privacy blur.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a 4-3 win for Germany against Switzerland in Basel, citing a 4:3 scoreline and a goal by Dan Ndoye for Switzerland. This is a \"fake news\" scenario. While the image shows a real team lineup from a men's match (likely a past friendly or tournament) in the St. Jakob-Park (Basel), the claimed 4:3 scoreline and specific details (like the fictional Swiss scorer) are highly improbable and contradict factual match records. The text appears to be a hallucination of a match that sounds dramatic but did not happen this way. The image, while authentic, does not verify this false narrative.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "The image shows the German team posing for a team photo, likely in a stadium setting with UBS banners (Swiss sponsor), consistent with \"Basel\". The team composition and context (victory, Wirtz present) strongly align with the text describing the DFB win against Switzerland. With these verifications, the conclusion is a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.8,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a fabricated match result (Germany vs Switzerland 4-3 in 2026) with no search results, and the images are identified as edited with deliberate visual obfuscation/overlays.",
+    "notes": []
+  },
+  "error": null
+}

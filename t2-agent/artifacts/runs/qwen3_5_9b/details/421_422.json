@@ -1,0 +1,146 @@
+{
+  "index": 421,
+  "sample_id": "422",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1905.44,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article builds a real event and real social-media posts into a more dramatic injury narrative than the available source basis supports. It also relies on an edited fight image and mismatched supporting visuals to make readers infer confirmed medical consequences and post-fight treatment that are not established by the cited source material.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/422",
+  "image_paths": [
+    "/path/to/ReMMDBench/422/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/422/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/422/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/422/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "422",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.7,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.3,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The text claims that Marwan Rahiki and Hecher Sosa debuted at UFC Vegas 114, describing a 'jaw-breaking' finish against Harry Hardwick. These fighters and the specific event number do not appear to exist in current records or search results, suggesting a fabrication. However, to be absolutely certain and to verify if the image actually contains the fighters mentioned (which is unlikely given the generic nature of the photo), I should analyze the image to see if it contradicts the text (e.g., by showing different fighters or a different event context).",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unmanipulated action photo from a UFC bout, with one notable edit:\n\n- **Intentional censoring/overlay:** Both fighters’ faces (and a few small areas near the center/bottom) are covered by square, semi-opaque blocks. The block edges are clean and uniform, consistent with **post-processing redaction** rather than camera artifacts.\n- **No clear AI/synthetic tells:** Lighting is consistent across skin, gloves, and cage; motion/impact blur looks natural; glove logos, shorts textures, cage mesh, and sponsor text appear coherent without the warped lettering or inconsistent geometry often seen in AI-generated images.\n- **No obvious compositing:** No mismatched shadows, cutout halos, or repeated patterns suggesting the fighters were pasted in.\n\nOverall: **real photo with added censorship blocks**, but otherwise visually consistent with a genuine ringside sports photograph.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image analysis confirms the visual authenticity of the underlying photo (no AI artifacts, realistic lighting), depicting a legitimate UFC bout. The text's description of the scene—a violent \"jaw-breaking\" finish with visible blood in the air—aligns perfectly with the visual evidence of a fight in progress (blurred motion, impact capture). While the specific names in the text may be obscure or redacted for privacy in the image itself, the *narrative context* of a violent debut at a UFC event is visually supported by the photo. The \"redaction\" might be an edit to the image file itself, but the *event type* and *intensity* match the text's description. If we treat the text as a description of a real but lesser-known fight hidden by the redaction, the image acts as a supporting piece of evidence for the \"UFC Fight\" premise.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to extract the names of the fighters visible in the image to see if they correspond to the specific fighters mentioned in the text, Marwan Rahiki and Hecher Sosa. If the names don't match, it indicates a mismatch in the specific event described versus the image.",
+            "action": "Entity[image]",
+            "observation": "- **UFC (Ultimate Fighting Championship) logo/text** on gloves and shorts — **High certainty**.  \n- **“Aviator”** vertical sponsor text on the cage post — **High certainty**.  \n- **Maya Gebala** text on the top cage padding — **High certainty** (as printed; entity may be a sponsor/person name).  \n- **“PREPARED FOR ANY FIGHT.”** slogan on top padding — **High certainty** (tagline; organization not explicitly named there).  \n- **U.S. Air Force symbol/branding** (winged emblem on the top padding, typical UFC Octagon sponsor) — **Medium certainty**.  \n- **Octagon MMA cage** (chain-link fence and padded posts) — **High certainty**.  \n- **Two male MMA fighters** (faces blurred; not identifiable) — **High certainty**.  \n- **No clearly identifiable landmark/location** beyond an indoor arena setting — **High certainty**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To ensure a cross-modal match, I must verify if the fighters depicted are actually 'Marwan Rahiki' and 'Harry Hardwick' as described in the text, since their faces are not clearly identifiable.",
+            "action": "VQA[Are the names 'Marwan Rahiki' or 'Harry Hardwick' visible on the fighters' shorts or gloves?]",
+            "observation": "\n\nNo, neither the name 'Marwan Rahiki' nor 'Harry Hardwick' is visible on the fighters' shorts or gloves.\n\nThe only fighter name visible in the image is printed on the cage post padding at the top left: **\"MAYA GEBALA\"**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text discusses Marwan Rahiki and Hecher Sosa, but the image displays \"MAYA GEBALA\" on the cage padding, indicating a different fight context. Since the specific fighters and text subjects do not align, the most logical next step is to finalize the mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.7,
+        "T3 Misleading Context": 0.5,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.2,
+        "C2 Contextual Inconsistency": 0.95,
+        "C3 Pragmatic Inconsistency": 0.3
+      }
+    },
+    "taxonomy_rationale": "The text fabricates fighters and an event (UFC Vegas 114/Rahiki) that mismatches the visual context (Maya Gebala in Image 1, UFC 325 spreadsheet in Image 4), and the images contain intentional censorship blocks (V2).",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,119 @@
+{
+  "index": 429,
+  "sample_id": "430",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1332.71,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The sample mixes a plausible labor-market narrative with misleading official framing: it presents the numbers as if they came from a government monthly jobs release without reliable source grounding. That false official context is reinforced by a fabricated BLS-style cover graphic and supporting imagery that suggest authentic federal publication.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Finance, Business & Consumer Affairs",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/430",
+  "image_paths": [
+    "/path/to/ReMMDBench/430/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/430/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "430",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.6,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify the text description against the provided image. The text states that the U.S. economy lost 92,000 jobs and the unemployment rate was 4.4%. I need to check the image for these specific numbers and the month/year. The image is a BLS News Release for \"February 2025\" which lists \"-92,000 jobs in February\" and an unemployment rate of \"4.4%\". The data points in the news text match the visual evidence in the image perfectly. The text is essentially a report summarizing the image. The release date in the image (March 7) is a Friday, while the text says \"released Thursday\" March 6, which is a minor discrepancy, but the core data holds true. The image supports the claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.2,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "The text cites a release date of March 6, while the document in the image is dated March 7, creating a contextual time mismatch.",
+    "notes": []
+  },
+  "error": null
+}

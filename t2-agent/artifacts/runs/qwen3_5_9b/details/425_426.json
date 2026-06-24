@@ -1,0 +1,165 @@
+{
+  "index": 425,
+  "sample_id": "426",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1740.96,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Le texte repose sur un noyau factuel plausible — la démission d’Estelle Youssouffa et l’existence de critiques visant la commission — mais il recompose de façon trompeuse la chronologie en donnant l’impression d’une séquence politique unique et immédiatement causale avec les auditions citées. Les visuels renforcent cette lecture par un montage édité et un assemblage d’images de moments distincts, ce qui amplifie artificiellement l’idée d’implosion institutionnelle.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/426",
+  "image_paths": [
+    "/path/to/ReMMDBench/426/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/426/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/426/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "426",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 7,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Wikipedia often lags behind breaking news regarding resignations and specific committee disputes. The text claims a very recent resignation citing specific hearings with Nagui and Delphine Ernotte, and mentions the source as LCP (La Chaîne Parlementaire). I should use Google to find the specific news articles to confirm the \"démission\" and the reasons cited (spectacle hearings, etc.) within the correct timeframe.",
+            "action": "Google[Estelle Youssouffa démission commission audiovisuel LCP]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the previous search for the resignation yielded no results, I should broaden the search to verify the events described (the hearings with Nagui and Ernotte) and the existence of the committee mentioned. This will help confirm context; if the hearings described are real recent news, the text's core facts are likely to be found even if the resignation headline is new.",
+            "action": "Google[commission d'enquête audiovisuel Ernotte Nagui]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To verify the background context of the text regarding the hearings, I should search for the testimony of Delphine Ernotte, as she is a high-profile figure (president of France Télévisions). If she testified before the National Assembly during the 'audiovisual commission' era, it supports the text's premise (Google[Delphine Ernotte audition Assemblée nationale]).",
+            "action": "Google[Delphine Ernotte audition Assemblée nationale]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The news text identifies the speaker as Estelle Youssouffa, a deputy from Mayotte, in the context of the National Assembly (\"LCP ASSEMBLÉE NATIONALE\" watermark is visible). I need to verify if the person and setting in the image match the description. The woman's attire, specifically the traditional red shawl with yellow flowers, is typical of Mayotte culture, which supports the text's claim of her origin.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like a real broadcast frame:** The “LCP Assemblée nationale” watermark, the chamber benches, lighting, depth of field, and the microphone/podium geometry all look consistent with an authentic TV capture from the French National Assembly.\n- **No obvious AI/synthetic artifacts:** Fabrics (patterns on the dress and red/yellow cloth), hairlines, hands, and edges show natural detail; no telltale warping, mismatched lighting, or “melted” textures.\n- **Edits present (intentional anonymization):** Both faces are covered by uniform square blur/blocks. The blocks have clean rectangular edges and consistent opacity—typical of deliberate post-processing for privacy, not a generative artifact.\n- **No clear compositing signs:** I don’t see inconsistent shadows, duplicated elements, or unnatural boundaries around the person, microphone, or background.\n\nOverall: the underlying scene appears authentic, with the main manipulation being the added face blurring/obscuring.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Observation confirms the image contains the \"LCP Assemblée nationale\" watermark and is set in the French National Assembly, matching the text's location. The subject is wearing a red shawl with yellow floral patterns, which are traditional motifs from Mayotte, consistent with Estelle Youssouffa's identity as a deputy from Mayotte mentioned in the text. While the faces are blurred, the location, context, and cultural attire strongly corroborate the news story.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions a specific person, Estelle Youssouffa. While I might not be able to identify her by face alone, I can look for visual cues like the logo or specific clothing. The image shows a woman speaking at a podium in a formal setting matching the parliamentary context. I will try to get entities from the image to see if I can read the number '470' or identify the logo text more formally.",
+            "action": "Entity[image]",
+            "observation": "- **“LCP – Assemblée nationale” watermark/logo (France)** — High certainty (clearly readable at top-left).\n- **French National Assembly chamber setting (benches/seating, wood trim, marble wall)** — Medium-high certainty (looks like a parliamentary hemicycle interior; aligns with LCP watermark).\n- **Lectern/gooseneck microphone** — High certainty (prominent in foreground).\n- **Seat/row number “470”** — High certainty (visible on the bench).\n- **Two unidentified people (faces obscured)** — High certainty (two individuals visible, but identity not determinable from the image).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes an event at the 'Assemblée nationale' involving Estelle Youssouffa. The image clearly shows the 'LCP – Assemblée nationale' watermark, identical wooden benches, and red seating, confirming the location matches. The speaker's attire (colorful traditional scarf, distinctive clothing) aligns with the public persona of deputies discussing specific controversies. The setting and organization match perfectly, suggesting a MATCH regardless of facial identity verification.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image contains intentional blurring edits on faces (V2), and the visual context indicates a 2026 date which contradicts the implied present-tense news context of the text, leading to a contextual mismatch (C2).",
+    "notes": []
+  },
+  "error": null
+}

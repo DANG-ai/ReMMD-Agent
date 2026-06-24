@@ -1,0 +1,155 @@
+{
+  "index": 381,
+  "sample_id": "382",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1758.86,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "该样本对“事故发生在瓦莱罗波特阿瑟炼油设施、曾发布并随后解除就地避难、空气监测后确认无公众威胁、企业对外口径为无人受伤且人员已清点”的核心叙述，与美联社（AP）3月24日关于波特阿瑟瓦莱罗炼油设施爆炸起火事件的报道要点一致，且文中对未披露细节（精确时间点、监测点位与浓度明细、受损装置名称、是否停产与停产范围、联邦机构是否介入等）均以“公开信息尚未明确/需等待后续通报”为边界进行限定，没有将不确定信息当作既定事实陈述。配图中，现场浓烟与警戒/道路场景用于呈现事故处置与周边管制的直观背景，空气监测设备图用于对应“开展空气监测”的常见做法，位置示意图在图片来源类型中已标明为生成内容且作为示意用途；在不将示意图当作可核验的官方地图结论、并以正文所述“以实际机构为准/等待后续披露”为约束的情况下，图文整体未构成对核心事实的反向引导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际突发",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/382",
+  "image_paths": [
+    "/path/to/ReMMDBench/382/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/382/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/382/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/382/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/382/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/382/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/382/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/382/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/382/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/382/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "382",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific recent event: a Valero Port Arthur refinery explosion/fire in late March 2025. I need to verify if this event occurred, the date (March 23/24), and the specific details like \"shelter in place\" and the spokesperson's name. I will search for news reports regarding this event.",
+            "action": "Google[Valero Port Arthur explosion March 2025]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a large industrial facility with significant black smoke and flames, which aligns with the text's description of an explosion and fire at a refinery. I need to use the Detect tool to analyze the visual details, such as the industrial structures, the nature of the smoke, and the foreground traffic, to confirm if the scene matches the report of the Valero refinery incident.",
+            "action": "Detect[image]",
+            "observation": "- **整体观感**：画面像是手机在路口/公路旁拍到的工业区事故现场（远处装置、烟柱与火光），透视、景深与运动模糊都符合实拍快照的特征。  \n- **烟与火的物理一致性**：黑烟从装置区向上翻卷并随风横向扩散，火焰亮度与烟的遮挡关系自然；烟的边缘与背景天空过渡没有明显“抠图”硬边。  \n- **光照与阴影**：车辆、路面、栏杆与远处烟柱的明暗方向一致，没有出现局部物体光源方向不一致的拼接痕迹。  \n- **几何与结构**：交通灯、线缆、立杆、护栏的直线结构没有明显扭曲或“融化”式变形（常见于生成图），比例也合理。  \n- **可疑点/局限**：图片分辨率偏低、压缩较重，细节处（烟柱边缘、装置细部）难以做更高置信度的像素级鉴定；但在可见范围内**未发现明显的复制粘贴、拼接边界、异常重影或生成式伪影**。\n\n结论：就图像本身看，更像真实拍摄的事故现场照片；没有明确的数字合成或AI生成迹象。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image analysis from the previous step indicates that the scene is a genuine photo of a large industrial facility with significant black smoke and flames, consistent with a major fire or explosion. The visual elements—industrial infrastructure, smoke plume, fire, and emergency vehicles (police SUVs) in the foreground—align well with the news text's description of an explosion and fire at the Port Arthur Valero refinery involving emergency response. There are no visual contradictions found. Therefore, the image supports the news report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text describes an explosion and fire at a refinery. I need to confirm the visual presence of a large fire and smoke plume rising from an industrial facility in the image to verify the match.",
+            "action": "VQA[Is there a large fire and thick black smoke rising from the industrial facility in the background?]",
+            "observation": "\n\nYes, there is a large fire with visible orange flames and a massive plume of thick black smoke rising from the industrial facility in the background.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes an explosion and fire at a refinery with emergency response teams involved. While I've confirmed the fire and smoke, identifying the specific type of vehicle (police/emergency) would strengthen the link to the mentioned \"Port Arthur Fire Department\" and emergency response efforts described in the text.",
+            "action": "VQA[Is there a police or emergency vehicle visible on the road in the foreground?]",
+            "observation": "\n\nYes, there is a white SUV with blue markings on its side, which appears to be a police or security vehicle, visible driving in the right lane of the road.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a large industrial complex with a massive fire and thick black smoke, which aligns perfectly with the text's description of a refinery explosion and fire. Additionally, the presence of a police/emergency vehicle on the road and the green traffic light (indicating moving traffic) are consistent with the text's details about emergency response and the lifting of the \"shelter-in-place\" order. The visual evidence strongly supports the news report.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.5848035476425731,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a specific refinery fire in Texas, but the provided images include irrelevant content from a completely different context (Ukraine war damage, Russian missile defense news), indicating a mismatched source context (C2). Additionally, some images are composites or contain overlays (e.g., the map graphic, the \"FAILSAFE\" text), indicating visual editing (V2).",
+    "notes": []
+  },
+  "error": null
+}

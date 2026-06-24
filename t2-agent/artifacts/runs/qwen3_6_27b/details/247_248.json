@@ -1,0 +1,156 @@
+{
+  "index": 247,
+  "sample_id": "248",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1815.52,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本把“网友对外观相似的讨论/质疑”扩写为更确定的“仿冒链条、系统性欺诈并已被监管处置”的叙事，但关键证据主要来自被编辑或生成的图片与不具可核查细节的转述，导致读者获得的主要印象（已坐实、已查封/暂停营业、存在欺诈）缺乏可靠支撑且存在图文错配。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会热点",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/248",
+  "image_paths": [
+    "/path/to/ReMMDBench/248/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/248/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/248/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/248/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "248",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a controversy regarding a gas station named \"Zhongyuan Petrochemical\" (中园石化) in Xuwen, Zhanjiang, Guangdong, allegedly copying Sinopec's branding. The text mentions a specific Weibo post ID (5280003197505114) and the date March 24. The provided image shows a gas station with \"ZY OPEC\" and what appears to be \"中国石化\" (Sinopec) or similar text on the canopy. I need to verify if this event actually happened, if the station is indeed \"Zhongyuan Petrochemical\", and if the image corresponds to it. The discrepancy in the name (Zhongyuan vs Sinopec on the sign) needs clarification. I will search for the specific topic and location.",
+            "action": "Google[\"中园石化 碰瓷 中国石化 湛江徐闻\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text provides a specific Weibo post ID (5280003197505114) related to the topic. Searching for this ID directly is the most reliable way to verify the existence of the discussion and the images associated with it. If the post exists, I can check its content and date to confirm the news report.",
+            "action": "Google[\"5280003197505114\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes the controversial gas station as having a storefront with a \"large area of green as the main color\" (\"门头以大面积绿色为主色\") and the sign displaying the four characters \"中园石化\" (\"门头“中园石化”四字为加粗字体\"). However, the provided images clearly show a gas station with a red canopy (characteristic of Sinopec) and the text on the canopy reads \"中国石化 ZY OPEC\" (or similar, with \"ZY\" likely standing for Zhong Yuan), not \"中园石化\". The color in the images is predominantly red and white, not green. Furthermore, the sign visible in the images says \"中国石化\" (China Petrochemical), contradicting the text's claim that it says \"中园石化\". Thus, the visual evidence in the images refutes the specific descriptions of the station's appearance and signage provided in the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to confirm the specific text visible on the canopy and signs to see if it matches the \"中园石化\" (Zhongyuan Sinopec) mentioned in the text. The text mentions the copycat station is named \"中园石化\". The images show \"ZYOPEC\" and Chinese characters. Extracting this text will confirm if it's the same entity (Zhongyuan Petroleum) but with a different color scheme than described, furthering the mismatch conclusion.",
+            "action": "Entity[image]",
+            "observation": "- **“中国石化 / Sinopec” branding** (on gas station canopy in multiple thumbnails) — **High certainty** (clear Chinese characters “中国石化”).\n- **“ZYOPEC” text/logo** (Latin letters on the canopy fascia) — **High certainty** (readable “ZYOPEC”).\n- **Fuel price/grade pylon sign** (right-side thumbnail; shows grades like 95/92 etc.) — **Medium–High certainty** (structure and numbers visible; exact brand on top less clear).\n- **Amap / 高德地图 (Gaode Map) merchant label** (“高德地图商家”, “高德合作网友” overlays) — **High certainty** (text clearly visible; indicates the platform/source).\n- **iPhone/iOS status bar & UI elements** (time, battery “100”, signal icons; album screen “相册”) — **High certainty** (distinct iOS interface).\n- **Vehicles** (a white sedan and other cars near pumps) — **Medium certainty** (visible but small in thumbnails).\n- **Gas station infrastructure** (canopy, pumps, columns, forecourt) — **High certainty**.\n- **Decorative pennant flags/bunting** (over the station in some thumbnails) — **Medium–High certainty**.\n- **Hearts/favorite icons & photo grid UI** (social/gallery overlay icons) — **High certainty**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text discusses a station named \"Zhongyuan Sinopec\" (中园石化) that is accused of copycatting. It mentions the station is in Xuwen. The images show a station with \"ZYOPEC\" branding. \"ZY\" likely stands for \"Zhong Yuan\". However, the text describes the controversial station's color scheme as \"Green\" (大面积绿色为主色). The images clearly show a Red canopy, which is the standard Sinopec color. This discrepancy in color and branding details (Text says \"Zhongyuan\" is Green, Image shows \"ZYOPEC\" is Red) indicates a mismatch. The images might be of the real Sinopec or a different station, not the specific \"Green Zhongyuan\" station described.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.26207413942088964,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.1,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.2,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text claims the station has a green canopy and was sealed on March 24, but the images show a red canopy (mimicking Sinopec) and the station operating, creating a semantic conflict and indicating fabricated text details.",
+    "notes": []
+  },
+  "error": null
+}

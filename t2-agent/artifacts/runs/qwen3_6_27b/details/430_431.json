@@ -1,0 +1,131 @@
+{
+  "index": 430,
+  "sample_id": "431",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2281.43,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本混合了“社交媒体存在相关讨论、油价调价窗口等”这些可成立的背景信息，但把“风险情景/舆论说法”强化为“海峡已完全关闭、油轮全面停运”的既成事实，并用被编辑或来源不符的图片来佐证“封航现场”，造成关键语境与图文证据错配。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突与外交",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/431",
+  "image_paths": [
+    "/path/to/ReMMDBench/431/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/431/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/431/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "431",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text includes a detailed \"Image Description\" (配图说明) claiming the image is a \"combination of ship track screenshots and sea vessel photos\" with a \"CLOSED\" sign and a specific caption \"Due to blockade, oil tankers can only stop and wait\". The provided image is a vertical article screenshot with a photo of a port and a different caption about a family in Fujairah. I need to verify these specific visual discrepancies.",
+            "action": "VQA[Does the image contain a \"CLOSED\" sign or ship track screenshots, and what is the exact text of the caption below the photo at the bottom?]",
+            "observation": "\n\nNo, the image does not contain a \"CLOSED\" sign or ship track screenshots.\n\nThe exact text of the caption below the photo at the bottom is:\n**当地时间2026年2月25日，阿联酋，一家人坐在霍尔木兹海峡沿岸城市富查伊拉的码头附近。图/视觉中国**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA action confirmed that the specific visual elements described in the text's \"Image Description\" (ship track screenshots, \"CLOSED\" sign) are absent from the image. Furthermore, the caption provided in the text (\"Due to blockade, oil tankers can only stop and wait\") differs significantly from the actual caption in the image (\"February 25, 2026... a family sits near the port of Fujairah...\"). The text describes a composite image, whereas the provided image is a standard news screenshot with a stock photo. These are fundamental discrepancies between the text's description and the visual evidence.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The article fabricates a future event (dated 2026), uses visually edited images with added \"blockade\" graphics, and presents contextually mismatched visuals (a flight map of Europe for a Middle East story, and a photo dated Feb 25 for a March 3 report).",
+    "notes": []
+  },
+  "error": null
+}

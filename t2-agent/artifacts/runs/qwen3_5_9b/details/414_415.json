@@ -1,0 +1,183 @@
+{
+  "index": 414,
+  "sample_id": "415",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1752.01,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本把可核验的信息（财联社提到的伊朗对以色列导弹袭击、以及伊朗革命卫队称对科威特美军基地的无人机行动）与未经证实的“伊朗油气核心设施遭精准打击并全国停摆/出口暂停”强绑定，并用模糊来源与夸张后果构建“链式承压”的确定性叙事；同时关键配图存在明显的后期字幕重制/水印叠加与“时间地点指向”问题，导致读者被引向与图片真实语义、真实语境不一致的结论，因此整体为 Mostly False。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突与地缘政治",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/415",
+  "image_paths": [
+    "/path/to/ReMMDBench/415/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/415/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/415/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/415/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/415/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/415/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/415/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/415/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/415/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/415/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "415",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.45,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Since Wikipedia may lack specific real-time news or detailed text verification, I will use Google search to look for the exact headlines and specific dates (especially the future date 2026 seen in the image) mentioned in the text to determine if this is a fabricated or current news story.",
+            "action": "Google[伊朗炼厂火灾 2026/03/21]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify if the news story described in the text regarding Iran's oil and gas facilities on March 2-3 and the image dated March 21 are real. The image's date (2026/03/21) seems to conflict with the \"breaking news\" (突发) tone of a March 2-3 event if today is March 21. I will search for the specific claims and the date in the image.",
+            "action": "Google[伊朗炼厂火灾 2026/03/21]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.75,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image contains a text overlay with a specific date (\"2026/03/21\"). I need to verify if this date aligns with the news text which discusses events on \"March 2nd\" and \"March 3rd\". A discrepancy between March 2-3 and March 21 suggests the image might not correspond to the specific timeline of the reported event.",
+            "action": "Detect[image]",
+            "observation": "从图像本身看，这是一张“工业罐区夜间大火/爆炸”的新闻风格画面，但存在一些**后期处理与真实性无法坐实**的信号：\n\n## 可能的编辑/非原始信号\n- **明显叠加字幕**：左下角有“IRAN | 2026/03/21 | 现场画面 / 疑似炼厂罐区起火”的文字，属于后加信息层，且会改变“原图证据链”（并非相机原生记录的一部分）。\n- **强烈的对比度/锐化与颗粒感**：画面整体偏“高对比+重颗粒”，火焰边缘、烟雾层次被强化，像是新闻传播中常见的调色/降噪/锐化后的效果；这不等于造假，但意味着图像可能经过加工。\n- **日期与叙事不自洽风险（仅就画面呈现）**：字幕标注到“2026/03/21”，而这类灾难现场图经常被二次挪用改时间地点；单靠图像无法验证该日期是否真实对应。\n\n## 未见到的明显“合成/AI”破绽\n- **透视与结构关系基本合理**：储罐、管廊、塔器的尺度与透视一致，没有明显“拼贴错位”或不可能结构。\n- **光照逻辑大体成立**：火光对周边设施产生强烈暖色照明，远处环境仍保持夜景暗部；烟柱受火源影响向上翻卷，整体物理观感说得通。\n- **消防车辆与人员细节正常**：车辆灯光、反光、道路与管线遮挡关系较自然，未见典型生成图的“糊字/重复结构/不合理肢体”等硬伤（人物很小，仍难作严格判断）。\n\n## 结论\n这张图更像是**真实照片经明显新闻化后期处理并加字幕**的传播图；**没有强烈证据表明是AI生成或明显拼接合成**，但由于存在字幕标注与重度调色颗粒，且缺乏可核验地标/元数据，**无法仅凭图像确认其所宣称的时间地点与事件对应关系**。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "1. The image contains \"2026/03/21\" in the caption, which is chronologically inconsistent with the news report's timeline of \"3月2日\" (March 2nd).\n    2. The text describes a specific breaking news event (Iran facility attack on March 2-3), but the image claims to be from March 21st, potentially making it an unrelated event or a fabricated future scenario.\n    3. Visual evidence (the caption date) contradicts the textual evidence (event date), leading to the conclusion that the image does not support the veracity of the news text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims that 'Figure 1' displays a watermark reading 'Abadan Refinery 03-03 01:12' and attributes it to 'Iran National Oil Company/NIOC'. I need to verify the actual text visible in the bottom-left corner of the provided image to check for signature or date discrepancies.",
+            "action": "Tool[VQA] What is the exact text displayed in the bottom-left watermark of the image, including the date and location name?",
+            "observation": "Could not parse action: Tool[VQA] What is the exact text displayed in the bottom-left watermark of the image, including the date and location name?",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The date in the image (2026/03/21) conflicts significantly with the news text's timeline (March 2-3) and specific watermark claims (03-03). This dates the image to a different period than the described event. Thus, I should initiate a finish action with MISMATCH conclusion.",
+            "action": "Tool[VQA] Finish[MISMATCH]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous action failed due to using an invalid 'Tool[' prefix which is not available in this environment. I must retry the visual verification of the watermark text using the correct 'VQA' tag to confirm the discrepancy between the image's date (2026/03/21) and the news text's date (03-03).",
+            "action": "VQA[What is the exact text displayed in the white watermark at the bottom-left of the image, specifically checking for the date?]",
+            "observation": "\n\nThe white watermark text at the bottom-left reads:\n\n**IRAN | 2026/03/21 | 现场画面**\n**疑似炼厂罐区起火**\n\nThe specific date displayed is **2026/03/21**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The extracted watermark text 'IRAN | 2026/03/21' directly contradicts the news text's specific claims of date 'March 2-3' and 'Abadan Refinery 03-03 01:12'. The image date (2026) timestamps the image to a future or incorrect time relative to the news event (2024/implicit current), confirming a MISMATCH without further verification.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.26207413942088964,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "Text describes unverified attacks and image contains a future date that contradicts the text.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,147 @@
+{
+  "index": 349,
+  "sample_id": "350",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2477.1,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article is built on real launch facts, but it overstates the price as evidence of weakness and links it too strongly to earlier recall scrutiny without proof. Its edited visuals further push readers toward a crisis-and-price-reset interpretation that the source material does not establish.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/350",
+  "image_paths": [
+    "/path/to/ReMMDBench/350/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/350/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/350/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/350/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/350/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/350/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/350/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/350/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/350/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/350/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "350",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text claims that Xiaomi unveiled the new-generation SU7 with a standard version priced at 219,900 yuan. I need to verify this against the image content.",
+            "action": "Detect[image]",
+            "observation": "The image looks like a **digitally designed promotional graphic**, not an untouched photo.\n\nSigns of editing / compositing:\n- **Highly uniform sky gradient** and clean, minimal background with no environmental detail; looks like a studio/CG backdrop.\n- The car sits on a **very smooth, textureless “ground” plane** with a soft shadow that reads like a render/composite rather than a real surface.\n- **Typography and layout** (“THE ALL-NEW xiaomi SU7”, price box, slogan) are perfectly crisp and aligned like a marketing poster; not something captured in-camera.\n- The **Xiaomi logo badge** in the corner is a flat overlay consistent with branded creatives.\n\nSynthetic/CG indicators:\n- The vehicle lighting and reflections appear **controlled and polished** (catalog-like), consistent with either a studio product photo heavily retouched or a 3D render; no obvious rendering artifacts, but it’s clearly been processed for advertising.\n\nAuthenticity notes:\n- No obvious “AI-generation” tells (warped text, impossible geometry, melting edges). It plausibly comes from an official or semi-official marketing/press asset, but **it is not a candid launch-stage photo**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states that Xiaomi set the standard version of the new SU7 at 219,900 yuan. The image clearly displays a promotional graphic for \"THE ALL-NEW xiaomi SU7\" with a price tag of \"Starting at RMB 219,900\". This visual evidence directly confirms the price point mentioned in the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to extract the text from the image to verify the car model and the price mentioned in the news text.",
+            "action": "Entity[image]",
+            "observation": "- **Xiaomi (Mi) logo** (orange “mi” in top-right) — **High certainty**\n- **“Xiaomi SU7”** (product name in large text) — **High certainty**\n- **Xiaomi SU7 car** (blue sedan pictured; also “xiaomi su7” on front plate) — **High certainty**\n- **Pricing/currency text: “Starting at RMB 219,900”** — **High certainty**\n- **Marketing tagline: “Xiaomi resets its EV pricing battle.”** — **High certainty**\n- **Sky/cloud background** (generic, no specific landmark) — **High certainty**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image explicitly displays \"THE ALL-NEW XIAOMI SU7\" and \"Starting at RMB 219,900\", which directly corresponds to the news text stating Xiaomi unveiled the new-generation SU7 at 219,900 yuan. The tagline \"Xiaomi resets its EV pricing battle\" also aligns with the article's discussion. I have sufficient evidence to confirm the match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.51,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.51,
+        "V2 Visual Editing": 0.51,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future product launch and recall scenario (T1), while the accompanying images include synthetic marketing renders (V1) and edited composites/screenshots (V2).",
+    "notes": []
+  },
+  "error": null
+}

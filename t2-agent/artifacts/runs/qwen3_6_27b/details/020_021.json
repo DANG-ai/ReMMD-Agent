@@ -1,0 +1,162 @@
+{
+  "index": 20,
+  "sample_id": "021",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1847.92,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "样本文本把“龙虎榜25只个股中17只机构净卖出”的局部统计，推导并夸大为“机构与北向资金主导砸盘、全市场踩踏且下跌大概率延续”，证据链不足且存在明显的图像编辑与图文语义不一致，整体给受众的主要结论偏向误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "金融市场",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/021",
+  "image_paths": [
+    "/path/to/ReMMDBench/021/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/021/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "021",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a stock chart for the Shenzhen Component Index (399001) with specific opening (14021.46) and closing (13866.20) prices. To verify the text's claim of the date \"2026年3月20日\", I need to find the actual date when these specific index values occurred. This will likely reveal the true date of the image (which appears to be historical, likely 2021), contradicting the future date in the text.",
+            "action": "Google[search query: \"深证成指 14021.46 开盘 13866.20 收盘\"]",
+            "observation": "深证成指(399001) - 历史行情- 股票行情中心- 搜狐证券: 开盘, 收盘, 涨跌额, 涨跌幅, 最低, 最高, 成交量(手), 成交金额(万), 换手率. 累计：, 2025 ... 14021.46, 13866.20, -35.37, -0.25%, 13856.49, 14144.99, 734132032 ... (https://q.stock.sohu.com/zs/399001/lshq.shtml)\n2026年3月20日A股市场深度复盘报告：4000点失守与千元股诞生的 ...: 深证成指当日开盘报14021.46点，收盘报13866.20点，下跌35.37点，跌幅仅为0.25%，远低于上证指数的1.24%跌幅106142。这种相对抗跌的表现主要得益于深证成指成分股中新能源、 ... (https://unifuncs.com/s/ApQEEjcE)\n深证成指:15757.36 -0.89% -141.94 399001 搜狐证券 - 搜狐股票: 深证成指(399001)的实时行情，及时准确的提供深证成指(399001)的flash分时走势、K线图、均价线系统、MACD、KDJ、交易量等全面技术分析，帮你做出及时判断，同时提供深证成 ... (https://q.stock.sohu.com/zs/399001/index.shtml)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions specific stocks \"美利云\" (Meili Cloud) and \"锦浪科技\" (Ginlong) having institutional net buying. Verifying if these stocks appeared on the Dragon Tiger List (龙虎榜) with institutional buying on the date matching the index values will confirm the real date of the event described.",
+            "action": "Google[美利云 锦浪科技 龙虎榜 机构 净买入]",
+            "observation": "锦浪科技 - 龙虎榜- 东方财富: 深股通专用. 987次43.16%. 21155.39. 69828.23. 48672.84 ; 机构专用. 1906次39.93%. 3836.74. 12819.30. 8982.56 ; 机构专用. 1906次39.93%. 4765.44. 13104.67. 8339.23. (https://emdata.eastmoney.com/lhb/stockdetail.html?fc=300763.SZ&fn=%E9%94%A6%E6%B5%AA%E7%A7%91%E6%8A%80)\n锦浪科技:93.76 0.41% +0.38 300763 搜狐证券 - 搜狐股票: 个股概况 ; 每股收益, 0.15, -69.39 ; 每股净资产, 22.89, 7.39 ; 主营收入, 14.19亿, -6.51 ; 净利润, 6116.44万, -68.59 ; 销售毛利率, 0.00, - ... (https://q.stock.sohu.com/cn/300763/index.shtml?spm=stockpc.cn_300763.loginpop.6.1777593600069Op7YsjU)\n3月20日龙虎榜解析：源杰科技当日净买入额最多 - 新浪财经: 龙虎榜中涉及机构专用席位的个股中，当日净买入额前三为美利云（000815）、锦浪科技、永臻股份（603381），分别为1.72亿元、5449.85万元、3316.19万元。 (https://finance.sina.com.cn/roll/2026-03-20/doc-inhrrrex6803401.shtml)\n锦浪科技- 龙虎榜 - 数据中心- 同花顺: 锦浪科技历史上榜数据 ; 2025-09-05, 有价格涨跌幅限制的日收盘价格涨幅达到15%的证券, 89.2400 ; 2025-09-05, 连续3个交易日内收盘价格涨幅较基准指数偏离值累计达到30%的 ... (https://data.10jqka.com.cn/market/lhbgg/code/300763/)\n锦浪科技龙虎榜数据（4月27日） - 搜狐: 锦浪科技今日下跌17.64%，全天换手率12.59%，成交额34.87亿元，振幅7.93%。龙虎榜数据显示，机构净买入4686.63万元，深股通净买入6088.39万元，营业部席位 ... (https://www.sohu.com/a/1015292144_115433)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search results for the specific index values (Open 14021.46, Close 13866.20) and the specific stocks (Meili Cloud, Jinlang Technology) on the Dragon Tiger List point consistently to the date \"2026年3月20日\" (March 20, 2026). The text accurately reports the index values, the \"tail dive\" (尾盘跳水) seen in the image, and the specific stocks involved in institutional buying on that date. The discrepancy in the previous thought about \"2021\" is contradicted by the search results which explicitly link these data points to 2026. Therefore, the text is supported by the evidence.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.7,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a stock market chart for the \"Shenzhen Component Index\" (深证成指) with a large red text overlay \"尾盘跳水\" (Late trading dive). The chart shows a downward trend, and the timestamps at the bottom right are \"14:56\", indicating the very end of the trading day. This visual evidence directly supports the news text's claim about a late trading dive on March 20, 2026, where indices like the Shenzhen Component Index fell.",
+            "action": "Detect[image]",
+            "observation": "- 这张图明显是**二次编辑的宣传/解读配图**，不是原始行情软件的纯截图：左侧K线区被叠加了非常醒目的大字标题“尾盘跳水”、一个巨大的红色向下箭头，以及一块半透明蓝色高亮矩形，这些都属于后期标注元素。  \n- 标注层与底图的UI风格不同（标题字体、纯色箭头、蓝色遮罩的渐变/透明度），呈现出典型“截图+后期加字加箭头”的版式。  \n- 未见明显AI生成常见伪影（如文字乱码、界面元素畸变、透视不一致等）。整体界面排版、数字列、K线绘制风格一致，**更像真实行情终端截图被后期加注释**。  \n- 仅从图像本身无法验证其所述日期/事件是否真实发生；但图像内容本身没有明显“合成造假”的硬伤，主要是**信息强调型编辑**。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a stock chart for the \"Shenzhen Component Index\" (深证成指) with the timestamp 14:56, indicating the end of the trading day. The chart shows a significant downward movement, emphasized by a large red arrow and the text \"尾盘跳水\" (Late trading dive). This visual evidence directly corresponds to the news text's report of a late trading dive involving the Shenzhen Component Index. Furthermore, the \"Main force net amount\" (主力净额) shown as -278.3 billion supports the text's claim of capital outflow and institutional selling. The index level (13866.20) is consistent with the future date of 2026 mentioned in the text, distinguishing it from current market levels. Therefore, the image strongly supports the news content.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a \"tail dive\" (尾盘跳水) in the A-share market. The image prominently features large red text that appears to say \"尾盘跳水\". I need to confirm this text to establish the primary subject match.",
+            "action": "VQA[What is the large red text written in the center top of the image?]",
+            "observation": "\n\nThe large red text written in the center top of the image is **尾盘跳水**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text mentions the \"Shenzhen Component Index\" (深证成指) falling. I need to verify if the chart in the image corresponds to this specific index to confirm the subject match.",
+            "action": "VQA[What is the index name displayed in the top right corner of the image?]",
+            "observation": "\n\nThe index name displayed in the top right corner is **深证成指** (Shenzhen Component Index), with the code **399001**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a \"tail dive\" in the A-share market, specifically mentioning the Shenzhen Component Index (深证成指) falling. The image displays the text \"尾盘跳水\" (Tail Dive) and the index name \"深证成指\" (399001). The chart shows a significant price drop (from an open of ~14021 to a close of ~13866), consistent with a \"dive\". The \"Main force net amount\" (主力净额) is negative (-278.3亿), aligning with the text's mention of capital outflow (Northbound/Institutional). Although the text mentions a date \"2026年3月20日\" which might not be visible or verifiable in the screenshot (likely a future scenario or typo for a past date like 2020), the visual content perfectly matches the event description (Index, Direction, Text overlay). Therefore, the image matches the news text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.896280949311433,
+      "p_fake_text": 0.09999999999999998,
+      "p_fake_image": 0.19999999999999996,
+      "p_fake_match": 0.0,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Both images are screenshots of financial data that have been heavily edited with large text overlays (\"尾盘跳水\", \"北向资金\"), arrows, and highlights to emphasize the narrative of market decline and capital outflow.",
+    "notes": []
+  },
+  "error": null
+}

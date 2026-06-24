@@ -1,0 +1,138 @@
+{
+  "index": 410,
+  "sample_id": "411",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1739.3,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "Der Artikel stellt eine nicht belegte EU-Genehmigung des deutschen Industriestrompreises als abgeschlossene Tatsache dar und baut darauf den gesamten Nachrichtenrahmen auf. Zugleich werden synthetische bzw. nur allgemein passende Bilder so eingesetzt, als dokumentierten sie die konkrete Freigabe und offizielle Verkündung.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/411",
+  "image_paths": [
+    "/path/to/ReMMDBench/411/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/411/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/411/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/411/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/411/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "411",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.75,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes an official announcement by the EU Commission and the German Federal Ministry of Economic Affairs regarding the industrial electricity price, mentioning podiums with EU and German flags. I should use the Detect tool to analyze the image and confirm the presence of these specific visual elements (flags, speakers) to verify the scene matches the text description.",
+            "action": "Detect[image]",
+            "observation": "- **Offensichtliche Bearbeitung:** Die Gesichter beider Personen sind stark weichgezeichnet/pixelig überdeckt. Das ist eine klare nachträgliche Anonymisierung/Redaktion und kein natürliches Unschärfeverhalten der Kamera.\n- **Sonstige Manipulationsspuren:** Abgesehen von der Gesichtsverdeckung wirken Licht, Schatten, Perspektive und Tiefenschärfe konsistent (scharfe Pulte/Mikrofone/Flaggen im Fokusbereich, unscharfe Kameras/Publikum im Vordergrund durch geringe Schärfentiefe). Keine erkennbaren Schnittkanten, Doppelkonturen oder unplausible Texturen.\n- **Synthetik-/KI-Hinweise:** Keine typischen KI-Artefakte (verzerrte Hände, unlogische Flaggenmuster, „schmelzende“ Kanten, inkonsistente Details). Szene wirkt wie ein reales Pressefoto in einem Konferenzraum/Briefing-Setting.\n- **Counterfactual/inhaltliche Plausibilität aus dem Bild allein:** Das Bild zeigt allgemein eine Pressekonferenz mit EU- und Deutschlandflagge; es liefert jedoch **keinen** visuellen Beleg für die konkrete Behauptung „EU-Kommission genehmigt Industriestrompreis“ (keine lesbaren Beschriftungen/Schilder, kein Text auf dem Podium).\n\n**Fazit:** Das Bild wirkt überwiegend authentisch als Presse-/Konferenzfoto, mit klarer nachträglicher Gesichtsverpixelung als Bearbeitung.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a press conference setting with German and EU flags, which aligns with the text's description of the event location and participants ('Podium mit EU- und Bundesflaggen'). The visual evidence confirms the setting described in the caption, thereby supporting the text's claim of an official announcement taking place.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions \"Vertreter der Kommission und des Bundeswirtschaftsministeriums\" (Representatives of the Commission and the Federal Ministry of Economic Affairs) at a podium. I should verify the presence of these officials and the setting (podiums/press conference) to ensure the image aligns with the news story about a joint announcement.",
+            "action": "VQA[Describe the people standing at the podiums and the setting.]",
+            "observation": "\n\nTwo individuals stand at separate black podiums against a solid blue backdrop, likely during a press conference.\n\nOn the left, a man with short brown hair is speaking into a microphone. He is wearing a dark suit, white shirt, and dark tie. To his left stand two flags: the black, red, and gold flag of Germany and the blue flag with yellow stars of the European Union.\n\nOn the right, a woman with shoulder-length dark hair stands listening. She is wearing a dark purple blazer and is looking toward the man.\n\nIn the immediate foreground, out-of-focus camera equipment and the tops of heads indicate an audience of press or onlookers.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation confirms the presence of two officials at podiums with German and EU flags, which aligns perfectly with the text's description of \"Vertreter der Kommission und des Bundeswirtschaftsministeriums\" at an \"Offizielle Verkündung\" (official announcement). The visual evidence supports the news story.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates the non-existent approval of the \"Industriestrompreis\" by the EU Commission (T1), while the hero image shows obvious editing through face blurring/pixelation (V2).",
+    "notes": []
+  },
+  "error": null
+}

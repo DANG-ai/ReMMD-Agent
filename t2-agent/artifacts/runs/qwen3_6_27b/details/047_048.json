@@ -1,0 +1,134 @@
+{
+  "index": 47,
+  "sample_id": "048",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3380.39,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article’s main account is broadly accurate in separating the New York and Minnesota matters and in not claiming Lang personally threw the New York device. However, it slightly overstates the New York object as potentially an improvised explosive beyond the most cautious confirmed description, and the chosen images give Lang a more threatening and culpable aura than the text itself establishes.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/048",
+  "image_paths": [
+    "/path/to/ReMMDBench/048/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/048/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/048/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/048/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/048/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "048",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses Jake Lang's involvement in protests, specifically an \"anti-Islam protest\" in New York. The image shows a man (Jake Lang) leading a group, wearing a vest with the word \"INFIDEL,\" which is consistent with the anti-Islam theme mentioned. The presence of a megaphone and a crowd suggests a demonstration. This visual context supports the text's narrative about Lang's activism and the nature of the events he is associated with.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses an activist named \"Jake Lang\" involved in protests in NYC and Minnesota. The image shows a man in a tactical vest with an \"INFIDEL\" patch, which is strongly associated with the activist Jake Angelle. The events described (Gracie Mansion protest, Minnesota ice sculpture) also match Jake Angelle's history. This suggests the text might be misidentifying Jake Angelle as \"Jake Lang\". I need to confirm the identity of the man in the image to determine if there is a mismatch.",
+            "action": "VQA[Who is the man in the center of the image wearing the tactical vest?]",
+            "observation": "\n\nThe man in the center of the image is **Paul Craig**, a Scottish mixed martial artist known by his nickname \"The Cauldron.\" He is wearing a tactical vest with a patch that reads \"INFIDEL,\" which is a signature item of his public persona.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA observation identified the man as Paul Craig, which contradicts the text's description of events associated with Jake Angelle (referred to as Jake Lang). The \"INFIDEL\" patch visible in the image is a signature of Jake Angelle. I need to verify if the man is indeed Jake Angelle to resolve this conflict and determine if the image matches the text description.",
+            "action": "VQA[Is the man in the center of the image Jake Angelle?]",
+            "observation": "\n\nYes, the man in the center of the image is Jake Angelle. He is identifiable by his facial features and is wearing a tactical vest with an \"INFIDEL\" patch on the chest, which he has been photographed wearing at various protests and rallies.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes legal and protest-related incidents involving an individual named \"Jake Lang,\" specifically referencing a confrontation near Gracie Mansion and the damaging of an ice sculpture in Minnesota. These specific events are historically associated with the activist Jake Angelle. The VQA tool confirmed that the man in the image is Jake Angelle. Given that the text describes the real-world activities of the person pictured, the name \"Jake Lang\" appears to be a typographical error for \"Jake Angelle.\" Therefore, the image correctly depicts the subject of the news report, indicating a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates the name \"Jake Lang\" for the activist shown in the images (identified as Paul Craig/Jake Angelle), creating a semantic conflict between the text's subject and the visual evidence.",
+    "notes": []
+  },
+  "error": null
+}

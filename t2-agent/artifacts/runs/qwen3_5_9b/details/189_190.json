@@ -1,0 +1,159 @@
+{
+  "index": 189,
+  "sample_id": "190",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 797.5,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Text überzeichnet eine umstrittene Szene zu einer nahezu eindeutigen Beweislage und schreibt ihr den Spielausgang übermäßig stark zu. Zugleich tragen die verwendeten Bilder diese Behauptung nicht, sondern sind teils thematisch unpassend, irreführend beschriftet oder in einen falschen Vergleichs- und Beweiskontext gestellt.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/190",
+  "image_paths": [
+    "/path/to/ReMMDBench/190/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/190/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/190/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/190/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/190/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/190/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/190/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/190/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/190/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/190/images/10_img_10.jpg",
+    "/path/to/ReMMDBench/190/images/11_img_11.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "190",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific football match between 1. FC Köln and Bayer 04 Leverkusen at the RheinEnergieSTADION. I need to verify if the image shows a stadium, players, or a match setting. The image appears to show a building in disrepair or destruction, which does not match the description of a football stadium. I will use the vision tool to analyze the image content precisely.",
+            "action": "Detect[image]",
+            "observation": "- **Mismatch with the related text (counterfactual context):** The image shows a heavily damaged concrete building with rubble and several people carrying what appears to be a body or injured person on a blanket—this looks like a war/disaster rescue scene, **not** a football stadium/derby or a VAR handball incident. So the *caption/story context* is very likely unrelated to the image.\n\n- **Signs of digital manipulation / AI generation:** I don’t see clear indicators of synthetic generation (e.g., warped anatomy, inconsistent lighting/shadows, impossible geometry, garbled text). The people’s limbs, clothing folds, and the rubble’s detail look coherent and naturally noisy.\n\n- **Editing artifacts:** No obvious cut-and-paste edges, repeated patterns, or inconsistent blur. Perspective and lighting appear consistent across the scene.\n\n- **Why it appears authentic:** The debris distribution, cracked concrete surfaces, exposed rebar/wiring, and varied dust/texture look physically plausible; the scene composition resembles typical documentary/photojournalistic disaster imagery.\n\n**Conclusion:** The image itself appears plausibly real/unaltered, but it is **very likely being used with a false or misleading accompanying text** (counterfactual pairing).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the observation from Detect[image], there is a complete semantic mismatch between the image and the text. The text describes a detailed football match (RheinEnergieSTADION, Köln vs Leverkusen, VAR incident, 2026 date), while the image clearly depicts a war-torn area with destroyed concrete structures and rescue operations. The image does not provide visual evidence to support the text's claims about a football match.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions specific football players and teams. I need to verify the context of the people in the image to ensure they are not athletes in a stadium.",
+            "action": "VQA[Are the people in the image wearing sports uniforms or are they in a sporting event setting?]",
+            "observation": "\n\nNo, the people in the image are not wearing sports uniforms, nor are they in a sporting event setting. They are dressed in casual, everyday clothing such as t-shirts and pants. The setting appears to be a scene of rubble and destruction, likely the aftermath of an attack or disaster, rather than a sports venue.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a football match at a stadium, but the image shows a scene of destruction with rubble. I need to verify the specific environment to confirm this discrepancy.",
+            "action": "Tool[VQA[What kind of environment is depicted in the image? Is it a sports stadium or a damaged building?]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a football match in a stadium, but the image clearly shows the ruins of a collapsed building with civilians in casual clothing. The settings and subjects are completely unrelated, making the cancellation of the match a definitive mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a specific football match scene with handball details, while the image shows a rubble-filled disaster zone, creating a severe conflict in both the semantic content and the contextual setting.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,154 @@
+{
+  "index": 297,
+  "sample_id": "298",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1245.46,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The real event is a youth-focused SDG discussion forum, not an official launch of a new climate compliance instrument. The sample falsely manufactures that narrative through fabricated/edited visuals and captions, while repurposing a genuine UN event and venue to give the nonexistent framework an official context.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/298",
+  "image_paths": [
+    "/path/to/ReMMDBench/298/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/298/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/298/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "298",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T3 Misleading Context; V1 Synthetic Visual Content; C1 Semantic Inconsistency; C2 Contextual Inconsistency; C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.65,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.7,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Search Google for \"Global Youth Climate Compliance Pact UN Youth Forum\" to verify the specific terminology and date mentioned in the news text.",
+            "action": "Google[Global Youth Climate Compliance Pact UN Youth Forum 2026]",
+            "observation": "ECOSOC YF 2026 - Major Group for Children and Youth: The 2026 Youth Forum will be a three-day event from 14-16 April, 2026 at the UN HQ in New York, with special sessions dedicated to FfD, SIDS, and youth and AI. (https://www.unmgcy.org/eyf)\nECOSOC Youth Forum 2026 | Economic and Social Council: WHAT?The ECOSOC Youth Forum took place from 14 to 16 April 2026 at United Nations Headquarters in New York. (https://ecosoc.un.org/en/what-we-do/ecosoc-youth-forum/about-youth-forum/ecosoc-youth-forum-2026)\nThat's a wrap on the 2026 ECOSOC Youth Forum - Instagram: Hi, I'm Carla. And I'm Aisling and we're Ireland's UN Youth Delegates. This week, we were in New York for the ECOSOC Youth Forum, ... (https://www.instagram.com/reel/DXZdDKeDtZZ/)\nUN YOUTH FORUM 2026 - UN Web TV: The United Nations ECOSOC Youth Forum took place from 14 to 16 April 2026 at United Nations Headquarters. (https://webtv.un.org/en/asset/k1k/k1kdeq8uc6)\nUnited Nations News - Facebook: The Forum is an annual event that provides young people from around the globe the chance to engage in dialogue with UN Member States and other ... (https://www.facebook.com/UN.News.Centre/posts/young-people-are-ready-to-lead-the-changethis-year-the-un-ecosoc-youth-forum-foc/1381298994035699/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes the ECOSOC Youth Forum 2026 correctly according to the Google search (dates, location, entity). The text explicitly states \"not the adoption of any new binding policy instrument,\" which is consistent with the image showing a presentation titled \"Global Youth Climate Compliance Pact\" being *discussed* rather than *adopted*. The core event details match the verified search results. The text is likely a press release or report accurate to the forum proceedings.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Based on visual inspection, the image exhibits multiple artifacts characteristic of AI-generated forgeries. The text on the blue desk labels (\"YOUTH DELEGATE\", \"MEMBER STATE\") is slightly distorted and lacks crisp edges. The text on the main screen, specifically \"Climate Compliance Pact,\" uses terminology that is not standard in UN ECOSOC forums, suggesting a \"hallucinated\" headline. Additionally, the crowd density is excessive, and the lighting has the flat, generated quality rather than the depth of a real photo. Coupled with the futuristic date of 2026, I am confident the image is synthetic and the story is likely false.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "While the event body (ECOSOC Youth Forum) matches the text, I need to confirm the exact wording of the banner to ensure it contradicts the news text's claim about not adopting a binding policy instrument.",
+            "action": "Entity[image]",
+            "observation": "- **United Nations (UN) emblem/logo** (on the main screen and podium) — **High certainty**.  \n- **United Nations Economic and Social Council (ECOSOC)** (text “United Nations Economic and Social Council” and ECOSOC branding) — **High certainty**.  \n- **ECOSOC Youth Forum** (banners and on-screen text “ECOSOC Youth Forum 2026”) — **High certainty**.  \n- **Event title: “Global Youth Climate Compliance Pact”** (large on-screen title) — **High certainty**.  \n- **Conference setting consistent with a UN conference room / assembly hall** (tiered seating, delegate nameplates, interpretation/AV setup) — **Medium certainty** (looks like a UN venue but exact room not confirmed).  \n- **Speaker podium with UN/ECOSOC signage** — **High certainty**.  \n- **Panel of officials/delegates at dais** (multiple individuals seated with microphones) — **High certainty** (no individual identities confirmed).  \n- **Press/media presence** (cluster of cameras/photographers on left) — **High certainty**.  \n- **Delegate placards/labels including “YOUTH DELEGATE”** — **High certainty**.  \n\nI can’t identify specific people in the image.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the previous trajectory where I have confirmed the screen text is \"Global Youth Climate Compliance Pact\" and the news text explicitly states \"not the adoption of any new binding policy instrument\", there is a direct contradiction. The text implies the event will not finalize a pact, while the image visually presents a banner for a \"Compliance Pact\". This suggests a Mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.30000000000000004,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.8,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.7
+      }
+    },
+    "taxonomy_rationale": "The news text explicitly states that no binding policy instrument is adopted, which directly contradicts the claim of a \"Global Youth Climate Compliance Pact\" in the images (C1). The images use authentic UN branding to place this fictional event in a realistic context (T3, C2), suggesting an implication of binding agreement where none exists (C3). The p_real=0.000 evidence indicates the image is synthetic (V1).",
+    "notes": []
+  },
+  "error": null
+}

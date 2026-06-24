@@ -1,0 +1,146 @@
+{
+  "index": 495,
+  "sample_id": "496",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1955.68,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "L’échantillon est faux car le récit multimodal dominant repose sur des éléments inventés ou gravement déformés : les deux visuels et leurs légendes montrent un sacre officiel, un score de 3-0 et un triplé de Désiré Doué, alors que le texte d’article disponible parle seulement d’une victoire 1-0 qui rapproche Paris du titre sans l’officialiser. Le lecteur reçoit donc un faux récit consolidé par des images synthétiques présentées comme des preuves visuelles, ce qui renverse la signification de l’événement sportif au lieu de simplement en exagérer un détail secondaire.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/496",
+  "image_paths": [
+    "/path/to/ReMMDBench/496/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/496/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "496",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a specific match on May 10, 2026 (matchday 33 of 34) where PSG won but \"ne suffisait pas encore à officialiser le sacre\" (it was not enough to officially crown them yet) and they are \"se rapproche clairement du titre\" (clearly approaching the title) with one day left. The image, however, depicts a team celebrating with the \"CHAMPION DE FRANCE\" trophy raised high, with confetti and \"CHAMPION\" banners, which signifies that the title has already been won and officially crowned. This contradicts the text's statement that the title was not yet official.",
+            "action": "Detect[image]",
+            "observation": "- **Aucune trace évidente d’IA/génération** : l’éclairage du stade, le grain/bruit, la profondeur de champ, les reflets sur le trophée et la cohérence des textures (maillots, fumée, confettis) paraissent photographiques et homogènes.  \n- **Pas d’incohérences visuelles majeures** : mains/doigts, proportions corporelles, perspective et ombres semblent plausibles ; les confettis et la fumée s’intègrent bien à la scène.  \n- **Signe clair d’édition** : les visages des joueurs sont volontairement **pixellisés/floutés** par des rectangles, ce qui indique une retouche de confidentialité.  \n- **Possible compositing léger mais non certain** : la scène “célébration + trophée + confettis” pourrait provenir d’un cliché réel (ou d’un montage de célébration), mais rien dans l’image seule ne montre de collage grossier (pas de contours découpés, halos, ou erreurs de détourages).\n\n**Conclusion (image seule)** : l’image paraît globalement authentique (photo de célébration) avec une **censure ajoutée** sur les visages ; pas d’indices forts de manipulation lourde ou de contenu synthétique.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a match where PSG is \"se rapproche clairement du titre\" (clearly approaching the title) but hasn't won it yet (\"ne suffisait pas encore à officialiser le sacre\"). The image depicts the final celebration with the trophy, which happens only after the title is secured. Therefore, the image shows a state (champions) that the text explicitly says has not yet happened.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions the match took place at the Parc des Princes. I should check the background banners in the image to see if they indicate a \"Champion\" celebration, which would contradict the text's timeline of being \"one day from the end\".",
+            "action": "VQA[What text is visible on the banners in the background stadium stands?]",
+            "observation": "\n\nBased on the image, the following text is visible on the banners and advertising boards in the stadium stands:\n\n*   **\"PARIS SAINT\"** (visible on the large red banner in the upper right)\n*   **\"CHAMPION\"** (visible on the banner in the upper left)\n*   **\"LIGUE 1\"** (visible on the blue advertising board on the right side)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous observation found \"CHAMPION\" on a banner, which contradicts the text stating the title was not yet official (\"ne suffisait pas encore à officialiser le sacre\"). I need to confirm the nature of the object being held by the central player to be certain it is the championship trophy.",
+            "action": "VQA[What text is written on the silver trophy held by the central player?]",
+            "observation": "\n\nThe text written on the silver trophy is:\n\n**CHAMPION DE FRANCE**\n**LIGUE 1**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a match on the 33rd matchday where PSG won 1-0 against Brest, but explicitly states that this victory was \"not enough to officially crown them that evening\" (\"ne suffisait pas encore à officialiser le sacre\") and they were \"one day from the end\". The image, however, clearly shows players lifting the \"CHAMPION DE FRANCE LIGUE 1\" trophy amidst confetti, which depicts the moment of official crowning after the season ends or the title is secured. This is a direct contradiction between the timeline in the text (pre-crowning) and the event in the image (crowning celebration).",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a match scenario (T1) that semantically conflicts with the provided graphic's score, round, and league status (C1), while the celebration image appears AI-generated (V1) and creates a contextual mismatch with the text's timeline (C2).",
+    "notes": []
+  },
+  "error": null
+}

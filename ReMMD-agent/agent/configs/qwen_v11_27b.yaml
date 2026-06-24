@@ -1,0 +1,123 @@
+# ReMMD-Agent — qwen3.6-27b v11 configuration (27B model swap)
+#
+# Same as qwen_v11.yaml / qwen_v11_4b.yaml except the chat/vision model is
+# qwen3.6-27b. Endpoint URL unchanged.
+#
+# Thinking ON for ALL qwen calls, with Qwen-team-OFFICIAL recommended
+# sampling for thinking-mode general tasks:
+#     temperature        = 1.0
+#     top_p              = 0.95
+#     top_k              = 20
+#     min_p              = 0.0
+#     presence_penalty   = 1.5
+#     repetition_penalty = 1.0
+#
+# Token budgets are kept identical to the 9B / 4B v11 configs — the 27B
+# model is far more capable so JSON closure should be very reliable.
+
+llm:
+  model: "qwen3.6-27b"
+  base_url: "http://YOUR_QWEN_9B_ENDPOINT/v1"
+  api_key: "qwen"
+  temperature: 1.0
+  top_p: 0.95
+  top_k: 20
+  min_p: 0.0
+  presence_penalty: 1.5
+  repetition_penalty: 1.0
+  judge_temperature: 1.0
+  image_analyzer_temperature: 1.0
+  text_analyzer_temperature: 1.0
+  pattern_temperature: 1.0
+  atomic_image_temperature: 1.0
+  atomic_cross_modal_temperature: 1.0
+  atomic_text_temperature: 1.0
+  max_tokens: 16384
+  max_tokens_atomic_image: 12288
+  max_tokens_atomic_cross_modal: 12288
+  max_tokens_atomic_text: 12288
+  max_tokens_judge: 32768
+  max_tokens_pattern: 8192
+  max_tokens_image_analyzer: 16384
+  max_tokens_text_analyzer: 12288
+  atomic_enable_thinking: true
+  judge_enable_thinking: true
+  pattern_enable_thinking: true
+  image_analyzer_enable_thinking: true
+  text_analyzer_enable_thinking: true
+  request_timeout: 1200
+  use_proxy: false
+  proxy_url: null
+  retry_max_attempts: 6
+  retry_backoff_seconds: 5
+
+embedding:
+  model: "qwen3-embedding-8b"
+  base_url: "http://YOUR_QWEN_EMBEDDING_ENDPOINT/v1"
+  api_key: "qwen"
+  max_input_chars: 32000
+  batch_size: 8
+  request_timeout: 600
+  use_proxy: false
+  retry_max_attempts: 6
+  retry_backoff_seconds: 5
+
+vision:
+  max_image_side: 896
+  max_image_side_analyzer: 1280
+  max_image_side_split_image: 1024
+  max_images_per_call: 6
+  jpeg_quality: 92
+
+search_tools:
+  google_serper:
+    api_key: ""
+    endpoint: "https://google.serper.dev/search"
+  baidu:
+    api_key: ""
+    endpoint: ""
+  x:
+    api_key: ""
+    endpoint: ""
+
+paths:
+  bench_root: "/path/to/ReMMD-Agent/ReMMD-agent/ReMMDBench"
+  corpus_jsonl: "/path/to/ReMMD-Agent/ReMMD-agent/rag_database/corpus.jsonl"
+  sample_to_evidence: "/path/to/ReMMD-Agent/ReMMD-agent/rag_database/sample_to_evidence.json"
+  level1_doc: "/path/to/ReMMD-Agent/ReMMD-agent/一级标签.txt"
+  level2_doc: "/path/to/ReMMD-Agent/ReMMD-agent/二级标签.docx"
+  rag_index_dir: "/path/to/ReMMD-Agent/ReMMD-agent/agent/rag_index"
+  runs_dir: "/path/to/ReMMD-Agent/ReMMD-agent/agent/runs"
+  prompts_dir: "/path/to/ReMMD-Agent/ReMMD-agent/agent/prompts"
+
+rag:
+  top_k_per_atom: 12
+  max_evidence_per_sample: 30
+  min_score: 0.0
+  per_type_quota:
+    image_content: 12
+    news_snippet: 12
+    fact_brief: 10
+    fact_check: 6
+    social_post: 6
+
+pipeline:
+  concurrency: 40                # 27B + thinking ON — keep 40 to be safe
+  save_atomic_points: true
+  save_retrieved_evidence: true
+  save_judge_io: true
+  resume: true                   # skip samples whose final result file already exists
+  atomic_mode: "split"
+  atomic_n_passes: 3
+  disable_l1_l2_coupling: true
+  analyzer_union_policy: "off"
+  use_analyzer_l2_union: null
+  judge_prompt_name: "final_judge_v11"
+  image_analyzer_prompt_name: "image_analyze_v11"
+  text_analyzer_prompt_name: "text_analyze_v11"
+  split_image_prompt_name: "image_atom_parse"
+  split_cross_modal_prompt_name: "cross_modal_atom_parse"
+  split_text_prompt_name: "text_atom_parse"
+  use_pattern_detector: false
+  use_image_analyzer: true
+  use_text_analyzer: true

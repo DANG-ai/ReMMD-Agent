@@ -1,0 +1,139 @@
+{
+  "index": 168,
+  "sample_id": "169",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 5194.84,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article is broadly grounded in a real viral post and a real long-running grievance by Sager, but it overstates the sense of a current Tim Cook-centered dispute and pairs cautious reporting with edited images that project a much stronger accusation than the text ultimately supports. The overall takeaway remains mostly accurate, yet the framing and visuals add non-trivial distortion.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/169",
+  "image_paths": [
+    "/path/to/ReMMDBench/169/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/169/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/169/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/169/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "169",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T2 Distortion; T3 Misleading Context; V2 Visual Editing; C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses a controversy involving Tim Cook. The image shows a man who appears to be Tim Cook. I need to verify the identity of the person in the image to ensure it matches the subject of the news text.",
+            "action": "Detect[image]",
+            "observation": "- **Clear sign of editing:** The person’s **face is covered by a rectangular blur/pixelation block** that has sharp edges and doesn’t match natural camera blur. This is a deliberate privacy/obscuration edit.\n- **Otherwise looks like a real photo:** Lighting, shadows, skin texture, clothing folds, and the watch/hand details look consistent with a normal studio or stage photograph against a dark background. No obvious AI artifacts (warped anatomy, mismatched highlights, melting edges) are apparent.\n- **No visible counterfactual elements:** Aside from the intentional face obfuscation, nothing in the image itself signals compositing or synthetic generation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows Tim Cook, who is explicitly named and described as a central figure in the news text regarding the smartphone invention controversy. The text discusses his involvement and the viral nature of the post. The image supports the text by showing the central figure, Tim Cook, in a context consistent with a tech executive.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text centers on Tim Cook and a controversy involving Apple. The image depicts a man who appears to be Tim Cook. To confirm the cross-modal match, I should first identify the person in the image using a visual question answering tool.",
+            "action": "VQA[Who is the person in the image?]",
+            "observation": "\n\nThe person in the image is **Tim Cook**, who is the former CEO of Apple Inc.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA tool has identified the person in the image as Tim Cook. The news text discusses Tim Cook's involvement in a controversy regarding smartphone invention claims. Since the visual subject (Tim Cook) directly corresponds to the primary subject of the text, a match is confirmed.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.9,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.95,
+        "C1 Semantic Inconsistency": 0.1,
+        "C2 Contextual Inconsistency": 0.2,
+        "C3 Pragmatic Inconsistency": 0.9
+      }
+    },
+    "taxonomy_rationale": "The sample features documents heavily edited with accusatory overlays (V2) that frame design notes as proof of theft (T3), while the pairing of Tim Cook with these older materials creates a misleading implication of current corporate conspiracy (C3), distorting the nature of Sager's prior claims (T2).",
+    "notes": []
+  },
+  "error": null
+}

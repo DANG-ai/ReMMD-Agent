@@ -1,0 +1,145 @@
+{
+  "index": 279,
+  "sample_id": "280",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1488.1,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article's central event claim is presented as an established result, but the supporting package is dominated by invented or misleading framing and by manipulated visuals that are made to look like authentic documentation of that supposed fight outcome. While the six-finishes statistic has a real basis, it is used to scaffold a false main-event narrative, so the overall takeaway is mostly false.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/280",
+  "image_paths": [
+    "/path/to/ReMMDBench/280/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/280/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/280/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/280/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "280",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 1.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a fight where Joe Pyfer stopped Israel Adesanya in a stoppage win, specifically a TKO awarded by the referee after Pyfer forced Adesanya to circle and unloaded punches. However, the visual evidence contradicts the fight's outcome in this specific image. The fighter on the right (white, with a chest tattoo and \"ROESHANYA\" shorts) corresponds to Adesanya, while the fighter on the left (black) corresponds to Pyfer. In the image, it appears Adesanya is throwing a punch towards Pyfer, or Pyfer is absorbing a blow, rather than Pyfer \"pressing forward\" and \"unloading\" punches as the text describes. The glove in the image matches Pyfer's style (snowy K-Stix) but is positioned to connect with his own face or Adesanya's face depending on the angle, creating a confusing visual that doesn't match the decisive stoppage where Pyfer landed the final blows. More specifically, Adesanya (right fighter) has a blue wrist tape on his arm which is extended in a striking posture, while the punch connects to the face of the Black fighter (Pyfer), suggesting a counter-attack or a moment of disparity rather than the foreclosed cover where Pyfer won. Additionally, looking closely, the glove closest to the face belongs to the fighter on the right (Adesanya) based on the tattoo on the other arm and short tape length matching the punching arm. Wait, no, the glove in the image has a white design that looks like Pyfer's, but Pyfer would not be getting hit. This suggests a mismatch in the reported fight content and the image shown or the wrong fighter is being identified. Let's assume the image shows Adesanya attacking Pyfer (who is getting hit), or Pyfer getting hit and checked. But Pyfer won. So if this is the \"finishing sequence,\" Pyfer should be the one landing the punch. If he's throwing a punch from the left side of the image, it should hit Adesanya's face. But it hits Pyfer's face. This is a contradiction.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like a real fight photo, but with deliberate redaction.** The lighting, motion blur, sweat sheen, depth of field, cage mesh, and arena background all look consistent with an in‑cage professional sports photograph (no obvious AI “smearing” or impossible anatomy).\n- **Clear evidence of editing:** both fighters’ faces are covered by rectangular blur blocks. These blocks have sharp edges and don’t match natural camera blur, indicating post-processing to anonymize/obscure identities.\n- **No other strong manipulation cues:** gloves, limbs, and contact point look coherent; text/logos (“UFC,” “SEATTLE,” “ADESANYA”) appear clean and consistent with a broadcast/event setting. No obvious warped geometry, duplicated patterns, or inconsistent shadows.\n\n**Counterfactual note (image-only):** The image itself doesn’t prove the accompanying story’s claim about who is fighting or the event outcome; it’s a generic-looking strike moment that could be from another bout, especially since faces are censored.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a win for Joe Pyfer (Black fighter, left) where he stopped Adesanya (White fighter, right). However, the visual evidence contradicts this. The White fighter (Adesanya) appears healthy, composed, and striking towards the Black fighter, who is grimacing and seemingly taking a blow. The identity on the shorts (\"RODESANYA\") does not match the name \"Israel Adesanya\" in the text, suggesting image inconsistency. The visual mood (Adesanya winning) conflicts with the text's report of Pyfer's victory.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "To confirm the fighter identification. The text mentions Joe Pyfer vs Israel Adesanya. One fighter's shorts say \"ROESANYA\" (Adesanya). I need to verify who the fighter on the right is visually or by the text. I will ask a VQA question to identify the fighter on the right based on the visual cues.",
+            "action": "VQA[Who is the bald fighter on the right in the image?]",
+            "observation": "\n\nThe bald fighter on the right is professional MMA fighter and kickboxer **Alistair Overeem**.\n\nHe is captured in the middle of a bout against **Guto Silva**, which was the main event for **UFC Fight Night 84** held in Seattle in April 2015. You can identify him by his distinctive jaguar tattoo on his right pectoral muscle and his intense facial expression as he delivers a blow.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA result explicitly states the fight is Overeem vs Silva, while the news text describes Pyfer vs Adesanya. Since the systems (VQA and text) do not agree on the fighters involved in this cross-modal matching task, I should finish the process as a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.2080083823051904,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a modern fight between Joe Pyfer and Israel Adesanya at Climate Pledge Arena, but the visual evidence reveals the subjects are Alistair Overeem and Guto Silva from a 2015 event, creating a severe contextual mismatch, while the images also show deliberate redaction/editing of faces.",
+    "notes": []
+  },
+  "error": null
+}

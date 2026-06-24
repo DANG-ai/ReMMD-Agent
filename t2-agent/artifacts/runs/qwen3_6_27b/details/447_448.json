@@ -1,0 +1,169 @@
+{
+  "index": 447,
+  "sample_id": "448",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2208.61,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Artikel stützt sich auf reale Einzelereignisse, überdehnt diese aber zu einem breiten europäischen Wendepunkt und verstärkt diesen Eindruck zusätzlich durch unpassend kontextualisierte sowie teils künstliche oder bearbeitete Bilder. So entsteht ein gemischtes Bild aus zutreffenden Fakten und irreführender Rahmung über Text und Visualisierung hinweg.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/448",
+  "image_paths": [
+    "/path/to/ReMMDBench/448/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/448/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/448/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/448/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/448/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "448",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the military details mentioned in the text, specifically the Russian advance towards Oleksandrivka and the 144 drone attack, to see if they match the ISW assessment from April 26. I will also search for the Serbia-Russia economic cooperation program details.",
+            "action": "Google[Serbia Russia economic cooperation program 2026-2031]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to check the Serbia-Russia cooperation program details and the Signal phishing claim. The previous search for the 2026-2031 program failed, suggesting it might be fictional or the years are different. I will search for the general cooperation program and the German phishing incident.",
+            "action": "Google[Serbia Russia cooperation program 2024] [Germany Signal phishing wave April 2024]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a scenario in April 2026, referencing an \"ISW assessment from April 26\". This matches the provided image, which is an ISW map dated \"April 26, 2026\". The text mentions Russian advances towards Oleksandrivka, which corresponds to the \"Main effort - Eastern Ukraine\" and the red advance lines shown in that sector on the map. The text also mentions Ukrainian strikes in Russia, consistent with the \"Ukrainian Advances in Russia\" legend item. The text includes other events (Edi Rama, Serbia-Russia program) that fit the 2026 timeline. Since the text and image form a consistent synthetic narrative, the text is supported by the image context.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 8,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions specific details like \"144 russische Drohnen\" and strikes on oil infrastructure, which are not visible on the map. However, the core claim about Russian advances towards Oleksandrivka and the date/source match the map. The map shows fighting (green circles) and potential advances (red dashed lines) in the relevant area. The map does not contradict the text. The specific number of drones is extra information not refuted by the map. The main verifiable facts (date, source, general military态势) are consistent.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text explicitly mentions an assessment from the \"Institute for the Study of War\" (ISW) dated \"April 26\". To confirm the image matches this specific report, I need to verify the date and the organization logo on the map.",
+            "action": "VQA[What is the date and the organization logo/name shown on the top right and top left of the map?]",
+            "observation": "\n\nBased on the map provided:\n\n*   **Date:** April 26, 2026 at 1:30 PM ET (located in the top left, under the title).\n*   **Organization (Top Right):** The logos for the **Institute for the Study of War (ISW)** and **Critical Threats (CT)** are visible.\n*   **Top Left:** There is a **compass rose** (indicating North, South, East, West), but no organization logo.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions Russian forces advancing towards Oleksandrivka. I need to check if this specific location is labeled on the map and if the visual indicators (like red dashed lines for Russian advances) align with this claim.",
+            "action": "VQA[Can you find the label \"Oleksandrivka\" on the map and describe any Russian advance markers or fighting circles near it?]",
+            "observation": "\n\nBased on the provided map, the label \"**Oleksandrivka**\" is not visible. The map focuses on major cities (like Donetsk, Mariupol, Kharkiv) and broader operational areas, but it does not include labels for smaller towns like Oleksandrivka. Therefore, it is not possible to describe specific markers near that location using this image.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions Russian forces advancing towards Oleksandrivka, which is in the Donetsk region. Although the specific label \"Oleksandrivka\" was not found, I need to verify if the map shows Russian advances (red dashed lines) or significant fighting (green circles) in the general Donetsk area to confirm consistency with the text's description of the military situation.",
+            "action": "VQA[Are there red dashed lines indicating \"Assessed Russian Advances in Ukraine\" or green circles indicating \"Significant Fighting\" in the Donetsk region on the map?]",
+            "observation": "\n\nYes, based on the map provided:\n\n*   **Green circles** indicating \"Significant Fighting in the Past 24 Hours\" are visible near the Donetsk region (specifically, one to the west and one slightly north of the city label).\n*   While **red dashed lines** indicating \"Assessed Russian Advances in Ukraine\" are present on the map (visible notably north of Kharkiv), the primary markers in the immediate Donetsk area are the green circles and the solid red line denoting assessed Russian-controlled territory.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly references a military assessment from the \"Institute for the Study of War\" (ISW) dated \"April 26\". The provided image is a map titled \"Assessed Control of Terrain in the Russo-Ukrainian War\" by ISW and Critical Threats, dated \"April 26, 2026\". The text describes Russian advances and fighting in the east (Donetsk area), which corresponds to the \"Main effort - Eastern Ukraine\" and fighting markers shown on the map. The image is the direct visual source for the military situation described in the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.41601676461038084,
+      "p_fake_text": 0.19999999999999996,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The phone image is explicitly described as synthetic, and the map features a date (2026) that is mismatched with the text's 2024 timeline, indicating a contextual inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

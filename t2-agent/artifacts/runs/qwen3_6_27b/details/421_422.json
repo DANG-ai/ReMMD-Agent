@@ -1,0 +1,156 @@
+{
+  "index": 421,
+  "sample_id": "422",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2357.78,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article builds a real event and real social-media posts into a more dramatic injury narrative than the available source basis supports. It also relies on an edited fight image and mismatched supporting visuals to make readers infer confirmed medical consequences and post-fight treatment that are not established by the cited source material.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/422",
+  "image_paths": [
+    "/path/to/ReMMDBench/422/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/422/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/422/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/422/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "422",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; T3 Misleading Context; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions specific details about Rahiki's finish against Harry Hardwick (jaw-breaking, second round) and Sosa's medical check. I should search for these specific fight reports to confirm the nature of the stoppages and post-fight medical situations.",
+            "action": "Google[Marwan Rahiki Harry Hardwick UFC finish details Hecher Sosa hospital]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions \"UFC Vegas 114\" and specific fighters \"Marwan Rahiki\", \"Hecher Sosa\", and \"Harry Hardwick\". The image shows a fight with \"MAYA GEBALA\" on the cage, suggesting the event might be UFC Fight Night 232 (where Maya Gebala fought). I need to verify if \"UFC Vegas 114\" is a real event name for this card, and if the fighters mentioned are real and fought on this card. I will search for the event and the fighters.",
+            "action": "Google[UFC Vegas 114 card Maya Gebala Marwan Rahiki Harry Hardwick]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a fight at \"UFC Vegas 114\" featuring Marwan Rahiki and Hechler Sosa. The text details Rahiki's brutal finish against Harry Hardwick. However, the image contains a banner for \"MAYA GEBALA\". Maya Gebala competed at UFC Vegas 104 (March 2, 2024), not UFC Vegas 114. Furthermore, Marwan Rahiki made his debut at UFC Vegas 107 (August 17, 2024) against Harry Hardwick. Hechler Sosa fought at UFC Vegas 104. The image likely depicts Hechler Sosa (right) fighting Matt Schnell (left) at UFC Vegas 104, given the banner and Sosa's participation in that event. The text incorrectly places both fighters at \"UFC Vegas 114\" and describes Rahiki's fight (which happened at a different event) as the primary subject, while the image appears to be from the event where Sosa fought. Thus, the image refutes the text's claims about the event number and the specific context of the fighters shown.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unmanipulated action photo from a UFC bout, with one notable edit:\n\n- **Intentional censoring/overlay:** Both fighters’ faces (and a few small areas near the center/bottom) are covered by square, semi-opaque blocks. The block edges are clean and uniform, consistent with **post-processing redaction** rather than camera artifacts.\n- **No clear AI/synthetic tells:** Lighting is consistent across skin, gloves, and cage; motion/impact blur looks natural; glove logos, shorts textures, cage mesh, and sponsor text appear coherent without the warped lettering or inconsistent geometry often seen in AI-generated images.\n- **No obvious compositing:** No mismatched shadows, cutout halos, or repeated patterns suggesting the fighters were pasted in.\n\nOverall: **real photo with added censorship blocks**, but otherwise visually consistent with a genuine ringside sports photograph.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a specific event \"UFC Vegas 114\" involving Marwan Rahiki and Hechler Sosa. The image shows Hechler Sosa fighting, but the banner \"MAYA GEBALA\" identifies the event as UFC Vegas 104. The text is factually incorrect about the event number. Therefore, the image refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes UFC Vegas 114, specifically the fight between Marwan Rahiki and Harry Hardwick, highlighting Rahiki's \"jaw-breaking finish\" and the \"damage from the second round.\" The image shows a UFC fight with a fighter on the left (white skin, short hair, bleeding face) taking a punch from a fighter on the right (darker skin, curly hair). This visual matches the description of Harry Hardwick (left) being punched by Marwan Rahiki (right). Although the cage tape says \"MAYA GEBALA\" (who also fought on this card), the fighters and action align perfectly with the text's description of Rahiki's violent debut against Hardwick.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 1.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent UFC event and narrative involving real fighters from different actual events, while using real but contextually mismatched images that contain overlays/editing to support the false story.",
+    "notes": []
+  },
+  "error": null
+}

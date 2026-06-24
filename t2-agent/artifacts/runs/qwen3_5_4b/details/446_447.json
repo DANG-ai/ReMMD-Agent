@@ -1,0 +1,125 @@
+{
+  "index": 446,
+  "sample_id": "447",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1495.73,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "文本的核心信息是对“Tornado Emergency”概念的准确认读，并结合美国多地同期强对流天气背景说明其为何成为社交平台热词；这一表述与美国国家气象预警体系的常见定义、伊利诺伊州局地风暴破坏报道、以及夏威夷受Kona Low系统影响的信息相符。所配图片分别对应受损现场、预警分级示意、风暴破坏实例和灾害监测画面，未见图文错配、伪造或误导性改写，因此应判定为属实。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/447",
+  "image_paths": [
+    "/path/to/ReMMDBench/447/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/447/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/447/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/447/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "447",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 8,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The image clearly depicts the aftermath of a severe weather event consistent with the text's account of tornado damage in rural Illinois. The visible damage to buildings, the broken tree, and the presence of emergency response teams verify the events described.",
+            "action": "Tool[Finish[IMAGE_SUPPORT]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image depicts extensive damage to rural structures (barn, house), debris, and a damaged tree, which aligns with the text's description of EF1 tornado damage in Illinois, specifically the damage to homes and farm facilities. Verifying these specific visual details with the detection tool is appropriate before executing the final verdict to ensure accuracy.",
+            "action": "Detect[image]",
+            "observation": "- **总体观感**：画面像是一张真实新闻/纪实摄影的风暴灾后场景（农田、房屋、谷仓/筒仓、应急车辆与人员、满地碎片），没有明显“AI生成”的典型怪异细节。  \n- **光影与天气一致**：阴天散射光下的整体对比度、阴影很弱且方向不突出，符合暴风雨后阴云密布的环境；远近景雾霾/灰度层次也自然。  \n- **细节连贯**：  \n  - 倒伏/折断的大树、屋顶被掀开、建筑破损和地面散落物在空间分布上合理；  \n  - 远处房屋、筒仓与地平线透视关系正常；  \n  - 应急车辆与人物比例、清晰度与景深匹配，没有明显“贴上去”的边缘白边或不一致锐化。  \n- **未见明显篡改痕迹**：未观察到常见拼接痕迹（重复纹理、物体边缘拉丝、局部扭曲、阴影方向冲突、异常的文字/标识变形等）。  \n\n**结论**：仅从图像本身看，未发现明确的数字合成或生成痕迹，整体更像真实拍摄的龙卷风/强风暴破坏现场照片。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The detection tool has confirmed the image is a realistic photo of the described storm event, showing specific details (EF1 damage, IL context, barn/house destruction) that align with the news text. There are no synthetic artifacts found. The logical conclusion is to finalize the verdict as support, matching the text description.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image clearly shows a residential house with a significantly damaged roof, a red barn with a broken roof, a snapped large tree, and debris scattered around, with emergency vehicles present. This visual evidence strongly aligns with the news text reporting on EF1 tornado damage to houses, farm facilities, and trees. Therefore, the task can be finished with a confirmation of a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7663094323935531,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.09999999999999998,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Based on the provided verification evidence, the images are confirmed as real supporting material and the text matches the images well, indicating no distortion or misalignment exists.",
+    "notes": []
+  },
+  "error": null
+}

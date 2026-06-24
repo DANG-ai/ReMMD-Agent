@@ -1,0 +1,157 @@
+{
+  "index": 322,
+  "sample_id": "323",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1125.08,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本文本把“括苍山脊蛇（Achalinus mirabilis）已在ZSE发表且与网传截图对应”作为既定事实，但配图所示论文页面与物种信息并非同一回事，且两张图片均为生成内容，无法作为真实发表与新物种记录的证据；同时文本中关于论文题目、DOI、物种学名等关键细节与截图内容存在实质冲突，整体核心叙事缺乏可核验支撑。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "科学与健康",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/323",
+  "image_paths": [
+    "/path/to/ReMMDBench/323/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/323/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "323",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims a paper titled \"Taxonomic Reassessment of Achalinus jinggangensis… with Description of A New Species from Zhejiang Province, China\" with DOI 10.3897/zse.102.183453 exists, involving student Hu Jiahao and a new species *Achalinus mirabilis*.\n    The provided image shows a different title (\"A new species of karst-dwelling pitviper...\"), a different species (*Trimeresurus zhejiangensis*), and a suspicious DOI (10.3897/zse.102.12345) and future date (2026).\n    I need to verify if the paper mentioned in the text (about *Achalinus*) actually exists. If it does, the news text is likely true (the image provided might be a red herring or a different fake). If it doesn't, the news text is false.\n    I will search for the DOI and title mentioned in the text.",
+            "action": "Google[\"10.3897/zse.102.183453\" OR \"Achalinus mirabilis\" \"Hu Jiahao\"]",
+            "observation": "Jiahao Hu from Linhai, Taizhou has just made his mark on an ...: ... Achalinus mirabilis* #Taizhou #Linhai ... Achalinus mirabilis Achalinusmirabilis mira Bilis ... March 2026 DOI: 10.3897/zse.102.183453 https://www.researchgate. (https://www.facebook.com/CharmofTaizhou/posts/jiahao-hu-from-linhai-taizhou-has-just-made-his-mark-on-an-international-scienti/965552229331053/)\nPlazi TreatmentBank: Xu, Yuhao, Hu, Jiahao, Qi, Shuo, Ma, Shun, Chen ... https://doi.org/10.3897/zse.102.183453. link to ... Achalinus mirabilis, sp. nov. 387-409. Achalinus ... (https://publication.plazi.org/GgServer/summary/F6908AA9313454338668AF9BF83FD64A)\nZhejiang high school student Hu Jiahao discovered the Kuocang ...: Zhejiang high school student Hu Jiahao discovered the Kuocang ... March 2026 DOI: 10.3897/zse.102.183453 https://www.researchgate. net ... (https://www.facebook.com/BJNewsWorld/posts/zhejiang-high-school-student-hu-jiahao-discovered-the-kuocang-mountain-odd-scale/933907276064160/)\nAchalinus jinggangensis (Zong & Ma, 1983) - Plazi TreatmentBank: Achalinus jinggangensis (Zong & Ma, 1983). Xu, Yuhao, Hu, Jiahao, Qi, Shuo ... https://doi.org/10.3897/zse.102.183453. publication LSID. lsid:zoobank.org ... (https://tb.plazi.org/GgServer/html/351E1D1960E350278BB63B8A2A1261CD/4)\nAchalinus - Wikipedia, la enciclopedia libre: Achalinus mirabilis Xu, Hu, Qi, Zhang, Zhou, Xu, Wang & Peng, 2026; Achalinus nanshanensis Li, Zhu, Zhang & Mo, 2024; Achalinus niger Maki, 1931 ... (https://es.wikipedia.org/wiki/Achalinus)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims that a high school student Hu Jiahao published a paper on a new species *Achalinus mirabilis* in the journal *Zoosystematics and Evolution* with DOI 10.3897/zse.102.183453. My previous search results found this exact DOI, title, and author in Plazi TreatmentBank and Wikipedia (Spanish), as well as social media posts confirming the event in March 2026. The provided image in the prompt shows a different paper (*Trimeresurus zhejiangensis*) with a suspicious DOI (10.3897/zse.102.12345), which appears to be a fake or a different rumor. However, the news text specifically describes the *Achalinus* paper, which my search verified as existing in taxonomic databases. Therefore, the core claims of the news text (student discovery, species name, DOI) are supported by external sources.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.10000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims that a screenshot of a paper about a new species *Achalinus mirabilis* (with DOI 10.3897/zse.102.183453) circulated. However, the provided image shows a paper titled \"A new species of karst-dwelling pitviper (Viperidae: Trimeresurus) from Kuocang Mountain...\" with the species name *Trimeresurus zhejiangensis* and a clearly fake DOI ending in 12345. The image content (species, title, DOI) contradicts the description in the news text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the scientific name of the new species described in the abstract of the image to compare it with the news text's claim of \"Achalinus mirabilis\".",
+            "action": "VQA[What is the scientific name of the new species described in the abstract?]",
+            "observation": "\n\nBased on the abstract text in the image, the scientific name of the new species is **Trimeresurus zhejiangensis**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To further confirm the mismatch, I will verify the full title of the paper shown in the image and compare it with the title provided in the news text.",
+            "action": "VQA[What is the full title of the article shown in the image?]",
+            "observation": "\n\nThe full title of the article is \"A new species of karst-dwelling pitviper (Viperidae: *Trimeresurus*) from Kuocang Mountain, Zhejiang, China.\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the paper is about *Achalinus mirabilis* and has a specific title and DOI. The image shows a paper about *Trimeresurus zhejiangensis* with a different title. I will verify the DOI in the image to further confirm the mismatch.",
+            "action": "VQA[What is the DOI of the article shown in the image?]",
+            "observation": "\n\nThe DOI of the article is **10.3897/zse.102.12345**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims the screenshot shows a paper describing a new species *Achalinus mirabilis* with the title \"Taxonomic Reassessment of Achalinus jinggangensis...\" and DOI 10.3897/zse.102.183453. However, the image displays a paper titled \"A new species of karst-dwelling pitviper (Viperidae: *Trimeresurus*)...\" describing *Trimeresurus zhejiangensis* with DOI 10.3897/zse.102.12345. The species name, title, and DOI are all different. Therefore, the text description does not match the image content.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The screenshot contains nonsensical text (e.g., \"kundilian maple\", \"bavel use mentation artules\"), indicating it is synthetic, and it depicts a paper about a pitviper (*Trimeresurus*) while the text claims it shows a paper about *Achalinus mirabilis*, creating a semantic conflict.",
+    "notes": []
+  },
+  "error": null
+}

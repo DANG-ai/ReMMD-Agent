@@ -1,0 +1,170 @@
+{
+  "index": 372,
+  "sample_id": "373",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3256.39,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The piece mixes real Masters-related merchandise content with miscontextualized political screenshots and unrelated event photos, creating a misleading impression that they were part of the Masters-week atmosphere. An edited lead image further reinforces this false linkage by visually inserting patron-guidance/access cues into an authentic hat-haul photo.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/373",
+  "image_paths": [
+    "/path/to/ReMMDBench/373/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/373/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/373/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/373/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/373/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/373/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/373/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/373/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/373/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/373/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "373",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the 2026 Masters week ran from April 6-12 and mentions a post by \"quarterback trainer Quincy Avery\" showing a hat haul with a \"boxed hat numbered 30 of 500\". I need to verify if Quincy Avery posted such a haul (likely in 2024 or 2025, making the 2026 date incorrect, or if the event is fictional). I also need to check if the image matches the description of the haul. The dates April 6-12, 2026 correspond to Monday-Sunday, which matches the text, but 2026 is in the future relative to typical current time (2024). I will search for Quincy Avery's social media activity regarding the Masters.",
+            "action": "Google[\"Quincy Avery Masters hat haul\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a \"2026 tournament week\" as if it has already happened (\"ran from Monday, April 6 through Sunday, April 12\"). Since the current date is likely 2024 or 2025, this is a future date, making the report factually impossible unless it's a prediction (but it's written in past tense). I need to confirm the identity of \"Quincy Avery\" and check if he posted a similar haul in a past year (e.g., 2024 or 2025), which would suggest the text is hallucinating the date.",
+            "action": "Google[\"Quincy Avery quarterback trainer\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes the \"2026 tournament week\" in the past tense (\"ran from Monday, April 6 through Sunday, April 12\"), which is a future date relative to the current time (2024). It also attributes a specific social media post to \"quarterback trainer Quincy Avery\". I need to verify if Quincy Avery is a real person associated with the Masters or if this is a hallucination. I also need to confirm if the image matches a known haul from a previous year, implying the text is fabricating a future event based on past imagery.",
+            "action": "Google[\"Quincy Avery quarterback trainer\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific image featuring a \"boxed hat numbered 30 of 500\", multiple caps, and a \"credential-style lanyard\". I need to use the Detect tool to confirm the visual details in the image, such as the text on the box (\"Masters Limited Edition\") and the lanyard, to verify if they align with the description of the \"elite\" hat haul.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unmanipulated photo of Masters/Augusta-related merchandise laid out on a marble countertop.\n\n**Reasons it looks authentic**\n- **Consistent lighting and shadows:** Soft indoor lighting produces coherent shadows under each hat and along the box edges; nothing has mismatched shadow direction or intensity.\n- **Realistic materials and textures:** Stitching, mesh panels, embroidery, and fabric creases look natural (no smeared or “painted” texture typical of AI artifacts).\n- **Legible, clean branding without AI text glitches:** “MASTERS” on the box and the printed “Patron Information” card are crisp and aligned; fonts don’t show the warped/garbled look common in synthetic images.\n- **Perspective and depth are coherent:** The countertop veining, chairs in the background, and object sizes align with a normal camera perspective; no odd scale jumps.\n\n**No clear signs of manipulation**\n- No obvious cut-and-paste edges, halos, repeated patterns, or inconsistent blur.\n- No counterfactual/physically impossible elements stand out.\n\nOverall, there are no strong indicators of digital editing or synthetic generation based on the image alone.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a specific social media post featuring an \"elite\" Masters hat haul by Quincy Avery. It mentions a \"boxed hat numbered 30 of 500\" and a \"credential-style lanyard\". The image displays a collection of Masters merchandise including multiple caps, a large dark blue box labeled \"MASTERS LIMITED EDITION\", a lanyard with Masters branding, and a \"Masters Patron Information\" card. While the specific number \"30 of 500\" is not clearly legible on the box face (it says \"LIMITED EDITION\"), the presence of the limited edition box, the variety of hats, and the credential lanyard/card perfectly matches the description of the \"haul\" and the \"credential-style lanyard\". The image serves as visual evidence for the text's description of the merchandise culture and the specific \"elite\" haul mentioned.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.5,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses the \"rule-bound\" nature of Augusta National and \"Patron policies\" that give officials discretion. It also mentions a \"credential-style lanyard\" and \"access\". The image contains a card titled \"MASTERS PATRON INFORMATION\" and a lanyard. I will verify the rules listed on the card to confirm they align with the text's description of the event's strict atmosphere (e.g., silence, no photography).",
+            "action": "VQA[What rules are listed on the green patron information card in the foreground?]",
+            "observation": "\n\nBased on the green \"Patron Information\" card in the foreground, the rules listed are:\n\n*   **SILENCE CELL PHONES**\n*   **NO PHOTOGRAPHY**\n*   **NO VIDEO RECORDING**\n*   **PLEASE DO NOT DISTURB PLAY**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes the strict atmosphere of Augusta National, mentioning \"Patron policies,\" \"silence,\" \"no photography,\" and \"disturbing play.\" It also highlights the cultural significance of Masters merchandise, specifically \"hats,\" a \"boxed hat,\" and a \"credential-style lanyard.\" The VQA observation confirms the card in the image lists exactly these rules: \"SILENCE CELL PHONES,\" \"NO PHOTOGRAPHY,\" \"NO VIDEO RECORDING,\" and \"PLEASE DO NOT DISTURB PLAY.\" Furthermore, the image clearly displays a collection of Masters-branded hats, a \"MASTERS LIMITED EDITION\" box, and a lanyard. The visual elements align perfectly with the detailed descriptions in the text regarding merchandise and event protocols.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.896280949311433,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates details of a future event (the 2026 Masters tournament week) describing it in past tense, and includes an image of Australian civic text which is contextually mismatched with the article's subject matter (the Masters in Augusta, USA).",
+    "notes": []
+  },
+  "error": null
+}

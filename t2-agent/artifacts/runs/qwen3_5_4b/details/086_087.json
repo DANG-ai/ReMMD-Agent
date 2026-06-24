@@ -1,0 +1,140 @@
+{
+  "index": 86,
+  "sample_id": "087",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1617.62,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article is grounded in a real policy and correctly notes that REAL ID enforcement started in May 2025 and that travelers using state licenses should check compliance. But it reframes March 2026 as if a newly harsher checkpoint phase has arrived, and its visual package amplifies that misleading impression through a synthetic airport scene and an edited Pennsylvania license graphic that overstate what viewers are seeing at actual TSA checkpoints.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/087",
+  "image_paths": [
+    "/path/to/ReMMDBench/087/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/087/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/087/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/087/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/087/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/087/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/087/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/087/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/087/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/087/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "087",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the image supports the text's claims. The text claims the image is a \"Cover image\" from March 2026. The image shows a heavily crowded airport checkpoint with a prominent blue sign saying \"REAL ID Screening Please have your ID ready\". This aligns with the text's description of the scene. The text also references an \"Inset graphic\" which is not shown in the cover image, but the prompt asks to detect veracity of the image provided. A direct tool call is needed to assess the visual content's authenticity against the text's assertion of it being a real scene from a future date.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the Detect[image] tool is unavailable, I will attempt to finish the veracity check by refuting the text based on temporal/logical inconsistency. The text claims the image is from 'March 2026', which is a future date. Additionally, the image exhibits characteristics typical of AI generation (uniform crowd, generic details) rather than a genuine historical photo, implying the image is synthetic and does not verify a real 2026 event.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.5,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "The text description aligns very well with the image content: a crowded airport hall, a prominent \"REAL ID Screening\" sign, and travelers at a checkpoint. The visual evidence strongly supports the description provided in the \"Cover image\" section of the news text, warranting a positive match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.6082201995573401,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.5,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The news text describes events set in the future timeline of late 2025/2026 as current news, and the airport image appears to be AI-generated or synthetic.",
+    "notes": []
+  },
+  "error": null
+}

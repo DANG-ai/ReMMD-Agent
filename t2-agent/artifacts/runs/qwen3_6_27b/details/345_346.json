@@ -1,0 +1,117 @@
+{
+  "index": 345,
+  "sample_id": "346",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1862.27,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "样本关于“客服回应已下架、工作室声明维权”的核心信息与可核对的原始微博内容一致，但在平台处置力度与范围上加入了缺乏公开证据支撑的延伸表述，并通过编辑后的截图式配图强化“已封禁/清理”的观感，造成轻度误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "文娱",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/346",
+  "image_paths": [
+    "/path/to/ReMMDBench/346/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/346/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/346/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/346/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "346",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news claims Yang Zi's studio released a statement regarding AI face-swapping infringement. The image displays a Weibo post from the official account \"Yang Zi Studio\" dated March 20th. The text in the image explicitly states: \"Regarding the behavior of unauthorized works using AI face-swapping... to擅自 use Yang Zi's portrait... severely infringed... Studio has entrusted lawyers... Currently related videos have been taken down. Technology can create a beautiful future, but should not become a tool for infringement.\" This matches the news report's details perfectly.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text reports on a statement released by Yang Zi's studio regarding unauthorized AI face-swapping in a short drama. The text details the studio's response: confirming the infringement, stating that lawyers have been hired, mentioning legal action, and noting that videos have been taken down. The image shows the exact statement from the \"Yang Zi Studio\" Weibo account. The text in the image (\"针对某作品未经授权，利用 AI换脸、深度合成等技术...\") matches the summary in the news text (\"杨紫工作室发布声明称：某作品在未获授权的情况下，使用AI换脸/深度合成等技术...\"). The specific details about the lawyer, legal action, and videos being taken down are present in both. Therefore, the news text and the image are a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample includes an AI-generated illustration (Image 4) and potentially an AI-synthesized face in the news screenshot (Image 3), corresponding to the high p_fake_image score.",
+    "notes": []
+  },
+  "error": null
+}

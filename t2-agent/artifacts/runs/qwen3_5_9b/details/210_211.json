@@ -1,0 +1,150 @@
+{
+  "index": 210,
+  "sample_id": "211",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1303.13,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The piece mixes a real Supreme Court dispute and real protest imagery with misleading claims about Trump's personal presence and a slanted characterization of the hearing. Edited vehicle photos are presented as if they documented his arrival, and the text overstates how favorable the argument was for the administration.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/211",
+  "image_paths": [
+    "/path/to/ReMMDBench/211/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/211/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/211/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/211/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "211",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific Supreme Court hearing involving President Donald Trump regarding an executive order on birthright citizenship. I need to verify if this court case and President Trump's attendance actually occurred recently, as the text claims. Checking Wikipedia might reveal if there is a relevant case or if this is a hallucination.",
+            "action": "Wikipedia[Presidential birthright citizenship]",
+            "observation": "No summary available. Similar entities: Birthright citizenship in the United States, Trump v. Barbara, Executive Order 14160, Trump v. CASA, Citizenship of the United States",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "",
+            "action": "Wikipedia[Trump v. Magallanes]",
+            "observation": "No summary available. Similar entities: Cristóbal Magallanes, Venezuelan Professional Baseball League, Makati, Panama Canal, Andrés Manuel López Obrador",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the visual content of the image against the news text. The text mentions a black SUV, the Supreme Court, and Donald Trump. I will use the detection tool to analyze the scene details, specifically looking for the text on the building and the features of the vehicle and the person inside.",
+            "action": "Detect[image]",
+            "observation": "- **Overall look:** The scene reads like a normal press/photojournalism shot (natural daylight, consistent depth of field with foreground bollards blurred, plausible reflections on the vehicle, and coherent shadows).\n\n- **Potential signs of editing/synthesis:**\n  - The **occupant’s face is noticeably indistinct/blurred** compared with surrounding detail. That could be deliberate anonymization/redaction, motion/defocus through tinted glass, or an artifact of synthetic generation—but it stands out as the main “off” element.\n  - The **presidential seal-like emblem** on the SUV door is very small and not crisp at this resolution; however, nothing about it clearly shows warping, mismatched lighting, or bad compositing.\n\n- **Text/geometry checks:** The building plaque (“SUPREME COURT OF THE UNITED STATES”) looks correctly spelled and aligned with the wall; no obvious letter distortions or perspective errors that commonly show up in AI images.\n\n- **Conclusion:** No strong, definitive indicators of AI generation or heavy compositing. The only notable anomaly is the unusually featureless/blurred face inside the SUV, which could be intentional obscuring rather than manipulation of the whole scene.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the initial observation, the building plaque is correctly spelled, which is a strong indicator for a real photo. The seal on the door matches the shape of the Presidential seal. The blurred face might be due to intact glass opacity or image artifacting, but given the perfect text and building details, the image likely depicts the scene described. However, if the face is completely featureless (AI render), it would refute. I suspect this is veridical, so I will propose finishing with IMAGE_SUPPORT.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.4326748710922225,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.1,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.51,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text fabricates a non-existent or inaccurate Supreme Court hearing regarding a specific executive order, indicated by the verification evidence of TEXT_REFUTE, while images are mostly consistent (IMAGE_SUPPORT) and real.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,133 @@
+{
+  "index": 339,
+  "sample_id": "340",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2037.45,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The piece uses real but separate public-health events and genuine concepts from COVID-era death-certification guidance to falsely imply a broader CDC outbreak-death surveillance protocol connected to current hantavirus and Salmonella monitoring. That misleading narrative is reinforced with edited fake CDC document screenshots and a synthetic operations-center image presented as corroborating evidence.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/340",
+  "image_paths": [
+    "/path/to/ReMMDBench/340/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/340/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/340/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/340/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/340/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "340",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims that federal guidance allows physicians to use their \"best medical or clinical judgment\" to document deaths as \"probable or presumed\" when linked to infectious diseases. The provided image, titled \"Emergency certification guidance for outbreak-related deaths,\" explicitly states: \"Suspected outbreak-linked fatalities may be reported on clinical judgment pending confirmatory testing\" and \"In these instances, certifiers should use their best clinical judgment...\". It also mentions reporting conditions as \"probable\" or \"presumed.\" This directly supports the claim in the text.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a straightforward screenshot or crop of a CDC guidance document page rather than a synthetic/generated scene.\n\nSigns it looks authentic:\n- Consistent document layout: a clear title (“Emergency certification guidance for outbreak-related deaths”), uniform margins, paragraph spacing, and typography typical of an official PDF.\n- Coherent text rendering: letterforms and spacing are consistent throughout; no “AI text” artifacts (warped characters, inconsistent fonts within words, garbled lines).\n- Plausible highlighting: a single sentence is highlighted in yellow with clean rectangular edges, consistent with common PDF highlight tools.\n- URLs and formatting look normal and aligned with the body text.\n\nNo obvious signs of manipulation/synthesis:\n- No mismatched lighting/shadows (it’s a flat document image).\n- No visible cut-and-paste seams, duplicated lines, or inconsistent resolution in the highlighted area versus surrounding text.\n- No counterfactual visual elements are detectable from the image alone (it’s text content, not a depicted event).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims that federal guidance allows physicians to use \"best medical or clinical judgment\" to document deaths as \"probable or presumed\" when linked to infectious diseases. The provided image is a document titled \"Emergency certification guidance for outbreak-related deaths\" which explicitly states: \"Suspected outbreak-linked fatalities may be reported on clinical judgment pending confirmatory testing\" and mentions reporting conditions as \"probable\" or \"presumed.\" The previous observation confirmed the image is an authentic document without signs of manipulation. Therefore, the image directly supports the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.8,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses federal guidance on death certification, specifically mentioning a document that allows certifiers to use \"best medical or clinical judgment\" for \"probable or presumed\" cases. The image displays a document titled \"Emergency certification guidance for outbreak-related deaths\" which contains exactly these instructions: \"In cases where a definite diagnosis... cannot be made... it is acceptable to report the outbreak-related condition on a death certificate as 'probable' or 'presumed.'\" and highlights \"Suspected outbreak-linked fatalities may be reported on clinical judgment pending confirmatory testing.\" The image provides the specific text of the guidance referenced and described in the article.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7663094323935531,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.1,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The CDC situational awareness screen (Image 2) is likely AI-generated synthetic content (V1) and displays a map location for the M/V Hondius that does not match the text's description of the ship being off Cape Verde, nor does it align with the timeline of the 2023 chameleon investigation presented alongside a May 2024 date (C2).",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,149 @@
+{
+  "index": 307,
+  "sample_id": "308",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 591.27,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The central event described in the article is directionally correct: it presents a real Islanders 5-4 win and the associated celebratory online reaction. However, the write-up stretches the broader significance of the game into a near season-defining turning point, and an edited postgame image strengthens the triumphant mood beyond what the unaltered visual record alone supports.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/308",
+  "image_paths": [
+    "/path/to/ReMMDBench/308/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/308/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/308/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/308/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/308/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/308/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/308/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/308/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/308/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/308/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "308",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.4,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "To verify the veracity of this news text, I first need to check if a game between the New York Islanders and Florida Panthers occurred on the specific date claimed (March 1, 2026) and with the reported score (5-4). Since the date is in the future relative to standard training data, I should search the internet for this specific claim.",
+            "action": "Google[Islanders Panthers game March 1 2026 5-4]",
+            "observation": "Islanders 5-4 Panthers (Mar 1, 2026) Game Recap - ESPN: Florida Panthers @ New York Islanders · Lee scores in final minute, Schaefer has 2 more goals as the Islanders beat the Panthers 5-4. 1:00 ... (http://www.espn.com/nhl/recap?gameId=401803299)\nNHL Highlights | Panthers vs. Islanders - March 1, 2026 - YouTube: ... game-winner with 32 seconds left, lifting the New York Islanders past the Florida Panthers 5–4. https://www.youtube.com/playlist?list ... (https://www.youtube.com/watch?v=L6hYjc74E5s)\nLee scores with 32 seconds left, Islanders edge Panthers for 5th win ...: -- Anders Lee scored with 32 seconds remaining in regulation for the New York Islanders, who won their fifth straight game by defeating the ... (https://www.nhl.com/news/florida-panthers-new-york-islanders-game-recap-march-1-2026)\nCinematic Recap: Islanders 5, Panthers 4 | New York ... - NHL.com: An in-depth look at the New York Islanders 5-4 win over the Florida Panthers on Mar. 1, 2026. Presented by Dime. (https://www.nhl.com/islanders/video/cinematic-recap-islanders-5-panthers-4-6390287404112)\nFlorida Panthers vs. New York Islanders | March 1, 2026 | NHL: Faceoffs (%). 49.2. 3. Power Plays. 1. 23. Hits. 25. 33. Shots on Goal. 26. Get deeper into the game. Get the app. Game Details. UBS Arena. Belmont Park, NY, ... (https://www.thescore.com/nhl/events/32064)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search results confirm the core facts: the Islanders vs. Panthers game occurred on March 1, 2026, with a 5-4 score in favor of the Islanders. The key players mentioned (Anders Lee for the go-ahead goal, Matthew Schaefer for scoring multiple goals) are corroborated in the search snippets (e.g., \"Schaefer has 2 more goals\", \"Lee scores in final minute\"). The location (UBS Arena) and opponent (Panthers) also match. There is sufficient evidence to conclude the text is accurate.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.75,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific opponent mentioned in the text against the visual evidence. The text explicitly states the opponent was the Florida Panthers, but the graphic in the top right corner shows a logo that appears to be the Tampa Bay Lightning (lightning bolt shape) alongside the Islanders logo. This visual discrepancy is the most critical point of contention for the text's veracity. Using the detection tool will confirm the logo details.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like an authentic sports photo with an added graphic overlay.** The rink, crowd depth, lighting, motion blur, and jersey textures/logos look consistent with a real in-arena photograph. No obvious AI artifacts (warped equipment, impossible anatomy, inconsistent shadows) stand out.\n\n- **Clear sign of digital editing/overlays:** The top-right “POSTGAME PORTFOLIO / 5–4 FINAL” panel is a clean, rectangular broadcast/social graphic placed over the photo (sharp edges, different design style than the scene), indicating compositing.\n\n- **Additional obvious edit:** Both players’ faces are covered with uniform blurred/blocked rectangles, suggesting deliberate anonymization/redaction rather than a camera effect.\n\n- **No evident counterfactual visual elements in the image itself:** The Islanders branding and the “5–4 FINAL” presentation appear coherent within a typical postgame graphic context, though the score/opponent can’t be verified from the image alone.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly states the opponent was the Florida Panthers, but the postgame graphic in the image shows a Lightning bolt logo (Tampa Bay), not the Panthers logo. This is a definitive counterfactual mismatch between the text narrative and the visual evidence provided, despite the score (5-4) matching. I have sufficient information to conclude the text is hallucinating the opponent.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9321697517861577,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.1,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a real event but relies heavily on a \"Postgame Portfolio\" graphic image that is clearly edited/composited, creating a mismatch between the 'real news' context and the 'edited media' visual context.",
+    "notes": []
+  },
+  "error": null
+}

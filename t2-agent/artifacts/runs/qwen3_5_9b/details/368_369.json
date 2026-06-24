@@ -1,0 +1,152 @@
+{
+  "index": 368,
+  "sample_id": "369",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1520.82,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The piece is built around invented NFL free-agency and franchise-tag developments presented as confirmed news, and it reinforces those false claims with generated and edited visuals posed as documentary evidence. Several images either were synthetically created or repurposed from unrelated team contexts, creating both factual and image-text mismatches that materially mislead the reader.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/369",
+  "image_paths": [
+    "/path/to/ReMMDBench/369/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/369/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/369/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/369/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/369/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/369/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/369/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/369/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/369/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/369/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "369",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.44999999999999996,
+        "best_trajectory": [
+          {
+            "thought": "The text prominently features a specific visual description of a \"signing-day composite\" showing Kenneth Walker III, Mike Evans, and Malik Willis in distinct colored jerseys, and later describes a photo of Walker in a tailored suit. I need to analyze the provided image to identify the subjects and their attire to verify if it matches these textual claims.",
+            "action": "Detect[image]",
+            "observation": "The image looks like a real photograph of a contract-signing scene, with one clear sign of **post-processing**:\n\n- **Face blurring/redaction:** All visible faces are uniformly blurred with similar rectangular gradients. That’s consistent with intentional privacy masking added after the photo was taken, not an AI artifact.\n\nNo strong signs of synthetic generation or compositing are evident:\n\n- **Lighting and shadows** are consistent across people, table, and background.\n- **Depth of field** looks natural (foreground helmet slightly out of focus; subjects sharp; background softer).\n- **Logos and text** (Chiefs branding, Nike swoosh) appear clean and correctly shaped without the warped/garbled edges often seen in AI images.\n- **Object geometry** (hands holding pen, watch/chain details, camera in back) appears coherent without obvious deformities.\n\nOverall: likely an authentic photo with **faces intentionally blurred** for anonymity.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text makes a definitive claim about the visual content of an image: a \"site's cover visual... composite... [showing] Kenneth Walker III in Chiefs red, Mike Evans in a 49ers jersey and Malik Willis in Dolphins aqua.\" The provided image shows a scene dominated exclusively by Chiefs branding and red-themed apparel. There is no visual support for Mike Evans in 49ers colors or Malik Willis in Dolphins colors in this specific frame. Additionally, while the text describes \"One of Monday’s photos showed Walker arriving... in a tailored suit,\" the provided image depicts a table signing where the central figure wears a red hoodie. The lack of matching visual features (jersey teams, outfit style) refutes the text's claims about what the image shows.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a \"signing-day composite\" featuring Kenneth Walker III, Mike Evans, and Malik Willis. The image shows a single person in a red hoodie. I need to verify the number of people in the image to confirm if the description of a \"composite\" is accurate.",
+            "action": "VQA[How many people are signing in the group shown in the image?]",
+            "observation": "\n\nBased on the image, only **one** person is signing. He is the man in the center wearing the red hoodie, who is holding a pen and writing on a document.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a \"signing-day composite\" of three players (Walker, Evans, Willis), but the previous VQA confirmed only one person is in the image. Additionally, the text mentions a photo of Walker arriving in a \"tailored suit,\" while the image shows him in a red zip-up hoodie. I need to confirm the specific garment to solidify the mismatch evidence.",
+            "action": "VQA[What specific garment is the main subject in the center wearing on his upper body?]",
+            "observation": "\n\nThe main subject in the center is wearing a **red zip-up hoodie** featuring the Kansas City Chiefs logo on the chest and a Nike swoosh on the sleeve.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.2,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.95,
+        "C2 Contextual Inconsistency": 0.3,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "The text hallucinates a runback to Kansas City (T1) and incorrectly describes the subject's attire as a \"tailored suit\" in the visual when the image clearly shows him in a red hoodie (C1).",
+    "notes": []
+  },
+  "error": null
+}

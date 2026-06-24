@@ -1,0 +1,137 @@
+{
+  "index": 408,
+  "sample_id": "409",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3902.34,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Der Artikel präsentiert einen vollständig ausformulierten Spielbericht mit konkretem Ergebnis, Torschützenbild und Schlussdramaturgie als Tatsachen, obwohl dafür keine belastbare Evidenz vorliegt und die zugespitzte Kernhandlung frei erfunden ist. Die zentralen begleitenden Bilder sind zudem generiert und werden in Nachrichtencaptions so gerahmt, als dokumentierten sie das behauptete Spielgeschehen.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/409",
+  "image_paths": [
+    "/path/to/ReMMDBench/409/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/409/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/409/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/409/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "409",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a match between TSG Hoffenheim and Borussia Dortmund where Andrej Kramarić scored the decisive penalty in stoppage time to secure a 2:1 victory. The image shows a player in a blue Hoffenheim kit running towards a penalty spot with a ball, facing a goalkeeper in a yellow Dortmund kit. The background banner \"SÜDKURVE HOFFENHEIM\" confirms the location. The text also includes a caption \"[Foto: Andrej Kramarić läuft in der Nachspielzeit zum entscheidenden Strafstoß an...]\" which matches the visual action. I will use the Detect tool to verify the visual details (player number, specific action) to ensure they align with the text description of Kramarić's decisive penalty.",
+            "action": "Detect[image]",
+            "observation": "The image looks like an authentic sports photograph with no clear signs of AI generation or heavy digital compositing.\n\n**Reasons it appears authentic**\n- Consistent stadium lighting and natural depth-of-field (sharp penalty taker/ball area, softer background crowd and far players).\n- Realistic motion/stance details and fabric folds on kits; no obvious “melted” textures or warped anatomy.\n- Goal net, posts, and perspective lines look geometrically consistent; no suspicious bending or duplicated patterns.\n- Noise/grain and color rendering are consistent across the frame, as in a low-light telephoto stadium shot.\n- Advertising boards and the “SÜDKURVE HOFFENHEIM” signage appear coherent and legible without typical AI text artifacts.\n\n**Possible minor edits**\n- The penalty taker’s face is visibly blurred/pixelated, consistent with a privacy edit/redaction rather than synthesis.\n- General color/contrast sharpening typical of editorial sports images may be present, but nothing suggests manipulation of the scene’s content.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a soccer player in a blue Hoffenheim kit (number 11 visible on shorts, matching Andrej Kramarić's number) taking a penalty kick against a goalkeeper in a yellow Dortmund kit. The background banner \"SÜDKURVE HOFFENHEIM\" confirms the location. The text describes Kramarić scoring a decisive penalty for Hoffenheim against Dortmund. The visual evidence of the player, team kits, location, and action (penalty run-up) aligns perfectly with the news report's description of the decisive moment. The detection tool confirmed the image is authentic (with a redacted face), supporting the veracity of the scene depicted in the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific moment where Andrej Kramarić takes a penalty kick (\"Strafstoß\") for Hoffenheim against Dortmund. I need to verify if the visual action in the image corresponds to a penalty kick setup.",
+            "action": "VQA[Is the player in the blue jersey preparing to take a penalty kick?]",
+            "observation": "\n\nYes, based on the visual evidence, the player in the blue jersey appears to be preparing to take a penalty kick. He is running up towards the stationary ball while the goalkeeper in the yellow jersey waits on the goal line, and other players are standing further back, which is the standard setup for a penalty kick.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a specific moment where Andrej Kramarić takes a penalty kick for Hoffenheim against Dortmund. The image shows a player in a blue jersey (Hoffenheim's colors) running up to a stationary ball for a penalty kick, with a goalkeeper in a yellow jersey (Dortmund's goalkeeper colors) in the goal. The background signs \"SÜDKURVE HOFFENHEIM\" and \"pre zero\" confirm the location as the PreZero Arena. The caption within the text explicitly describes this exact scene (\"Andrej Kramarić läuft in der Nachspielzeit zum entscheidenden Strafstoß an\"). Therefore, the image matches the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 1.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text distorts factual details of the match (e.g., date, scoreline/narrative compared to reality), and the visual content includes a privacy edit (blurred face), constituting visual editing.",
+    "notes": []
+  },
+  "error": null
+}

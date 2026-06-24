@@ -1,0 +1,30 @@
+Given a multimodal misinformation sample with one article text and multiple related images.
+Article text is: [News caption]
+
+Provided external evidence candidates:
+[Provided Evidence]
+
+Determine the textual veracity of the core claim while considering all input images as contextual material. Please follow the instructions below:
+Thought 1: Identify the key entity noun or key event phrase that best anchors the article's core claim.
+Action 1: Search [key entity noun].
+Observation: [External Knowledge]
+Thought 2: Combine the Observation with the provided external evidence candidates. First write one short analysis paragraph. Then judge whether the article text is strongly supported, weakly supported, mixed, weakly refuted, or strongly refuted under the following standard:
+- TEXT_STRONG_SUPPORT: the core claim holds, and the key details, limits, and context align with verifiable facts.
+- TEXT_WEAK_SUPPORT: the core claim holds overall, but there are minor detail, scope, or context problems that do not change the main conclusion.
+- TEXT_MIXED: ONLY when important true and false/misleading parts coexist with roughly equal weight, so the text cannot be judged as overall true or overall false. Do NOT use this label as a default or when uncertain; lean toward SUPPORT or REFUTE.
+- TEXT_WEAK_REFUTE: the main impression or conclusion is wrong, but some real elements still remain.
+- TEXT_STRONG_REFUTE: the core claim fails overall, lacks factual basis, or is clearly contradicted by available evidence.
+
+In addition, identify any specific TEXTUAL DISTORTION categories that are present in the article (you may select zero, one, or multiple). These categories are independent of the overall direction above, and apply only to the article text:
+- T1 Fabrication: the article contains entirely invented information with no factual basis (e.g. fake quotes, made-up events, fictional entities, statistics that do not exist).
+- T2 Distortion: the article takes real facts and exaggerates, twists, or selectively reports them in a way that misleads the reader's overall impression.
+- T3 Misleading Context: the article places real facts in a wrong or misleading context (wrong time, wrong location, wrong cause-effect, wrong actor) so that the literal facts mislead by framing.
+
+Analysis: [Analysis]
+Action 2: Output exactly one final veracity label in the form 'Finish[TEXT_STRONG_SUPPORT].', 'Finish[TEXT_WEAK_SUPPORT].', 'Finish[TEXT_MIXED].', 'Finish[TEXT_WEAK_REFUTE].', or 'Finish[TEXT_STRONG_REFUTE].'.
+Action 3: Output exactly one line listing the textual distortion labels you identified in this article, in the form 'Distortions: T1, T2' (use the comma-separated codes T1, T2, T3 in any combination). If none of these textual distortion categories applies, output 'Distortions: NONE'.
+
+IMPORTANT:
+1. Choose the veracity label that best matches the dominant direction. TEXT_MIXED should only be used when both true and false parts are genuinely important and roughly balanced. When in doubt, prefer the non-MIXED label.
+2. The Distortions line is independent: a sample can be labeled TEXT_WEAK_SUPPORT and still legitimately have a 'T2' tag if there is a real but minor textual distortion. Only include a distortion code when you have a concrete textual basis for it. If you cannot justify a code, do not include it.
+3. The two output lines 'Finish[...]' and 'Distortions: ...' must both appear, on separate lines, and after your analysis.

@@ -1,0 +1,165 @@
+{
+  "index": 472,
+  "sample_id": "473",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2755.88,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article accurately reflects the source summary: early reports from ABC News and Military Times said a U.S. F-15E was shot down over Iran, one crew member was recovered, a search continued for the second, and an A-10 supporting the rescue effort was also hit. The reused file images are properly captioned as illustrative aircraft-type images and do not misrepresent themselves as scene-specific evidence.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/473",
+  "image_paths": [
+    "/path/to/ReMMDBench/473/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/473/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/473/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/473/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "473",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; T3 Misleading Context; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims a U.S. F-15E was shot down over Iran on April 3, 2026. The current date is likely before 2026, making this a future event or a fabrication. The image shows a specific jet: F-15E 86-0185 with tail code \"OT\" (388th Fighter Wing). I need to verify the status of this specific jet and if any such incident occurred. I will search for the jet number and the specific news event to see if it matches reality or is a hallucination.",
+            "action": "Google[F-15E 86-0185 status crash]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims an incident occurred on April 3, 2026, which is a future date. I need to verify if this is a typo or a fabrication. I will check the Wikipedia list of F-15 losses to see the most recent recorded incidents and confirm no such 2026 event is listed (as it's in the future) and no similar recent incident matches the description.",
+            "action": "Wikipedia[List of F-15 losses]",
+            "observation": "No summary available. Similar entities: List of F-15 losses, Mitsubishi F-15J, McDonnell Douglas F-15 Eagle, List of accidents and incidents involving military aircraft, List of aviation shootdowns and accidents during the Russo-Ukrainian war",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims an F-15E was shot down over Iran on April 3, 2026. This date is in the future, which strongly suggests the text is fabricated. I need to verify if a similar incident occurred in the past (perhaps the date is a typo) or if the specific details (A-10 crash in Kuwait) correspond to any real events. I will search for the main incident first.",
+            "action": "Google[F-15E shot down Iran]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text reports on an incident involving a U.S. F-15E Strike Eagle. To verify if the image is relevant, I need to identify the aircraft type shown. The image displays a twin-engine, twin-tail fighter jet with a two-seat cockpit, which are key characteristics of the F-15E. I will use the Detect tool to confirm the aircraft model and check for any specific markings that might link it to the report.",
+            "action": "Detect[image]",
+            "observation": "- **Appears to be an authentic photo of an F-15 (likely F-15E) in flight**, not a crash/downing scene. There’s no visible damage, smoke, fire beyond normal exhaust, or ground impact context.\n- **No obvious signs of AI generation**: edges and panel lines look coherent; perspective and proportions of the airframe, pylons, and twin tails are consistent; lighting and shadows match the sky and terrain.\n- **Afterburner/exhaust looks plausible**: the glow and heat distortion trail behind the engines is consistent with real jet imagery (bright cores with turbulent blur).\n- **No clear compositing artifacts**: no halos/cutout edges around the aircraft, no mismatched grain between plane/sky/mountains, and the background blur/compression looks uniform.\n- **Contextual mismatch**: if this image is being used to claim a specific shootdown over Iran on April 3, 2026, the image itself doesn’t provide corroborating evidence (no location identifiers, no event cues). It looks more like a generic/archival in-flight photo.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes an incident over Iran on April 3, 2026 (a future date). The aircraft in the image features the tail code \"OT\", which corresponds to the 51st Fighter Wing based at Osan Air Base in South Korea. The image appears to be an archival photo of a real aircraft (likely an F-15K or F-15C) from a different location and time. Since the image depicts a specific aircraft from a different unit/location and the text describes a future fictional event, the image does not support the text and effectively refutes the implication that this is the incident described.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes an incident involving a U.S. F-15E Strike Eagle. To verify if the image matches the text, I first need to confirm the type of aircraft shown in the image. The visual features (twin tails, side intakes, two-seat cockpit) suggest it is an F-15, likely an F-15E. I will use VQA to explicitly identify the aircraft model.",
+            "action": "VQA[What specific model of fighter jet is shown in the image?]",
+            "observation": "\n\nBased on the visual evidence, the aircraft is a **McDonnell Douglas F-15D Eagle**.\n\nKey identifying features include:\n*   **Tandem Cockpit:** The presence of two seats (a pilot and a weapons systems officer/instructor) identifies it as the \"D\" model variant of the F-15.\n*   **Twin Vertical Stabilizers:** The twin tail fins canted outward are characteristic of the F-15 family.\n*   **Markings:** The tail number visible is **86-0185**. The checkered pattern on the tail fins and the squadron patch indicate it belongs to the **48th Fighter Wing** (specifically the \"Lonesome Gunners\"), which operated this aircraft.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA identified the aircraft as an F-15D Eagle, noting the lack of conformal fuel tanks and specific tail markings. The text describes an F-15E Strike Eagle, which is visually distinct due to its conformal fuel tanks. To further verify the markings and confirm the aircraft model/identity (specifically the tail number and squadron patch) to ensure the VQA's assessment is robust, I will use Entity detection.",
+            "action": "Entity[image]",
+            "observation": "- **McDonnell Douglas/Boeing F-15E Strike Eagle (U.S. military jet)** — **High certainty** (twin tail, twin-engine, conformal fuel tanks, two-seat canopy typical of F-15E variant).\n- **U.S. Air Force insignia / aircraft markings** — **High certainty** (visible “AF” and tail code/serial-style markings like “OT” and “185”).\n- **Afterburners (engine exhaust flames)** — **High certainty** (bright orange exhaust plumes from both engines).\n- **Mountain range / snowy mountains (likely U.S. Southwest-type terrain)** — **Medium certainty** (distinct rugged, snow-dusted peaks; exact range not identifiable from image alone).\n- **Tall light/communications pole or airfield tower structure** — **Medium certainty** (a mast with fixtures visible near the mountains; specific facility unknown).\n- **People (aircrew in cockpit)** — **Low certainty** for details (two figures appear in the two-seat cockpit, but identities not discernible and not identifiable).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes an incident involving a \"U.S. F-15E Strike Eagle\". The Entity detection tool identified the aircraft in the image as an \"F-15E Strike Eagle\" with high certainty, explicitly noting \"conformal fuel tanks\" which are characteristic of the F-15E variant (whereas the F-15D lacks them). The previous VQA identified it as an F-15D, which contradicts the visual evidence of CFTs and the Entity tool's output. Since the image depicts an F-15E Strike Eagle, matching the aircraft described in the text, the correct classification is MATCH.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 1.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent event (F-15E shot down in 2026), while using authentic archival images of aircraft in flight to create a misleading context and contextual inconsistency with the claimed shootdown.",
+    "notes": []
+  },
+  "error": null
+}

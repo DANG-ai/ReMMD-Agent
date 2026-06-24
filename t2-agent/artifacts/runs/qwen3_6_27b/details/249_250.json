@@ -1,0 +1,147 @@
+{
+  "index": 249,
+  "sample_id": "250",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1772.54,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Die zentrale Nachricht eines landesweiten, über Tage andauernden Fast-Komplettausfalls wird als überprüfte Tatsachenlage dargestellt, ohne dass dafür belastbare Evidenz vorliegt. Zugleich stützen vollständig synthetische Bilder die Behauptung scheinbar dokumentarisch und verstärken den Kriseneindruck irreführend.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/250",
+  "image_paths": [
+    "/path/to/ReMMDBench/250/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/250/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "250",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I will search for the specific connectivity stats mentioned in the text and shown in the image to see if they match a real historical event. The text claims 1% connectivity and a duration of >120 hours. The image shows a drop to 1% recently (within 24 hours). I need to find out if there was an event where Iran had 1% connectivity for 5 days.",
+            "action": "Google[NetBlocks Iran 1% connectivity duration 120 hours]",
+            "observation": "NetBlocks: Home: Metrics show the #Iran internet blackout is now in its 72nd day with connectivity flatlining after 1704 hours. The unprecedented measure is well into its ... (https://netblocks.org/)\nThe internet blackout in Iran is described as “the longest nation ...: According to NetBlocks, an organization that tracks cyber security, connectivity, and democracy, Iran has been offline for over 1272 hours. (https://www.instagram.com/reel/DYkhHOqDnGS/)\nIran's internet blackout has exceeded 120 hours, with connectivity ...: Iran's internet blackout has exceeded 120 hours, with connectivity still hovering around 1% of ordinary levels, NetBlocks said on Thursday. (https://www.facebook.com/IranIntlEnglish/posts/irans-internet-blackout-has-exceeded-120-hours-with-connectivity-still-hovering-/1440149311455491/)\nUpdate: #Iran's internet blackout has now exceeded 120 hours with ...: Update: #Iran's internet blackout has now exceeded 120 hours with connectivity still flatlining around 1% of ordinary levels. (https://x.com/netblocks/status/2029458179956883509)\nNetBlocks: \"⚠️ Update: Metrics show #Iran …\" - Mastodon: Update: #Iran has now been offline for 120 hours. Despite some phone calls now connecting, there is no secure way to communicate and the general ... (https://mastodon.social/@netblocks/115891582046889670)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes an internet blackout in Iran with connectivity at ~1% and duration >120 hours, citing NetBlocks. The search results explicitly confirm these details: \"Iran's internet blackout has exceeded 120 hours, with connectivity still hovering around 1%\". The text also mentions \"5. März 2026\", which is a future date, but the search results confirm the specific stats and source (NetBlocks) mentioned in the text. The image shows a dashboard from \"Jun 16, 2025\" with a recent drop to 1%, which might be the start of the event or a different one, but the search results verify the text's core claims about the duration and connectivity level.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.2,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.9499999999999998,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a digital blackout in Iran dated March 5, 2026, claiming connectivity is at 1% and has lasted for over 120 hours. The provided image is a screenshot from a monitoring dashboard dated June 16, 2025. While the connectivity metric (1%) and location (Iran) match, the dates are incompatible (March 2026 vs June 2025). Furthermore, the time series graph in the image shows the connectivity drop occurring within the last 24 hours (around midnight June 16), contradicting the text's claim that the blackout has been ongoing for more than 120 hours (5 days). Therefore, the image does not support the specific claims and timeline of the news text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to check the date and time displayed in the bottom right corner of the image to see if it matches the date in the text (March 5, 2026) and if the graph supports the claim of a >120 hour outage.",
+            "action": "VQA[What is the date and time shown in the bottom right corner of the dashboard?]",
+            "observation": "\n\nThe date and time shown in the bottom right corner is **Jun 16, 2025 14:26 UTC**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states the blackout has been ongoing for \"more than 120 hours\". However, the \"Connectivity Time Series\" graph shows high connectivity until approximately 00:00 on Jun 16, with a drop occurring recently. Given the current time in the image is 14:26 on Jun 16, the outage shown has only lasted about 14 hours, contradicting the text's claim.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future date (March 2026) for the blackout, the dashboard image appears to have an edited date (2025), the street scene is likely AI-generated (synthetic), and there is a clear contextual inconsistency between the text date and the dashboard date.",
+    "notes": []
+  },
+  "error": null
+}

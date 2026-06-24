@@ -1,0 +1,179 @@
+{
+  "index": 400,
+  "sample_id": "401",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1218.49,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article is built on real developments such as Japan's new landing craft and the 2024 Reciprocal Access Agreement with the Philippines, but it misleadingly stitches them into a much more specific operational narrative about likely Japanese landings in the Philippines than the evidence supports. Edited visuals and captions further push readers toward a Philippines-focused deployment interpretation that the underlying images and source contexts do not document.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/401",
+  "image_paths": [
+    "/path/to/ReMMDBench/401/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/401/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/401/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/401/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/401/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/401/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/401/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/401/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/401/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/401/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "401",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=True | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.45,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.3,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "Need to verify the claim regarding the date of the Japan-Philippines Reciprocal Access Agreement (signed July 8, 2024) and the specific identification of the ship 'Nihonbare' with hull number 4151.",
+            "action": "Google[Japan Philippines Reciprocal Access Agreement signed July 8 2024]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the Google search for the agreement date returned no results, it may not be a confirmed public event. However, I need to verify if the ship \"Nihonbare\" is indeed LCU 4151 and when it was launched to verify that part of the text.",
+            "action": "Wikipedia[LCU 4151 Japan Shore Defense Force Ship Name Launch Date]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the new landing craft 'Nihonbare' is hull number 4151 and was launched at the end of 2024. I need to verify the current status and naming of LCU 4151, as the image shows it actively in use with specific markings. If LCU 4151 is already operational (or if its name is different), the text is likely hallucinating details.",
+            "action": "Google[LCU 4151 JGSDF Nihonbare launch date name]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.6,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The image explicitly identifies the vessel as 'JGSDF LANDING CRAFT LCU 4151' and shows the hull number '4151' printed on the bow. The text describes the 'Nihonbare, hull number 4151'. I must use the Detect tool to verify the visual elements of the ship and overlay text to confirm they match the specific details in the news article.",
+            "action": "Detect[image]",
+            "observation": "The underlying ship photograph itself looks like a real, unmanipulated capture (consistent lighting from the overcast sky, coherent reflections on the water, correct perspective on the hull markings “4151,” natural detail on the shoreline and wake/texture).\n\nHowever, the image as presented is clearly **digitally edited/constructed as an infographic**:\n\n- **HUD-style overlays**: Large title text (“JGSDF LANDING CRAFT / LCU 4151”), technical spec box, latitude/longitude ticks, and crosshair marks are graphic elements laid over the photo.\n- **Synthetic route graphic**: The semi-transparent red “corridor/arrow” projected onto the water is a designed overlay (not a real physical phenomenon). Its clean edges and uniform gradient indicate graphic compositing.\n- **Inset map panel**: The bottom-right “NORTHERN PHILIPPINE ARC” map with radar-like rings is a separate graphic layer, not part of the original scene.\n- **Overall design consistency**: Typography, alignment guides, and boxed labels suggest deliberate editorial design rather than an in-camera artifact.\n\nNo obvious signs of AI-image generation in the ship/water/sky (e.g., warped geometry, inconsistent textures) are apparent; the “misleading” risk here would come from the **added operational-route/map overlays**, which can imply a specific trajectory or intent not evidenced by the photo alone.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The `Detect[image]` action has successfully extracted key visual information: the ship hull number \"4151\" is clearly visible on the bow and confirmed in the text box. The map overlay identifies the \"NORTHERN PHILIPPINE ARC,\" which aligns perfectly with the article's mention of the ship's potential rerouting to the \"Northern Luzon area\" and the focus on the \"northern Philippines.\" The vessel operator (JGSDF) and type (LCU) both match the specific descriptions in the text. There is no visual evidence to refute the claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific vessel details mentioned in the text (Hull Number 4151, JGSDF/Landing Craft Utility) by extracting text directly from the image overlay.",
+            "action": "VQA[What is the hull number and operator listed on the text overlay of the image?]",
+            "observation": "\n\nBased on the text overlay in the top right corner, the hull number is **4151** and the operator is the **Japan Ground Self-Defense Force**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Now that I've confirmed the vessel's hull number and operator match the text's description of 'Nihonbare' (hull 4151), I need to verify the geographic context. The text discusses a corridor from the Ryukyus to the northern Philippines. I will check if the image overlay specifies the direction of travel or destination to confirm this 'corridor' concept visually.",
+            "action": "VQA[What direction is the red arrow pointing towards, and what region is labeled in the inset map in the bottom right corner?]",
+            "observation": "\n\nBased on the visual evidence in the image:\n\n*   The red arrow is pointing **Southwest** (indicated by the heading 225°).\n*   The region labeled in the inset map is the **Northern Philippine Arc**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observations regarding the vessel's hull number (4151), operator (JGSDF), and the geographic label (Northern Philippine Arc) in the image directly correspond to the text's specific description of the Nihonbare (4151) and the strategic corridor to the Philippines. The text details evidence of operational planning matching the image's graphics. Therefore, I should conclude the task with a MATCH.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.8572618882313395,
+      "p_fake_text": 0.3,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.0,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.6,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text claims specific launch details that are not found in search results, suggesting fabrication, while the image is digitally composed as an infographic with HUD overlays.",
+    "notes": []
+  },
+  "error": null
+}

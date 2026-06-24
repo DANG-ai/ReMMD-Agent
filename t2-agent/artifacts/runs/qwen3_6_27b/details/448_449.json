@@ -1,0 +1,131 @@
+{
+  "index": 448,
+  "sample_id": "449",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1711.18,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "关于“警方通报已抓获并逮捕、供认拐卖9名儿童”的核心信息与已公开信源一致，但文本把侦办线索发现与锁定过程技术化、提速化表述，并用配图/配文强化“AI人脸识别立大功”的证据感，导致功劳归因与证据支持关系被夸大。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会治安",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/449",
+  "image_paths": [
+    "/path/to/ReMMDBench/449/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/449/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "449",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will first detect the image content to confirm the text present in the image and the visual elements. This will allow me to compare the image's actual content (headlines, portraits) with the news text's claims and its description of the image (police officers at a briefing).",
+            "action": "Detect[image]",
+            "observation": "- **明显拼接/二次排版**：画面上半部是两张不同来源的图并排（左侧类似老旧黑白照片/复印件质感；右侧更像素描/合成肖像），下半部是大字号标题与说明文字，整体是新闻海报式版面而非现场照片。  \n- **右侧人像被遮挡**：右侧脸部被一块规则的灰色矩形覆盖，这是典型的后期打码/遮脸处理，不是原始拍摄造成的遮挡。  \n- **来源材质不一致**：左图颗粒噪点重、对比度低，像扫描件；右图线条呈绘制/刻画质感（类似通缉画像或复原图），两者清晰度与纹理差异明显，说明并非同一张照片的自然对比，而是不同素材组合。  \n- **未见AI生成常见伪影**：除打码与排版外，没有看到常见的生成式图像错误（例如扭曲的五官、重复纹理、奇怪的光影/边缘融化等）。  \n\n结论：这张图**更像“新闻配图海报/截图”**，包含**明显的后期编辑（拼接排版+遮脸打码）**；但从图像本身看不出“整张图由AI合成”的典型痕迹。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will check if the text in the image supports the claim that \"Mei Yi\" was caught. The image text says \"Mei Yi finally caught\". However, the news text describes the image as showing \"police officers\". The image clearly shows a poster with faces, not officers. This is a contradiction. The image refutes the text's description of the scene.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will check the text in the image to confirm the mention of \"Zhang Weiping\" and the context of the case (likely the 2-girl case) versus the news text which mentions \"Xie XX\" and \"9 children\".\n    The image text explicitly links \"Mei Yi\" to \"Zhang Weiping\" and the execution of the main culprit.\n    The news text does not mention Zhang Weiping, but mentions Xie XX and 9 children.\n    This confirms the mismatch in case details.",
+            "action": "VQA[What entities and specific case details (like names of other culprits or number of victims) are mentioned in the image text?]",
+            "observation": "\n\nBased on the text visible in the image, the following entities and case details are mentioned:\n\n**Entities:**\n*   **Mei Yi (梅姨):** The central figure referred to as \"Sister Mei.\"\n*   **Zhang Weiping (张维平):** Identified as the principal offender.\n*   **Special Task Force (专案组):** The investigative body mentioned.\n*   **Hubei Daily (湖北日报):** The media outlet credited at the bottom.\n\n**Specific Case Details:**\n*   **Nature of Crime:** Child trafficking (拐卖儿童).\n*   **Duration:** Described as a \"20-year cold case\" (20年悬案).\n*   **Outcome:** The text states that Zhang Weiping and others (\"等人\") were executed (执行死刑).\n*   **Investigation Process:** Mentions the task force went through \"multiple changes\" (历经多次更迭).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text reports the arrest of \"Mei Yi\" (identified as Xie XX) for trafficking 9 children. The image text, as extracted in the previous step, mentions \"Zhang Weiping\" as the principal offender who was \"executed\". The names of the key figures (Xie XX vs. Zhang Weiping) and the legal outcomes (Arrest vs. Execution) are different. The image appears to describe the resolution of the case involving Zhang Weiping (who was executed years ago), whereas the news text reports a recent arrest of Xie XX. Thus, there is a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The visual content exhibits obvious signs of splicing and secondary layout (V2), and the images provided (a news poster and generic police photo) do not match the specific event described in the text (a police briefing regarding AI face recognition), indicating a contextual mismatch (C2).",
+    "notes": []
+  },
+  "error": null
+}

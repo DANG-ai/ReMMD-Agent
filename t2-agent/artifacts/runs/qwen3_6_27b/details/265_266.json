@@ -1,0 +1,141 @@
+{
+  "index": 265,
+  "sample_id": "266",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 780.98,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article mixes accurate background about hantavirus and plausible public-health procedures with an overstated narrative that stitches weakly supported social-media claims and synthetic source summaries into a seemingly confirmed international cruise outbreak timeline. Its imagery further intensifies that impression by using edited, generated, and semantically misleading visuals that are not authentic documentation of the described event.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/266",
+  "image_paths": [
+    "/path/to/ReMMDBench/266/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/266/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/266/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/266/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/266/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/266/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/266/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/266/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/266/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/266/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "266",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a cruise ship with \"NOVA\" written on the bow, along with \"CAUTION QUARANTINE\" signage. The text is about the MV *Hondius*. Since the ship in the image is the *Nova*, not the *Hondius*, the image contradicts the text's assertion that it shows the specific vessel involved in the outbreak.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "While the text focuses on the MV Hondius, the image shows a ship labeled \"NOVA\". If the image is strictly interpreted as a different ship, it might be a mismatch. However, the \"CAUTION QUARANTINE\" sign is a very specific detail that matches the text's discussion of quarantine and containment. The text's caption explicitly describes the image as the \"vessel tied to the travel-linked probe... with perimeter warning signage\". The image fits this description. The discrepancy in the ship name (if real) is likely a minor detail compared to the strong thematic and descriptive match (dock, quarantine sign, security presence).",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.15874010519681994,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.2,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.3,
+        "C1 Semantic Inconsistency": 0.1,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a specific hantavirus outbreak event involving the MV Hondius and repatriations, the images (virus, hazmat suits) appear to be synthetic AI generations, and there is a clear contextual mismatch where the text claims the image shows the MV Hondius but the image displays a ship named \"NOYA\".",
+    "notes": []
+  },
+  "error": null
+}

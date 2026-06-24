@@ -1,0 +1,154 @@
+{
+  "index": 48,
+  "sample_id": "049",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1315.75,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Text baut auf realen Terminen von Mark Rutte auf, überhöht diese aber zu einer politisch-operativen Entscheidungssequenz, die durch die vorliegenden Angaben nicht gedeckt ist. Zugleich werden bearbeitete Bilder und irreführende Bild-Text-Verknüpfungen genutzt, um Berliner Beratungs- und Beschlusscharakter visuell stärker erscheinen zu lassen, als die Motive tatsächlich belegen.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/049",
+  "image_paths": [
+    "/path/to/ReMMDBench/049/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/049/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/049/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/049/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "049",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The text claims Mark Rutte is the \"NATO Secretary General\" on April 15, 2026. Mark Rutte is a known figure as the Prime Minister of the Netherlands, which contradicts the claim that he is the NATO Secretary General (who is currently a British, NATO figure). I need to verify Mark Rutte's current official title and role to confirm this discrepancy.",
+            "action": "Wikipedia[query=Mark Rutte]",
+            "observation": "No summary available. Similar entities: Killing of Yahya Sinwar, Nick Clegg, Leopard 2, Atlantic slave trade, 2025 Trump–Zelenskyy Oval Office meeting",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.7,
+        "best_value": 0.8,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the visual details of the image against the text claims to ensure consistency. I will use the image detection tool to identify the people, location, and context in the photo.",
+            "action": "Detect[image]",
+            "observation": "- **No clear signs of AI/synthetic generation:** Architecture, cars, flags, crowd, and depth/perspective look coherent. Lighting and shadows are consistent across subjects and the building façade. No obvious warped geometry, duplicated patterns, or “melting” edges typical of generative artifacts.\n\n- **Obvious editing present (privacy redaction):** Multiple faces are intentionally blurred/blocked. This is a clear post-processing step, but it’s consistent with anonymization rather than deceptive compositing.\n\n- **Signage/text looks plausible:** The event boards (“Ukraine Defence Contact Group”, “Berlin, Germany”, and directional arrows) are sharp and readable with consistent typography and alignment; no weird letter-shapes or nonsensical text that often appear in synthetic images.\n\n- **No obvious compositing/counterfactual visual cues:** Vehicles, police presence, and flags (NATO/EU/Germany) appear naturally integrated with correct relative scale and occlusion. Nothing visibly “cut out” or mismatched in resolution.\n\n**Overall:** The image appears to be an authentic press-style photograph with deliberate face blurring/redaction added afterward; no strong indicators of deeper manipulation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous Detect[image] tool observed no signs of AI generation and found consistent visual details (signage, flags, people). However, a rigorous check might be useful to ensure the \"authenticity\" claim holds up under scrutiny, specifically regarding the high-quality rendering that sometimes mimics real photos. I will re-run Detect[image] to confirm.",
+            "action": "Detect[image]",
+            "observation": "- **No clear signs of AI/synthetic generation:** Architecture, cars, flags, crowd, and depth/perspective look coherent. Lighting and shadows are consistent across subjects and the building façade. No obvious warped geometry, duplicated patterns, or “melting” edges typical of generative artifacts.\n\n- **Obvious editing present (privacy redaction):** Multiple faces are intentionally blurred/blocked. This is a clear post-processing step, but it’s consistent with anonymization rather than deceptive compositing.\n\n- **Signage/text looks plausible:** The event boards (“Ukraine Defence Contact Group”, “Berlin, Germany”, and directional arrows) are sharp and readable with consistent typography and alignment; no weird letter-shapes or nonsensical text that often appear in synthetic images.\n\n- **No obvious compositing/counterfactual visual cues:** Vehicles, police presence, and flags (NATO/EU/Germany) appear naturally integrated with correct relative scale and occlusion. Nothing visibly “cut out” or mismatched in resolution.\n\n**Overall:** The image appears to be an authentic press-style photograph with deliberate face blurring/redaction added afterward; no strong indicators of deeper manipulation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims Mark Rutte is NATO Secretary General on 15.04.2026, but he is actually a former Dutch Prime Minister, not the NATO Secretary General (Jens Stoltenberg holds this position as of 2025). The image shows a Berlin setting with NATO/EU/German flags, but this appears to be a fabricated future scenario with unrealistic role assignments. The perfect alignment of image and text suggests AI-generated content supporting misinformation about current geopolitical leadership structures.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.6240251469155713,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.7,
+      "p_fake_match": 0.1,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.85,
+        "T3 Misleading Context": 0.4,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.5,
+        "C2 Contextual Inconsistency": 0.7,
+        "C3 Pragmatic Inconsistency": 0.6
+      }
+    },
+    "taxonomy_rationale": "The text claims Mark Rutte is the NATO Secretary General (T2 Distortion), and the sample is classified as 'Mostly True' (Real Text), but the verification evidence indicates high fake probability for the image (V1). The text places events in 2026 while images like the Bundeskanzleramt photo are from the past (2023), causing a time/place mismatch (C2).",
+    "notes": []
+  },
+  "error": null
+}

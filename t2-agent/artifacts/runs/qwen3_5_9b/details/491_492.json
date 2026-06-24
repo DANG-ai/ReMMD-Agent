@@ -1,0 +1,134 @@
+{
+  "index": 491,
+  "sample_id": "492",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2011.39,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article's central account is consistent with the provided source material: McIlroy is described as a repeat 2026 Masters winner celebrating with family, while related social posts about Justin Rose betting outcomes and The Patch's Augusta-inspired closing hole are accurately framed as surrounding online reaction rather than the tournament result itself.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/492",
+  "image_paths": [
+    "/path/to/ReMMDBench/492/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/492/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/492/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/492/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "492",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify when the 2026 Masters took place and if Rory McIlroy won it. Checking Wikipedia for the tournament details will help determine if this event has happened yet. The text implies the tournament has concluded (\"won... on Sunday\"), but 2026 is currently in the future relative to the general contemporary timeline.",
+            "action": "Wikipedia[Masters_2026]",
+            "observation": "No summary available. Similar entities: 2026 Masters, 2026 Masters Tournament, 2026 Baoji China Masters, 2026 Malaysia Masters, 2026 Masters (snooker)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to cross-reference the specific details in the text, particularly the claim of securing back-to-back titles as the second player since Tiger Woods in the same manner. This will help determine if the text is relying on real historical stats or if the entire 2026 victory is fictional.",
+            "action": "Google[Masters history back-to-back winners since Tiger Woods 2001 2002]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims that what is known as the '2026 Masters' Tournament has already occurred 'this Sunday'. Since this date is in the future relative to standard current timelines, I need to verify if the 2026 Masters Tournament exists in my historical database or if the event has taken place. If the page is missing, it suggests the text is a hallucination or a prediction presented as fact.",
+            "action": "Wikipedia[Masters_Tournament_2026]",
+            "observation": "No summary available. Similar entities: 2026 Masters Tournament, 2026 Baoji China Masters, Masters Tournament, 2026 Malaysia Masters, 2026 Thailand Masters (badminton)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Given that the 2026 Masters Tournament likely falls in the future or outside the scope of available data (Wikipedia search returned no results for 'Masters_2026'), and the text presents it as a concluded event, this indicates the text is hallucinating a future news story. The claim of Rory McIlroy winning back-to-back (like Tiger Woods in 2001/2002) reinforces this, as such a claim for 2026 is factually impossible in the current timeline. I can conclude with a refutation based on the missing data for this specific year.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The text claims Rory McIlroy won the 2026 Masters. It asks for verification. Rory McIlroy has never won the Masters in reality (as of my knowledge cut-off). The text describes a \"second straight\" title. However, the image shows a man who resembles Rory McIlroy holding the Claret Jug trophy, surrounded by family in a setting consistent with a victory celebration at Augusta (green jacket, 18th green bench). While historically inaccurate, visually the text and image align perfectly. The task is \"Image Veracity Detection\" primarily checking if the image supports the text's narrative. The image depicts the narrator's claim (Rory holding trophy with family). Thus, Image Support.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.5,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text fabricates a non-existent future event (2026 Masters win) and presents real images from a past victory in that fictional context.",
+    "notes": []
+  },
+  "error": null
+}

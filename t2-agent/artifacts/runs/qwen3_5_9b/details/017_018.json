@@ -1,0 +1,142 @@
+{
+  "index": 17,
+  "sample_id": "018",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 818.75,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Text hat einen realen faktischen Kern zu Hebesätzen, Fristen und dem Hildener Urteil, überdehnt aber deren Reichweite und rahmt regionale bzw. lokale Vorgänge als breiteres bundesweites Signal. Die Bildauswahl verstärkt diese Verzerrung zusätzlich durch bearbeitete bzw. synthetische Visuals und durch illustrative Fotos ohne belastbaren Orts- oder Fallbezug.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/018",
+  "image_paths": [
+    "/path/to/ReMMDBench/018/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/018/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/018/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/018/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/018/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/018/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/018/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/018/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/018/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/018/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "018",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.3,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text describes the reform impacting household budgets using imagery of 'mails' and 'invoices' arriving in the postbox. I should confirm the visual context of the image, specifically the presence of Euro banknotes and house models, aligns with the financial and property ownership themes discussed.",
+            "action": "Detect[image]",
+            "observation": "- **Wirkt wie ein normales Foto/Stockfoto:** Die Szene (Euro-Scheine, ein Formular mit „Grundsteuer B“, kleine Modellhäuser) ist plausibel arrangiert und typisch für Illustrationsbilder zu Steuern/Immobilien.  \n- **Keine klaren KI-/Compositing-Artefakte:** Kanten, Schatten und Tiefenunschärfe wirken konsistent; keine „verschmierenden“ Strukturen, doppelten Konturen oder unlogischen Lichtquellen.  \n- **Text/Details wirken optisch stimmig:** Die sichtbaren Schriftzüge („Grundsteuer B“, „EURO“) erscheinen wie echte Drucke im richtigen Perspektiv- und Unschärfeverlauf.  \n- **Mögliche Bearbeitung, aber unauffällig:** Es könnte leichte Farb-/Kontrastbearbeitung (typisch bei Stockfotos) vorliegen, jedoch keine offensichtlichen Spuren von Manipulation oder synthetischer Generierung.\n\n**Fazit:** Das Bild wirkt insgesamt authentisch (fotografisch) und nicht offensichtlich manipuliert oder KI-generiert.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image contains Euro banknotes (representing financial impact), a document explicitly labeled 'Grundsteuer B' (matching the subject of the text), and house models (representing property owners). These visual elements directly correspond to the core themes discussed in the article (tax reform, cost, housing). While the text mentions a specific photo of houses with solar roofs elsewhere in the article, this image serves as the main cover/mockup illustrating the financial burden of the tax, aligning well with the 'financial daily life' context. Therefore, the image supports the text's narrative context effectively.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses the German property tax reform ('Grundsteuerreform'). The image displays Euro banknotes, house models, and a document with 'Grundsteuer B' visibly written on it. The document title matches the specific example in the text ('Wie stark das ausfallen kann, zeigt Ingolstadt. Dort wird die Grundsteuer B...'), confirming the semantic alignment.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.6000000000000001,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.7,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The explicit `p_fake_image=0.700` score in the provided modality indicators indicates the visual material is synthetic, despite the text accurately describing the visual context.",
+    "notes": []
+  },
+  "error": null
+}

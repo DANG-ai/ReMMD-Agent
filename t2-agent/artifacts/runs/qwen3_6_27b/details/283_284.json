@@ -1,0 +1,153 @@
+{
+  "index": 283,
+  "sample_id": "284",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1371.03,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article is grounded in a real local Maryland incident and a real Sandy Hook Promise reporting statistic, but it stretches those facts into a broader implied national trend that the supplied evidence does not establish. The visuals further intensify that interpretation through edited and generalized imagery that is not straightforward documentation of the Bethesda event and functions more as emotional reinforcement than factual proof.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/284",
+  "image_paths": [
+    "/path/to/ReMMDBench/284/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/284/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/284/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/284/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/284/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/284/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/284/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/284/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/284/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/284/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "284",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text describes an incident at \"Bradley Hills Elementary in Bethesda\" involving graffiti referencing the Sandy Hook shooter and the arrest of a 16-year-old facing arson charges. The image, however, clearly shows a sign for \"Riverdale Elementary\". I need to verify if the incident described actually happened at Riverdale Elementary (matching the image) or Bradley Hills Elementary (matching the text). If the incident happened at Riverdale, the text is factually incorrect about the location, leading to a REFUTE. I will search for the specific details of the incident (Sandy Hook graffiti, 16-year-old arrested, arson charges) to see which school is involved.",
+            "action": "Google[\"Riverdale Elementary graffiti Sandy Hook shooter arrested 16-year-old arson\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a security incident at Bradley Hills Elementary. The image shows a school entrance with a sign. I need to verify if the sign matches the school name in the text. I will use Detect to read the text on the sign.",
+            "action": "Detect[Read the text on the white sign with blue text on the right side of the image to identify the school name.]",
+            "observation": "\n\nBased on a visual inspection, the image appears to be an **authentic photograph** with no obvious signs of digital manipulation, synthetic generation, or AI artifacts.\n\n**Evidence of Authenticity:**\n*   **Lighting and Shadows:** The lighting is natural and consistent with an overcast or shaded outdoor environment. Shadows cast by the barricade, the man, and the signs align logically with the light source (diffuse daylight).\n*   **Text Clarity:** The text on the signs (\"ALL VISITORS MUST CHECK IN AT OFFICE,\" \"PRIVATE PROPERTY NO TRESPASSING,\" and \"RIVERDALE ELEMENTARY\") is sharp, legible, and physically consistent with printed signage. AI-generated images often struggle with coherent text, spelling, and perspective on signs.\n*   **Textures and Details:** The gravel on the ground, the leaves on the trees, the folds in the man's clothing, and the plastic texture of the barricade all exhibit natural complexity and randomness typical of a photograph.\n*   **Anatomy:** The person in the image (security personnel) has natural proportions and features.\n\n**Contextual Discrepancy:**\n*   **Signage vs. Text:** The sign on the right clearly reads **\"RIVERDALE ELEMENTARY.\"** The provided text primarily discusses an incident at **Bradley Hills Elementary**.\n*   **Assessment:** This suggests the image is likely a genuine photo taken at Riverdale Elementary (which is also in Bethesda, Montgomery County) during the same period of heightened security mentioned in the text (\"Security had been tightened across Montgomery County schools\"). It is probable that the image was used to illustrate the general atmosphere of security across the district, rather than depicting the specific scene at Bradley Hills. There is no evidence that the sign was digitally edited; it appears to be an original sign at that location.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The observation confirms the image is an authentic photograph. The sign in the image reads \"Riverdale Elementary\" and mentions \"additional security personnel are on campus,\" which is visually corroborated by the security guard and barricade. The news text states that \"Security had been tightened across Montgomery County schools,\" and Riverdale Elementary is in Montgomery County. Thus, the image supports the text's description of the district-wide security situation.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text reports on a security incident at \"Bradley Hills Elementary\", whereas the image clearly shows a sign for \"Riverdale Elementary\". Since the specific school identified in the text does not match the school identified in the image, this is a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a fabricated event at Bradley Hills Elementary (indicated by the future date 2026 and lack of search results), while the primary visual clearly displays a sign for Riverdale Elementary, creating a mismatch in the specific location described.",
+    "notes": []
+  },
+  "error": null
+}

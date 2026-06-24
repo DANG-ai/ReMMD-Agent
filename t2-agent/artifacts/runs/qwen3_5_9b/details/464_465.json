@@ -1,0 +1,145 @@
+{
+  "index": 464,
+  "sample_id": "465",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1369.34,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Die zentrale Protest- und Prüfbehauptung ist frei erfunden und wird durch künstlich erzeugte, offiziell wirkende Visuals scheinbar belegt. Zugleich stützen das echte Jubelbild und die generierten Grafiken weder semantisch noch in ihrer Wirkung die behauptete institutionelle Eskalation, sondern verleihen der Falschmeldung nur scheinbare Glaubwürdigkeit.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/465",
+  "image_paths": [
+    "/path/to/ReMMDBench/465/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/465/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/465/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "465",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to analyze the image to verify the claim in the news text about the goal scorer and match details. The text mentions \"Yan Diomande\" scoring in the 50th minute. The image displays a scoreboard with \"Openda 27' | Sesko 63'\", which contradicts this claim. I will also check the date and league for consistency.",
+            "action": "Detect[image]",
+            "observation": "- **Offensichtlich gestaltete Grafik/Compositing:** Das Bild ist klar ein „Breaking News“-Layout (rote Seitenfläche, große Typo, Ergebnisbalken unten) und wirkt nicht wie ein Screenshot einer offiziellen DFL-Mitteilung oder ein unbearbeitetes Foto.  \n- **Gesicht bewusst unkenntlich gemacht:** Der Kopfbereich ist mit einem rechteckigen Blur/Block überdeckt. Das ist eine nachträgliche Bearbeitung (Zensur) und passt nicht zu typischen offiziellen Pressebildern.  \n- **Unstimmige „offizielle“ Anmutung:** Obwohl rechts ein DFL-Logo im Hintergrund platziert ist, wirkt das gesamte Design wie eine Social‑Media‑Kachel/Template („SPORT NEWS“, „QUELLE: DFL“) – eher redaktionell oder fanmade als ein formales DFL-Dokument.  \n- **Keine klaren KI-Artefakte im Fotoanteil:** Hände, Papier, Anzug und Licht/Schatten sehen konsistent aus; keine typischen generativen Fehler (z. B. deformierte Finger, unlogische Texturen) sind erkennbar.  \n\n**Fazit:** Das Bild zeigt starke Hinweise auf **nachträgliche grafische Bearbeitung und Komposition** (News-Kachel + zensiertes Gesicht). Es wirkt nicht wie ein authentischer, offizieller DFL-Screenshot, sondern wie ein erstelltes Sharepic; der Fotoanteil selbst wirkt jedoch weitgehend natürlich.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image analysis indicates a 'Breaking News' compositing style with a blurred face, proving it is not an authentic official DFL screenshot as implied in the text context. More critically, the scoreboard data in the image (Openda, Sesko) directly contradicts the text's claim of 'Yan Diomande' scoring the winning goal. While the headline matches the protest theme, the factual details (scorer, minute) are inconsistent, and the image construction itself is deceptive. This combination of visual fraud and factual data mismatch supports a Refute decision.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Verify the league category written on the graphic to confirm if it contradicts the text which mentions 'Bundesliga' and 'HSVRBL' (a Bundesliga match context), while the image labels it '2. BUNDESLIGA'.",
+            "action": "VQA[What league name is displayed in the header bar of the graphic?]",
+            "observation": "\n\nThe league name displayed in the header bar is **2. BUNDESLIGA**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to cross-reference the specific match event details mentioned in the text with the image to see if there are deeper contradictions. The text mentions a goal by 'Yan Diomande', but this player is not listed in the image footer, which shows 'Opnda' and 'Seko'. This difference in entity information supports a mismatch conclusion.",
+            "action": "VQA[Who are the listed goal scorers and their minutes on the bottom bar of the graphic?]",
+            "observation": "\n\nBased on the bottom bar of the graphic, the listed goal scorers and their minutes are:\n\n*   **Königsdörffer 48'** (under Hamburger SV)\n*   **Openda 27'** (under RB Leipzig)\n*   **Sesko 63'** (under RB Leipzig)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the previous trajectory, we have identified two major discrepancies: the league is \"2. Bundesliga\" in the image but \"Bundesliga\" in the text, and the text mentions a specific scorer \"Yan Diomande\" who is not listed in the image footer. These contradictions are sufficient to conclude a MISMATCH. Proceeding to the final decision is the most efficient path.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.1,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

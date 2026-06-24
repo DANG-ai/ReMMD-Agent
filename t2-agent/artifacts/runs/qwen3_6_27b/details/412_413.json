@@ -1,0 +1,142 @@
+{
+  "index": 412,
+  "sample_id": "413",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1387.82,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "本文の数値関係と市場の方向感は、提示された画像群の内容と整合しており、主要指数、日経先物、ドル円の説明に重要な矛盾や文脈の取り違えは確認できない。画像はいずれも本文が述べる相場状況をそのまま補強しており、視覚的改変やクロスモーダル不整合も見当たらない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Finance, Business & Consumer Affairs",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/413",
+  "image_paths": [
+    "/path/to/ReMMDBench/413/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/413/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/413/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/413/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "413",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the Nikkei average closed at 51,063.72 (-1.58%) and TOPIX at 3,497.86 (-1.26%). The image clearly shows \"日経平均\" at 51,063.72 with -1.58% and \"TOPIX\" at 3,497.86 with -1.26%. It also shows \"日経時間外\" (Nikkei After Hours) at +3.56% and 52,881, which aligns with the text's claim of a ~3.5% rise to around 53,000. The visual evidence strongly supports the specific numerical claims in the text regarding the Japanese market data.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text cites specific closing figures for the Nikkei Average (51,063.72, -1.58%) and TOPIX (3,497.86, -1.26%) on March 31. The image clearly displays these exact figures in the top-left (\"日経平均\") and middle-left (\"TOPIX\") panels respectively. The text also mentions a ~3.5% rise in night futures, which corresponds to the \"+3.56%\" shown in the top-right panel (\"日経時間外\"). Thus, the image data corroborates the news report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific stock market indices and their values mentioned in the news text against the image. The text mentions Nikkei Average (51,063.72, -1.58%), TOPIX (3,497.86, -1.26%), and After-hours Nikkei (+3.56%). I will extract entities from the image to confirm these numbers are present.",
+            "action": "Entity[image]",
+            "observation": "- **Japan / 日本 (label at top)** — Country name shown; **high certainty**.  \n- **Nikkei Average / 日経平均 (Nikkei 225 index)** — Market index panel with chart and % change; **high certainty**.  \n- **Nikkei “after-hours” / 日経時間外** — Labeled panel with chart and % change; **high certainty**.  \n- **TOPIX (Tokyo Stock Price Index)** — Labeled panel with chart and % change; **high certainty**.  \n- **Nikkei Volatility Index / 日経恐怖指数・日経VI** — Volatility (“fear index”) panel; **high certainty**.  \n- **JPX-Nikkei 400 / グロース250 (unclear exact index name due to Japanese text)** — Panel labeled 「グロース250」 with chart; **medium certainty** (exact English name ambiguous).  \n- **USD/JPY-related Nikkei measure / ドル建て日経平均 (Nikkei average in USD terms)** — Panel explicitly says “Nikkei average in dollars”; **high certainty**.  \n- **Japanese flag icon** — Appears on several panels; **high certainty**.  \n- **United States flag icon** — Appears on the “ドル建て” panel; **high certainty**.  \n\nNo identifiable people, landmarks, or brand logos are visible beyond these financial-index labels and flag icons.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text specifies the Nikkei Average closed at 51,063.72 yen with a decrease of 1.58%. I need to verify if the top-left panel of the image, labeled \"Nikkei Average\" (日経平均), displays these exact figures to confirm the match.",
+            "action": "VQA[What is the closing value and percentage change shown for the \"Nikkei Average\" (日経平均) in the top-left panel of the image?]",
+            "observation": "\n\nBased on the top-left panel labeled \"日経平均\" (Nikkei Average):\n\n*   **Closing Value:** 51,063.72\n*   **Percentage Change:** -1.58%",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text specifies that the previous day's TOPIX was 3,497.86, down 44.48 points, with a decline rate of 1.26%. I need to verify these specific figures against the \"TOPIX\" panel located in the middle-left of the image to ensure consistency.",
+            "action": "VQA[What are the index value, point change, and percentage change displayed in the \"TOPIX\" panel in the middle-left of the image?]",
+            "observation": "\n\nBased on the \"TOPIX\" panel in the middle-left:\n\n*   **Index Value:** 3,497.86\n*   **Point Change:** -44.48\n*   **Percentage Change:** -1.26%",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text provides specific closing values and percentage changes for the Nikkei Average (51,063.72, -1.58%) and TOPIX (3,497.86, -1.26%). It also mentions the after-hours Nikkei index rose about 3.5%. The image displays panels for \"Nikkei Average\", \"TOPIX\", and \"Nikkei After-hours\" with exactly these figures: 51,063.72 (-1.58%), 3,497.86 (-1.26%), and +3.56% respectively. The visual data aligns perfectly with the textual description of the market conditions.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.27144176165949063,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text and images depict stock market indices (Nikkei ~51k, Dow ~46k) that are significantly higher than real-world values, indicating fabrication of data (T1), and the high probability of fake image suggests the visual content is synthetic (V1), while the high match confidence confirms they are consistent with each other.",
+    "notes": []
+  },
+  "error": null
+}

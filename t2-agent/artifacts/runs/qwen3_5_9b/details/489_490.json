@@ -1,0 +1,136 @@
+{
+  "index": 489,
+  "sample_id": "490",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1531.02,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article mixes real current USPS finance and shipping-price developments with older firearm-mailing litigation material presented in a way that feels newly relevant to the same ongoing 2026 policy debate. An edited document image and the article's framing blur chronology, so readers may incorrectly connect historical firearm records to the current USPS pricing and oversight story.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/490",
+  "image_paths": [
+    "/path/to/ReMMDBench/490/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/490/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/490/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "490",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The news text states that records \"circulating online\" (posted) depict an \"old federal court filing\" resurfaced during scrutiny. The image shows a specific document, the \"Motion for Leave to File Supplemental Authority,\" with a date of March 18, 2025. The text inside the image discusses \"Federal Firearm Licensees\" (FFL) and a \"firearm-mailing exception.\" This aligns with the news text's focus on \"when those items could be mailed by federally licensed parties.\" The visual evidence matches the textual claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "Next, I should identify the key entities (like ATF, FFL, Gun Owners of America) in the image to see if they relate to the \"records circulating online\" mentioned in the text, even if the primary agency (USPS vs ATF) differs. I will extract entities to check the context linkage.",
+            "action": "Entity[image]",
+            "observation": "Visible entities (with certainty notes):\n\n- **Hunter Biden** (name appears in document header; high certainty)\n- **Gun Owners of America, Inc.** (plaintiff organization named; high certainty)\n- **Gun Owners Foundation** (organization named; high certainty)\n- **Bureau of Alcohol, Tobacco, Firearms and Explosives (ATF)** (U.S. agency referenced; high certainty)\n- **Marvin Richardson** (named as ATF Chief Industry Operations Officer; high certainty)\n- **Neal McBride** (named as Senior Vice President; high certainty)\n- **Federal Firearms Licensees (FFL)** (license category referenced; high certainty)\n- **Section 1715** (legal/statutory section referenced; high certainty)\n- **“Exhibit A”** (referenced supplemental authority exhibit; high certainty)\n- **Dates:** **March 7, 2025; March 13, 2025; March 18, 2025** (explicitly stated; high certainty)\n\nNo identifiable landmarks/logos are clearly visible beyond the text formatting/highlighting (low certainty for any specific branding).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the specific agency and subject matter of the document in the image to confirm if it matches the text's description of a USPS-related filing regarding firearm mailing. The text mentions USPS explicitly, while the image clearly features ATF and FFLs. A VQA verification will solidify the discrepancy.",
+            "action": "VQA[What federal agency is cited as the defendant or primary regulator in this document?]",
+            "observation": "\n\nBased on the text in the document, the federal agency cited is the **Bureau of Alcohol, Tobacco, Firearms and Explosives (\"ATF\")**.\n\nIt is mentioned as the entity sending letters and emails regarding compliance with Section 1715.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The document in the image explicitly references the \"Bureau of Alcohol, Tobacco, Firearms and Explosives (ATF)\" and \"Section 1715,\" whereas the news text discusses the \"U.S. Postal Service (USPS)\" and its financial/transportation policies. The primary entities (ATF vs. USPS) conflict, and the context (federal firearms regulations/FFLs vs. postal pricing/financials) is different. I have sufficient evidence to declare a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.21544346900318836,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.8,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.8,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text misleads by presenting ATF and FFL documents as USPS regulatory records, while the image shows a forged document with future dates (2025) and manipulated text, creating a mismatch between the described entity and visual content.",
+    "notes": []
+  },
+  "error": null
+}

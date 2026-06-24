@@ -1,0 +1,126 @@
+{
+  "index": 369,
+  "sample_id": "370",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1744.28,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "Die Kernaussage des Artikels stimmt mit den angegebenen Unternehmensangaben und der beschriebenen strategischen Einordnung überein. Es sind keine wesentlichen sachlichen Widersprüche, irreführenden Kontextverschiebungen oder problematischen Bild-Text-Zuordnungen erkennbar.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/370",
+  "image_paths": [
+    "/path/to/ReMMDBench/370/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/370/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/370/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/370/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/370/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/370/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/370/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/370/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/370/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/370/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "370",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.05,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image displays the logo \"BIONTECH\" on a modern glass building, which is consistent with the news text discussing BioNTech's financial results. Since the image correctly depicts the company mentioned in the text, it serves as supportive visual evidence for the article's subject matter.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text is primarily about the company \"BioNTech\" and its financial results. The image shows a glass building with a large logo. I need to verify if the logo in the image corresponds to the company mentioned in the text. I will use VQA to read the text on the building.",
+            "action": "VQA[What is the company name written on the glass building facade?]",
+            "observation": "\n\nThe company name written on the glass building facade is **BIONTECH**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA action confirmed that the company name on the glass building is \"BIONTECH\". The provided news text is a detailed report about BioNTech's financial results, specifically its Q1 2026 report, net loss, and transition from COVID-19 vaccines to oncology. Since the image displays the headquarters or a facility of the main entity discussed in the text, the cross-modal matching is successful.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text presents a detailed financial report for a future date (May 2026) as factual news, fabricating specific revenue and loss figures, while the accompanying images exhibit characteristics of AI-generated synthetic content (e.g., unnatural lighting, generic UI, stylized lab scenes).",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,141 @@
+{
+  "index": 419,
+  "sample_id": "420",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3528.91,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context"
+    ],
+    "rationale": "The article is broadly accurate that JPMorgan became the focal brand in a viral X controversy driven by screenshots linking Chirayu Rana to the bank, even though the underlying allegation material pointed elsewhere. However, it slightly overstates how centrally JPMorgan was implicated and presents the screenshot circulation as a cleaner, more sequential evidence chain than the source material firmly supports.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/420",
+  "image_paths": [
+    "/path/to/ReMMDBench/420/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/420/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/420/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/420/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/420/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/420/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/420/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/420/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/420/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/420/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "420",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "The image displays the New York City skyline, clearly featuring the MetLife building (with \"MetLife\" visible) and the Bank of America Tower (with its distinctive spire). The text discusses a scandal involving major Wall Street banks (JPMorgan, Morgan Stanley) and mentions \"Manhattan finance.\" The image serves as a relevant establishing shot of the financial district where these banks are headquartered, providing visual context that supports the setting and subject matter of the news story.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will use VQA to identify the prominent building with the spire to confirm it is not a JPMorgan building, further supporting a mismatch conclusion if the text implies a specific location or building.",
+            "action": "VQA[What is the name of the tallest building with the spire in the center of the image?]",
+            "observation": "\n\nBased on the visual evidence, particularly the distinctive stepped crown, long spire, and its location next to the building with the \"MetLife\" sign (the MetLife Building in Midtown Manhattan), the tallest building with the spire in the center is **One Vanderbilt**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will identify the tall, thin skyscraper on the far left of the image. If it is a residential tower or unrelated commercial building (like those in Hudson Yards), it further supports the conclusion that the image is a generic Manhattan skyline and not specifically depicting the entities mentioned in the text.",
+            "action": "VQA[What is the name of the tall, thin skyscraper on the far left of the image?]",
+            "observation": "\n\nBased on the visual evidence, the tall, thin skyscraper on the far left of the image is **432 Park Avenue**. It is distinct for its extreme height-to-width ratio (often called a \"pencil tower\") and its white, grid-like facade.\n\nFor context, the other prominent buildings in the image are **One Vanderbilt** (the tall building with the stepped crown in the center) and the **MetLife Building** (labeled \"MetLife\" on the right).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a viral social media event driven by \"visual fragments\" such as a \"Grok-style summary card\" and an \"employment-profile image\" linked to JPMorgan and Morgan Stanley. The provided image is a photograph of the Midtown Manhattan skyline, featuring One Vanderbilt, 432 Park Avenue, and the MetLife Building. It does not show the screenshots or profile images described in the text. Furthermore, the text focuses on JPMorgan and Morgan Stanley, while the image prominently displays the \"MetLife\" building, which is not mentioned in the text. The building with the crane is likely 270 Park Avenue (JPMorgan's new HQ), but its identity is ambiguous compared to the clear \"MetLife\" sign, and the image type (skyline photo) does not match the described content (digital screenshots). Thus, the image does not match the specific visual content described in the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.8,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a future event (May 2026) and misrepresents the content of the \"Grok-style summary\" image (claiming it accuses a Morgan Stanley boss, while the image accuses a JPMorgan executive), and the screenshots appear to be synthetic AI-generated content.",
+    "notes": []
+  },
+  "error": null
+}

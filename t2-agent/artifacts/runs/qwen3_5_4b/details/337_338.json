@@ -1,0 +1,134 @@
+{
+  "index": 337,
+  "sample_id": "338",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 530.49,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "本文は京浜東北線・東海道線で広域かつ深刻な運転見合わせが起きたかのような具体描写を重ねているが、与えられた素材自体が合成的な要約に依拠しており、核心事実を裏づける実証的証拠がない。さらに主要画像の多くは生成画像で、当該事故や当夜の現場を記録した証拠写真ではないため、記事全体として事実報道の体裁で虚構を補強している。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/338",
+  "image_paths": [
+    "/path/to/ReMMDBench/338/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/338/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/338/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/338/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "338",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [],
+    "predicted_label": "verdict=True | taxonomy=None",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a crowded station platform with a large display board indicating \"Keihin-Tohoku Line\" and \"Tokaido Line\" suspensions due to an accident (\"事故の影響で、運転見合わせ\"). This visual evidence perfectly corroborates the main claims of the news text, which is consistent with the scene depicted in the image.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 1.0,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the key information in the news text against the image. The text mentions the Keihin-Tohoku Line and Tokaido Line are suspended due to an accident. I should use VQA to check the electronic sign on the platform to see if it displays this specific information.",
+            "action": "VQA[What is written on the large electronic sign regarding the Keihin-Tohoku and Tokaido lines?]",
+            "observation": "\n\nBased on the image, the large electronic sign for the **Keihin-Tohoku Line** and **Tōkaidō Line** displays the following messages (from left to right, top to bottom):\n\n**Top Line (Keihin-Tohoku Line):**\n*   **Status:** 運転見合わせ (Unintelligent stopped / Trains stopped) - displayed in red/orange text.\n*   **Reason:** 事故の影響で (Due to accidents).\n*   **Note:** 京浜東北線は (For Keihin-Tohoku Line) - displayed in green text.\n\n**Bottom Line (Tōkaidō Line):**\n*   **Status:** 運転見合わせ (Unintelligent stopped / Trains stopped) - displayed in red/orange text.\n*   **Reason:** 事故の影響で (Due to accidents).\n*   **Note:** 東海道線は (For Tōkaidō Line) - displayed in yellow/light text.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the VQA observation, the image confirms all key information in the news text: both the Keihin-Tohoku Line and Tōkaido Line are shown suspended (運転見合わせ) \"due to accidents\" (事故の影響で). The visual evidence directly supports the core facts mentioned in the text. The crowd shown on the platform is also consistent with the text describing affected commuters. No further information extraction is needed to verify this match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.865349742184445,
+      "p_fake_text": 0.19999999999999996,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text and images are consistent, supporting a true claim with no evidence of fabrication, distortion, or inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

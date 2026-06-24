@@ -1,0 +1,138 @@
+{
+  "index": 219,
+  "sample_id": "220",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1715.35,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The package is false because it overlays a mostly corrective text body with fabricated and manipulated visual evidence that depicts an 8%+ Alibaba plunge and renewed regulatory trouble that the article itself says was not publicly evidenced. The images and several captions create the dominant false impression of a panic selloff tied to Alibaba, even though the reported market move in the text is a much smaller sector-wide decline.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Finance, Business & Consumer Affairs",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/220",
+  "image_paths": [
+    "/path/to/ReMMDBench/220/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/220/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/220/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/220/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/220/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "220",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.5,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.7,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "The provided image shows stock market data for Alibaba-W (09988.HK) with a massive intraday drop. The interface indicates a price of 125.800 and a decline of -8.27%. The turnover listed is 417.30 billion HKD. Additionally, the X-axis of the chart clearly indicates dates in late 2025 and mid-2026 (e.g., 2025-11-25, 02-02). The news text, however, describes a much milder decline (listing a -1.17% drop) and a lower turnover (HK$12.1 billion) that occurred on \"March 3\". The figure's price, drop percentage, and turnover volume fundamentally contradict the figures reported in the text. Furthermore, the date on the chart does not match \"March 3\" if we assume the chart current date is November 2025. Therefore, the image refutes the text.",
+            "action": "Tool[IMAGE_REFUTE]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Contradictions exist between the text and the image regarding time and price action. The text mentions a \"March 3\" session with a 1.17% drop. The image displays a chart with X-axis labels for late 2025 and early 2026, and a current screen price showing an -8.27% drop and high turnover (417.30B vs the reported 12.1B). Therefore, the image refutes the news.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims a 1.17% decline for Alibaba on March 3 with a turnover of HK$12.1 billion. However, the image shows a much larger drop of -8.27% (price change -11.350) and a turnover of 417.30 billion. I need to query the specific percentage change shown in the image to confirm this discrepancy.",
+            "action": "VQA[question=\"What is the percentage change displayed on the stock price header?\"]",
+            "observation": "\n\nThe percentage change displayed on the stock price header is -8.27%.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text reports a 1.17% decline and 12.1 billion turnover for Alibaba, whereas the image explicitly shows an -8.27% change and 417.30 billion turnover. The VQA result confirmed the image percentage is -8.27%. There is a clear conflict in the primary data points indicating a MISMATCH.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims a 1.17% drop on March 3, but the visual evidence (images of stock charts) displays an 8.27% drop and a date of November 2025, creating a direct numerical and temporal conflict.",
+    "notes": []
+  },
+  "error": null
+}

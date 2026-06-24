@@ -1,0 +1,146 @@
+{
+  "index": 474,
+  "sample_id": "475",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 700.87,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T3 Misleading Context"
+    ],
+    "rationale": "文本关于“已排查且未发现成百上千只崖沙燕死亡、两处点位确有筑巢”的核心结论与辟谣通报一致，但将舆情关注与跟进时间表述得更早更笼统，弱化了与3月11日前后集中发酵及随后排查的对应关系，造成“讨论更早、影响更久”的语境偏差。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "生态环境与野生动物保护",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/475",
+  "image_paths": [
+    "/path/to/ReMMDBench/475/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/475/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/475/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/475/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "475",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Following the instruction to use Wikipedia first, I will check if there is any information about the specific reserve or the species \"Cliff Sand Swallow\" in the context of Mianyang to validate the baseline facts presented in the image and text.",
+            "action": "Wikipedia[query:Mianyang Cliff Sand Swallow Nature Reserve]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should also verify the specific name of the protection area visible in the image to confirm if such an official designation exists.",
+            "action": "Google[query: 绵阳市涪江沙场崖沙燕保护区]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify the image against the text. The text claims that in Mianyang, along the Fujiang, officials inspected sand pits where swallows were nesting to refute rumors of mass deaths. The image shows a sand cliff environment. A sign is visible which says \"绵阳市涪江沙场 崖沙燕保护区\" (Mianyang City Fujiang Sand Pit Cliff Swallow Protection Area). This matches the location (Mianyang, Fujiang) and the subject (Sand Pits, Cliff Swallows) described in the text perfectly. The personnel present appear to be conducting the inspections mentioned. The scene is consistent with the report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Verify the specific location and purpose of the protected area by reading the text on the visible sign in the image to confirm it matches the text description of \"Mianyang City Fu River Sand Yard Cave Swift Protection Area\".",
+            "action": "VQA[What does the white sign in the background say?]",
+            "observation": "\n\nThe white sign in the background says:\n\n**绵阳市涪江沙场\n崖沙燕保护区\n严禁在繁殖期开采**\n\n(This translates roughly to: \"Miyang City Fujiang Sand Yard Cliff Sand Martin Protected Area - Excavation is strictly prohibited during the breeding season.\")",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The sign text 'Mianyang City Fujiang Sand Yard Cliff Sand Martin Protected Area - Strictly prohibited to excavate during breeding season' perfectly matches the key location and protective measures mentioned in the news text. The visual evidence of personnel inspecting the cliff aligns with the described 'comprehensive on-site inspections.'",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.21544346900318836,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates specific government inspection reports and results, while the images appear to be synthetic visual content consistent with the text.",
+    "notes": []
+  },
+  "error": null
+}

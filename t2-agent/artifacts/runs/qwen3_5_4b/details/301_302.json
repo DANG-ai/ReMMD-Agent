@@ -1,0 +1,142 @@
+{
+  "index": 301,
+  "sample_id": "302",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1456.25,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion"
+    ],
+    "rationale": "Die zentrale Tatsachenaussage zum Spielausgang, den Torschützen und dem Rückspiel ist plausibel und durch das verfügbare Material gedeckt. Irreführend ist nur die wertende Zuspitzung, die das Duell als besonders offen, eng und atmosphärisch getragen schildert, ohne dass diese Einordnung so klar aus der Evidenz folgt.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/302",
+  "image_paths": [
+    "/path/to/ReMMDBench/302/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/302/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "302",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific match details claimed in the German text: VfB Stuttgart vs. FC Porto, Europa League Round of 16, playing at MHPArena (Home), exact 1:2 score, specific goalscorers (Terem Moffi, Rodrigo Mora, Deniz Undav), and the context of the \"Else Tuesday\" reflection. This seems to be a specific event report that needs confirmation.",
+            "action": "Google[VfB Stuttgart versus FC Porto Europa League match results 2024]",
+            "observation": "FC Porto vs VfB Stuttgart Head to Head History - AiScore: Last 5, VfB Stuttgart won 2, Draw 3, Lose 0, 2.2 Goals per match, 1.6 Goals Conceded per match, Asian Handicap Win%: 20.0%, Total Goals Over%: 60.0%. (https://www.aiscore.com/head-to-head/soccer-fc-porto-vs-vfb-stuttgart)\nStuttgart vs Porto: UEFA Europa League stats & head-to-head - BBC: Match ends, VfB Stuttgart 1, FC Porto 2. Full Timeat 90 minutes plus 7. 90'+7. Second Half ends, VfB Stuttgart 1, FC Porto 2. Postat 90 ... (https://www.bbc.com/sport/football/live/ce3gp77qrp1t)\nFC Porto Stuttgart | Europa League – Round of 16 (2nd Leg) #UEL ...: Nottingham Forest vs FC Porto Europa League match. Aniekeme0001 ... Fenerbahce vs VfB Stuttgart Live Score Updates (0-0) GOAL ... (https://www.facebook.com/ebenezer.anangfio.2025/posts/fc-porto-stuttgart-europa-league-round-of-16-2nd-leg-uel-socceronlyscores-porto-/896214976571831/)\nFC Porto 2-0 Stuttgart (Mar 19, 2026) Final Score - ESPN: Game summary of the FC Porto vs. VfB Stuttgart Uefa Europa League game, final score 2-0, from March 19, 2026 on ESPN. (https://www.espn.com/soccer/match/_/gameId/401862756/vfb-stuttgart-fc-porto)\nPorto vs Stuttgart | UEFA Europa League 2025/26: Porto vs Stuttgart · Froholdt screamer seals Porto win · William Gomes opener, 4-1 overall · Diogo Costa with string of key saves · Forest up next ... (https://www.uefa.com/uefaeuropaleague/match/2048131--porto-vs-stuttgart/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.7,
+        "best_value": 0.6499999999999999,
+        "best_trajectory": [
+          {
+            "thought": "I can also choose to call the Detection tool to formally analyze the visual elements (flags, logos, players) to confirm the match context and crowd identity described in the text. This `Detect[image]` action serves as a tool invocation to process the image data against the text criteria (Stuttgart fans, Porto players, correct stadium), which would then lead to the conclusion of support. This is a structured alternative for tool use.",
+            "action": "Detect[image]",
+            "observation": "- **Overall look:** The image appears like a standard sports stadium photograph (wide shot, consistent lighting, realistic crowd texture, depth, and motion blur consistent with waving flags). No obvious AI-synthesis artifacts (warped geometry, melted details, inconsistent shadows) stand out.\n\n- **Crowd/flags:** The flags and banners have plausible folds and motion; patterns repeat in a way typical of real crowd scenes rather than generative “copy-paste” repetition. Hands/arms in the crowd are dense but not showing clear “extra fingers” type artifacts.\n\n- **Players/field:** Player proportions and kit details look coherent; the goal frame and net perspective are consistent with the camera angle.\n\n- **Possible editing/compositing signs:** I don’t see clear cutout edges, mismatched lighting between foreground and background, or halos that would suggest compositing. The bottom blue advertising board/text looks partially cropped/obscured, but that’s consistent with a broadcast/stock photo crop rather than manipulation.\n\n**Conclusion:** No strong visual indicators of digital manipulation or synthetic generation; it looks like an authentic match/stadium photo.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will ask the detection tool to verify the visual elements against the text claims: specifically checking for VfB Stuttgart vs FC Porto player kits (Red/Green vs Blue/White/Red) and the stadium atmosphere described. The presence of specific flags and the \"MHPArena\" context being evident in the stadium visuals is crucial.",
+            "action": "Detect[image]",
+            "observation": "- **Overall look:** The image appears like a standard sports stadium photograph (wide shot, consistent lighting, realistic crowd texture, depth, and motion blur consistent with waving flags). No obvious AI-synthesis artifacts (warped geometry, melted details, inconsistent shadows) stand out.\n\n- **Crowd/flags:** The flags and banners have plausible folds and motion; patterns repeat in a way typical of real crowd scenes rather than generative “copy-paste” repetition. Hands/arms in the crowd are dense but not showing clear “extra fingers” type artifacts.\n\n- **Players/field:** Player proportions and kit details look coherent; the goal frame and net perspective are consistent with the camera angle.\n\n- **Possible editing/compositing signs:** I don’t see clear cutout edges, mismatched lighting between foreground and background, or halos that would suggest compositing. The bottom blue advertising board/text looks partially cropped/obscured, but that’s consistent with a broadcast/stock photo crop rather than manipulation.\n\n**Conclusion:** No strong visual indicators of digital manipulation or synthetic generation; it looks like an authentic match/stadium photo.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous tool runs concluded that the image appears authentic without obvious signs of manipulation. The visual content—players in Porto's red kits and Stuttgart players in white/green/blue kits, with a crowd waving specific flags—directly corresponds to the text describing a match between VfB Stuttgart and FC Porto. The visual context is consistent with the events described.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.7,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "While the text and image share the same location (MHPArena) and team (VfB Stuttgart players visible), the text describes a loss (1-2 to Porto) and a 'bitter evening', whereas the image shows players in a 'Kaisergarten' pose (arms around each other) and incredibly loud fan support, which usually signifies a win or a goal celebration. This specific visual cue of team celebration contradicts the text's narrative of a loss, despite the entities like the venue and team being present.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.8276772529143362,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.30000000000000004,
+      "p_fake_match": 0.1,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a soccer match between VfB Stuttgart and FC Porto, while the visual evidence shows fans of SV Darmstadt 98 and other elements representing a different event, resulting in a contextual mismatch.",
+    "notes": []
+  },
+  "error": null
+}

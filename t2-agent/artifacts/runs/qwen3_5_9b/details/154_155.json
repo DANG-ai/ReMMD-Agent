@@ -1,0 +1,154 @@
+{
+  "index": 154,
+  "sample_id": "155",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1305.0,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The piece mixes real Oscars-night coverage with misleading reframing of separate materials: an edited Vanity Fair party photo is presented as an official Oscars red-carpet arrival, and later online speculation about future films is recast as conversation happening at the venue during Oscar night. These distortions do not erase the real event backdrop, but they materially alter how readers understand what happened on site.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/155",
+  "image_paths": [
+    "/path/to/ReMMDBench/155/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/155/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/155/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/155/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "155",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "The text claims Conan O'Brien returned to host the 98th Academy Awards in March 2026. I need to verify if this is a factual claim by checking the known host for the 98th ceremony or Conan O'Brien's history with the Oscars via Wikipedia.",
+            "action": "Wikipedia[98th Academy Awards host]",
+            "observation": "No summary available. Similar entities: 98th Academy Awards, List of Academy Awards ceremonies, 97th Academy Awards, 99th Academy Awards, 47th Academy Awards",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.4,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "Although the text mentions a specific caption about Chloe Kim, the body text lists multiple stars including Michael B. Jordan. The image features Michael B. Jordan at the Oscars event described, thus supporting the broader narrative and specific mention of his attendance.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "To further corroborate the event context and check for visual consistency with the 'Oscars' text, I will extract visual entities such as movie posters or other celebrity signs to ensure the scene matches the '98th Academy Awards' description.",
+            "action": "Entity[image]",
+            "observation": "- **“OSCARS” wordmark / Academy Awards branding** (step-and-repeat backdrop) — **High certainty** (repeated “OSCARS” text is clearly visible).\n- **Academy Awards / The Oscars event setting (photo-call backdrop)** — **High certainty** (typical Oscars-branded wall used for arrivals/photos).\n- **A person posing in formalwear** — **High certainty** (individual in a dark suit; face is blurred so identity can’t be determined).\n- **Decorative wall/paneling/lighting on the right (venue interior design element)** — **Medium certainty** (looks like vertical lit panels; exact venue not identifiable).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly lists \"Michael B. Jordan\" as one of the standout celebrity arrivals at the 98th Academy Awards. The image shows a man in formal wear posing in front of an Oscars backdrop. To confirm a match, I need to use VQA to identify if the person in the image is indeed one of the celebrities mentioned, specifically Michael B. Jordan.",
+            "action": "VQA[Who is the person standing in the center of the image in the black suit?]",
+            "observation": "\n\nBased on the visual evidence, the person standing in the center is the actor **Mahershala Ali**.\n\nHe is wearing a distinctive black **Mao suit** with large buttons and a decorative chain, which he famously wore (designed by Rick Owens) to the **89th Academy Awards** (the Oscars held in 2017) after winning the award for Best Supporting Actor for the film *Moonlight*. The background with the repeating \"OSCARS\" text is typical of the \"Celebrate Oscar\" step-and-repeat often used at pre-show or post-show events during the Oscars ceremony.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA output from the previous turn identified the person as Mahershala Ali at the 89th Academy Awards, while the news text explicitly describes the 98th Academy Awards (2026) and lists attendees like Michael B. Jordan, Emma Stone, and Timothée Chalamet who are not the person in the image. This contradiction in the specific event and the attendee identity confirms a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future event with specific details (98th Oscars on March 15, 2026) which contradicts reality, and the visual set includes a historically mismatched image (Mahershala Ali from 2017) alongside AI-generated content.",
+    "notes": []
+  },
+  "error": null
+}

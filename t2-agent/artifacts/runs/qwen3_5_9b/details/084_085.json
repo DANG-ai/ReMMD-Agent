@@ -1,0 +1,160 @@
+{
+  "index": 84,
+  "sample_id": "085",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2038.18,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article accurately summarizes the source posts as a roundup of Kentucky Derby week imagery and personal Derby Day celebration content. The reused images and captions are consistent with that framing and do not introduce any factual or contextual distortion.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/085",
+  "image_paths": [
+    "/path/to/ReMMDBench/085/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/085/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/085/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "085",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.4,
+        "visits": 8,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "",
+            "action": "Google[\"152 Kentucky Derby year\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a jockey celebrating with a horse whose saddle cloth has a number '152' (according to the text). Calculating the history of the Kentucky Derby (started 1875), the 152nd expected year is 2026. Since the text presents the '2026 Kentucky Derby' as a recent 'Derby Day' event with 'posts' and 'celebrations', it implies an event happening 'now' or recently. Because 2026 is in the future (relative to 2024/2023), this is a clear hallucination. The '152' in the text is consistent with the 2026 estimate, but the framing as a current news event makes it false.",
+            "action": "Google[\"current year\"]",
+            "observation": "Day-of-Year Calendar - UW Extension AgWeather: This 100-year calendar starts with the current year, showing the day of year. The bold numbers down the left edge represent the day of month. (https://agweather.cals.wisc.edu/weather/doycal)\nWhat's the Current Day Number? - Epoch Converter: ... current year std::chrono::year_month_day current_date{today_sys}; // Create a sys_days time point for January 1st of this year auto jan1_sys = std::chrono ... (https://www.epochconverter.com/daynumbers)\nCalendar era - Wikipedia: For example, the current year is numbered 2026 in the Gregorian calendar, which numbers its years in the Western Christian era (the Coptic Orthodox and ... (https://en.wikipedia.org/wiki/Calendar_era)\nWhat is the current year according to the Gregorian calendar (AD or ...: The current nengō is called Heisei, and began in 1989 with the ascent of Akihito to the throne, so that the current year is Heisei 29. His ... (https://www.quora.com/What-is-the-current-year-according-to-the-Gregorian-calendar-AD-or-CE-How-can-you-tell-if-a-date-is-AD-or-CE-without-knowing-what-year-it-is-in-advance)\nCurrent year Definition: 991 Samples | Law Insider: Current year means the fiscal year in which a budget is prepared and adopted, which is the fiscal year next preceding the budget year. (https://www.lawinsider.com/dictionary/current-year)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the image relates to the '2026 Kentucky Derby' and shows a jockey on a horse with the number '152'. I need to verify which year the 152nd Kentucky Derby corresponds to, and whether reports of it being in the recent past are accurate.",
+            "action": "Wikipedia[\"152nd Kentucky Derby\"]",
+            "observation": "No summary available. Similar entities: 2026 Kentucky Derby, 2026 in Kentucky, List of Kentucky Derby broadcasters, 2026 in the United States",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.7,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a jockey on a horse with a saddle cloth showing the number 152 and 'KENTUCKY DERBY' text. While the attire is unusual ('Horse Whisperer' on pants), I need to confirm via visual detection if the image is a synthetic generation or a reuse of an old photo, specifically checking for AI artifacts and verifying the '2026' context claims against the visual evidence of the horse and saddle cloth.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like a real photograph**: Lighting, depth of field (sharp rider/horse with blurred crowd), motion/pose, and natural textures (mud/dirt on clothing and horse) are consistent with an on-site sports photo.\n- **No obvious AI/synthetic artifacts**: I don’t see common generation issues like warped anatomy, nonsensical tack/straps, smeared text, or inconsistent shadows.\n- **Clear signs of post-processing (but not “fake” content)**:\n  - The rider’s face (and a background face) is **intentionally blurred/pixelated**, consistent with privacy redaction.\n  - There are **graphic overlays/logos** at the bottom left/right and readable clothing text (“HORSE WHISPERER”), consistent with an editorial/news image with watermarks or branding.\n- **No clear counterfactual elements** visible within the image itself (it depicts a jockey/handler on a horse in a stadium-like race setting).\n\nOverall: **appears authentic** as a real event photo with **privacy blurring and standard editorial branding**, not evidence of synthetic generation or composited manipulation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image depicts a jockey on a horse at Churchill Downs, wearing distinctive \"Horse Whisperer\" pants and removing his helmet, which aligns perfectly with the text's description of \"classic Churchill Downs scenes such as a jockey on horseback\" and \"race-day fashion\" (unique silks). The saddle cloth number 152 appears consistent with a modern or near-future Derby race (e.g., 2026). The text describes a roundup of a photographer's work from the 2026 Derby, and this image serves as a representative visual of the event described (a jockey celebrating/mounting in a Derby setting). Therefore, the visual evidence supports the narrative claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions specific locations like Louisville and Churchill Downs, and specific entities like a jockey. Using the Entity tool on the image will help extract structured data (presence of 'Horse Whisperer', location labels, etc.) to robustly confirm the cross-modal alignment before deciding on MATCH.",
+            "action": "Entity[image]",
+            "observation": "- **Horse with jockey (thoroughbred racing)** — High certainty (clear horse, saddle, jockey silks/gear).\n- **“HORSE WHISPERS” text (likely jockey/team name)** — High certainty (readable on the rider’s pants).\n- **Kentucky Derby branding / “152 Kentucky Derby” emblem** — High certainty (visible Derby-style crest at lower left and on saddlecloth).\n- **Saddlecloth number “13”** — High certainty (large red “13” on the cloth).\n- **Helmet (red) being held up** — High certainty.\n- **Churchill Downs grandstand/crowd (racetrack venue)** — Medium certainty (looks like a racetrack grandstand; specific venue not fully confirmable from this crop).\n- **“GOLD” (partial sponsor/label text)** — Medium certainty (visible but incomplete).\n- **“BOSCHER” logo/text (bottom-right patch)** — Medium certainty (appears to read “BOSCHER,” not 100% crisp).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text specifically mentions the \"2026 Kentucky Derby\". The Entity tool previously identified \"152 Kentucky Derby\" branding. Since the 152nd running of the Kentucky Derby corresponds to the year 2026, I need to use VQA to visually confirm the number '152' on the saddle patch to align the text's year with the image's event marker.",
+            "action": "VQA[What number is visible on the small white card on the blue saddle patch?]",
+            "observation": "\n\nThe number visible on the small white card on the blue saddle patch is **152**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text mentions the '2026 Kentucky Derby'. The Entity tool identified '152 Kentucky Derby' branding, and the VQA tool confirmed the number is 152. The 152nd Kentucky Derby historically takes place in the year 2026 (151 years since 1875). This numeric and event alignment is definitive. Combined with the visual evidence of a jockey on a horse and a racetrack setting matching the 'jockey on horseback' description, the cross-modal match is confirmed.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9321697517861577,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims to be the 2026 Kentucky Derby, while the image displays a \"152\" saddlecloth which corresponds to the 2019 event, creating a mismatched time/context.",
+    "notes": []
+  },
+  "error": null
+}

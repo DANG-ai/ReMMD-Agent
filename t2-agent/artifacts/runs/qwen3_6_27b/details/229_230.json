@@ -1,0 +1,137 @@
+{
+  "index": 229,
+  "sample_id": "230",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2990.62,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "绵竹发生3.4级地震这一背景可能有事实基础，但文本把小震的影响描述成“多处受损、停课、多人受伤、道路封控、较高等级响应”等较重灾情，缺乏对应的权威通报支撑；同时关键“现场图”存在裁切叠字等编辑并疑似挪用他地/他次地震素材，导致图片无法语义上支持文中结论、且与文本形成证据关系不匹配，整体主导印象偏向夸大与误导，因此判定为 Mostly False。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "自然灾害与事故",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/230",
+  "image_paths": [
+    "/path/to/ReMMDBench/230/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/230/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/230/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/230/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "230",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image contains a red banner with the text \"绵竹3.4级地震\" (Mianzhu 3.4 magnitude earthquake) and \"多处小区受损 现场已处置\" (Multiple residential areas damaged, site handled). The map displays location names such as \"鱼通镇\", \"荥河镇\", and \"栗子坪彝族乡\", which are locations within or near Mianzhu City, Sichuan. This visual information directly corroborates the news text reporting a 3.4 magnitude earthquake in Mianzhu, Sichuan, and mentions of damage to residential areas. Therefore, the image supports the news text.",
+            "action": "Detect[image]",
+            "observation": "- 这张图本身明显不是现场照片，而是“地图截图 + 新闻标题条”的信息图样式。左上角红底白字标题框（“绵竹3.4级地震 多处小区受损 现场已处置”）属于后期排版叠加的UI元素。  \n- 画面中的震中位置用红色图钉标记（带“M”样式），以及右下角比例尺“20公里”，都符合地图/制图软件的可视化标注特征，说明是编辑制作的新闻配图而非原始拍摄图。  \n- 未见明显AI生成常见瑕疵（如文字扭曲、边缘融化、结构不合逻辑等）；线条、字体、道路与河流边界整体一致，像正常地图渲染。  \n- 但它不提供“房屋开裂、道路管控、伤者救治”等现场证据；即使图像看起来真实，也只能证明有人制作了“地震位置示意图/新闻封面图”，无法单凭图像验证文中灾情细节。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes specific on-site damage (cracks, debris) and mentions that some images circulating on social media are actually \"edited news cover images\" or \"spliced\" graphics with \"red background white text corner marks\" rather than original photos. The provided image is clearly a map-based news graphic with a red banner, not an on-site photograph of the damage. While it confirms the event's location and magnitude, it lacks the visual evidence of the specific damage described in the text (e.g., wall cracks, fallen glass) and fits the description of the \"edited graphics\" the text notes are circulating. Thus, it might be considered insufficient to verify the detailed damage claims or could be one of the non-original graphics mentioned.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to confirm the text within the red box in the top-left corner of the image to see if it matches the earthquake details mentioned in the news text (Mianzhu, 3.4 magnitude). I will ask the VQA tool to extract the text from that specific region.",
+            "action": "VQA[What is the text written in the red box in the upper left corner of the image?]",
+            "observation": "\n\nThe text written in the red box in the upper left corner of the image is:\n\n绵竹3.4级地震\n多处小区受损 现场已处置",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text in the image explicitly states \"Mianzhu 3.4 Magnitude Earthquake\" and \"Multiple residential areas damaged, scene handled\". This aligns perfectly with the news report which details a 3.4 magnitude earthquake in Mianzhu, damage to old residential communities, and emergency response efforts (\"emergency departments organized forces to rush to the scene\"). The news text also specifically mentions images with \"red background white text corner labels 'Mianzhu 3.4 earthquake'\", which describes the visual element in the provided image. Therefore, the image and text match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7368062997280773,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.2,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The map image features a prominent overlaid text banner (V2), and the fourth image of an official spokesperson is from a completely mismatched context (Taiwan Affairs) unrelated to the earthquake report (C2).",
+    "notes": []
+  },
+  "error": null
+}

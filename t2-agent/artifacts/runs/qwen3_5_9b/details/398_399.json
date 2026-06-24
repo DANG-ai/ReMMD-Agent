@@ -1,0 +1,160 @@
+{
+  "index": 398,
+  "sample_id": "399",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 991.66,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article takes ordinary event-specific branding, hospitality, and a single John Cena appearance and repeatedly reframes them as evidence of a broader Tampa rollout and institutional Cena role that the available evidence does not establish. It also uses edited visuals and image-text pairings to make speculative interpretations look like documented proof.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/399",
+  "image_paths": [
+    "/path/to/ReMMDBench/399/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/399/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/399/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/399/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/399/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/399/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/399/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/399/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/399/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/399/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "399",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the existence of a WWE Backlash event in Tampa on May 9 at a venue called \"Benchmark International Arena\". Additionally, the title match and the \"John Cena Classic\" announcement need fact-checking against historical WWE event data. I will start by searching for information on WWE Backlash venues and dates for the current or recent year.",
+            "action": "Google[WWE Backlash 2024 venue Tampa Benchmark International Arena]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "We are verifying the visual evidence provided against a news report about a WWE event. The report mentions a large indoor arena, a specific ring mat setup, and several people (John Cena). The image is a generic street view of a city environment, showing nothing related to a wrestling show or the specific venue mentioned. Since the image does not depict the event described in the text, the visual is not supportive of the text's claims.",
+            "action": "Image_Refute",
+            "observation": "Could not parse action: Image_Refute",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify if the visual content supports the news report's claim about the WWE event inside the arena. The text specifies an indoor arena setup with a ring and branding. The image appears to be an outdoor street scene which may need closer analysis via the detection tool to confirm the lack of arena interior elements.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unmanipulated street photograph.\n\n**Reasons it looks authentic**\n- **Consistent perspective and geometry:** Building lines, the street centerline, parked cars, and the distant skyline all converge naturally to a single vanishing point with no warping or mismatched angles.\n- **Lighting and shadows match:** Sunlight direction is coherent across trees, façades, and vehicles; shadow softness and contrast look consistent with real outdoor conditions.\n- **Natural detail and noise:** Fine textures (brickwork, fire escapes, leaves, asphalt) look continuous and photographic rather than AI-smoothed or pattern-repeated.\n- **No obvious compositing seams:** Edges around cars, tree branches, and building silhouettes don’t show cutout halos or blending artifacts.\n\n**Potential edits (minor/typical)**\n- Possible mild global processing (contrast/saturation/sharpening), which is common in normal photography, but nothing suggests targeted object insertion/removal.\n\n**Counterfactual note**\n- The accompanying WWE/Tampa narrative doesn’t match what’s shown: this is a quiet city street scene with no arena, ring, branding, or event elements visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims the image depicts an indoor arena setup for WWE Backlash, specifically mentioning the ring, mat branding, and John Cena. However, the analyzed image clearly shows an outdoor city street with parked cars, trees, and brick buildings. There is a complete mismatch between the described scene and the visual evidence provided. Therefore, the image does not support the specific details of the event description.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "The visual evidence of a generic street does not align with the detailed description of a stadium event, ring, and indoor arena setup mentioned in the text. The image lacks any event-specific elements.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.1,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,127 @@
+{
+  "index": 346,
+  "sample_id": "347",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2094.97,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "样本文本所述两条核心动向均能在给定证据链中找到直接对应：其一，新浪新闻数码官方微博“数码头条”与新浪新闻出品栏目官方微博“冲浪新知”在2026年3月5日前后发布的信息明确提到“MacBook Neo正式发布/新款笔记本电脑MacBook Neo”，并给出“起售价4599元起”的国行价格定位，同时配图展示的宣传页也写有“RMB 4599起”等关键信息，能够支撑“新品为入门级、价格为4599元起、传播语境接近发布会/正式发布”的描述；其二，搜狐新闻在2026年3月3日发布的线索明确称“没有发布会”“直接在中国官网上架”春季新款“iPhone 17e”，并给出“4499元起售、256GB存储起步”等要点，配图中亦出现“iPhone 17e”及对应的上架/发售提示信息，整体与文本关于“官网直接上架、未办发布会、4499元起且256GB起步”的表述一致，因此该样本核心叙述与提供的可核验证据相符，未出现会改变受众整体理解的关键性偏差。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "科技数码",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/347",
+  "image_paths": [
+    "/path/to/ReMMDBench/347/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/347/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/347/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/347/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "347",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions a new product called \"MacBook Neo\" with a starting price of 4599 RMB. The provided image shows a promotional graphic for \"MacBook Neo\" with the text \"RMB 4599 起\". To formally verify the text extraction and confirm the details like dates (March 6 and 11) match the \"early March\" context in the text, I should use the Detect tool.",
+            "action": "Detect[image]",
+            "observation": "从图像本身看，这是一张高度“官方海报/网页截图”风格的静态宣传图，但存在多处可疑点，较像后期拼接或仿制的广告页，而非真实苹果官网页面截屏：\n\n- **产品命名异常**：标题写“MacBook Neo”，而苹果现有命名体系中“Neo”并非常见官方产品线后缀；仅凭图无法证实其为真实发布物，更像“自造新品名”。\n- **排版/字体风格不太像苹果官网**：中英文混排（“你好, Neo.”）的字重与标点、整体留白、按钮样式虽接近电商落地页，但与苹果官网常见的更克制、统一的排版观感略有偏差（尤其是大号中文标题+粗重英文“Neo.”的组合显得“营销海报化”）。\n- **合成感强的主体图**：笔记本被一只手托起，属于典型“产品渲染图+人物手部合成”的宣传视觉。边缘很干净、阴影极弱，背景纯白，整体更像**棚拍/渲染合成**而非自然拍摄截图。\n- **细节真实但更像可复制模板**：按钮“届时前来预购”、价格“RMB 4599 起”、时间信息排版规整，底部还有小字免责声明，确实符合“仿官网海报”常见元素；但这类元素也很容易被重新排版制作。\n\n结论：图中没有明显的AI生成畸变（如手指数量错误、纹理融化等），更像**人工设计的宣传图或网页仿制图**；但基于命名与整体版式“非典型苹果官网”的观感，**真实性存疑**，存在后期制作/伪造的可能。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims that Apple has launched a \"MacBook Neo\" as a real product. However, the detection tool analysis suggests the image is likely a \"post-production/forgery\" or \"self-created\" concept, citing that \"Neo\" is not a standard Apple naming convention and the visual style is suspicious. If the image is a fake render of a non-existent product, it refutes the text's claim that this is a genuine, official product launch by Apple. The text presents it as a factual event (\"Apple has launched...\", \"clear movements\"), while the image serves as evidence of it being a fabrication or rumor, thus contradicting the veracity of the \"real launch\" claim.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly mentions a new product \"MacBook Neo\" with a starting price of 4599 RMB. I need to verify if the image displays this specific product name and price to confirm the match.",
+            "action": "VQA[What is the product name and the starting price shown in the image?]",
+            "observation": "\n\nBased on the image provided:\n\n*   **Product Name:** MacBook Neo\n*   **Starting Price:** RMB 4599",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA action confirmed that the image displays the product name \"MacBook Neo\" and the starting price \"RMB 4599\". This aligns perfectly with the news text which reports on the \"MacBook Neo\" with a starting price of \"4599元\". The image acts as a promotional poster validating the specific product details mentioned in the text. Although the text also mentions an iPhone 17e, the image accurately reflects the primary subject matter (MacBook Neo) described in the news. Therefore, the cross-modal match is confirmed.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The news text fabricates the existence and launch of non-existent Apple products (\"MacBook Neo\", \"iPhone 17e\") and their specific release details, while the accompanying images are counterfeit promotional materials created through editing and splicing to mimic official ads.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,145 @@
+{
+  "index": 470,
+  "sample_id": "471",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1638.2,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article's central game result is invented, and the visuals are used to falsely authenticate it. One image is generated, another is edited to simulate a live broadcast frame, and the reused celebration photo is miscaptioned as evidence from the alleged 2026 UConn-Duke Elite Eight game.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/471",
+  "image_paths": [
+    "/path/to/ReMMDBench/471/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/471/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/471/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "471",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The provided text describes a 2026 game involving Braylon Mullins, but the image displays a scoreboard indicating the 2023 NCAA tournament. The score on the image (Duke 74, UConn 73) contradicts the text's final score (UConn 73, Duke 72). Furthermore, the shooter in the image is wearing the Duke uniform #24, not the UConn player Mullins.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 1.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the game took place in 2026, but the scoreboard in the image clearly displays the year 2023. This suggests a mismatch between the news story and the image.",
+            "action": "VQA[What year is displayed on the large scoreboard in the background?]",
+            "observation": "\n\n2023",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have already identified the year discrepancy (2023 vs 2026). I will verify the score (73-72) shown in the text against the scoreboard.",
+            "action": "VQA[What is the final score displayed on the scoreboard?]",
+            "observation": "\n\nBased on the scoreboard visible at the top of the image, the displayed score is **74 to 73**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the game was won with 0.4 seconds left, but the image shows a score of 74-73 and a time of 1.0. I need to verify the exact second count on the scoreboard time to confirm this discrepancy.",
+            "action": "VQA[What time is remaining on the scoreboard?]",
+            "observation": "\n\nBased on the scoreboard visible in the background, there is **1.0** second remaining. This is shown in the large yellow digits in the center of the board and on the shot clock on the far left.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the game took place in 2026 with a score of 73-72 and 0.4 seconds remaining. However, the image clearly shows the year 2023, a score of 74-73, and 1.0 second remaining. These specific details are contradictory, confirming a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future date and claims a score/time that conflicts with the visual evidence in the cover image.",
+    "notes": []
+  },
+  "error": null
+}

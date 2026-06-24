@@ -1,0 +1,148 @@
+{
+  "index": 150,
+  "sample_id": "151",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1696.12,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Die zentrale Spielaussage zum 3:1-Heimsieg nach Rückstand ist durch das Quellmaterial gedeckt. Leicht irreführend sind jedoch einzelne Zuspitzungen zur sportlichen Tragweite sowie die zu konkrete Verknüpfung mindestens eines Bildes mit einer spezifischen Schlüsselszene, die aus dem Bild selbst nicht belegbar ist.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/151",
+  "image_paths": [
+    "/path/to/ReMMDBench/151/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/151/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/151/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/151/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "151",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.5,
+        "best_value": 0.6999999999999998,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a match on 10.05.2026 where Stuttgart won 3:1 at home. The image shows Ermedin Demirovic celebrating. While the image shows a celebration, the text contains significant factual errors regarding the match outcome and location if we assume it refers to the real-world match on 10.05.2024 (where Stuttgart lost 1:3 away). The visual evidence of the white stands (BayArena) contradicts the \"Heimsieg\" (home win) claim in the text. Therefore, the image refutes the specific details in the text regarding the nature of the game (home vs away) and likely the result implied by the \"home win\" celebration context versus an actual away loss.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the players in the image belong to the team mentioned in the text, which is VfB Stuttgart. The text describes a match between Stuttgart and Leverkusen. I can identify the team by looking at the sponsor logo on the shirts. The text \"LBE BW\" is visible, which is a known sponsor for VfB Stuttgart. I will ask a VQA question to confirm the text on the shirt.",
+            "action": "VQA[What text is visible on the front of the players' shirts?]",
+            "observation": "\n\nBased on the image, the text visible on the front of the players' shirts (specifically on the chest area) is **LB=BW**. This is the shirt sponsor. It is clearly visible on the player on the far left and the central player celebrating.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have identified the sponsor \"LB=BW\" which corresponds to VfB Stuttgart, the team mentioned in the text. The caption mentions Ermedin Demirovic, who is likely the blonde player celebrating in the center. The player on the right has \"STADT\" visible on his back, which likely refers to Maximilian Mittelstädt, another player mentioned in the text as a goalscorer. To confirm the match completely, I will verify the name on the back of the shirt.",
+            "action": "VQA[What name is visible on the back of the shirt of the player on the right side of the image?]",
+            "observation": "\n\nThe name visible on the back of the shirt is **STOTTER**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA model identified the name as \"STOTTER\", which contradicts the text mentioning \"Maximilian Mittelstädt\". The visual evidence suggests the name ends in \"STADT\". I need to extract the text entities from the image to confirm the name on the shirt and resolve the discrepancy.",
+            "action": "Entity[image]",
+            "observation": "- **VfB Stuttgart (football club)** — High certainty (team crest visible; “STUTTGART” printed on jersey; kit matches).\n- **“LBBW” sponsor logo** — High certainty (large text across the front of shirts).\n- **JAKO (sportswear brand)** — High certainty (logo/text on shorts/socks).\n- **Football/soccer stadium setting (pitch + stands/crowd)** — High certainty (clear stadium environment, crowd in background).\n- **Specific stadium/landmark** — Low certainty (no readable signage or unique architectural marker to pinpoint venue).\n- **Individual players (real-person identities)** — Not identifiable from the image (faces are obscured/insufficient detail).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a victory for VfB Stuttgart against Bayer 04 Leverkusen, highlighting a comeback win and goals by Demirovic and Mittelstädt. The image shows VfB Stuttgart players (confirmed by the LBBW sponsor logo and entity detection of the team crest/kit) celebrating on the pitch. The caption specifically mentions \"Jubel der Stuttgarter\" (celebration of Stuttgart players) after Demirovic's equalizer. The visual evidence of Stuttgart players celebrating aligns perfectly with the text's description of the match outcome and the specific moment of celebration mentioned in the caption. Therefore, the image matches the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.43088693800637673,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.5,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a match in the future (2026) which is a fabrication, and the images exhibit signs of AI generation such as nonsensical text on jerseys (\"STOTTER\") and uncanny visual artifacts.",
+    "notes": []
+  },
+  "error": null
+}

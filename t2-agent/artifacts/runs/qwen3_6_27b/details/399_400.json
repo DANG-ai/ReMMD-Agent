@@ -1,0 +1,146 @@
+{
+  "index": 399,
+  "sample_id": "400",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1763.32,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article is grounded in a real early-season Reddick streak and authentic post-race attention, but it overstates what those facts mean by framing social-media hype and early standings as evidence of historically settled dominance. Several edited visuals also make fan-made or commercial materials look more official and more exclusively Reddick-centered than the source context supports.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/400",
+  "image_paths": [
+    "/path/to/ReMMDBench/400/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/400/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/400/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/400/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/400/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/400/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/400/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/400/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/400/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/400/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "400",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes events from the \"2026 NASCAR season,\" specifically claiming Tyler Reddick won the Daytona 500, Atlanta, and COTA races in March 2026. Since the current date is before 2026, these events have not occurred. Furthermore, the text claims Reddick won the Daytona 500, but in the most recent 2024 season, Joey Logano won the Daytona 500. The image shows an Xfinity Series trophy, while the text discusses the Cup Series, creating a contradiction. The text appears to be a hallucination or a fictional scenario.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a future event (2026 season) and specific visual details (\"three fingers\", \"3 in a row\" text, \"Chumba Casino\" branding). The image contains all these specific details. The text states \"One of the most widely circulated images showed Reddick in mid-celebration, three fingers raised... Repeated '3 in a row' graphics...\". The image shows exactly this. The presence of \"Xfinity\" branding in the background might suggest a composite or a detail from a different series, but the core elements align perfectly with the text's description of the \"viral image\" that signaled Reddick's dominance. The text is consistent with the visual evidence provided.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the key entities in the image against the text.\n    1.  **Driver:** The text identifies the driver as Tyler Reddick. The person in the image appears to be Tyler Reddick (facial features, beard).\n    2.  **Car Number:** The text mentions the \"No. 45\". The image clearly shows the number \"45\" on multiple race cars.\n    3.  **Sponsor:** The text mentions \"Chumba Casino\" branding. The image prominently features \"CHUMBA CASINO\" on the cars and the driver's suit.\n    4.  **Achievement/Gesture:** The text describes \"Three races. Three wins\" and \"One driver holding up three fingers\". The image has large text \"3 IN A ROW\" and shows the driver holding up three fingers (peace sign/V sign).\n    5.  **Team/Owner:** The text mentions \"23XI Racing\" and \"Michael Jordan\". The image has a \"Jumpman\" logo (Jordan Brand) on the car, and the black/red scheme is consistent with 23XI Racing.\n    6.  **Series:** The text mentions \"Daytona 500\" (Cup) but the image has \"xfinity\" logos. However, the text describes the *visuals* (\"Repeated '3 in a row' graphics\"), and this image fits that description perfectly. The text might be a narrative using this specific imagery (perhaps from the Xfinity series where he also had success, or a composite). The visual evidence of \"3 in a row\", #45, and Chumba Casino aligns perfectly with the text's description of the celebration.\n    The match is strong on all visual descriptors.",
+            "action": "VQA[What is the number on the race cars shown in the image?]",
+            "observation": "\n\nThe number on the race cars is **45**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have verified the car number (45), the gesture (3 fingers), and the visual theme (\"3 in a row\" graphics are described in text and visible in image). The sponsor (Chumba Casino) is also clearly visible. The text describes the visual narrative of Reddick's start, and this image perfectly matches that description (45, Chumba, 3 fingers, \"3 IN A ROW\"). I can conclude the match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future 2026 NASCAR season scenario where Tyler Reddick wins three consecutive races, and the supporting images are synthetic graphics (standings with negative points, result boxes) and edited collages designed to visually confirm this false narrative.",
+    "notes": []
+  },
+  "error": null
+}

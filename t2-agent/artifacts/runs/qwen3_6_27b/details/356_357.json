@@ -1,0 +1,126 @@
+{
+  "index": 356,
+  "sample_id": "357",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2542.22,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Die Hauptaussage zur fehlenden Mehrheit im Bundesrat und zu den finanziellen Einwänden der Länder ist durch das vorliegende Quellmaterial im Kern gedeckt. Leicht irreführend ist jedoch die zugespitzte Einordnung, wonach die Prämie für Beschäftigte nun praktisch in weite Ferne rücke, während die Bilder eine konflikthaftere und parteipolitisch aufgeladene Stimmung erzeugen als der sachliche Verfahrensinhalt des Textes.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/357",
+  "image_paths": [
+    "/path/to/ReMMDBench/357/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/357/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "357",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a vote on a tax premium in the Bundesrat. The image shows two people (one appears to be politician Winfried Kretschmann) standing in front of exhibition panels. The text on the panels (\"in ...n wedin\", \"Julia kennen\") indicates a historical or biographical exhibition, not a political meeting or the Bundesrat plenary. The caption's description of a \"backroom atmosphere\" related to the tax vote does not match the visual evidence of a public exhibition. Therefore, the image likely refutes the context.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The caption describes a \"serious scene before the Bundesrat with a politically charged backroom atmosphere\". The visual content shows a calm observation of a display. I need to determine if the setting is indeed the Bundesrat or a different location like a museum, and if the activity matches the described \"backroom atmosphere\".",
+            "action": "VQA[Does the setting appear to be a political meeting room or an exhibition/museum space?]",
+            "observation": "\n\nBased on the visual evidence, the setting appears to be an **exhibition or museum space**.\n\nHere are the key indicators:\n*   **Wall Displays:** The background features large, vertical panels with text on them (visible fragments include \"in swedin\"), which is characteristic of museum placards or informational exhibits.\n*   **Layout:** The people are standing and looking at these wall displays, which is typical behavior for visitors in a gallery or museum.\n*   **Lack of Meeting Furniture:** There are no tables or chairs visible that would suggest a meeting room.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The visual evidence strongly points to a museum or exhibition space (panels, layout, lack of meeting furniture), while the caption describes a \"politically charged backroom atmosphere\" at the Bundesrat. The news text discusses a tax vote. The setting and atmosphere in the image (calm observation of exhibits) do not match the described political event or \"backroom\" vibe. The visible text fragments (\"in swedin\", \"Salbung\") suggest a historical or religious topic, unrelated to the tax premium. Thus, a mismatch is the correct conclusion.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future event dated May 2026 and pairs it with visuals (indicated as synthetic) depicting a museum/exhibition setting, which creates a contextual mismatch with the text's claim of a Federal Council meeting.",
+    "notes": []
+  },
+  "error": null
+}

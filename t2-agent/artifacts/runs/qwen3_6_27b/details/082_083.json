@@ -1,0 +1,136 @@
+{
+  "index": 82,
+  "sample_id": "083",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2775.24,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本把“买不到黄金”的主要原因归结为所谓“监管要求暂停/控制实物交割”的全国性措施，并用门店告示牌与APP弹窗截图作证，但这些关键“监管口径/暂停时间/限购规则”缺乏可核实来源且被具体化为疑似内部通知；同时配图中存在生成截图与后期加贴告示牌等操控，导致图像证据与文本结论共同构成虚构与误导，整体核心叙事不成立。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/083",
+  "image_paths": [
+    "/path/to/ReMMDBench/083/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/083/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/083/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/083/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/083/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/083/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/083/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/083/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/083/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/083/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "083",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.01,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.01,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions a specific sign \"今日金条售罄/暂停销售（以到货为准）\" in the description of Figure 1. The image shows a sign \"今日金条售罄 / 足金饰品需预约\". While the second line differs slightly (\"suspended sales\" vs \"requires reservation\"), the primary message \"Today's gold bars sold out\" is identical. The context of a busy store with people at the counter aligns with the text's description of \"crowded counters\". The watermark \"@封面新闻\" confirms the image source matches the text citation. Thus, the image supports the core claim of the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.01,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to check the watermark at the bottom of the image to confirm the source matches the one cited in the text (@封面新闻).",
+            "action": "VQA[What is the text of the watermark at the bottom of the image?]",
+            "observation": "\n\nThe text of the watermark is \"@封面新闻\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The watermark \"@封面新闻\" matches the source cited in the text. The visual context of a crowded gold shop with a \"sold out\" sign aligns with the article's description of \"gold bars sold out\" and \"queuing\". I can conclude the match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The images contain manipulated future dates (e.g., 2025, 2026) that directly conflict with the article's stated timeframe of \"March,\" indicating both visual editing and contextual inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

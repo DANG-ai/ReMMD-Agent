@@ -1,0 +1,383 @@
+# ReMMD-Agent
+
+This repository contains the public reproducible code for the three multimodal-misinformation-detection (MMD) agent systems evaluated in **ReMMD: Realistic Multilingual Multi-Image Agentic Verification for Multimodal Misinformation Detection**, together with saved evaluation artifacts for the Qwen-family backends (4B / 9B / 27B). Deployment-specific server URLs, API keys, proxies, and absolute paths are represented by placeholders that should be replaced in your local environment.
+
+- Project page: https://dang-ai.github.io/ReMMD/
+- Code: https://github.com/DANG-ai/ReMMD-Agent
+- Paper: https://arxiv.org/abs/2606.24112
+- Dataset: https://huggingface.co/datasets/DDAI-D/ReMMDBench
+
+---
+
+## 1. Directory layout
+
+```
+ReMMD-Agent/
+├── README.md                    # this file — global reproduction guide
+├── mmd-agent/                   # Baseline 1: 3-stage MMD-Agent (textual / visual / cross-modal)
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── configs/                 # per-model .env config files (placeholders for URL / API key)
+│   ├── scripts/                 # per-model launchers (run_qwen35_4b.sh, run_qwen35_9b.sh, …)
+│   ├── eval/                    # the main Python pipeline (run_mmd_agent.py + utils/ + task_datasets/)
+│   ├── test_qwen.py             # quick endpoint health-check
+│   └── outputs/                 # saved per-model evaluation outputs (samples + metrics)
+│       ├── qwen3.5-4b/full/
+│       ├── qwen3.5-9b/full/
+│       └── qwen3.6-27b/full/
+│
+├── ReMMD-agent/                 # Our main system: atomic decomposition + RAG + multi-expert judge
+│   ├── README.md
+│   ├── agent_logic.md           # method description
+│   ├── 一级标签.txt              # L1 verdict definitions (verbatim into prompts)
+│   ├── 二级标签.docx             # L2 distortion taxonomy definitions
+│   ├── 结构图.png                # workflow diagram
+│   ├── rag_database/            # 7,709 evidence items + sample→evidence index
+│   └── agent/
+│       ├── README.md
+│       ├── requirements.txt
+│       ├── configs/             # YAML configs (qwen_v3 / qwen_v11 / 4B / 27B variants, …)
+│       ├── prompts/             # all prompt templates (v2…v12 + GPT variants)
+│       ├── src/                 # core Python modules (atomic parser, RAG, analyzers, judge, …)
+│       ├── scripts/             # entry points (run_eval, ensemble_judge, cross_run_majority, …)
+│       └── runs/                # saved evaluation outputs (cross-run majority results)
+│           ├── qwen3.5-4b/      # cross-run majority for Qwen3.5-4B
+│           ├── qwen3.5-9b/      # cross-run majority for Qwen3.5-9B
+│           └── qwen3.6-27b/     # cross-run majority for Qwen3.6-27B
+│
+└── t2-agent/                    # Baseline 2: MCTS-based 5-verdict + 8-taxonomy agent
+    ├── README.md
+    ├── requirements.txt
+    ├── configs/                 # per-model YAML configs (placeholders)
+    ├── scripts/                 # per-model launchers
+    ├── src/t2agent/             # core Python modules
+    ├── records/                 # per-call LLM/tool JSONL logs
+    │   ├── qwen3_5_4b/
+    │   ├── qwen3_5_9b/
+    │   └── qwen3_6_27b/
+    └── artifacts/runs/          # per-run summary + per-sample detail JSON
+        ├── qwen3_5_4b/
+        ├── qwen3_5_9b/
+        └── qwen3_6_27b/
+```
+
+The three sub-projects are **mutually independent** — each has its own README, its own Python entry point, and its own configuration files. You can reproduce any of them in isolation.
+
+---
+
+## 2. Public-release placeholders and packaged artifacts
+
+The released code keeps endpoint, credential, proxy, and machine-specific path values as explicit placeholders. Replace them with your own infrastructure before running full experiments.
+
+| Configuration item | Placeholder in this repo |
+|---|---|
+| GPT-style proxy endpoint | `http://YOUR_GPT_ENDPOINT/v1` |
+| GPT-style API key | `sk-YOUR_GPT_API_KEY_HERE` |
+| Qwen-4B chat endpoint | `http://YOUR_QWEN_4B_ENDPOINT/v1` |
+| Qwen-9B chat endpoint | `http://YOUR_QWEN_9B_ENDPOINT/v1` |
+| Qwen-27B chat endpoint | `http://YOUR_QWEN_27B_ENDPOINT/v1` |
+| Qwen embedding endpoint | `http://YOUR_QWEN_EMBEDDING_ENDPOINT/v1` |
+| HTTP proxy | `http://YOUR_HTTP_PROXY:PORT` |
+| Server absolute paths | `/path/to/ReMMD-Agent/...` |
+| Windows dev paths | `C:\path\to\ReMMD-Agent\...` |
+| Conda environment paths | `/path/to/conda/...` |
+| Serper key index file | `/path/to/serper_api.txt` |
+
+The **ReMMDBench dataset itself is NOT included** in this repository. The public dataset release is available on Hugging Face at https://huggingface.co/datasets/DDAI-D/ReMMDBench. To reproduce experiments from a local sample-folder layout, see Section 4 below.
+
+### What was kept vs. removed in the saved run artifacts
+
+To keep the repository lightweight, we removed all
+per-call **LLM trace logs** (`llm_calls.jsonl`) and the **aggregated
+intermediate dumps** (`remmdbench.json` / `remmdbench.jsonl`) from the saved
+runs. Those files were verbose audit logs that can be regenerated by re-running
+the pipeline; they are not needed to verify the reported metrics.
+
+| Kept | Why |
+|---|---|
+| `metrics.json`, `summary.txt`, `eval_summary.txt` | final numbers for every backend |
+| `confusion_matrix_*.png/pdf`, `*_per_class_bars.{png,pdf}` | publication-grade figures |
+| `run_config.json`, `progress.json`, `run_summary.{json,md}` | exact run configuration |
+| `ReMMD-agent/agent/runs/<model>/samples/<sid>/result.json` (all 500) | per-sample voted output for our main system |
+| `t2-agent/artifacts/runs/<model>/details/<id>.json` (all 500) | per-sample MCTS trajectory + dual labels |
+| `mmd-agent/outputs/<model>/full/samples/001..010/result.json` | **10 sample exemplars per backend** — enough to inspect format |
+
+| Excluded from this repository | Recovery method |
+|---|---|
+| `*/llm_calls.jsonl` (≈ 1 GB) | regenerated automatically when re-running the pipeline |
+| `mmd-agent/.../remmdbench.{json,jsonl}` (≈ 600 MB) | rebuilt from per-sample `result.json` files |
+| `mmd-agent/.../samples/011..500/` | regenerated when re-running `bash scripts/run_qwen*.sh` |
+| `ReMMD-agent/agent/rag_index/` (≈ 120 MB embedding cache) | rebuilt by `agent/scripts/build_rag_index.py` |
+| `t2-agent/records/` (≈ 750 MB call logs) | regenerated when re-running `bash scripts/run_qwen*.sh` |
+| `t2-agent/artifacts/cache/` (LLM/tool result cache) | regenerated on first run |
+
+---
+
+## 3. Environment setup
+
+All three sub-projects share a single conda environment named `mmd` (Python ≥ 3.10):
+
+```bash
+conda create -n mmd python=3.10 -y
+conda activate mmd
+
+# Install the union of all three projects' dependencies
+pip install -r mmd-agent/requirements.txt
+pip install -r ReMMD-agent/agent/requirements.txt
+pip install -r t2-agent/requirements.txt
+```
+
+If you prefer separate environments, each sub-project can install only its own `requirements.txt`. The three projects do not import each other.
+
+---
+
+## 4. Obtaining the ReMMDBench dataset
+
+ReMMDBench is the benchmark used by all three systems. Each sample lives under
+`ReMMDBench/<sid>/` with this layout:
+
+```
+ReMMDBench/
+├── 001/
+│   ├── annotation.json          # {"verdict": ..., "distortion_taxonomy": [...], "rationale": ...}
+│   ├── sample.json              # {"text": ..., "images": ["01_img_1.jpg", ...], ...}
+│   └── images/
+│       ├── 01_img_1.jpg
+│       └── ...
+├── 002/
+│   └── ...
+└── 500/
+```
+
+Place the dataset wherever you like and update the path in each sub-project's
+configuration files. For example:
+
+```bash
+export REMMD_BENCH_ROOT=/abs/path/to/ReMMDBench
+```
+
+Then update:
+* `mmd-agent/scripts/_common.sh` → `MMD_BENCH_ROOT`
+* `ReMMD-agent/agent/configs/*.yaml` → `paths.bench_root`
+* `t2-agent/configs/*.yaml` → `paths.realmmdbench_root`
+
+---
+
+## 5. Configuring API endpoints and keys
+
+Before running anything, fill in the placeholders in each sub-project's config files:
+
+### 5.1 `mmd-agent/configs/*.env`
+
+```bash
+export MMD_BASE_URL="http://YOUR_QWEN_4B_ENDPOINT/v1"   # → your real endpoint
+export MMD_API_KEY="qwen"                              # → your real API key (placeholder works for vLLM)
+```
+
+### 5.2 `ReMMD-agent/agent/configs/*.yaml`
+
+```yaml
+llm:
+  base_url: "http://YOUR_QWEN_9B_ENDPOINT/v1"  # → your real endpoint
+  api_key:  "qwen"                             # → your real API key
+embedding:
+  base_url: "http://YOUR_QWEN_EMBEDDING_ENDPOINT/v1"
+  api_key:  "qwen"
+paths:
+  bench_root: "/path/to/ReMMDBench"            # → your dataset path
+  …
+```
+
+### 5.3 `t2-agent/configs/*.yaml`
+
+```yaml
+api:
+  primary_base_url: "http://YOUR_QWEN_9B_ENDPOINT/v1"
+  api_key:          "qwen"
+paths:
+  realmmdbench_root: "/path/to/ReMMDBench"
+  serper_api_file:   "/path/to/serper_api.txt"
+```
+
+### 5.4 Serper API keys
+
+Two of the three systems (mmd-agent and t2-agent) optionally use the Serper Google
+search API for evidence gathering. Create a plain-text file (one key per line, at
+least 8 lines if you want to assign a different key per model) and set its path
+in each config (`MMD_SERPER_KEY_FILE` / `paths.serper_api_file`). If you do not
+want to use external search, leave the keys empty — both pipelines tolerate a
+missing Serper key and simply skip the search step.
+
+---
+
+## 6. End-to-end reproduction
+
+Each sub-project ships saved evaluation artifacts for the Qwen 4B / 9B / 27B
+backends; you can either inspect those directly or re-run the pipelines from
+scratch. Pre-computed metrics live at:
+
+| Sub-project | Saved metrics file |
+|---|---|
+| `mmd-agent`   | `mmd-agent/outputs/<model>/full/metrics.json` |
+| `ReMMD-agent` | `ReMMD-agent/agent/runs/<model>/metrics/metrics.json` |
+| `t2-agent`    | `t2-agent/artifacts/runs/<model>/run_summary.json` |
+
+### 6.1 Reproduce ReMMD-Agent (our main system)
+
+```bash
+cd ReMMD-agent
+conda activate mmd
+
+# 1. (One-time) build the embedding cache for the 7,709 evidence items.
+python agent/scripts/build_rag_index.py --config agent/configs/qwen_v3.yaml
+
+# 2. Sanity-check the RAG retrieval on a few samples.
+python agent/scripts/smoke_rag.py --config agent/configs/qwen_v3.yaml
+
+# 3. Full 500-sample v3 single run (no-thinking, deterministic). ~8 min.
+python agent/scripts/run_eval.py \
+    --config agent/configs/qwen_v3.yaml \
+    --tag qwen_v3_full500 --concurrency 125 --no-resume
+
+# 4. Full 500-sample v11 single run (thinking ON). ~25 min.
+python agent/scripts/run_eval.py \
+    --config agent/configs/qwen_v11.yaml \
+    --tag qwen_v11_full500 --concurrency 60 --no-resume
+
+# 5. Re-judge the v11 artifacts with n=3 thinking-mode LLM calls per sample. ~15 min.
+python agent/scripts/ensemble_judge.py \
+    --run-dir agent/runs/qwen3.5-9b_<TS_v11>_qwen_v11_full500 \
+    --config agent/configs/qwen_v11.yaml \
+    --n 3 --temperature 1.0 --concurrency 60 \
+    --out-tag llmonly_thk --llm-only-mode \
+    --judge-prompt-name final_judge_v11
+
+# 6. Cross-run majority vote between v3 and v11-ensemble.
+python agent/scripts/cross_run_majority.py \
+    --run-dirs agent/runs/qwen3.5-9b_<TS_v3>_qwen_v3_full500 \
+               agent/runs/qwen3.5-9b_<TS_v11>_qwen_v11_full500_llmonly_thk_n3_t1.0 \
+    --tag final --tie-break median
+```
+
+The saved artifacts in `ReMMD-agent/agent/runs/qwen3.5-9b/` reproduce the
+**37.20 % L1 accuracy** result on Qwen3.5-9B. Equivalent artifacts for 4B and
+27B live under `qwen3.5-4b/` and `qwen3.6-27b/`.
+
+### 6.2 Reproduce mmd-agent (3-stage baseline)
+
+```bash
+cd mmd-agent
+conda activate mmd
+
+# Edit configs/qwen35_9b.env: set MMD_BASE_URL and MMD_API_KEY.
+# Edit scripts/_common.sh: set MMD_BENCH_ROOT and MMD_SERPER_KEY_FILE.
+
+bash scripts/run_qwen35_4b.sh        # full 500 samples for Qwen3.5-4B
+bash scripts/run_qwen35_9b.sh        # full 500 samples for Qwen3.5-9B
+bash scripts/run_qwen36_27b.sh       # full 500 samples for Qwen3.6-27B
+```
+
+Saved outputs live under `mmd-agent/outputs/<model>/full/`.
+
+### 6.3 Reproduce t2-agent (MCTS baseline)
+
+```bash
+cd t2-agent
+conda activate mmd
+
+# Edit configs/qwen3_5_9b.yaml etc.: set api.primary_base_url, api.api_key,
+# paths.realmmdbench_root, paths.serper_api_file.
+
+bash scripts/run_qwen3_5_4b.sh
+bash scripts/run_qwen3_5_9b.sh
+bash scripts/run_qwen3_6_27b.sh
+```
+
+Saved artifacts: `t2-agent/artifacts/runs/<model>/` (summary) and
+`t2-agent/records/<model>/llm_calls.jsonl` (call log).
+
+### 6.4 Computing metrics from cached outputs (no API calls needed)
+
+If you only want to verify the metrics reported in the paper without running any
+LLM, the included run directories already contain everything required:
+
+```bash
+# ReMMD-Agent (open the summary directly)
+cat ReMMD-agent/agent/runs/qwen3.5-9b/metrics/summary.txt
+
+# mmd-agent
+cat mmd-agent/outputs/qwen3.5-9b/full/eval_summary.txt
+
+# t2-agent (regenerate from the run summary, no API calls)
+python t2-agent/scripts/calc_metrics.py \
+    t2-agent/artifacts/runs/qwen3_5_9b/run_summary.json
+```
+
+---
+
+## 7. Summary of expected results
+
+The headline numbers reported in the paper for the three systems on the
+500-sample ReMMDBench are reproduced by the saved artifacts in this archive:
+
+### ReMMD-Agent (cross-run majority vote)
+
+| Backend | L1 Accuracy | L1 Macro-F1 | L2 Macro-F1 |
+|---|---|---|---|
+| Qwen3.5-4B  | see `ReMMD-agent/agent/runs/qwen3.5-4b/metrics/summary.txt`  |
+| Qwen3.5-9B  | **37.20 %** | **37.18 %** | **46.97 %** |
+| Qwen3.6-27B | see `ReMMD-agent/agent/runs/qwen3.6-27b/metrics/summary.txt` |
+
+### mmd-agent (3-stage baseline)
+
+| Backend | Verdict Accuracy | Distortion F1 |
+|---|---|---|
+| Qwen3.5-4B  | see `mmd-agent/outputs/qwen3.5-4b/full/eval_summary.txt`  |
+| Qwen3.5-9B  | see `mmd-agent/outputs/qwen3.5-9b/full/eval_summary.txt`  |
+| Qwen3.6-27B | see `mmd-agent/outputs/qwen3.6-27b/full/eval_summary.txt` |
+
+### t2-agent (MCTS baseline)
+
+| Backend | Verdict Accuracy | Taxonomy F1 |
+|---|---|---|
+| Qwen3.5-4B  | see `t2-agent/artifacts/runs/qwen3_5_4b/run_summary.md`  |
+| Qwen3.5-9B  | see `t2-agent/artifacts/runs/qwen3_5_9b/run_summary.md`  |
+| Qwen3.6-27B | see `t2-agent/artifacts/runs/qwen3_6_27b/run_summary.md` |
+
+All confusion matrices and per-class bar charts are stored as PNG / PDF
+alongside the metrics JSON in each `metrics/` (ReMMD-Agent) or `figures/`
+(t2-agent) directory.
+
+---
+
+## 8. Reproducibility notes
+
+* **LLM determinism.** The 4B / 9B / 27B Qwen runs use `temperature = 0.0` for
+  the non-thinking variants (e.g. `qwen_v3`) and the Qwen-team-recommended
+  `temperature = 1.0` for the thinking-mode variants (e.g. `qwen_v11`). Small
+  numerical differences across re-runs are possible due to server-side sampling
+  noise and parallelism.
+* **Caching.** mmd-agent and t2-agent both cache LLM calls keyed on the input
+  payload, so partial reruns of the same configuration are cheap. The cache
+  directories are excluded from this repository — they will rebuild on first run.
+* **RAG index.** The pre-built embedding cache (`ReMMD-agent/agent/rag_index/`)
+  is also excluded due to size; it is recreated by
+  `agent/scripts/build_rag_index.py` (≈ 5 minutes on the embedding endpoint).
+* **Resumability.** All three runners skip samples whose result file already
+  exists. Re-running any command continues from the last unfinished sample.
+
+---
+
+## 9. Citation
+
+```bibtex
+@misc{dang2026remmdrealisticmultilingualmultiimage,
+      title={ReMMD: Realistic Multilingual Multi-Image Agentic Verification for Multimodal Misinformation Detection}, 
+      author={Chenhao Dang and Dantong Zhu and Jun Yang and Conghui He and Weijia Li},
+      year={2026},
+      eprint={2606.24112},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2606.24112}, 
+}
+```

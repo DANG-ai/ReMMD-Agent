@@ -1,0 +1,179 @@
+{
+  "index": 413,
+  "sample_id": "414",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2029.37,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本文本把社媒“预售22.99万、若便宜一万则21.99万”的推测与传言，改写成“发布会现场大屏已确定21.99万起”，并进一步强化为“21.99万起即全系/入门标配800V+激光雷达+Thor、全系902km”等确定结论；同时配套图片中的价格表、现场PPT与战报均为改图/伪造式编辑，制造了貌似来自发布会现场的“硬证据”，从而在核心价格与配置绑定关系上形成主导性误导，因此整体应判为 Mostly False（仍保留少量真实元素：社媒确有“21.99万”推测与“34分钟15000台锁单”等讨论文本存在）。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "汽车出行",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/414",
+  "image_paths": [
+    "/path/to/ReMMDBench/414/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/414/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/414/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/414/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/414/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/414/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/414/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/414/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/414/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/414/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "414",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 7,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.5,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "I should also search for the specific price and range specs (21.99 starting, 902km CLTC) to see if they match real Xiaomi SU7 current specs or if this is purely scam/fictional information presented as news.",
+            "action": "Google[Xiaomi SU7 21.99 万元起 902km CLTC]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will check the Wikipedia page for the Xiaomi SU7 to see the current (first generation) launch date, pricing, and specs. If the \"2026\" date is quoted as official or if the \"Next Generation\" specs are not listed, this will help confirm if the text is fabricated or if there's a coordinated rumor.",
+            "action": "Wikipedia[Xiaomi SU7 first generation launch date and specs]",
+            "observation": "No summary available. Similar entities: Xiaomi SU7, Xiaomi 15, List of Xiaomi products, Xiaomi Mi 5, Vision Gran Turismo",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The image and text share significant overlapping details: both refer to a \"New Generation Xiaomi SU7\", a starting price of \"21.99万元起\" (21.99k RMB), and similar core configurations (902km CLTC, 800V, Laser Radar, Thor). The \"illustration\" label in the image might indicate it is a promotional mockup rather than a live screenshot, but it accurately depicts the narrative described in the text. The date discrepancy (Mid-March vs 2026) might be due to the text describing a future prospect or the image depicting a roadmap, thus supporting the core claims about the car's specs and price point.",
+            "action": "Tool[IMAGE_SUPPORT]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The provided image is a promotional poster (labeled as a pro-forma/illustration \"示意\") for the \"Next-Generation Xiaomi SU7\" with a \"Price Plan\". It explicitly states a starting price of \"21.99万元起\". It lists the models (Standard, Pro, Max). Crucially, it lists core specifications (902km CLTC, 800V, Laser Radar, Thor Intelligent Driving) which match the detailed descriptions in the provided text. The text is a detailed analysis of news reporting on this exact car model, its price (21.99), and these specs. The image serves as visual confirmation of the price and specs mentioned in the text.",
+            "action": "Tool[IMAGE_VERIFY]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image is a promotional poster for the \"Next-Gen Xiaomi SU7\" which explicitly lists the starting price as \"21.99万元起\" and the core configurations (902km CLTC, 800V, Laser Radar, Thor). This matches the key data points detailed in the text, specifically the price war hypothesis and the configuration upgrades mentioned. I will use the detection tool to formally validate the overlap between the visual data and the textual analysis.",
+            "action": "Detect[image]",
+            "observation": "- **整体观感更像“宣传海报/渲染图合成”而非现场实拍**：画面非常干净、光照均匀，车身反射与地面高光都偏“棚拍/CG渲染”的质感；背景观众也呈现出明显的“虚化+平铺”效果，像是后期放上的人群层。  \n- **舞台与文字信息为典型设计排版**：大字号“新一代”、价格信息框、图标（902km/800V/激光雷达/Thor）以及右上角小米 Logo 都是标准平面设计元素，边缘非常锐利，没有拍摄屏幕常见的摩尔纹、透视畸变或亮度不均。  \n- **可疑之处（非强证据）**：背景人物细节较弱、重复感略强，属于合成/生成背景常见特征；车与背景的景深分离非常“刻意”。  \n- **未见明显的低级PS破绽**（如错位的遮罩边缘、文字锯齿异常、明显重复拷贝痕迹），更像是官方或媒体制作的整张视觉物料。\n\n结论：图像本身**高度可能是后期制作的宣传图（含CG车模/棚拍车+合成背景与信息层）**，不太像真实发布会现场屏幕的原始拍摄照片。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous execution step 'Detect[image]' successfully identified the image content, noting it is a promotional poster with clear lableling. The image explicitly states a 'starting price of 21.99k RMB' (21.99万元起) and lists the core configurations (902km CLTC, 800V, Laser Radar, Thor) which perfectly match the key claims of the provided news article. This visual data directly validates the text's narrative about the launch price and specs. Although there are minor discrepancies in specific dates (Image: Dec 18 vs Text: Mid-March), the image serves as the definitive visual reference for the product details described in the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "Extract the price information from the image to verify the text's claim of \"21.99万元起\". The current text mentions the starting price as 21.99万元起.",
+            "action": "VQA[question: What is the starting price mentioned in the portion labeled 'SU7 价格方案' in the image?]",
+            "observation": "\n\nThe starting price mentioned in the 'SU7 价格方案' portion is **21.99万元起** (219,900 RMB starting), as indicated by the text \"起始：21.99万元起\". Additionally, the Pro model starts at 24.99万元起 and the Max at 28.99万元起.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "After confirming the starting price and the core configuration details match the text's main claims and table, I have sufficient evidence to conclude that the image and text (regarding the primary selling points) match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7113786608980126,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a specific \"Next Generation\" launch event and pricing (T1), while the images are largely AI-generated/synthetic with stock backgrounds (V1). There is a contextual inconsistency between the \"2026\" launch date mentioned in the text and the Dec 2024 launch date/footer (C2).",
+    "notes": []
+  },
+  "error": null
+}

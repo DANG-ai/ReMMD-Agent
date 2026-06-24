@@ -1,0 +1,148 @@
+{
+  "index": 447,
+  "sample_id": "448",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1431.5,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Artikel stützt sich auf reale Einzelereignisse, überdehnt diese aber zu einem breiten europäischen Wendepunkt und verstärkt diesen Eindruck zusätzlich durch unpassend kontextualisierte sowie teils künstliche oder bearbeitete Bilder. So entsteht ein gemischtes Bild aus zutreffenden Fakten und irreführender Rahmung über Text und Visualisierung hinweg.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/448",
+  "image_paths": [
+    "/path/to/ReMMDBench/448/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/448/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/448/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/448/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/448/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "448",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.4,
+        "best_trajectory": [
+          {
+            "thought": "Further verification is needed for the specific claims about the Serbia-Russia economic cooperation program for 2026-2031 and the German government Signal phishing warning. I will use Google to search for these specific details to see if they exist as real events or if they are fabricated as part of a political narrative.",
+            "action": "Google[Serbia Russia economic cooperation program 2026 2031]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the map header explicitly setting the date to \"April 26, 2026\" (a future date relative to the current real-world context), and the previous successful Google search return indicating no record of a \"Serbia Russia economic cooperation program 2026 2031,\" the claims in the text are virtually certainly fabricated or hallucinated. The text presents future events as if they have occurred, combined with false details which cannot be verified using current tools. I will confidently force a finish with TEXT_REFUTE.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The user requests Image Veracity Detection. The text describes a news report with a date of April 26 (likely 2026 based on the context of future-dated scenarios in the text \"2026-2031 cooperation program\"). The provided image is an ISW map titled \"Assessed Control of Terrain\" dated \"April 26, 2026\". The caption in the text (\"A map of the front development in the East\") matches the content of the image. The source (ISW) matches. The dates are consistent. Therefore, the image supports the text's claims and narrative.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.3,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the visual information in the map matches the descriptions in the text. The text discusses Russian forces advancing towards Oleksandrivka and mentions Edi Rama. The map shows territories in Ukraine and Russia. I will extract entities from the image to check specific location and date details mentioned in the text.",
+            "action": "Entity[image]",
+            "observation": "- **Institute for the Study of War (ISW)** (logo, top-right) — High certainty.  \n- **Critical Threats (CT)** (logo, top-right) — High certainty.  \n- **“The Dr. Jack London Geospatial Fund”** (text, top-right) — High certainty.\n\n**Map title / event**\n- **“Assessed Control of Terrain in the Russo-Ukrainian War”** (title text) — High certainty.  \n- **Date/time shown: “April 26, 2026 at 1:30 PM ET”** — High certainty.\n\n**Countries / regions labeled**\n- **Ukraine** — High certainty.  \n- **Russia** — High certainty.  \n- **Belarus** — High certainty.  \n- **Poland** — High certainty.  \n- **Slovakia** — High certainty.  \n- **Hungary** — High certainty.  \n- **Romania** — High certainty.  \n- **Moldova** — High certainty.\n\n**Cities / places labeled (within/near Ukraine)**\n- **Kyiv** — High certainty.  \n- **Chernihiv** — High certainty.  \n- **Sumy** — High certainty.  \n- **Kharkiv** — High certainty.  \n- **Luhansk** — High certainty.  \n- **Donetsk** — High certainty.  \n- **Mariupol** — High certainty.  \n- **Melitopol** — High certainty.  \n- **Kherson** — High certainty.  \n- **Mykolaiv** — High certainty.  \n- **Odesa** — High certainty.  \n- **Dnipro** — High certainty.  \n- **Zaporizhzhia** — High certainty.  \n- **Vinnytsia** — High certainty.  \n- **Lviv** — High certainty.  \n- **Sevastopol** — High certainty.\n\n**Water bodies**\n- **Azov Sea** — High certainty.  \n- **Black Sea** — High certainty.\n\n**Operational/annotation entities (callout boxes)**\n- **Supporting effort – Northern axis** — High certainty.  \n- **Subordinate main effort #1 – Kharkiv operation** — High certainty.  \n- **Main effort – Eastern Ukraine** — High certainty.  \n- **Subordinate main effort #2 & #3 – Capture Donetsk and Luhansk oblasts** — High certainty.  \n- **Supporting effort – Southern axis** — High certainty.\n\n**Map elements**\n- **Compass rose (N/E/S/W)** — High certainty.  \n- **Scale bar (“1,000 Kilometers”)** — High certainty.  \n- **Legend of control/advance categories** (e.g., assessed Russian advances, Ukrainian counteroffensives, etc.) — High certainty.\n\n**Credits**\n- **Named map contributors (e.g., George Barros, Kateryna Stepanenko, Daniel Mealie, etc.)** — Medium-high certainty (small text but readable as credits).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the entity extraction, the date \"April 26, 2026\" matches the text's \"26. April\". The map is clearly an ISW \"Assessed Control of Terrain\" map matching the military context of the text (\"Dr. Jack London Geospatial Fund\", \"ISW\"). The text explicitly references the map image via the tag [Bild: Eine Karte der Frontentwicklung...]. While specific details like Oleksandrivka or Edi Rama are not on the map, they belong to other contextual parts of the article (Rama is a video subject, Oleksandrivka is a state of war front not explicitly labeled but consistent with the red advance hatches in the south). The core visual data (ISW map on April 26) matches the relevant text. Therefore, it is a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.6214465011907718,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.7,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future date (April 26, 2026) for the map and events, which does not match the current real-world timeline, qualifying as textual fabrication and contextual inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

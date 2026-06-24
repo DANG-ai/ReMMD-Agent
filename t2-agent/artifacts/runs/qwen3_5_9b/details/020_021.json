@@ -1,0 +1,144 @@
+{
+  "index": 20,
+  "sample_id": "021",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1748.69,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "样本文本把“龙虎榜25只个股中17只机构净卖出”的局部统计，推导并夸大为“机构与北向资金主导砸盘、全市场踩踏且下跌大概率延续”，证据链不足且存在明显的图像编辑与图文语义不一致，整体给受众的主要结论偏向误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "金融市场",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/021",
+  "image_paths": [
+    "/path/to/ReMMDBench/021/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/021/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "021",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The analysis of the image confirms the text's claims. The image displays the headline \"尾盘跳水\" (Tail End Plunge) and chart data showing a sharp decline, consistent with the \"plunge\" described. The \"Shenzhen Component\" (深证成指) is featured, and its data (negative movement) matches the \"collective loss\" narrative. The sentiment data in the image (Large negative Main Force Net Amount, specific Limit Down count of 23) quantitatively matches the text's qualitative description of institutional selling and market weakness. There are no visual contradictions to support the claim of a market crash at the end of the session.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.7,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "First, I need to verify the specific index mentioned in the news. The text discusses \"Shanghai Composite, Shenzhen Component...\". The image clearly has \"深证成指\" (Shenzhen Component Index) at the top, so I should query the VQA tool to confirm the index name and its trend.",
+            "action": "VQA[What is the name of the index displayed in the top right corner of the chart?]",
+            "observation": "\n\nThe name of the index displayed in the top right corner is **深证成指** (Shenzhen Component Index), with the code **399001**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news describes a \"tail end dive\" (尾盘跳水) where prices dropped significantly at the end of the day. The image shows real-time tick data for 14:56 in the bottom right corner. I should use VQA to confirm the specific price trend in the final minutes to match the \"dive\" description in the text.",
+            "action": "VQA[Describe the price values listed at the bottom right next to 14:56 to determine the trend.]",
+            "observation": "\n\nBased on the visible text in the bottom right corner, the price values listed next to the timestamp **14:56** are:\n\n*   **13857.78**\n*   **13857.34**\n*   **13857.05**\n*   **13856.49**\n*   **13857.28**\n*   **13857.02**\n\n**Trend Analysis:**\nThe prices start at **13857.78** and generally decrease, hitting a low of **13856.49**. There is a brief recovery to **13857.28**, followed by a final drop to **13857.02**. Overall, the trend during this sequence is slightly **downward**, ending lower than where it started.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news mentions \"Institutional net selling\" (Institutions net selling) and \"Main Force Net Selling\" playing a dominant role. The image has a distinct block of statistics at the bottom right labeled \"Main Force Net Amount\" (主力净额), showing a negative value. I should query this specific data point to verify if it matches the \"net selling\" narrative in the text.",
+            "action": "VQA[What is the value and color of the field 'Main Force Net Amount' (主力净额) located at the bottom right corner of the chart?]",
+            "observation": "\n\nThe value is -278.3亿 and the color is green.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The textual information in the news highlights a 'tail-end dive', 'Shenzhen Component' falling, and 'Main Force Net Selling'. The image explicitly displays 'Tail-end dive' (尾盘跳水) as the title, shows the 'Shenzhen Component Index' (深证成指) in the header, demonstrates a downward price trend in the final minutes (14:56), and displays a negative 'Main Force Net Amount' (-278.3亿) in red/green indicating selling pressure. All key pieces of data support the news text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.7,
+        "T3 Misleading Context": 0.3,
+        "V1 Synthetic Visual Content": 0.6,
+        "V2 Visual Editing": 0.95,
+        "C1 Semantic Inconsistency": 0.1,
+        "C2 Contextual Inconsistency": 0.85,
+        "C3 Pragmatic Inconsistency": 0.4
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future event date (2026), the images are edited with overlays (arrows, text), and the specific data points (e.g., index levels) appear mismatched with the claimed future time.",
+    "notes": []
+  },
+  "error": null
+}

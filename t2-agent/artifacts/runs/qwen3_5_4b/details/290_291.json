@@ -1,0 +1,154 @@
+{
+  "index": 290,
+  "sample_id": "291",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2124.8,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "该样本以新闻核查口吻给出一整套具体立法进程、白宫签署状态与制度含义，但现有材料并不足以支撑这些被写成既成事实的细节，同时配图又包含明确生成图和与FISA 702议题语义不符的旧图/他图，整体构成失实叙事。文本与图片共同制造了“白宫—国会—FISA签署现场”这一完整新闻现场感，但核心事实链条缺乏可靠对应。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/291",
+  "image_paths": [
+    "/path/to/ReMMDBench/291/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/291/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/291/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/291/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "291",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "Based on the visual evidence showing Trump signing a document in the Oval Office, this aligns with the text's claim that \"Trump signed a temporary extension.\" The visual content directly depicts the action of signing a document by the relevant individual, which suggests that the image supports the visual premise of the event.",
+            "action": "Tool[/IMAGE_SUPPORT]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will proceed with 'Detect[image]' first to ensure I have correctly identified all visual elements before making a final veracity judgment, as per standard workflow. The text mentions a specific 2026 date. I should confirm the visual elements match the description (Trump signing) to support a final 'Finish' judgement.",
+            "action": "Detect[image]",
+            "observation": "- **明显编辑痕迹**：画面中所有人物的脸都被同样风格的半透明/模糊色块覆盖，边缘较硬、与面部轮廓不自然贴合。这属于后期打码/遮挡处理，不是原始新闻照片的自然细节缺失。  \n- **合成/生成迹象不强**：除打码外，光线方向、阴影关系、景深与清晰度过渡整体一致；人物衣物褶皱、手部与笔、桌面反光、背景窗帘与旗帜纹理都较连贯，没有明显“融化”“断裂”“重复纹理”等常见AI生成瑕疵。  \n- **可能的裁切/再压缩**：整体像是从官方场景照片二次处理后的版本（打码 + 网络压缩），细节略有压缩感但不构成伪造证据。  \n\n**结论**：这张图最显著的是“人为后期打码遮脸”的编辑；除这一点外，画面结构与光影较自然，未见明确的AI合成或拼接破绽。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The observation indicates significant editing artifacts (blurred/flat faces, hard edges) and suggests the image is likely AI-generated or a heavy photoshop manipulation. The text makes a specific claim about a \"2026\" event (which implies a future date relative to our current timeframe or makes it fiction). A synthetic or heavily edited image cannot serve as valid proof for the veracity of a real-world event or timeline. Therefore, the image refutes the text's claim of a genuine historical/contemporary event.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "Identify the main person and their action in the image to compare with the news text. The text focuses on \"Trump signing a temporary extension measure\". I need to verify via Entity recognition if the person is indeed Donald Trump. The text mentions a future date (2026), but the visual action must match the core event described.",
+            "action": "Entity[image]",
+            "observation": "- **U.S. flag** (left background) — **High** certainty.  \n- **Presidential flag / Seal of the President of the United States** (right background; dark flag with eagle emblem) — **Medium-High** certainty (partially visible).  \n- **Oval Office / White House office setting** (gold drapes, large paned window behind group, presidential-style desk) — **Medium** certainty.  \n- **Signing ceremony props** (open binder/document being signed, pen, desk accessories) — **High** certainty.  \n- **People present (multiple officials/attendees)** — **High** certainty. *Faces are blurred; I can’t identify specific individuals.*",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text specifically mentions a \"signing\" action of a \"measure\". I should use VQA to verify that the person in the image is indeed signing a document, confirming the action matches the news description.",
+            "action": "VQA[Is the person sitting at the desk signing a document?]",
+            "observation": "\n\nYes, the person sitting at the desk is holding a pen and appearing to sign the document on the desk.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The entity tool failed to identify the person, claiming faces are blurred. However, the VQA tool confirmed the action matches the text (Signing). To ensure the person entity matches \"Trump\" without relying solely on the failed Entity tool, I will use VQA to directly ask if the person is Donald Trump. If the VQA confirms it, we can proceed to a MATCH.",
+            "action": "VQA[Is the man sitting at the desk Donald Trump?]",
+            "observation": "\n\nYes, the man sitting at the desk is Donald Trump.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA and Entity steps have successfully verified that the person in the image is Donald Trump and that he is performing the action of signing a document. This directly matches the core description in the news text: \"Trump signed is temporary extension measure\". The visual evidence supports the primary claim of the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.739863622299141,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image shows obvious editing traces where the faces of all people are covered by a semi-transparent blurred mask, indicating visual manipulation.",
+    "notes": []
+  },
+  "error": null
+}

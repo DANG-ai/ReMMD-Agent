@@ -1,0 +1,128 @@
+{
+  "index": 463,
+  "sample_id": "464",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2210.48,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本混合了真实传播现象与权威通报类信息线索，但关键叙事通过错置时间线与配图错配来增强“被查前夕”的紧迫感，并使用经过编辑的“官网截图”制造‘姓名被移除’的视觉证据，从而在语境上对受众形成误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经商业",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/464",
+  "image_paths": [
+    "/path/to/ReMMDBench/464/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/464/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/464/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/464/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "464",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.75,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify the veracity of the image in relation to the text. The text claims that \"Wuliangye official website has removed Zeng Congqin from the 'Group (Stock) Leadership List'\". The image provided shows a webpage with the title \"市国资委领导名单\" (Municipal SASAC Leadership List). The text inside the image lists \"Zeng Congqin\" as a \"Deputy Director\" (副主任). This contradicts the text's claim that the screenshot is from the Wuliangye website showing the Group's leadership list. The image clearly belongs to a different entity (Municipal SASAC). Therefore, the image refutes the claim that this screenshot is the Wuliangye leadership list.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Verify the title of the list in the image to confirm it is not a Wuliangye Group list as claimed in the text context.",
+            "action": "VQA[What is the title of the list shown in the green banner in the image?]",
+            "observation": "\n\nThe title of the list shown in the green banner is **市国资委领导名单**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the screenshot is from the Wuliangye Group website showing their leadership list. The previous observation identified the title in the image as \"市国资委领导名单\" (Municipal SASAC Leadership List). This is a clear mismatch in organization. Additionally, the text refers to Zeng Congqin as the \"top leader\" (一把手/Chairman) of Wuliangye, while the image lists him as \"副主任\" (Deputy Director). Thus, the image does not match the text's description.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.2,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.2,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text caption claims the image shows a \"German research tour\" with \"Siemens signs,\" but the visual shows the \"Wuliangye Group\" gate in China; additionally, the text discusses the \"Wuliangye leadership list,\" but the provided screenshot shows the \"City SASAC Leadership List,\" indicating a source mismatch.",
+    "notes": []
+  },
+  "error": null
+}

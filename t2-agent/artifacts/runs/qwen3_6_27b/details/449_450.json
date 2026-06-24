@@ -1,0 +1,151 @@
+{
+  "index": 449,
+  "sample_id": "450",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T2 Distortion"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 742.22,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "现有可核对的可靠信息只支持“乐山公交车身广告语引发争议、且后半句在流传画面中被遮挡”这一点；样本文本进一步把其上升为“公益宣传/部门牵头、校园周边与多线路高频投放、已紧急叫停撤下”等结论，但缺少可核验的官方来源支撑，且配图中存在明显编辑与图文语义/证据力度不匹配，导致整体叙事以误导为主。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会民生",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/450",
+  "image_paths": [
+    "/path/to/ReMMDBench/450/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/450/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/450/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/450/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/450/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/450/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/450/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/450/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/450/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/450/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "450",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T2 Distortion"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T2 Distortion",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims that a bus ad in Leshan, Sichuan, with the text \"贞洁是男孩最高贵的聘礼\" (Chastity is a boy's most noble bride price) caused controversy and was removed by the transportation bureau.\nThe provided image shows a blue bus in Leshan (\"四川乐山一公交车\").\nThe overlay text on the image states \"车身广告语引争议\" (Bus body ad slogan caused controversy) and \"交通运输: 表述不妥 已要求整改拆除\" (Transportation Dept: Expression inappropriate, requested rectification and removal). This matches the news text's claim about the controversy and removal.\nThe text on the bus body in the image includes \"贞洁，是女孩最高贵的嫁妆\" (Chastity is a girl's most noble dowry) on the left. On the right, it says \"贞洁，是...高贵的聘礼\" (Chastity is... noble bride price), with the subject obscured by a railing post. Given the symmetry with \"女孩\" (girl) on the left, and the news text's claim that the ad featured \"男孩\" (boy) to flip the gender, it is highly probable the obscured text is \"男孩\". The news text also mentions people suspecting the ad flipped the gender of the common phrase \"贞洁是女孩最高贵的嫁妆\", which aligns with the visible text on the left and the context.\nThus, the image supports the news text.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses a controversial bus advertisement in Leshan, Sichuan, featuring slogans about \"chastity\" (贞洁) and \"bride price\" (聘礼). The image shows a blue bus with text overlay explicitly stating \"四川乐山一公交车车身广告语引争议\" (A bus body advertisement in Leshan, Sichuan causes controversy). The text on the bus body includes \"贞洁，是女孩最高贵的嫁妆\" (Chastity is the most noble dowry for girls) and partially visible text \"贞洁，是...高贵的聘礼\" (Chastity is... noble bride price), which aligns with the controversial content described in the news. Thus, the image supports the news text.",
+            "action": "Detect[image]",
+            "observation": "从图像本身看，整体更像是一张真实拍摄的公交车现场截图，未见明显“AI合成/深度伪造”的典型痕迹，但属于“二次传播加字”的版式。\n\n**更像真实的迹象**\n- 公交车身上的反光、高光与车体曲面一致，文字随车身透视与弧度产生轻微形变，符合贴膜/车身广告的物理规律。\n- 车轮、护栏、车身接缝等细节在遮挡关系上自然；广告文字被护栏/车门结构部分挡住也合理。\n- 画面存在手机压缩/截屏常见的清晰度与噪点特征，没有看到边缘“融化”、不规则纹理重复等生成式图像常见问题。\n\n**可能的编辑/二次加工**\n- 画面上方的标题大字（白字黑边、黄字黑边）明显是后期叠加的新闻/短视频字幕层，不是现场公交车的一部分。\n- 标题文字边缘干净锐利、与背景的压缩噪点不一致，符合后期加字特征（这并不等于篡改了车身内容，只说明“图被加工过用于传播”）。\n\n**未发现的可疑点**\n- 未见车身广告文字区域有明显拼接边界、局部分辨率突变、光照方向不一致或字体边缘异常抠图痕迹。\n\n结论：图中“标题字幕”是后期添加的；公交车身广告本体在视觉上更像真实拍摄记录，暂无强证据表明车身内容被P图替换或由AI生成。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The observation confirms that the image is a genuine photograph of the bus advertisement, with no signs of AI generation or heavy manipulation of the bus body itself. Comparing the image content with the news text: the text describes a controversial bus ad in Leshan featuring the slogan \"贞洁是男孩最高贵的聘礼\" (Chastity is the most noble bride price for boys), noting that this specific line is often \"partially obscured\" or \"incomplete\" in circulated screenshots. The image shows a blue bus with the text overlay confirming the Leshan location and the controversy. Crucially, the visible text on the bus includes \"贞洁，是女孩最高贵的嫁妆\" (Chastity is the most noble dowry for girls) and, on the right, \"贞洁，是...高贵的聘礼\", where the middle portion is indeed blocked by a wooden post/railing. This visual evidence of the \"incomplete\" controversial slogan matches the text's description perfectly. Thus, the image supports the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify if the image matches the news text. The news describes a controversial bus ad in Leshan, Sichuan, with specific slogans about \"chastity\" (贞洁). The image shows a bus with overlay text confirming \"Sichuan Leshan\" and \"Transportation Bureau\". I need to verify the specific text on the bus body to ensure it matches the description in the news (specifically the \"dowry\" and \"bride price\" parts).",
+            "action": "VQA[What text is written in white on the side of the blue bus?]",
+            "observation": "\n\n儿女是祖先的遗德\n是不孕不育的源头\n贞洁，是女孩最高贵的嫁妆\n堕胎是断祖先血脉\n是万事不顺的根源\n贞洁，是      高贵的聘礼",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a bus in Leshan, Sichuan with slogans about chastity, dowry, and bride price, which aligns perfectly with the news text describing the controversial ad. The overlay text confirms the location and the transportation bureau's response. The visible text on the bus matches the specific slogans mentioned in the news article (\"贞洁，是女孩最高贵的嫁妆\" and the partially obscured \"贞洁...高贵的聘礼\").",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.09999999999999998,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The verification evidence indicates that the text is supported, the image is supported (real with benign overlays), and they match, implying no distortion.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,127 @@
+{
+  "index": 392,
+  "sample_id": "393",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": true,
+  "elapsed_seconds": 1964.49,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion"
+    ],
+    "rationale": "現地の表示や登記情報画面、関連報道に基づく記述には事実の土台がある。一方で、それらだけで新団体の活動開始や拠点化がかなり進んでいるかのような印象をやや強めており、確定度の表現に軽い膨らみがある。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Society, Education & Employment",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/393",
+  "image_paths": [
+    "/path/to/ReMMDBench/393/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/393/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "393",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims that a sign for \"一般財団法人 孝情教育文化財団\" was found. I need to verify the text on the sign in the image to confirm this claim. The image shows a directory sign with text. I will use the Detect tool to analyze the image content.",
+            "action": "Detect[image]",
+            "observation": "画像そのものを見た限り、強い合成・生成（AI生成）を示す決定的な破綻は見当たりません。全体として「建物の案内プレートをスマホ等で撮影した写真」に見える自然さがあります。\n\n## 本物らしく見える点\n- **金属プレートの質感**（ヘアライン加工の反射、グラデーション）が自然で、光源方向も大きく矛盾しません。\n- **文字のブレ/解像感**が一様にシャープすぎず、写真撮影由来の軽いにじみ・圧縮感があり、SNS転載画像にありがちな品質です。\n- **構図と遠近**（右側の縁が暗く落ちる、上下の黒枠のような部分）も「掲示板/扉の一部を寄りで撮った」雰囲気に整合します。\n\n## 編集・加工を疑いうる弱点（ただし決定打ではない）\n- プレート上の白い表示部分は**均一で綺麗すぎる**印象もあり、元画像が高解像度でないため「文字だけ後から差し替えた」可能性を完全には排除できません。\n- ただし、文字のエッジは極端にギザギザ/不自然に浮いている感じは弱く、**コピペ合成特有の境界不整合**は目立ちません。\n\n## 結論\nこの1枚だけからは、**明確なデジタル改ざん・AI生成の痕跡は確認できず、概ね自然な写真に見えます**。一方で解像度が低く、表示内容の真正性（その場に実際に掲示されていたか）までは画像だけでは断定できません。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text reports that a sign for \"一般財団法人 孝情教育文化財団\" was found in a building. The image shows a directory sign with the text \"4 F\" and \"一般財団法人 孝情教育文化財団\". The previous observation indicated that the image appears to be a natural photograph without clear signs of AI generation or heavy digital manipulation. Since the text on the sign matches the claim in the news, the image supports the report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions a sign for \"一般財団法人 孝情教育文化財団\" (General Incorporated Foundation Kyojo Educational Culture Foundation) in a building in Shinjuku. The image shows a sign with text on it. I need to verify if the text on the sign matches the organization name mentioned in the news. I will use VQA to read the text on the sign.",
+            "action": "VQA[What is written on the white rectangular sign in the center of the image?]",
+            "observation": "\n\n4F\n一般財団法人 孝情教育文化財団",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation confirms the text on the sign is \"一般財団法人 孝情教育文化財団\", which matches the organization name \"一般財団法人 孝情教育文化財団\" mentioned in the news text. The news states that a sign for this foundation was confirmed in a building in Shinjuku. The image shows a sign for this foundation on the 4th floor, which aligns with the news report about the new location. Therefore, the image matches the news description.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7663094323935531,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.09999999999999998,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample is verified as Mostly True with strong visual support and a perfect match between text and image content, indicating no applicable secondary distortions.",
+    "notes": []
+  },
+  "error": null
+}

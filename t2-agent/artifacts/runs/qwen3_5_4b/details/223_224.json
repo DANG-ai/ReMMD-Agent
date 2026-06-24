@@ -1,0 +1,140 @@
+{
+  "index": 223,
+  "sample_id": "224",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1920.67,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article accurately presents two distinct, contemporaneous events and correctly emphasizes that their connection is symbolic rather than operational. The images and captions align with the verified New York ferry-screening context and the Los Angeles protest arrest context without introducing distortion.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Society, Education & Employment",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/224",
+  "image_paths": [
+    "/path/to/ReMMDBench/224/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/224/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/224/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/224/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/224/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/224/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/224/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/224/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/224/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/224/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "224",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.3,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "This image depicts the Battery Park area and the Statue of Liberty, which are the central subjects of the provided text discussing tourist logistics and the visual landmark. The image shows Castle Clinton, the start of the journey, and the view towards Liberty Island. This aligns perfectly with the text's description of the location where visitors face security lines and where the \"sightline\" exists. Therefore, the visual evidence is consistent with the narrative claims of the story occurring in this specific location. I will conclude that the image supports the text veracity.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.7,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I should verify if the image actually depicts the content mentioned in the text: The Statue of Liberty or the specific location mentioned (The Battery/Castle Clinton). The text discusses the Statue of Liberty's news coverage in New York regarding ferry logistics. I will ask VQA to check for the Statue of Liberty and the location.",
+            "action": "Entity[image]",
+            "observation": "- **Battery Park / The Battery (Manhattan waterfront park)** — high confidence (distinctive curved waterfront promenade and large green space at NYC’s southern tip).\n- **Castle Clinton (circular brick fort in Battery Park)** — high confidence (prominent round, low brick structure centered in the park).\n- **Lower Manhattan skyline (Financial District, NYC)** — high confidence (dense cluster of downtown skyscrapers behind the park).\n- **One World Trade Center (Freedom Tower)** — high confidence (tall, tapering tower with spire at the far left).\n- **Hudson River / Upper New York Bay (foreground water by Battery Park)** — high confidence (waterfront immediately adjacent to the park).\n- **Battery Park City / Brookfield Place area towers (right side modern glass high-rises)** — medium confidence (looks like the WFC/Brookfield cluster, but exact buildings not fully certain).\n- **Temporary event tent/structure on the waterfront** — high confidence (large white tented installation along the promenade).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should confirm the nature of the temporary white structure visible in the foreground to relate it to the \"relocated security screening and ferry embarkation area\" mentioned in the text.",
+            "action": "VQA[What is the white temporary structure located near the waterfront in the image?]",
+            "observation": "\n\nBased on the visual evidence, the white temporary structure is a **movie theater marquee** or canopy, likely part of the Bushwick Interment Site cinema festival. It features a peaked roof design and large windowed sections that mimic the facade of a classic American movie theater.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions a specific \"wire security fence\" on the Battery waterfront that became a source of public irritation. To verify the visual evidence, I should ask if this specific fence is depicted in the image.",
+            "action": "VQA[Is there a wire security fence visible along the waterfront in the image?]",
+            "observation": "\n\nYes, a wire security fence (appearing as a mesh or netting screen) is visible along the waterfront railing, particularly noticeable on the right side where it runs along the edge of the pier/walkway.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the observations, the image confirms the presence of Castle Clinton (the circular fort) and The Battery waterfront, which the text explicitly identifies as the staging area for the ferry logistics described. The final VQA also confirmed the visibility of the wire security fence mentioned as a key irritant in the text. Since all specific landmarks (Castle Clinton, Battery Park) and infrastructure details (fence) described in the New York section of the text are visually present, the image serves as accurate cross-modal evidence for the logistical story. I will conclude the task as a MATCH.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "the text claims the scene is at The Battery in New York security context, but the visual evidence (and verification notes) identify the prominent white structure as a Bushwick cinema marquee, creating a mismatched place and context.",
+    "notes": []
+  },
+  "error": null
+}

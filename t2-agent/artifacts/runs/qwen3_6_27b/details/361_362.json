@@ -1,0 +1,132 @@
+{
+  "index": 361,
+  "sample_id": "362",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1675.48,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "本文は、実際に確認できる「張本美和が第1試合で王曼昱に初勝利した」という事実を土台にしつつ、日本が中国を下して女子団体優勝したかのような試合経過と結論を創作している。さらに生成画像で表彰式や歓喜の瞬間を補強しており、記事全体の核心理解を事実と逆方向に導いている。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/362",
+  "image_paths": [
+    "/path/to/ReMMDBench/362/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/362/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/362/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/362/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "362",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.8000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a Japanese table tennis player in a blue jersey, likely Mima Ito, playing against an opponent in red. The text discusses a match involving Mima Ito and Wang Manyu. However, the text is internally contradictory (claiming both a 2-3 loss and a 3-1 win) and factually incorrect about the specific match outcome (Ito losing to Wang Manyu in recent finals). Since the text describes a scenario that did not happen as stated, the image (depicting a real player in a real match context) serves to refute the fabricated or erroneous narrative.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the person in the image corresponds to the individuals mentioned in the news text. The text discusses a table tennis match between Japan and China, specifically mentioning Chinese player Wang Manyu. The image shows a female table tennis player in a blue jersey. I will use Entity detection to identify the player and any text on her clothing, such as \"China\", to confirm her identity and nationality.",
+            "action": "Entity[image]",
+            "observation": "- **Table tennis / ping-pong match** (players, net, ball visible) — **High certainty**\n- **Two human players** (faces not clearly visible; no identification of individuals) — **High certainty**\n- **Table tennis paddles/bats** (one red paddle clearly in foreground player’s hand) — **High certainty**\n- **Table tennis ball** (white ball mid-flight) — **High certainty**\n- **Competition arena setting** (dark background, court lighting) — **Medium certainty**\n- **JAPAN text on blue jersey** (suggests Japanese team/association) — **High certainty**\n- **Japanese flag patch** on blue jersey — **Medium–High certainty**\n- **Sponsor/brand text on sleeves** (partially readable; looks like “SANEI” or similar) — **Low–Medium certainty**\n- **No clearly identifiable logos/landmarks/organizations beyond the above** — **High certainty**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The entity detection identified \"JAPAN text on blue jersey\" and a \"Japanese flag patch\", confirming the player is Japanese. The news text discusses a table tennis match involving the Japanese team and specifically mentions player Mima Ito. The image of a Japanese female table tennis player in a blue jersey aligns with the text's description of the Japanese team's performance and players.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent player (\"Zhangben Miwa\") and claims the opponent was China, while the images clearly show a match against Germany (scoreboard) and the Japanese team winning gold at the 2024 Busan Championships, creating semantic and contextual conflicts.",
+    "notes": []
+  },
+  "error": null
+}

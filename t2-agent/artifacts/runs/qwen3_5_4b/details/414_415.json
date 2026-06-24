@@ -1,0 +1,171 @@
+{
+  "index": 414,
+  "sample_id": "415",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1420.75,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本把可核验的信息（财联社提到的伊朗对以色列导弹袭击、以及伊朗革命卫队称对科威特美军基地的无人机行动）与未经证实的“伊朗油气核心设施遭精准打击并全国停摆/出口暂停”强绑定，并用模糊来源与夸张后果构建“链式承压”的确定性叙事；同时关键配图存在明显的后期字幕重制/水印叠加与“时间地点指向”问题，导致读者被引向与图片真实语义、真实语境不一致的结论，因此整体为 Mostly False。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突与地缘政治",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/415",
+  "image_paths": [
+    "/path/to/ReMMDBench/415/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/415/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/415/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/415/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/415/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/415/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/415/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/415/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/415/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/415/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "415",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; T3 Misleading Context; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific claims made in the news text, which describes a major conflict event in March 2026 (banana future date) involving Iran's oil facilities, missile strikes on Israel, and attacks on US bases in Kuwait. Since this is a future date, I must search to see if this claims exists anywhere as a fabrication, simulation, or error. I will also check the specific names mentioned like \"Turel Gabbar\" (President of the US National Intelligence?) and the \"Operation Promise-4\" attack. Note that the report style mimics Chinese financial news (Caissa), which often circulates false rumors.",
+            "action": "Google[伊朗炼厂爆发大火 2026 年 3 月 2 日]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify if the text refers to a real, current, or future event. Since the text refers to March 2-3, 2026, and the current date is likely before 2026 (based on typical knowledge cutoff), this appears to be a fabrication or a simulation. I will search for the specific headline or key phrases to see if they are circulating as fake news.",
+            "action": "Google[“伊朗境内多处被视为油气工业“关键节点”的设施”伊朗炼厂大火 2026]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text presents a news story with a future date (March 2026). Since I am currently unable to browse the future, and previous searches for future dates yielded no results, this strongly suggests the text is a fabrication or a simulation. To formally refute based on verifiability, I should check if these specific names (like the U.S. intelligence director) are real or if this specific headline circulates as a known hoax.",
+            "action": "Google[\"Turel Gabbar\" US intelligence director]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly states the date as March 2026, which is in the future assuming the current real-world time is before that. Previous Google searches for these specific details returned no results. This is a definitive indicator of fabrication. I will conclude the task as Text_Refute.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "I will use the Detect tool to visually inspect the image for details like the timestamp, location landmarks, and fire visibility to compare it with the provided news text (March 2-3, Abadan Refinery). This will help determine if the image matches the text claims.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Although the image visually depicts an oil refinery fire, which aligns generally with the news text's description of the scene, the explicit timestamp \"2026/03/21\" on the image is incompatible with the news report's timeline of \"March 2-3\". Additionally, verifying specific landmarks (like Abadan Refinery vs Bushehr) is difficult from this angle. The critical disqualification is the date mismatch.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly mentions that Figure 1 (Abadan Refinery) has a watermark 'Abadan Refinery 03-03 01:12'. The provided image has a different watermark: 'IRAN | 2026/03/21 | 现场画面 疑似炼厂罐区起火'. Additionally, the news text places the event on March 2-3, while the image date is March 21. This discrepancy in both the specific event date (03-03 vs 03-21) and the watermark content suggests the image does not match the specific evidence claimed in the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.41601676461038084,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.2,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.8,
+        "V1 Synthetic Visual Content": 0.2,
+        "V2 Visual Editing": 0.7,
+        "C1 Semantic Inconsistency": 0.1,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "Text fabricates a future event (2026) which contradicts the image timestamps (March 21) and uses real locations in a fabricated context.",
+    "notes": []
+  },
+  "error": null
+}

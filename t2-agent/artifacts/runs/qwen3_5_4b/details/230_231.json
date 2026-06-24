@@ -1,0 +1,150 @@
+{
+  "index": 230,
+  "sample_id": "231",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1478.65,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本引用的两位微博博主发言与“每吨上调由2205/2120元变为1160/1115元、折合每升约0.87元左右”等说法存在真实素材来源，但样本通过错置“已在多地当晚落地”的时间线与配图来强化政策即时性与现场性，同时关键配图为生成/编辑内容并与段落语境不匹配，导致读者对事件落地范围与证据来源产生明显偏差理解。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "公共政策与宏观经济",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/231",
+  "image_paths": [
+    "/path/to/ReMMDBench/231/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/231/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/231/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/231/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "231",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "If Wikipedia does not provide enough detail on the specific March 23 event, I will use Google to search for the specific headline or event mentioned in the news text, including the date \"March 23\" and \"temporary regulation\" (临时调控).",
+            "action": "Google[中国 油价 3月23日 临时调控 2024]",
+            "observation": "2026年3月23日国内成品油价格调整: 自3月23日24时起，国内汽、柴油价格（标准品，下同）每吨分别上涨1160元和1115元。调整后，各省（区、市）和中心城市汽、柴油最高零售价格见附表。 中石油、 ... (https://www.ndrc.gov.cn/xwdt/xwfb/202603/t20260323_1404295.html)\n我国国内成品油价格是如何调整的-新华网: 4月7日，国家发展改革委发布消息：自4月7日24时起，国内汽、柴油价格（标准品）每吨应分别上调800元、770元，调控后实际上调420元、400元。这也是继3月23日 ... (https://www.news.cn/fortune/20260409/f8def54812834917ae29aea3ae1dd8fd/c.html)\n国家发展改革委对油价临时调控全国平均汽油、柴油每升少涨0.85元 ...: 根据现行价格机制计算，自3月23日24时（即24日零时）起，国内汽油、柴油价格（标准品）每吨分别应上调2205元、2120元，调控后实际上调1160元、1115元，相当于全国 ... (https://www.stcn.com/article/detail/3693867.html)\n今晚油价上调国家发展改革委对成品油价格临时调控 - 中国科技网: 根据现行价格机制计算，自3月23日24时起，国内汽、柴油（标准品）最高零售价格每吨分别应上调2205元、2120元，为减轻下游用户负担，国家对成品油价格采取了临时 ... (https://www.stdaily.com/web/gdxw/2026-03/23/content_490988.html)\n油价咋定的？调控有说法 - 中国水运网: 4月7日，国家发展改革委发布消息：自当日24时起，国内汽、柴油价格（标准品）每吨应分别上调800元、770元，调控后实际上调420元、400元。这也是继3月23日对 ... (https://www.zgsyb.com/news.html?aid=757050)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the search results confirm the date (March 23, 2026) and the specific adjustments (1160/1115 yuan/ton) match the text, and the '0.87' figure is a reasonable local approximation of the '0.85' national average, the text is fully supported by official government announcements.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "I need to determine if the image matches the description in the news text. The text mentions a gas station notice dated \"2026-03-23\" with an increase of \"0.87 yuan\" and labels of \"#92, #95\" and \"temporary control\". I will visually scan the image for these specific text elements and confirm if the news text's claims about the image are accurate.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the previous tool invocation failed, I will proceed with manual visual inspection. The news text explicitly describes a circulating image dated \"2026-03-23\" with a price increase of \"0.87 yuan\" and \"temporary control\" messaging. Observing the provided image, I see a notice taped to a gas pump displaying the date \"2026-03-23\" and text stating the increase is \"approx 0.87 yuan\" with \"temporary control\". The visual evidence perfectly matches the specific details cited in the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.5,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "I should also verify the price increase amount mentioned in the text (\"0.87 yuan per liter\") against the text on the image notice to ensure the content is accurate.",
+            "action": "VQA[question: \"Does the notice mention a price increase of approximately 0.87 yuan per liter?\"]",
+            "observation": "\n\nYes, the notice explicitly states a price increase of approximately 0.87 yuan per liter (written in Chinese as \"折合每升约 0.87元\").",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the key price adjustment amount mentioned in the news text (0.87 yuan/liter) has been verified in the image, and the general context (gas station notice, 2026 date, temporary control) aligns, I am confident enough to conclude that the image content matches the text description.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.46415888336127786,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The images contain synthetic visual content, as evidenced by the high synthetic score (0.900) and features like generated text overlays and dates (e.g., \"2026-03-23\"), being separate from supported real text.",
+    "notes": []
+  },
+  "error": null
+}

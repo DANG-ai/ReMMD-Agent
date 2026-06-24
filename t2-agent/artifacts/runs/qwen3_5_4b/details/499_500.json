@@ -1,0 +1,165 @@
+{
+  "index": 499,
+  "sample_id": "500",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 890.02,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article mixes a broadly plausible Raw recap with misleading framing that treats an AJ Lee vs. Bayley title match as a direct, confirmed continuation of the March 9 Seattle show. That false present-tense framing is reinforced by an edited match graphic and by older imagery presented as if it supports the current Raw build.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/500",
+  "image_paths": [
+    "/path/to/ReMMDBench/500/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/500/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/500/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "500",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.3,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "Verify the core claim of the text: a match between Bayley and AJ Lee for the Women's Intercontinental Championship on a recent \"Next Monday\". This is highly suspect given AJ Lee's long absence from WWE. I will search for the existence of this specific match.",
+            "action": "Google[Bayley vs AJ Lee Women's Intercontinental Championship match]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the previous Google search returned no results, it is crucial to consult Wikipedia, which serves as the primary fact-checking source for verified WWE match history, to confirm whether the specific Bayley vs AJ Lee Intercontinental Championship match ever existed.",
+            "action": "Wikipedia[Bayley vs AJ Lee Intercontinental Championship]",
+            "observation": "No summary available. Similar entities: AJ Lee, List of WWE Intercontinental Champions, Bayley (wrestler), WrestleMania 42, AJ Styles",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Previous searches for the specific match failed, which is suspicious given AJ Lee's long absence. I need to verify the historical record to confirm if Bayley and AJ Lee ever competed against each other in WWE history, specifically for any title match, to refute the claim of this matchup being a scheduled event.",
+            "action": "Wikipedia[Bayley vs AJ Lee matches]",
+            "observation": "No summary available. Similar entities: AJ Lee, Bayley (wrestler), Saturday Night's Main Event XLII, Keith Lee (wrestler), WrestleMania 42",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "All previous search attempts (Google and Wikipedia) returned no results for the specific Bayley vs. AJ Lee match for the Intercontinental Championship. Given AJ Lee's long absence from WWE (she retired in 2015 and only had sporadic appearances), the claim of a scheduled title match on RAW in 2016 is highly suspect. Based on the search failures, the most logical step is to finish the verification by rejecting the text as false.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "The provided news text describes an upcoming WWE Raw episode where Bayley is set to face AJ Lee for the Women's Intercontinental Championship. The image provided is a promotional poster for a Raw episode featuring Bayley and AJ Lee with the prominent headline \"WOMEN'S INTERCONTINENTAL CHAMPIONSHIP\". The images content directly visualizes the specific match-up and result (match for championship) described in the narrative text.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will also output the finish as a second candidate to ensure robust checking, though the first thought confirms support.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to confirm if the match described in the text (Bayley vs AJ Lee) is visually supported. I will query to verify if AJ Lee has ever worn purple hair in proactive promos to clarify the identity in the image.",
+            "action": "Entity[query: does AJ Lee wear purple hair in raw promotions]",
+            "observation": "\n\n*   **Ruby Riott** (Wrestler on the left, holding the championship belt) - **Certain**\n*   **Shayna Baszler** (Wrestler on the right, with purple hair) - **Certain**\n*   **RAW** (WWE television program logo in the center) - **Certain**\n*   **Women's Intercontinental Championship** (Text in the center indicating the match type) - **Certain**\n*   **Championship Belt** (RAW Women's Intercontinental version visible in the bottom left) - **Certain**\n*   **Netflix** (Streaming service logo at the bottom right) - **Certain**\n*   **WWE** (Organization implied by RAW logo and belt) - **Certain**\n*   **Partial Background Text** (\"MPIOS\" visible at the very top, likely part of a larger title graphic) - **Low Confidence**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous Entity extraction explicitly identified the wrestlers as Ruby Riott (left) and Shayna Baszler (right). The news text describes a match for Bayley and AJ Lee. Since Ruby Riott and Shayna Baszler are not Bayley and AJ Lee, there is a clear mismatch between the text and the retrieved visual entities.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.3,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims a specific matchup of Bayley vs AJ Lee as the \"next Monday\" event, which is factually false (T1) and contradicts the visual evidence in Image 1 which depicts Bayley vs Shayna Baszler (C1, C2).",
+    "notes": []
+  },
+  "error": null
+}

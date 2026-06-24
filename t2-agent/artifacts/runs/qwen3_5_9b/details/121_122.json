@@ -1,0 +1,139 @@
+{
+  "index": 121,
+  "sample_id": "122",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 685.32,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "5月4日の公演中止という限定的事実はある一方、本文と画像はそれをフェス全体の停止や今後の開催不透明感へ膨らませており、主たる印象が実態より大きく誤っている。画像も日付・限定条件を弱める編集でその誤解を補強しているため、Mostly False が妥当である。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/122",
+  "image_paths": [
+    "/path/to/ReMMDBench/122/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/122/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "122",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the content of the image against the news text to confirm the details of the cancellation.",
+            "action": "Detect[image]",
+            "observation": "- **内容の整合性**: 画像は「5月4日 開催中止のお知らせ」という告知文のスクリーンショット風で、本文も強風・交通機関の乱れ等の理由、払い戻し案内、末尾の「2026年5月4日 / JAPAN JAM事務局」まで一貫しています。文面の段落構成や書式も公式告知っぽい体裁です。  \n- **編集・合成の痕跡**: 目立つ切り貼りの境界、フォントの不一致、にじみ/ぼけの不自然さ、影や透過のズレなどは見当たりません。赤い帯の「ニュース速報」「JAPAN JAM 中止」も、解像感やアンチエイリアスが全体と揃っており、雑な合成には見えません。  \n- **生成画像っぽさ**: 文字が崩れていたり意味不明な日本語になっている箇所が少なく、AI生成画像にありがちなタイポの連発・不自然な字形は感じません。  \n- **注意点（画像だけでは断定不可）**: これは「公式サイトのスクショ」体裁の**静止画像**なので、元ページURLや他の公式発表と照合しない限り、第三者が同様のレイアウトで作った“それらしい告知画像”の可能性は残ります。\n\n**結論**: 画像自体には強い加工・合成・生成の決定的な不自然さは見られず、見た目は比較的オーセンティック（公式告知のスクショ風）ですが、スクショ形式ゆえに出所確認なしで真偽は断定できません。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the image analysis, the visual content (JAPAN JAM cancellation notice dated May 4, 2026, due to strong winds) aligns perfectly with the news text. The calendar consistency (May 4, 2026 is indeed a Monday) further validates the authenticity of the generated text/year. No contradictory evidence is found.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Next, verify the reason for cancellation in the image body text to ensure it matches the \"strong winds\" reason stated in the news text.",
+            "action": "VQA[What is the reason for the event cancellation?]",
+            "observation": "\n\nBased on the text in the image, the event cancellation is due to the following reasons:\n\n1.  **Strong winds:** The organizers judged that ensuring safety within the venue would be difficult (\"強風の影響により、会場内の安全確保が困難\").\n2.  **Public transportation disruptions:** There were significant disruptions to train/bus schedules (\"交通機関のダイヤにも大幅な乱れが生じている\").",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA output confirms that the image cites 'strong winds' and 'public transportation disruptions' as the reasons for cancellation, which aligns perfectly with the news text. Additionally, the text in the image explicitly states 'May 4th', matching the date in the news text. The evidence is sufficient to confirm a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.896280949311433,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.19999999999999996,
+      "p_fake_match": 0.0,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.05,
+        "T2 Distortion": 0.08,
+        "T3 Misleading Context": 0.05,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.15,
+        "C2 Contextual Inconsistency": 0.95,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The image and text imply the event is dated 2026, but the specific day (Monday, May 4) conflicts with the actual calendar for a 2026 event (which would be a Wednesday), indicating a contextual mismatch or error in time context.",
+    "notes": []
+  },
+  "error": null
+}

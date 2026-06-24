@@ -1,0 +1,148 @@
+{
+  "index": 320,
+  "sample_id": "321",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2520.74,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Le chiffre de 5,1 % repose sur une base factuelle plausible, mais l’article en exagère fortement la portée en le transformant en signe de redressement budgétaire presque acquis et de marge retrouvée. Les visuels renforcent abusivement cette lecture positive en associant graphiques démonstratifs, codes couleurs favorables et illustrations institutionnelles ou géopolitiques qui ne documentent pas directement l’annonce précise décrite.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/321",
+  "image_paths": [
+    "/path/to/ReMMDBench/321/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/321/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/321/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/321/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/321/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "321",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I will search for the specific text in the image to understand its context. It mentions \"effort supplémentaire\" and \"2026\". This sounds like a specific political proposal or a slide from a conference.",
+            "action": "Google[\"C'est l'effort supplémentaire que la France consacrera à la Défense en 2026\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text discusses a 5.1% public deficit, while the image shows a 5.1% figure related to \"DÉFENSE NATIONALE\" (National Defense). The text claims this 5.1% figure was received as a positive signal for public finances and was used in visuals to show a reduction in deficit. The image, however, presents 5.1% as a defense target (\"effort... consacré à la Défense\"). This is a clear contradiction between the text's interpretation of the number (deficit) and the image's label (defense). Therefore, the text is refuted.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "I can already see the text in the image clearly. The image shows \"DÉFENSE NATIONALE\" and \"5,1% du PIB\" describing the effort for Defense in 2026. The news text states that the public *deficit* is 5.1% of GDP. The image attributes the 5.1% figure to Defense spending/effort, while the text attributes it to the public deficit. This is a clear contradiction in the meaning of the number. Therefore, the image refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "To confirm the mismatch, I will verify the description of the 5.1% figure on the slide. The text below the large \"5,1% du PIB\" in the image appears to link the percentage to defense efforts (\"C'est l'effort supplémentaire que la France consacrera à la Défense en 2026\"), whereas the news text links the 5.1% figure to the public deficit. Confirming this text will solidify the MISMATCH decision.",
+            "action": "VQA[What does the text below \"5,1% du PIB\" say about what this figure represents?]",
+            "observation": "\n\nThe text below \"5,1% du PIB\" reads:\n\n**\"C'est l'effort supplémentaire que la France consacrera à la Défense en 2026.\"**\n\nThis translates to: \"It is the additional effort that France will devote to Defense in 2026.\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation confirms that the text below \"5,1% du PIB\" in the image describes it as \"l'effort supplémentaire que la France consacrera à la Défense en 2026\" (the additional effort France will devote to Defense in 2026). In contrast, the news text states that \"le déficit public de la France s’est établi à 5,1 % du PIB en 2025\" (France's public deficit stood at 5.1% of GDP in 2025). The number 5.1% is attributed to two completely different metrics (defense spending vs. public deficit) and different years (2026 vs. 2025). This is a clear mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.8,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.6,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a news report about the French public deficit (T1), while the accompanying visuals include synthetic images (V1) that mislabel the key statistics (5.1%, 5.4%) as \"Defense\" and \"Inflation\" respectively, creating a direct semantic conflict with the text which identifies these figures as the public deficit (C1).",
+    "notes": []
+  },
+  "error": null
+}

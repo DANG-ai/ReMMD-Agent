@@ -1,0 +1,135 @@
+{
+  "index": 340,
+  "sample_id": "341",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2264.49,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Spielausgang und der erwähnte Notfalleinsatz haben einen realen Kern, jedoch überzeichnet der Text die unmittelbare Wirkung des Vorfalls auf den Matchverlauf und koppelt ihn mit teils unpassenden bzw. bearbeiteten Bildern. Dadurch entsteht ein merklich irreführender Gesamteindruck über Ort, Sichtbarkeit und Bedeutung des Einsatzes.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/341",
+  "image_paths": [
+    "/path/to/ReMMDBench/341/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/341/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/341/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/341/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "341",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a football match between TSG Hoffenheim and Hamburger SV on April 25, 2026. This date is in the future. Additionally, the players mentioned (Fisnik Asllani, Robert Glatzel, Tim Lemperle) were active at HSV around 2016-2019 and would not be playing together in 2026. The text describes a medical emergency, but the image shows a general crowd scene. I will use Detect to analyze the image details (stadium, banners, player) to confirm it is a real image from a past event, which would contradict the future date in the text.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unedited stadium photograph (wide shot of a packed stand and pitch). I don’t see clear signs of digital manipulation or AI generation.\n\n**Reasons it looks authentic**\n- **Consistent perspective and geometry:** Stadium roof beams, railings, and seating lines converge naturally with no warped structures.\n- **Uniform lighting:** The lighting across the crowd, roof, and pitch matches a single exposure; no mismatched shadows or inconsistent highlights.\n- **Natural fine detail/noise:** The crowd texture is dense but looks like typical low-resolution compression rather than “painted” or repeating AI patterns.\n- **No obvious cut/paste seams:** Banners, advertising boards, and crowd edges don’t show hard transitions or halos.\n\n**Minor caveats**\n- The image is **low resolution and heavily compressed**, which can hide subtle edits; however, nothing visible suggests compositing, object removal/addition, or synthetic generation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a match on April 25, 2026, which is in the future. It also contains factual errors (Tim Lemperle playing for Hoffenheim, when he was a long-time HSV player). The image is an authentic photograph of a stadium crowd with HSV and Hoffenheim banners, likely from a past match (given the resolution and typical banner styles from the era when those players were active, approx 2016-2019). Since the text describes a future/fictional event and the image is a real photo from the past, the image does not support the text's claim of a 2026 match. The text is a fabrication.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.98,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions the match took place at the \"Volksparkstadion\" in Hamburg. I need to verify if the stadium architecture in the image, particularly the distinctive roof trusses, matches the Volksparkstadion.",
+            "action": "VQA[Is the stadium in the image the Volksparkstadion in Hamburg based on the roof structure?]",
+            "observation": "\n\nYes, the stadium is the Volksparkstadion in Hamburg.\n\nThe roof structure shown is a large, flat steel canopy supported by visible trusses, which is characteristic of the West Stand (the main stand) of the Volksparkstadion. Additionally, the banners in the crowd clearly display \"HSV\" and \"HAMBURGER SV,\" confirming that this is the home stadium of Hamburger Sport-Verein.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous observation confirmed the stadium is Volksparkstadion and banners show HSV. The text describes a match between Hoffenheim and HSV at Volksparkstadion. The image content (stadium, team) aligns with the main subject of the text. Although the text mentions a medical emergency and describes a \"cover photo\" of paramedics, the provided image appears to be a general shot of the stadium during the match, which is consistent with the article's topic. The primary entities (Stadium, Home Team) match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7663094323935531,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a match and emergency at the HSV stadium (Volksparkstadion), but Image 3 shows a fire truck in front of a building with an FC St. Pauli logo, indicating a mismatch of place and context.",
+    "notes": []
+  },
+  "error": null
+}

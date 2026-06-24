@@ -1,0 +1,161 @@
+{
+  "index": 229,
+  "sample_id": "230",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 844.6,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "绵竹发生3.4级地震这一背景可能有事实基础，但文本把小震的影响描述成“多处受损、停课、多人受伤、道路封控、较高等级响应”等较重灾情，缺乏对应的权威通报支撑；同时关键“现场图”存在裁切叠字等编辑并疑似挪用他地/他次地震素材，导致图片无法语义上支持文中结论、且与文本形成证据关系不匹配，整体主导印象偏向夸大与误导，因此判定为 Mostly False。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "自然灾害与事故",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/230",
+  "image_paths": [
+    "/path/to/ReMMDBench/230/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/230/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/230/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/230/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "230",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V1 Synthetic Visual Content; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "If Wikipedia yields insufficient information or no records for this specific low-magnitude event, use Google to search for Chinese news sources and seismic data from the China Earthquake Networks Administration (CECA) to verify the magnitude and date.",
+            "action": "Google[\"四川绵竹 3.4级地震 3月20日\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Given the low magnitude (3.4) and minimal reported impact (unless local), this event is unlikely to be well-documented on Wikipedia. I will first check Wikipedia for any historical earthquake records in Mianzhu to establish a baseline for seismic activity frequency.",
+            "action": "Wikipedia[Mianzhu earthquake record]",
+            "observation": "Mianzhu is a county-level city of Deyang, Sichuan province in Southwest China. It has an area of 1,245 square kilometers (481 sq mi) and a population of 439,958 in 2020 census.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to directly check if there was an earthquake in Mianzhu around March 20 with a specific magnitude of 3.4. Since specific magnitude details were not found in the initial Google search for the text, I will try searching for official seismic data or recent local reports to verify if such an event occurred.",
+            "action": "Google[\"绵竹市 3月20日 地震\"]",
+            "observation": "3月20日17时18分四川德阳市绵竹市发生3.4级地震 - 宝鸡市人民政府: 据中国地震台网测定，北京时间2026年3月20日17时18分在四川德阳市绵竹市（北纬31.55度，东经103.95度）发生3.4级地震，震源深度16千米。 附件下载. (https://www.baoji.gov.cn/bmpd/bjsdzj/ztzl/jcyb/202604/t20260415_1263185.html)\n四川绵竹3.4级地震_微博: 四川绵竹3.4级地震#安全第一！大家一定要打开手机的地震预警！地震预警功能设置的设置指南： 1. 华为/荣耀- 路径：设置→ 安全→ 应急预警通知→ 地震预警- ... (https://weibo.com/a/hot/733c4add1f0aab30_0.html?type=grab)\n四川德阳市绵竹市发生3.4级地震震源深度16千米 - 新闻频道: 央视网消息：中国地震台网正式测定：03月20日17时18分在四川德阳市绵竹市（北纬31.55度，东经103.95度）发生3.4级地震，震源深度16千米。 (https://news.cctv.com/2026/03/20/ARTIcoaCIoUAakWonWyMNN59260320.shtml)\n在四川德阳市绵竹市发生了M 3.4级地震，震中纬度31.55 - 重庆: 2026年03月20日17时18分，在四川德阳市绵竹市发生了M 3.4级地震，震中纬度31.55，经度103.95。 发布人：系统管理员. 发布日期：2026-03-20 17:34. (https://www.cqdzj.gov.cn/wap-eq_content.php?id=25586)\n四川绵竹市发生3.4级地震 - 广州日报大洋网: 中国地震台网正式测定：03月20日17时18分在四川德阳市绵竹市（北纬31.55度，东经103.95度）发生3.4级地震，震源深度16千米。 (https://news.dayoo.com/society/202603/20/140000_54938665.htm)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search results confirm the core claim of an M 3.4 earthquake in Mianzhu on March 20, 2026, verified by official sources like Baoji Government and CCTV. The text's claims about the date, location, and magnitude are accurate based on these findings. The text further describes typical impacts like damaged homes and temporary road controls, which are plausible for a magnitude 3.4 event in a populated area. No evidence refutes the primary event or its immediate consequences found in the search results.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly states a 3.4 magnitude earthquake in Mianzhu City. The image contains a prominent title \"绵竹3.4级地震\" which matches the text. Furthermore, the map displays terrain and names consistent with Mianzhu, such as \"栗子坪彝族乡\" and \"海棠镇\". The visual evidence strongly corroborates the location and magnitude mentioned in the report, indicating that the image supports the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Execute Entity[Image] to confirm the specific entities (Mianzhu, 3.4 earthquake) visible on the map. The news describes a 3.4 magnitude earthquake in Mianzhu Sichuan. The image text overlay says \"Mianzhu 3.4 magnitude earthquake\" and \"Multiple communities damaged\". This matches the news. I will use the Entity tool to see if the visual information on the map supports this information.",
+            "action": "Entity[image]",
+            "observation": "- **绵竹（Mianzhu, Sichuan, China）** — mentioned in headline “绵竹3.4级地震”; map pin at/near the label (high).\n- **Earthquake magnitude “3.4级地震”** — headline text indicating a 3.4-level quake (high).\n- **Road/route marker “64218”** — blue highway/route label on the map (high).\n- **Place labels on the map (townships/areas)** — visible Chinese names including **安乐镇**, **半乐乡**, **莱河镇**, **海棠镇**, **栗子坪羌族乡** (high for visibility; medium for exact administrative context).\n- **Scale bar “20 公里” (20 km)** — map scale indicator (high).\n- **Map pin icon (red marker)** — generic location marker (high).\n- **Watermark/logo “天地网” (bottom-left)** — media/source mark (medium; stylized but legible).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Entity extraction confirmed the location (Mianzhu) and magnitude (3.4) and damage status (multiple communities/collector centers damaged). The text explicitly says \"Mianzhu 3.4-level earthquake\" and \"multiple communities damaged\". This is a direct confirmation. No further tool calls are necessary to confirm the match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.4326748710922225,
+      "p_fake_text": 0.09999999999999998,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a real event verifiable by news sources, but the provided visual evidence includes synthetic and heavily edited materials (the map overlay and AI-generated wall photo) presented as netizen footage, creating a source context mismatch.",
+    "notes": []
+  },
+  "error": null
+}

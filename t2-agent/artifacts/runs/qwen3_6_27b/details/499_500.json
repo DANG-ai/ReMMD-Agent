@@ -1,0 +1,132 @@
+{
+  "index": 499,
+  "sample_id": "500",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2527.51,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article mixes a broadly plausible Raw recap with misleading framing that treats an AJ Lee vs. Bayley title match as a direct, confirmed continuation of the March 9 Seattle show. That false present-tense framing is reinforced by an edited match graphic and by older imagery presented as if it supports the current Raw build.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/500",
+  "image_paths": [
+    "/path/to/ReMMDBench/500/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/500/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/500/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "500",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes an upcoming match \"Next Monday\" on WWE Raw between Bayley and AJ Lee for the Women's Intercontinental Championship. To verify this claim against the provided image, I need to extract the text and identify the people in the image. I will use the Detect tool to analyze the image content.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a **composited promotional graphic**, not a candid photo.\n\n**Signs of editing / graphic design**\n- **Heavily layered layout:** Two cutout wrestlers placed over a stylized background with large red lettering, fog/particle effects, and a central “RAW” logo—typical poster composition.\n- **Artificial depth/lighting:** The subjects have studio-like lighting and edge cutouts that don’t fully match the background; there’s a glow/haze overlay across the midline to blend layers.\n- **Added elements:** The championship belt in the lower-left looks like a separate asset placed on top (clean, sharp, and slightly “floating” relative to the rest).\n- **Faces are obscured** with rectangular blurs/blocks, indicating post-processing (likely for privacy in this version).\n\n**Any signs of AI/synthetic generation?**\n- No clear AI hallmarks (warped text, impossible anatomy, nonsensical logos). Text and logos are crisp and consistent.\n\n**Overall authenticity assessment**\n- Authentic as a **designed event/promo poster** (digitally edited by nature), not evidence of a real in-ring moment. No strong indicators it’s AI-generated, but it is clearly a constructed composite.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image explicitly displays the text \"WOMEN'S INTERCONTINENTAL CHAMPIONSHIP\" and \"NEXT MONDAY\" under the \"RAW\" logo, which directly corresponds to the news text's claim about an upcoming match for that title on Raw next Monday. The two female wrestlers pictured are consistent with the reported participants, Bayley and AJ Lee.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text states \"Attention now turns to next Monday\". The image also contains the text \"NEXT MONDAY\". I will use VQA to confirm the timing mentioned in the image to verify consistency with the news text.",
+            "action": "VQA[When is the event scheduled according to the text in the image?]",
+            "observation": "\n\nAccording to the text at the bottom of the image, the event is scheduled for **NEXT MONDAY** at **8e/5p**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a match between Bayley and AJ Lee for the Women's Intercontinental Championship on Raw, scheduled for \"next Monday\". The image displays the \"RAW\" logo, the text \"WOMEN'S INTERCONTINENTAL CHAMPIONSHIP\", \"NEXT MONDAY\", and features two wrestlers who appear to be Bayley (purple hair) and AJ Lee (dark hair). All key entities and details align.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The visual material is explicitly identified as a \"composited promotional graphic\" with \"heavily layered layout\" and \"artificial depth/lighting,\" indicating significant digital editing and manipulation.",
+    "notes": []
+  },
+  "error": null
+}

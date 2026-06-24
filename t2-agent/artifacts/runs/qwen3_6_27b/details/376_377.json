@@ -1,0 +1,156 @@
+{
+  "index": 376,
+  "sample_id": "377",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1423.99,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "L’ossature factuelle de l’article tient : il décrit une double confrontation remportée par le PSG contre Liverpool, avec une qualification en demi-finales et un rôle important de Dembélé. En revanche, plusieurs formulations surjouent la domination parisienne et la centralité presque exclusive de Dembélé, tandis que certaines images ou rendus visuels amplifient l’intensité perçue de l’ambiance sans changer fondamentalement le sens général.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/377",
+  "image_paths": [
+    "/path/to/ReMMDBench/377/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/377/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/377/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/377/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/377/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/377/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/377/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/377/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/377/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/377/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "377",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.9500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a Champions League match between PSG and Liverpool at the Parc des Princes, mentioning specific details like \"fumigènes\" (flares) and the stadium atmosphere. I need to verify if the image shows the Parc des Princes (via branding), the Champions League logo, and the presence of flares to confirm it matches the description.",
+            "action": "Detect[image]",
+            "observation": "The image looks like an authentic wide-angle stadium photograph with some likely post-processing (color/contrast), but no clear signs of compositing or AI generation.\n\n**Reasons it appears authentic**\n- Consistent stadium geometry and perspective: the pitch lines, goal, stands curvature, roof lighting, and city skyline all align correctly with a high, central vantage point.\n- Realistic crowd texture: individual spectator patterns blend naturally into a dense mass without the repeated, “stamped” artifacts often seen in synthetic images.\n- Smoke/flares look physically plausible: the flare glow, smoke density, and light spill onto nearby areas are consistent with real pyrotechnics in a night stadium.\n- Text and logos (“PARIS SAINT‑GERMAIN,” “RÊVONS PLUS GRAND,” center-circle Champions League starball, PSG crest) are sharp and correctly placed on surfaces with appropriate foreshortening.\n\n**Possible editing / enhancement**\n- Strong saturation and contrast: reds in the flares and the overall crispness suggest color grading/clarity boosting typical of sports/event photography.\n- No obvious cut-and-paste seams, mismatched lighting, warped lettering, or inconsistent shadows that would indicate heavy manipulation.\n\n**Counterfactual/synthetic indicators**\n- None apparent from the image alone. The scene is visually coherent and consistent with a real match-night atmosphere.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the stadium and event match the text description of a PSG Champions League game with flares. The text mentions \"Paris-Saint-Germain\", \"Parc des Princes\", \"Ligue des champions\", and \"fumigènes\" (flares). I will ask VQA to identify the text on the banners and the logo on the pitch to confirm the context.",
+            "action": "VQA[What text is visible on the red banners above the stands and the large banner at the bottom?]",
+            "observation": "\n\nBased on the image, the visible text is:\n\n**Red banners above the stands:**\n*   Left and Right: **PARIS SAINT-GERMAIN**\n*   Center: **RÊVONS PLUS GRAND**\n\n**Large banner at the bottom:**\n*   **PARIS SAINT-GERMAIN** (visible upside down at the very bottom edge)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a \"Ligue des champions\" match. I should confirm the logo in the center of the pitch corresponds to the UEFA Champions League to ensure the context matches.",
+            "action": "VQA[What logo is visible in the center of the pitch?]",
+            "observation": "\n\nThe logo visible in the center of the pitch is the **UEFA Champions League** logo (a circle made of stars).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows the Parc des Princes stadium with \"PARIS SAINT-GERMAIN\" banners and the UEFA Champions League logo on the pitch, confirming the venue and competition mentioned in the text. The presence of red flares in the stands aligns with the text's description of \"fumigènes\" and the intense atmosphere of the PSG vs. Liverpool match. The visual evidence strongly supports the text's narrative of a PSG Champions League night.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future match result (T1) where PSG won 4-0, which contradicts the visual evidence in the images from a past match where Liverpool was leading (C1) and creates a mismatch in event context (C2).",
+    "notes": []
+  },
+  "error": null
+}

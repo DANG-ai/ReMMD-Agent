@@ -1,0 +1,121 @@
+{
+  "index": 362,
+  "sample_id": "363",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1491.14,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "样本关于“3月20日晚金银跳水、黄金跌破4600并到4576附近、白银跌幅扩大”的核心事实与原始素材记录一致，但文本把盘中急跌渲染为“单日跌超4%”“年内最大单日跌幅之一”并外推到更广泛的零售端反应，证据支撑不足且存在强度夸大；同时配图中存在对行情截图的明显二次编辑（裁剪时间窗、收窄纵轴并叠加醒目箭头/文案）以强化‘断崖式下跌’的视觉冲击。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/363",
+  "image_paths": [
+    "/path/to/ReMMDBench/363/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/363/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/363/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/363/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "363",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T2 Distortion; V2 Visual Editing; C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the news text against the image. The news mentions the spot gold price hitting roughly 4576.609 USD/oz. The image shows a trading interface for London Gold Forward (SPTAUUSDOZ.IDC) with the current price explicitly displayed as 4576.609. This visual evidence directly corroborates the specific data point in the news text, which mentions \"market coerced latest transaction price pointing to around 4576.609.\" Therefore, the image supports the veracity of the news claim.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly states \"latest transaction price once pointed to about 4576.609 USD/oz\". Examining the image, the large green font at the top left clearly displays the current price as \"4576.609\". The numerical entity matches perfectly between the text and the chart, indicating a match without the need for tool usage to complete the task.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.8,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.8
+      }
+    },
+    "taxonomy_rationale": "The text fabricates non-existent price data (London Gold at $4576 USD/oz) and exaggerates the fall, distorting the economic narrative. The provided charts display visual editing (red arrows and \"4600 lost\" annotations) to exaggerate the price drop's severity, creating a misleading implication of a \"cliff\" crash, consistent with the text's description of second-edited data.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,29 @@
+Given a multimodal misinformation sample with one article text and multiple related images.
+Article text is: [News caption]
+
+Provided external evidence candidates:
+[Provided Evidence]
+
+Determine whether the article text and the full image set are consistent with each other. Please follow the instructions below:
+IMAGE SET DESCRIPTION: [image content description]
+
+Draw the conclusion based on the article text, the provided external evidence candidates, and the IMAGE SET DESCRIPTION. Output exactly one final veracity label in the form:
+- Finish[CROSS_STRONG_SUPPORT]. if the text and the image set are well aligned without material mismatch or context shift.
+- Finish[CROSS_WEAK_SUPPORT]. if they are mostly aligned, with only minor mismatch or limited missing context.
+- Finish[CROSS_MIXED]. ONLY if there are both important aligned AND important misaligned parts that carry roughly equal weight. Do NOT use this label as a default or when uncertain; instead, lean toward SUPPORT or REFUTE based on which direction dominates.
+- Finish[CROSS_WEAK_REFUTE]. if the text-image pairing gives a mainly wrong or misleading impression, but some real alignment still exists.
+- Finish[CROSS_STRONG_REFUTE]. if the text and image set are clearly mismatched, wrongly recontextualized, or mutually contradictory in a way that breaks the core understanding.
+
+In addition, identify any specific CROSS-MODAL DISTORTION categories that are present in the pairing of text and images (you may select zero, one, or multiple). These categories are independent of the overall direction above, and apply only to the text-image relationship:
+- C1 Semantic Inconsistency: text and image differ at the level of WHO/WHAT is shown - the literal subject/object/scene in the image set does not match the entities, objects, or events that the text claims (e.g. text describes person A while images show person B; text describes a fire while images show only buildings).
+- C2 Contextual Inconsistency: text and image refer to similar entities or scenes, but are placed in the WRONG time, place, or surrounding context (e.g. the image is real but from a different event/year/location than the text claims).
+- C3 Pragmatic Inconsistency: text and image are not literally mismatched, but together they push an emotional, attitudinal, or political tone that the underlying evidence does not actually justify (e.g. neutral facts captioned in a way that amplifies fear, alarmism, or blame beyond what the images themselves show).
+
+Action 1: Output exactly one line listing the cross-modal distortion labels you identified, in the form 'Distortions: C1, C2' (use the comma-separated codes C1, C2, C3 in any combination). If none of these cross-modal distortion categories applies, output 'Distortions: NONE'.
+
+IMPORTANT:
+1. Choose the veracity label that best matches the dominant direction. CROSS_MIXED should only be used when both aligned and misaligned parts are genuinely important and roughly balanced. When in doubt between MIXED and another label, prefer the non-MIXED label that matches the dominant impression.
+2. The Distortions line is independent: a sample can be labeled CROSS_WEAK_SUPPORT and still legitimately carry a 'C3' tag if a real but minor tonal escalation is present.
+3. The two output lines 'Finish[...]' and 'Distortions: ...' must both appear, on separate lines.
+
+The answer is:

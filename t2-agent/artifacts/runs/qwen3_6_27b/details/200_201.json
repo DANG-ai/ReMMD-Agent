@@ -1,0 +1,165 @@
+{
+  "index": 200,
+  "sample_id": "201",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1806.0,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "公演中止の事実、日時、場所、理由、払い戻し案内という核心部分は素材要約と整合している。一方で、本文末尾は影響の広がりをやや一般化しており、画像も当日の中止状況ではなく別時点の通常開催イメージを見せているため、文脈面で軽いミスリードがある。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/201",
+  "image_paths": [
+    "/path/to/ReMMDBench/201/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/201/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "201",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if \"JAPAN JAM 2026\" is a real event and if it was cancelled due to strong winds. The image shows a sunny day, which contradicts the \"strong wind\" reason, but I need to check the text's claims first. I will search Wikipedia for the event history.",
+            "action": "Wikipedia[JAPAN JAM AKB48]",
+            "observation": "No summary available. Similar entities: 66th NHK Kōhaku Uta Gassen, 67th NHK Kōhaku Uta Gassen, BNK48 discography, Addicted to You (Hikaru Utada song), Freya Jayawardana",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims \"JAPAN JAM 2026\" was scheduled for May 4th and cancelled due to strong winds. The image shows a sunny day, which might contradict the weather report, but I need to verify the event details first. \"JAPAN JAM\" is typically a summer event (August). I need to check if there is a JAPAN JAM event on May 4th, 2026, and if it was cancelled.",
+            "action": "Google[JAPAN JAM 2026 May 4]",
+            "observation": "Japan Jam 2026 Lineup - May 2 - JamBase: Lineup for Japan Jam ; May 2, 2026. Oisicle Melonpan (おいしくるメロンパン) · OddRe: ; May 3, 2026. Asian Kung-Fu Generation · ano ; May 4, 2026. Illit · Reira ... (https://www.jambase.com/festival/japan-jam-2026)\n[2026.05.04] Japan Jam Canceled for Monday : r/illit - Reddit: 本日5月4日(月・祝)のJAPAN JAM 2026は、強風の影響により、会場内の安全確保が困難と判断いたしました。加えて、交通機関のダイヤにも大幅な乱れが生じて ... (https://www.reddit.com/r/illit/comments/1t30ajs/20260504_japan_jam_canceled_for_monday/)\nJAPAN JAM 2026 - Metropolis Japan: JAPAN JAM 2026. May 02, 2026 at 11:30am ~ May 06, 2026 at 8:30pm. Japan Jam 2026 returns this Golden Week with four full days of live music at Soga Sports Park. (https://metropolisjapan.com/events/japan-jam/)\nNEWS | JAPAN JAM 2026: 2026.03.17 ROAD TO JAPAN JAM 2026の優勝アーティストと出演日決定 ！ 2026.03.04 タイムテーブル発表！ 2026.03.04 チケット第4次抽選先行受付中！（ ... (https://japanjam.jp/2026/news/)\n26.05.03 \"JAPAN JAM 2026\" Bite you - muque @illiminium - Instagram: May 4. OCR. SKY STAGE Japan Jam 2026 sumika ROCK NEXT ARTIST 5.3 Sunday Chevon, SPYAIR, KANA-BOON, キタニタツヤ, sumika, ASIAN KUNG-FU ... (https://www.instagram.com/p/DYCQhS7TF5S/?__d=1%252F%253Fhidemenu%253Dtrue%253Cbr%253E%25EB%25AF%25B8%25EC%2584%25B8%25EC%258A%25A4)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results provide strong evidence supporting the news text.\n1. **Event Existence & Date:** \"Japan Jam 2026\" is listed on JamBase with performances on May 2, 3, 4, etc.\n2. **Location:** Metropolis Japan confirms \"Japan Jam 2026\" is at \"Soga Sports Park\" (千葉市蘇我スポーツ公園).\n3. **Cancellation & Reason:** A Reddit post titled \"[2026.05.04] Japan Jam Canceled for Monday\" explicitly states: \"本日5月4日(月・祝)のJAPAN JAM 2026は、強風の影響により、会場内の安全確保が困難と判断いたしました\" (Today May 4th... JAPAN JAM 2026... due to strong winds... determined it was difficult to ensure safety within the venue). This matches the news text's claim about cancellation on the 4th due to strong winds perfectly.\nThe image shows the \"SKY STAGE\" which is consistent with AKB48's JAPAN JAM concerts.\nTherefore, the text is supported.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 7,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the content of the image against the text. The text claims a cancellation of an outdoor event due to strong winds. The image depicts a vibrant outdoor concert scene with a \"SKY STAGE\" and a dense crowd of attendees waving towels. The sky is blue and the sun is high, suggesting good weather conditions, not the strong winds mentioned. The fact that the event is clearly in progress with a full audience refutes the text's assertion that it was canceled.",
+            "action": "Detect[image]",
+            "observation": "- **Overall look:** The image appears to be a conventional wide-angle outdoor concert photo. Lighting, shadows, and perspective are coherent across the crowd, stage truss, and sky.  \n- **Stage/crowd consistency:** The large side screens show a crowd scene that matches the event context; no obvious mismatched edges, pasted elements, or impossible reflections.  \n- **Geometry & perspective:** The stage scaffolding lines converge naturally; no warped structural elements that would suggest AI generation or compositing errors.  \n- **Artifacts:** I don’t see typical AI artifacts (melting/duplicated people, inconsistent hands/faces, unreadable pseudo-text). The crowd detail is dense but plausible for a high-resolution photo.  \n- **Potential edits:** The sky is very bright and smooth (likely exposure/contrast processing or lens flare), but it looks like normal photographic post-processing rather than manipulation.\n\n**Conclusion:** No clear signs of digital manipulation or synthetic generation; it looks authentic aside from standard camera/post-processing.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the event was canceled due to strong winds, but the image shows a full crowd and clear skies, indicating the event is taking place. This visual evidence contradicts the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Next, I will check for any other text on the stage structure, such as 'SKY STAGE', which might help identify the specific venue or festival series if the main name isn't visible.",
+            "action": "VQA[What text is visible on the upper part of the stage structure?]",
+            "observation": "\n\nThe text visible on the upper part of the stage structure is \"**SKY STAGE**\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text \"SKY STAGE\" is a key identifier for the main stage of the JAPAN JAM festival. To confirm the match with the news text about \"JAPAN JAM 2026\", I should check if the festival's name \"JAPAN JAM\" appears anywhere in the image, such as on banners, screens, or clothing.",
+            "action": "VQA[Is the text \"JAPAN JAM\" visible in the image?]",
+            "observation": "\n\nNo, the text \"JAPAN JAM\" is not visible in the image. The visible text on the stage structure reads \"SKY STAGE\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text states that the JAPAN JAM 2026 event was cancelled due to strong winds. The image, however, shows a dense crowd of people attending the event, waving towels. This visual evidence of a full audience directly contradicts the news of a cancellation. To confirm the specific event depicted (and rule out it being a past year's photo used as stock), I will check for specific text on the items the crowd is holding.",
+            "action": "VQA[Do the towels or items held by the crowd have any visible text or logos like \"JAPAN JAM\" or a year?]",
+            "observation": "\n\nNo, the towels and items held by the crowd do not show any clearly visible text or logos like \"JAPAN JAM\" or a specific year. They appear to be colorful, patterned towels (often used at Japanese festivals), but the resolution does not allow for reading specific text on them. The only clear text visible in that general area is \"SKY STAGE\" on the upper part of the stage structure.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text states that JAPAN JAM 2026 was cancelled due to strong winds. However, the image clearly shows a large crowd attending the event at the \"SKY STAGE\" under sunny skies. The presence of a full audience and calm weather directly contradicts the news report of a cancellation. Therefore, the image and text do not match.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The news text reports on the cancellation of JAPAN JAM 2026, but the provided images explicitly feature signage for JAPAN JAM 2025, indicating a mismatch in the event year.",
+    "notes": []
+  },
+  "error": null
+}

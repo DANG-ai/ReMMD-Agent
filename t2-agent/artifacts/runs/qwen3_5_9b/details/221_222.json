@@ -1,0 +1,129 @@
+{
+  "index": 221,
+  "sample_id": "222",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1024.17,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion"
+    ],
+    "rationale": "文本的核心叙述方向（阿里盘中明显下挫并拖累相关板块情绪）整体可成立，但在跌幅口径与归因强度上存在夸张与确定化表述，把“盘中一度”扩展成更接近“全天/临近收盘仍维持”的印象，并将波动较强地指向单一触发消息，构成细节层面的失真。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经商业",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/222",
+  "image_paths": [
+    "/path/to/ReMMDBench/222/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/222/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/222/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/222/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "222",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses a drop in stock prices in the \"Hong Kong Stock Market\" (港股) and \"Hang Seng Technology Index\" (恒生科技指数). The image displays the logo of the Hong Kong Stock Exchange (HKEX). To strictly adhere to the system instruction \"Use Detect[image]\" and verify the link between the market sector mentioned and the visual entity, triggering the detection tool is a necessary step before finalizing the verdict.",
+            "action": "Detect[image]",
+            "observation": "- **内容一致性/反事实**：画面是香港交易所（HKEx）标志与“HKEx/香港交易所”字样的近景虚焦照片，属于常见新闻配图类型。仅从图像本身看不出与配文“阿里相关标的盘中跌逾8%”之间存在直接可核验的对应关系（即它更像“港股/交易所”泛用配图，而非现场行情截图或特定事件证据），但这不等同于造假，只是**语义关联偏泛**。  \n\n- **是否有合成/生成痕迹**：未见明显AI生成常见问题（文字扭曲、边缘融化、重复纹理、透视/光照冲突等）。标志形状、材质颗粒感、景深虚化与背景反射都较自然。  \n\n- **是否有明显编辑痕迹**：未见明显拼接边界、异常锐化、局部马赛克/涂抹、文字重叠或不合逻辑的阴影；整体更像正常拍摄后裁切/压缩的新闻图片。  \n\n**结论**：图像本身看起来较为真实、无明显数字篡改或合成迹象；但它更像“交易所/港股”通用配图，不能单凭该图证明文中所述的具体跌幅事件。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The observation indicates the image is a genuine photograph of the Hong Kong Stock Exchange (HKEX) landing/entrance sign, with no signs of AI generation, deepfakes, or malicious editing. While the image is a generic context marker rather than a specific data chart, it authenticates the 'Hong Kong Market' setting described in the text. Since the image is real and thematically consistent with the reported event venue, it serves as valid verification for the context. Therefore, the image supports the news context.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The provided news text discusses market volatility, specifically mentioning \"Alibaba\" (阿里), \"HK tech sector\" (港股科技板块), and the \"Hang Seng Tech Index\" (恒生科技指数). The image contains a visual element with text \"HKEX\". To confirm if this is the Hong Kong Stock Exchange (which runs the Hang Seng Index), I need to use VQA to read the text on the image.",
+            "action": "VQA[Read the text visible on the image]",
+            "observation": "\n\nThe visible text is: 'HKEX\n香港交易所'",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly displays \"HKEX\" and \"香港交易所\" (Hong Kong Stock Exchange). The news text discusses the \"Hang Seng Tech Index\" (恒生科技指数), \"港股\" (HK stocks), and specifically mentions Alibaba's performance. The visual of the exchange logo directly corresponds to the trading venue of the stocks mentioned in the text, indicating a high level of relevance.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7113786608980126,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.85
+      }
+    },
+    "taxonomy_rationale": "Text describes specific stock data for Alibaba, while image is a generic HKEX photo that does not visually support or contextually align with the specific event of a stock drop, misleading the reader into linking the generic sign to the specific news.",
+    "notes": []
+  },
+  "error": null
+}

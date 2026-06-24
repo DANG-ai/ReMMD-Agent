@@ -1,0 +1,141 @@
+{
+  "index": 456,
+  "sample_id": "457",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1610.42,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "文本对“黄金会回调、波动常态、不要把单日下跌等同于趋势性崩盘”的核心判断总体成立，但在个别表述上使用了夸张化、口径泛化的叙事来强化冲击感；同时配图整体以“断崖式暴跌/恐慌抛售”的视觉语气渲染紧张氛围，弱化了正文更偏理性、克制的结论导向，形成明显的情绪与证据支持关系不匹配。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经与商业",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/457",
+  "image_paths": [
+    "/path/to/ReMMDBench/457/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/457/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/457/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/457/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/457/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/457/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/457/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/457/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/457/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/457/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "457",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.3,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a 'Black Monday' where gold prices dropped suddenly, mentioning a cover image with a red downward arrow and gold K-lines. The provided image shows the text '黑色星期一？金价突然回调' (Black Monday? Gold prices suddenly corrected) and a downward red chart with gold bars. I should use Detect to formally extract the text and visual elements to confirm they match the article's description and headline.",
+            "action": "Detect[image]",
+            "observation": "- **明显为合成/设计海报**：左侧是绘制的K线与红色下跌箭头，右侧是金条金币照片（或渲染图）拼贴在同一画面，整体是新闻封面式排版，不像单张纪实照片。  \n- **遮挡块提示后期处理**：右侧金条图中央有一块明显的马赛克/模糊方块，用于遮盖信息或水印，属于后期编辑痕迹。  \n- **光影与质感不统一**：左侧图形元素为纯矢量风格、无真实光影；右侧金属反光较强、景深明显，两者风格差异大，符合拼接素材而非同一场景拍摄。  \n- **未见精细“P图破绽”但也不具备摄影真实性**：边缘融合总体干净、无明显拉伸断裂或重影；但其本质是“图形+素材图”的宣传/信息图，不适合当作“现场截图/实拍”来证明事实。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a \"Black Monday\" gold price crash. The image shows a downward red chart and gold bars with the title \"Black Monday? Gold prices suddenly corrected\". The visual elements (downward trend, gold) and text directly align with the news story's subject matter. There is no conflicting information; the image illustrates the event described in the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the text in the image aligns with the article's headline and topic. The article is about \"Black Monday\" and a drop in gold prices. The image has prominent text at the top. I will ask VQA to extract this text.",
+            "action": "VQA[What is the large Chinese text written at the top of the image?]",
+            "observation": "\n\nThe large Chinese text at the top of the image is:\n\n**黑色星期一？**\n**金价突然回调**\n\n(This translates roughly to \"Black Monday? Gold prices suddenly correct/drop\")",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text extracted from the image, \"黑色星期一？ 金价突然回调\" (Black Monday? Gold prices suddenly correct), aligns perfectly with the article's headline \"金价遇“黑色星期一”\" (Gold prices meet \"Black Monday\") and the content discussing a sudden drop in gold prices. The visual elements of a downward red arrow and gold bars/coins also correspond to the article's theme of a market downturn. Therefore, the image and text are a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.5129927840030092,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.7,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future event (2026) with impossible gold prices ($4967), and the images include AI-generated synthetic assets (gold bars) and edited/spliced composites (poster, transaction records with occlusion).",
+    "notes": []
+  },
+  "error": null
+}

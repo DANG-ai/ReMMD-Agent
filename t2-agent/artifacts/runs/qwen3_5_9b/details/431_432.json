@@ -1,0 +1,169 @@
+{
+  "index": 431,
+  "sample_id": "432",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1086.2,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "Die zentrale Spielaussage stimmt mit dem verfügbaren Quellmaterial überein. Irreführend ist vor allem die leicht zugespitzte Einordnung der tabellarischen Tragweite, zudem wurde mindestens ein echtes Spielfoto sichtbar, aber nur dezent bearbeitet, um die Dramatik stärker zu betonen.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/432",
+  "image_paths": [
+    "/path/to/ReMMDBench/432/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/432/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/432/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/432/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "432",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.4,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a specific match between Hamburger SV and VfL Wolfsburg that allegedly took place on March 7, 2026. Since the current date is prior to 2026, this date is a significant anomaly suggesting a hallucination. I will first check the Wikipedia page for Hamburger SV to verify the club's history and current/seasonal schedule to confirm if such a match is recorded.",
+            "action": "Wikipedia[query=\"Hamburger SV 2026 season\"]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To verify the specific claims about the players, particularly Jean-Luc Dompé playing for HSV, I will check his Wikipedia or other reliable source entries to confirm his team affiliation during the alleged season.",
+            "action": "Wikipedia[query=\"Jean-Luc Dompé\"]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the Wikipedia search for the 2026 season yielded no results and the date is in the future, this suggests a hallucination. I will use Google to verify if HSV vs. Wolfsburg ever played a match ending 2:1 with all penalties, checking match history for realistic historical occurrences.",
+            "action": "Google[query=\"Hamburger SV VfL Wolfsburg 2:1 result match history\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a match between Hamburger SV (HSV) and VfL Wolfsburg, stating the score was 2:1 for HSV. The text specifically mentions HSV (white kits) and Wolfsburg (green kits). However, the image clearly shows a player in a white kit with '27' and 'PADERBORN' written on the back. The players in green kits have 'MÜNSTER' written on the back. This indicates the match is involving Paderborn and a team referred to as 'Münster' (likely SV Münster), not Hamburg or Wolfsburg. Furthermore, there is no 'VfL Wolfsburg' or 'HSV' on the jerseys shown in the image. This is a direct contradiction between the text's subject and the visual evidence.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions a match between HSV and Wolfsburg at the Volkswagen Arena, but I need to verify the visual evidence in the image, specifically looking at the player jerseys to identify the team. The text on the green jersey might reveal a different team.",
+            "action": "VQA[What is written on the back of the green player's jersey with the number 4?]",
+            "observation": "\n\nOn the back of the green player's jersey with the number 4, the text reads \"MÜNSTER\" above the number and \"NIKOLIS\" below it.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly mentions a match between HSV and Wolfsburg, but the green jersey in the image says \"MÜNSTER\". To confirm if this is a completely different match or if team kits were different, I should check the opponent's team name on the white jersey.",
+            "action": "VQA[What team name is written on the white jersey with number 27?]",
+            "observation": "\n\nThe team name written on the white jersey with number 27 is **Paderborn**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the team names on the jerseys (Münster and Paderborn) conflict with the text (HSV vs. Wolfsburg), this is a strong indicator of a mismatch. However, to be thorough, I will check if the location matches the text description of \"Volkswagen Arena\" or the date \"7. März 2026\" visible in the scene.",
+            "action": "VQA[Is there a scoreboard or digital display visible in the background showing the match date or time?]",
+            "observation": "\n\nNo, there is no scoreboard or digital display visible in the background showing the match date or time. The background consists primarily of crowd stands, banners, and advertising boards.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a match occurring in 2026 (future date), and the visuals clearly depict Paderborn players rather than the claimed Wolfsburg team, creating a contextual mismatch.",
+    "notes": []
+  },
+  "error": null
+}

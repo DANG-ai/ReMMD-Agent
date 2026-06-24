@@ -1,0 +1,141 @@
+{
+  "index": 328,
+  "sample_id": "329",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2771.77,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "文本将“仅短暂反弹、随后回落甚至跳水”的盘中表现描述为“集体大涨并刷新阶段新高”，并用被篡改的行情截图来强化“上涨”印象，导致受众对金银当日涨跌方向与幅度形成错误理解，因此整体为以少量真实波动为基础的主要误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/329",
+  "image_paths": [
+    "/path/to/ReMMDBench/329/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/329/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "329",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T2 Distortion; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims that on March 26, spot silver gains once exceeded 5% (\"现货白银涨幅一度站上5%\"). However, the provided image shows \"New York Silver\" (纽约白银) at +3.2% and \"London Silver\" (伦敦银) at +1.6%. The highest percentage shown for silver in the image is 3.2%, which contradicts the text's claim of a >5% surge. Additionally, the absolute prices in the image (Gold ~4447, Silver ~69) are historically unprecedented and do not match the market reality for March 26 of any recent year (Gold ~2200-2300, Silver ~28-30). Thus, the text is not supported by the image or reality.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The news text reports that \"Silver and Gold synchronously surged\" and mentions specific intraday gains: \"Spot gold intraday gain once expanded to over 2%\" and \"Spot silver gain once stood on 5%\". It also describes the market behavior as \"high-level oscillation\" with \"quick pullbacks\". The provided image shows a snapshot of financial instruments. Specifically, \"New York Gold\" (GC) is at +2.1%, which supports the claim of gold gaining \"over 2%\". \"New York Silver\" (SI) is at +3.2% and \"London Silver\" (XAG) is at +1.6%. While the image does not show the peak \"5%\" gain for silver, the text explicitly states the market is in a state of \"high-level oscillation\" and mentions \"quick pullbacks\" and \"price quickly dropped from high\". The image, showing positive but lower percentages (especially for silver at 3.2% compared to the claimed peak of 5%) and sparklines indicating volatility, is consistent with the text's description of a market that peaked and is now oscillating. The header \"Silver Gold Collective Big Rise\" matches the text's theme. Thus, the image supports the narrative of the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text claims that spot silver rose by more than 5% (\"现货白银涨幅一度站上5%\") and spot gold rose by more than 2% (\"现货黄金日内涨幅一度扩大至2%以上\"). I need to extract the specific percentage values for silver and gold from the image to verify if they match these claims. The visible numbers are +1.6% and +3.2% for silver, and +1.31% and +2.1% for gold. This suggests a potential mismatch for silver.",
+            "action": "Entity[image]",
+            "observation": "- **“白银黄金集体大涨”**（Chinese headline/overlay text about silver & gold rising) — **High certainty**  \n- **Brent crude oil futures / “布伦特原油”** with ticker **OIL** — **High certainty**  \n- **Nasdaq index futures / “纳斯达克指数期货”** with ticker **NQ** — **High certainty**  \n- **London Silver (spot) / “伦敦银（现货白银）”** with ticker **XAG** — **High certainty**  \n- **London Gold (spot) / “伦敦金（现货黄金）”** with ticker **XAU** — **High certainty**  \n- **New York Silver / “纽约白银”** with ticker **SI** — **High certainty**  \n- **New York Gold / “纽约黄金”** with ticker **GC** — **High certainty**  \n- **Percentage change tiles** (e.g., **+1.87%, +1.35%, +1.6%, +1.31%, +3.2%, +2.1%**) and **price values** (e.g., **99.08, 24274.08, 69.93, 4447.60, 69.98, 4473.80**) — **High certainty**  \n- **Mini price charts/sparklines** next to each instrument — **High certainty**  \n- **Weibo watermark/logo (“微博”)** at bottom-right — **Medium certainty** (partially visible, but looks like Weibo)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Although the entity extraction clearly shows +1.6% for London Silver and +3.2% for New York Silver, I will use VQA to explicitly confirm the percentage for London Silver (which is labeled \"Spot Silver\" in the image) to ensure no misinterpretation of the text vs image labels before finalizing.",
+            "action": "VQA[What is the percentage change shown for London Silver (伦敦银) in the image?]",
+            "observation": "\n\nThe percentage change shown for London Silver (伦敦银) is **+1.6%**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly states that spot silver rose by more than 5% (\"现货白银涨幅一度站上5%\"). The image shows London Silver (Spot Silver) at +1.6% and New York Silver at +3.2%. Neither value supports the claim of a 5% rise for spot silver. Similarly, the text claims spot gold rose by more than 2%, while London Gold is shown at +1.31%. These numerical discrepancies indicate the text describes a scenario significantly different from the data presented in the image.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.19999999999999996,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 1.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims spot silver rose over 5%, but the accompanying financial chart shows a maximum rise of 3.2% (New York Silver) or 1.6% (London Silver), creating a semantic conflict and distorting the visual data.",
+    "notes": []
+  },
+  "error": null
+}

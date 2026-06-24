@@ -1,0 +1,145 @@
+{
+  "index": 476,
+  "sample_id": "477",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1338.19,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article’s central result claim is misleadingly rewritten as a confirmed Reddick victory and 3-for-3 start, while the visuals are manipulated or synthetic rather than authentic documentation of that claimed outcome. The package therefore creates a predominantly false impression through both textual distortion and non-authentic imagery.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/477",
+  "image_paths": [
+    "/path/to/ReMMDBench/477/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/477/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/477/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "477",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.33,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.33,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "Analyze the image to confirm if it shows the news story entities: Tyler Reddick, Circuit of the Americas, Monster Energy, and Team 23XI. The driver matches Reddick, the location COTA is visible in the background, and the car number 45 matches the team mentioned.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "While the specific date (2026) cannot be verified, the visual evidence strongly supports the content of the news story. The image displays Tyler Reddick, the Monster Energy #45 Toyota, and the Circuit of the Americas venue, all matching the textual description of the event and participants.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.34,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I should verify the driver's identity mentioned in the text, Tyler Reddick, by checking if that entity exists in the image.",
+            "action": "Entity[tyler reddick]",
+            "observation": "\n\n1. **Michael Reddick** (NASCAR driver): Visible in center gesture, wearing black Monster Energy suit.\n2. **Monster Energy**: Prominent green claw logo on driver's suit, helmet on car, and left side.\n3. **Toyota**: Decal on driver's chest, windshield, car front.\n4. **Circuit of the Americas** (CoA): Large banner in the background.\n5. **45 (Car Number):** Painted on the front panel.\n6. **NASCAR Cup Series**: Sticker on the lower front panel.\n7. **Goodyear**, **Mobil 1**: Logos on the driver's left companion's shirt.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous Entity check identified the driver as \"Michael Reddick\", which is a hallucination/misspelling of the text's \"Tyler Reddick\". I should ask VQA to verify the driver's name and ensure the visual evidence matches the text's specific claim.",
+            "action": "VQA[Who is the driver in the image?]",
+            "observation": "\n\nThe driver in the image is **Tyler Reddick**.\n\nHe is pictured standing next to his car, which features the number **45** and the license plate branding for the **Monster Energy NASCAR Cup Series at the Circuit of the Americas**. The name \"REDDICK\" is visible on the side of his racing suit, worn as part of a sponsorship agreement with County Line Racing. The large green \"Monster\" claw on the car door and the race team's \"Monster Energy\" sleeve logo further confirm this Monster Event sponsorship.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA result explicitly confirms the driver in the image is Tyler Reddick, which matches the text's headline (\"Tyler Reddick won Sunday's...\"). The car number 45 and the location \"Circuit of the Americas\" are also confirmed in previous observations. Given the strong confirmation of the primary subject and event details, it is appropriate to conclude this is a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.5,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future race win (2026) and mislabels Tyler Reddick's car number (#45 instead of #24), while the image is AI-generated (visual synthesis) and mismatches the current 2024 racing context with the fabricated date.",
+    "notes": []
+  },
+  "error": null
+}

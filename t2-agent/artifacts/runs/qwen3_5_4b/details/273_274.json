@@ -1,0 +1,152 @@
+{
+  "index": 273,
+  "sample_id": "274",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2094.58,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article distorts a real Supreme Court hearing by falsely elevating it into a scene of Trump personally attending and intensifying the proceedings. That misleading claim is reinforced with an edited interior image and captions that make the visuals appear to document his direct, high-stakes involvement in the hearing.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/274",
+  "image_paths": [
+    "/path/to/ReMMDBench/274/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/274/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/274/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "274",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a specific event involving President Donald Trump attending Supreme Court arguments on \"April 1\" for a \"Wednesday\" hearing, which is chronologically inconsistent and the scenario is known to be a hallucination. The image appears to be an AI-generated variation of Trump in a court hallway due to uncanny visual elements (lighting, hands, geometry) and lacks the definitive evidence of a real newsworthy event like \"demonstrators gathered\" (which are outside). Therefore, the text is false and the image does not support the veracity of the text as a real documentary photo.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims to report a specific real-world event on \"April 1\", but contradicts itself by referring to \"President Trump\" (who is not currently President). The image provided shows a figure in a hallway that resembles Trump but has synthetic visual quality (blurry hands, strange hair) inconsistent with a real documentary photo. The text cannot be verified as true by the image or facts.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I should also verify the location details mentioned in the text. The text states the image is outside the U.S. Supreme Court. I will use Entity extraction on the image to tag the location based on the visual text on the plaque.",
+            "action": "Entity[image]",
+            "observation": "- **“Supreme Court of the United States” plaque** (mounted on the wall): **High certainty** (text is clearly readable).\n- **“Quiet Please” plaque** (below the Supreme Court plaque): **High certainty** (text is clearly readable).\n- **Office/room doorway with number “301”** (above the door frame): **Medium certainty** (number appears to read 301).\n- **Courthouse/government-building interior hallway** (marble/stone walls and floor, institutional lighting): **High certainty**.\n- **Three adult men in suits** (walking/standing in the corridor): **High certainty** (people clearly visible, but identities not determinable from the image).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes demonstrators gathered outside the Supreme Court. I should check if any demonstrators are visible in the visual object to verify the context outside the interior hallway.",
+            "action": "VQA[Are there any people or demonstrators visible in the background of the hallway?]",
+            "observation": "\n\nYes, there are people visible in the background of the hallway. Specifically, behind the main figure walking away, there are two other men in dark suits standing further down the corridor on the left side. They appear to be security personnel or courthouse staff rather than demonstrators.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text specifically mentions President Donald Trump attending the hearing. The man in the foreground has white hair, which could resemble Trump. I need to verify if this man is actually Trump to determine if the image is relevant to the text.",
+            "action": "VQA[Is the man with white hair in the foreground of the image President Donald Trump?]",
+            "observation": "\n\nBased on the visual evidence, the man resembles **Donald Trump**, characterized by his distinct white hair and dark suit. The setting appears to be the **Supreme Court of the United States**, indicated by the sign at the top of the door reading \"301 Chief Justice\" and the plaque on the wall (though the text is garbled as \"SUPERM COURT\" with \"QU KET PLEASE\" below, suggesting the image is AI-generated). While the likeness is strong, the artifacts in the text and the blurred heads of the background figures indicate this is likely a synthetic image rather than a photograph.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 1.0
+      }
+    },
+    "taxonomy_rationale": "The image is an AI-generated hallucination of a Supreme Court interior figure, and the text describes a matching but false event, creating a misleading synthetic narrative.",
+    "notes": []
+  },
+  "error": null
+}

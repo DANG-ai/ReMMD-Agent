@@ -1,0 +1,164 @@
+{
+  "index": 254,
+  "sample_id": "255",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1502.33,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "文本把“单杆153分且被官方确认为世界纪录/改写纪录”描述为已坐实的赛事事实，但所用关键“证据图”存在明显后期添加与改写痕迹，且其余配图并不能共同支撑“153世界纪录”这一核心结论，导致主要印象被误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "体育赛事",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/255",
+  "image_paths": [
+    "/path/to/ReMMDBench/255/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/255/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/255/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/255/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "255",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "I need to check the specific match history of Ronnie O'Sullivan. Did he score a 153 break (world record) during a tournament against Ryan Day? This specific score and opponent combination needs verification. 153 is a high break (147 + penalties), so finding a verified record against Day is key.",
+            "action": "Google[query=\"Ronnie O'Sullivan 153 break Ryan Day match\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I must verify if \\\"Ronnie O'Sullivan 153\\\" is a recognized maximum break record in the Wikipedia database. If the article does not list this break in the \\\"List of snooker maximum breaks\\\" or similar sections, and the date (2026) is future-dated, the text is likely refuted.",
+            "action": "Wikipedia[\\\"Ronnie O'Sullivan 153\\\"]",
+            "observation": "The backslash \\ is a typographical mark used mainly in computing and mathematics. It is the mirror image of the common slash ('solidus'), /. It is a relatively recent mark, first documented in the 1930s. It is sometimes called a hack, whack, escape, reverse slash, slosh, backslant, backwhack, bash, reverse slant, reverse solidus, and reversed virgule.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Wikipedia search failed with a backslash error. I need to investigate the \"World Open 2026\" date and the 153 break claim using Google Search, as this is a future event (March 2026) relative to the model's current knowledge, making it highly likely to be a hallucination.",
+            "action": "Google[query=\"World Open 2026 Ronnie O'Sullivan Ryan Day match\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a broadcast still showing a snooker match with a player leaning over the table. Prominently displayed at the bottom is a graphic overlay reading \"World Open 2026\" and \"BREAK 153 World Record\". The player depicted matches the appearance of Ronnie O'Sullivan. This visual information aligns with the text claiming O'Sullivan hit a 153 break at the 2026 World Open. I need to formally analyze these visual elements to confirm the details.",
+            "action": "Detect[image]",
+            "observation": "The image shows several signs of being **edited/constructed**, and it does **not** look like a clean, single authentic broadcast frame.\n\n### Signs of editing / manipulation\n- **Large added lower-third banner:** The “World Open 2026 / BREAK 153 / World Record” bar looks like a graphic overlay that’s been composited onto the photo. Its size and placement cover the table edge unusually heavily, and it doesn’t match typical snooker broadcast score layouts (which usually show frame score, visit/break, player names, etc., not a huge event-title slab).\n- **Inconsistent typography/layout:** “BREAK 153” is extremely prominent while “World Record” is small and oddly placed; the design feels more like a social-media poster than an official TV scoreboard package.\n- **Faces are deliberately blurred/mosaicked:** That is an explicit post-processing step (privacy masking). It doesn’t prove misinformation, but confirms the image is not raw.\n- **Watermark/handle present:** The Weibo-style watermark “@北青体育” indicates this is a reposted media graphic; such accounts commonly add their own overlays and captions.\n\n### Synthetic-generation indicators\n- No strong AI-generation artifacts (warped cues, impossible hands, broken edges) are obvious. Lighting, depth of field, and object geometry look broadly consistent with a real photographed snooker scene.\n\n### Counterfactual/content concern visible in-image\n- The only “153 / World Record” claim is contained in the **added banner**, not an in-venue scoreboard or standard TV score bug. Visually, the image provides **no independent, in-scene confirmation** of a 153 break—just the superimposed text.\n\n### Overall\nLikely a **real snooker photo** that has been **heavily edited with added text/graphics and face blurring**. The “BREAK 153 / World Record” element looks **composited**, so the image alone isn’t strong evidence that the event/record claim is authentic.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the tournament year mentioned in the text against the text displayed on the image banner to check for consistency.",
+            "action": "VQA[What year is displayed on the banner bottom left?]",
+            "observation": "\n\nThe banner in the bottom left displays the year **2026**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes the \"2026 Snooker World Open\" and a historic \"153\" break by O'Sullivan. The VQA on the image banner confirms the year is \"2026\" on the bottom left, and the text \"BREAK 153\" is visible on the right. All key entities (Year, Event, Score) align between the provided text and the visual content.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.2080083823051904,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image features a foreign overlay graphic and the text distorts the actual event's date and location context.",
+    "notes": []
+  },
+  "error": null
+}

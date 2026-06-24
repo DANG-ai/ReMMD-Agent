@@ -1,0 +1,167 @@
+{
+  "index": 442,
+  "sample_id": "443",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1750.95,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article invents the central news event: there is no evidence here that Orlando City dismissed Oscar Pareja or that MLS opened a formal review over remarks to Messi. It further uses a generated press-conference image and misframes ordinary match visuals as proof of a disciplinary fallout they do not actually document.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/443",
+  "image_paths": [
+    "/path/to/ReMMDBench/443/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/443/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/443/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "443",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The claim states Orlando City fired Oscar Pareja after a 4-2 loss to Inter Miami with a specific messaging about Messi. I need to verify the timing of the firing and the specific score of the match in question (Jan 2024 Florida Derby season) to check for accuracy. Wikipedia is a good starting point for high-profile football management changes.",
+            "action": "Wikipedia[Oscar Pareja Orlando City firing]",
+            "observation": "No summary available. Similar entities: 2026 Orlando City SC season, Orlando City SC, 2026 Major League Soccer season, 2024 Orlando City SC season, Mason Stajduhar",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Wikipedia search was insufficient. I need to search Google for recent news regarding Oscar Pareja's dismissal to verify if it actually happened after the Inter Miami match and confirm the reason involving Lionel Messi.",
+            "action": "Google[Orlando City dismisses Oscar Pareja after Inter Miami loss Lionel Messi]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To further verify the claim, I will perform a Google search to see if there are any news sources mentioning Oscar Pareja's dismissal or resignation from Orlando City during the 2024/2025 season, or if he is listed as the current head coach.",
+            "action": "Google[Oscar Pareja Orlando City head coach 2024]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims Oscar Pareja was immediately fired following a match. However, the previous Google searches returned \"no results\" for his dismissal, suggesting this news may be fabricated. Furthermore, the provided image shows a nameplate reading \"OSCAR PAREJA HEAD COACH,\" which directly contradicts the claim that he has been demoted/dismissed in the aftermath. Given the lack of corroborating text and the visual evidence, the claim is likely factually incorrect.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The text claims that Orlando City dismissed head coach Oscar Pareja following a match against Inter Miami. The image shows a press conference setting with clear branding for \"Orlando City\" and \"Orlando Health\". The nameplate on the table in front of the seated man clearly reads \"OSCAR PAREJA HEAD COACH\". This visual evidence directly confirms the identity of the coach mentioned in the text and his role at the club, supporting the narrative that he was the subject of the hiring/firing decision. The image establishes him as the Head Coach, consistent with the text's description.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.5,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly identifies \"head coach Oscar Pareja\" as the subject of the dismissal. To verify this cross-modal matching, I will use the Entity extraction tool to confirm if the name and title appear on the desk in the image.",
+            "action": "Entity[image]",
+            "observation": "- **Orlando City SC (MLS soccer club)** — **High** (multiple lion-crest club logos on backdrop; branded mic flag).\n- **Inter&Co Stadium** — **High** (text “inter&co STADIUM” repeated on backdrop).\n- **Orlando Health** — **High** (text “ORLANDO HEALTH” repeated on backdrop).\n- **Oscar Pareja (name on placard: “OSCAR PAREJA – HEAD COACH”)** — **High** (clearly readable desk nameplate). *I can’t confirm the person’s identity from the image; only the printed name is visible.*\n- **MLS (Major League Soccer) logo** — **High** (MLS shield on photographer’s jacket).\n- **Press conference setting / media microphones** — **High** (table mics with Orlando City branding, photographers in foreground).\n- **Water bottle on table** — **High**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Entity extraction has already successfully identified the name \"Oscar Pareja\" and title \"Head Coach\" on the placard. To further verify the visual context and confirm the setting matches the press conference implied by the dispute with the media/league in the text, I will ask a VQA question about the specific details of the setting and branding.",
+            "action": "VQA[Describe the text and logos visible on the purple backdrop behind the man sitting at the table.]",
+            "observation": "\n\nThe purple backdrop features a repeating pattern of logos and text:\n\n*   **Orlando City Logo:** A shield containing a golden lion's head with the text \"ORLANDO CITY\" underneath.\n*   **Orlando Health:** The text \"ORLANDO HEALTH\" appears repeatedly in white capital letters.\n*   **Inter & Co Stadium:** A logo featuring the text \"inter & co\" above the word \"STADIUM\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Entity extraction and VQA results confirm the presence of 'Oscar Pareja' as 'Head Coach' and the 'Orlando City' branding in the press conference setting. This aligns perfectly with the news text identifying him as the dismissed coach of Orlando City. The visual evidence strongly supports the subject and team mentioned in the report.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.5,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates the event of the head coach's immediate dismissal and includes a score that contradicts the visual information.",
+    "notes": []
+  },
+  "error": null
+}

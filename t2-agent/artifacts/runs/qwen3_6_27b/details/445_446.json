@@ -1,0 +1,156 @@
+{
+  "index": 445,
+  "sample_id": "446",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2904.07,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "Die Kernaussage des Beitrags stimmt mit dem verfügbaren Quellmaterial überein: PSG gewann das Rückspiel in Liverpool mit 2:0, erreichte mit 4:0 insgesamt das Halbfinale, und Dembélé wurde als Doppeltorschütze hervorgehoben. Auch der erwähnte zurückgenommene Elfmeter nach VAR-Eingriff ist durch die bereitgestellte Evidenz gedeckt.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/446",
+  "image_paths": [
+    "/path/to/ReMMDBench/446/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/446/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/446/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/446/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "446",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions a specific date and score. I will double check the actual date and result of the return leg between Liverpool and PSG in the 2023-24 Champions League to confirm the discrepancies.",
+            "action": "Google[Liverpool vs PSG Champions League quarter final 2024 score and date]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to identify the source of the image provided to see if it matches the description. The image shows Ousmane Dembélé in a PSG kit with a Premier League patch on the sleeve (which is unusual for PSG) and \"BEYOND\" on the other sleeve. Searching the Getty Images ID will reveal the actual context of the photo.",
+            "action": "Google[Getty Images 2270866285]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions a specific match between PSG and Liverpool in the Champions League quarter-finals on April 14, 2026. Since this date is in the future relative to the current time (and likely a typo for a past date if this were real news), and checking historical records, PSG and Liverpool did not meet in the quarter-finals in recent years (e.g., 2023-24 season). I need to verify if such a match ever happened or if the text is completely fabricated.",
+            "action": "Google[PSG vs Liverpool Champions League quarter final history]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a Champions League Quarter-Final match between PSG and Liverpool on April 14, 2026. This date is in the future relative to the current time (2024). Furthermore, in the most recent 2023-24 season, PSG and Liverpool did not meet in the quarter-finals (PSG played Real Madrid, and Liverpool was eliminated in the Europa League quarter-finals). The text presents a future or non-existent event as a completed fact with specific details. Therefore, the text is refuted.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the match took place on April 14, 2026, against Liverpool. However, the image shows a player wearing a PSG kit with a \"BEYOND\" patch on the sleeve. This patch corresponds to the 2022/23 UEFA Champions League season. In that season, PSG did not play Liverpool in the Quarter-Finals (they played Barcelona) but did play Bayern Munich (who wear red) in the Semi-Finals. The visual evidence (2022/23 patch) directly contradicts the text's claim of a 2026 match. Therefore, the image refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a Champions League match between PSG and Liverpool, mentioning a 2:0 win for PSG at Anfield. The image shows a PSG player in a black kit celebrating, with players in red kits in the background. I need to verify if the opponent team is actually Liverpool. Liverpool's kits are manufactured by Nike, but the players in the background appear to have white stripes on their shoulders, which is characteristic of Adidas (e.g., Lille, Bayern Munich). If the opponent is not Liverpool, the text and image do not match.",
+            "action": "VQA[Which team are the players in the red jerseys in the background representing?]",
+            "observation": "\n\nBased on the red jerseys with white stripes on the shoulders (Adidas branding) and the visible sponsor logo on the chest, the players in the background represent **Liverpool**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will verify the opponent team by asking the VQA model to identify the sponsor or team logo on the red jerseys to confirm they are not Liverpool.",
+            "action": "VQA[What is the sponsor logo on the red jerseys of the opposing team?]",
+            "observation": "\n\nStandard Chartered",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a Champions League match between PSG and Liverpool, where PSG won 2:0 at Anfield. The image shows a PSG player (in a black kit, likely away) celebrating, with Liverpool players (in red kits with 'Standard Chartered' sponsor) in the background. The visual elements (teams, kits, celebration) align with the narrative of a PSG victory over Liverpool at Anfield. Although the text date (2026) is in the future and the specific player shown (likely Kimpembe) is not the goal-scorer mentioned (Dembélé), the image semantically supports the text's description of the event (PSG winning against Liverpool).",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future Champions League match in 2026 with specific details that have not occurred, and the images display hallmarks of AI generation such as gibberish text on jerseys and unnatural textures.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,118 @@
+{
+  "index": 359,
+  "sample_id": "360",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1434.83,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "文本所述与权威辟谣信息一致：针对网络上出现的“查分入口/查询通道”等不实消息，官方明确单招成绩、录取结果与通知以湖南省教育厅、湖南省教育考试院及各招生高校官方渠道为准，未授权社会机构对外发布或提供查询服务，并提醒考生不要在非官方页面填写身份证号、手机号、银行卡等敏感信息，结论与证据相符。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "教育考试与招生信息",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/360",
+  "image_paths": [
+    "/path/to/ReMMDBench/360/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/360/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "360",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text warns about fake \"single recruitment\" score inquiry channels and advises relying on official sources like the Hunan Provincial Education Examinations Authority. The image shows a press conference held by the \"Hunan Provincial Education Examinations Authority\" (indicated by the red banner). The screen in the background explicitly states \"Official Response: Online rumors about '2026 Hunan Single Recruitment Score Inquiry Channel' are false information\" and \"Please refer to official channels.\" This visual evidence directly aligns with and supports the text's warning and advice about verifying information through official channels.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific content displayed on the projection screen to confirm it addresses the rumors about 'score inquiry channels' mentioned in the text.",
+            "action": "VQA[What text is displayed on the projection screen regarding the official response?]",
+            "observation": "\n\n官方回应：网传‘2026年湖南\n单招成绩查分道’为不实信息\n请以官方渠道为准",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA result confirms that the projection screen explicitly refutes rumors about the \"2026 Hunan single recruitment score inquiry channel\" and advises using official channels. This directly aligns with the news text which discusses rumors about inquiry entrances and emphasizes relying on official releases from the Hunan Education Examination Institute. The visual evidence strongly supports the text content.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.1,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.1,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The images are likely AI-generated synthetic content depicting a press conference about a \"2026\" event, which constitutes a fabrication of a future or non-existent event given the current timeline, and the text supports this fabricated scenario.",
+    "notes": []
+  },
+  "error": null
+}

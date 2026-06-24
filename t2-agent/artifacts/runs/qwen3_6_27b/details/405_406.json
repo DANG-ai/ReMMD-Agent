@@ -1,0 +1,163 @@
+{
+  "index": 405,
+  "sample_id": "406",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1317.88,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article’s main explanatory point about the March 16 tornado watch and the March 6 Michigan supercell is grounded in real weather reporting and the cited Michigan storm-chaser survey details. However, it mildly overstates the wider East Coast disruption picture, uses an edited header graphic, and pairs the text with authentic but context-shifted damage imagery that is not from the March 16 Mid-Atlantic event.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/406",
+  "image_paths": [
+    "/path/to/ReMMDBench/406/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/406/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/406/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/406/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/406/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/406/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/406/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/406/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/406/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/406/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "406",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I will search for the specific tornado details mentioned in the text (Edwardsburg EF-1, Three Rivers EF-2, Union City EF-3, Tekonsha EF-0) to see if they correspond to a real historical event. I will check if these tornadoes occurred on a specific date, likely in 2024 or recently, to verify the factual basis of the text.",
+            "action": "Google[Edwardsburg Three Rivers Union City Tekonsha Michigan tornado outbreak details]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will search for the specific phrase \"Spring Tornado Pattern 2026\" to see if it refers to a known simulation, game, or article. I will also search for the tornado details mentioned (Edwardsburg, Three Rivers, Union City, Tekonsha) to check if they correspond to a real historical event, likely the April 2024 Michigan tornado outbreak, which would suggest the text is a fictionalized or misdated account.",
+            "action": "Google[\"Spring Tornado Pattern 2026\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will search for the specific details of the Michigan tornado outbreak mentioned in the text (Union City EF-3, Three Rivers EF-2, Edwardsburg EF-1) to confirm if they correspond to the April 3, 2024 event and to verify the casualty and damage figures.",
+            "action": "Google[Union City Three Rivers Edwardsburg tornado outbreak April 3 2024 details casualties]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a fictional or future scenario (\"Spring Tornado Pattern 2026\") but provides specific details about a tornado in Edwardsburg. I will compare these details with the provided image. The image is titled \"SPRING TORNADO PATTERN 2026\" and shows \"PRELIMINARY TORNADO DAMAGE SURVEY RESULTS\" for \"EDWARDSBURG EF-1\". The details in the text (EF-1, 95 mph winds, 13.4 miles path, 350 yards width, 1 deceased, 0 injuries, date 3/6/26) match the image exactly. The text also mentions \"Michigan Storm Chasers\", which matches the logo on the image. The text explicitly states the illustration is \"adapted from a Michigan tornado survey graphic\", which aligns with the image being a modified version of a real survey (likely from the April 2024 outbreak) for this 2026 scenario. Since the text accurately describes the provided image and its contents, it is supported.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text states that a \"stylized illustration labeled 'Spring Tornado Pattern 2026'\" accompanies the story and is adapted from a Michigan tornado survey. The image provided has the exact header \"SPRING TORNADO PATTERN 2026\" and displays survey results for the Edwardsburg, Michigan tornado, complete with a map and the \"Michigan Storm Chasers\" logo. This confirms the text's meta-description of the image and its content.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific tornado event in Edwardsburg, Michigan, on March 6, 2026, with details like EF-1 rating, 95 mph winds, 13.4 mile path, 350 yards width, 0 injuries, and 1 death. I need to verify if the image displays these exact same statistics for the Edwardsburg tornado to confirm a match.",
+            "action": "VQA[What are the statistics for injuries, deceased, max width, path length, and max estimated winds for the Edwardsburg EF-1 tornado shown in the image?]",
+            "observation": "\n\nBased on the infographic provided, here are the statistics for the Edwardsburg EF-1 tornado:\n\n*   **Injuries:** 0\n*   **Deceased:** 1\n*   **Max Width:** 350 Yards\n*   **Path Length:** 13.4 Miles\n*   **Max Estimated Winds:** 95 MPH",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA action successfully extracted the key statistics for the Edwardsburg tornado from the image (Injuries: 0, Deceased: 1, Max Width: 350 Yards, Path Length: 13.4 Miles, Max Estimated Winds: 95 MPH). These values match perfectly with the description in the text: \"The Edwardsburg tornado, rated EF-1, carried maximum winds of 95 mph, stretched 13.4 miles and reached a width of about 350 yards. It caused one fatality but no reported injuries\". The text also specifies the date as March 6, 2026, and the image displays \"3/6/26\" in the time boxes. The image also explicitly labels \"EDWARDSBURG EF-1\" and \"CASS COUNTY\". Therefore, the image content matches the text description.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.46415888336127786,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text is verified as factually supported (describing a 2026 event), but the accompanying images have a very high probability of being synthetic (p_fake_image=0.900) and depict generic storm damage that does not clearly correspond to the specific locations and details of the reported tornadoes, indicating a context mismatch.",
+    "notes": []
+  },
+  "error": null
+}

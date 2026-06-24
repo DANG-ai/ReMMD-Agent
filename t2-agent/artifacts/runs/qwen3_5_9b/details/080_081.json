@@ -1,0 +1,167 @@
+{
+  "index": 80,
+  "sample_id": "081",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1034.25,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article is built on a real news event and genuine evacuation reporting, but it misleadingly fuses separate strands of the regional crisis into one narrative around the Chinese death. It also uses a manipulated border-road image and a fully synthetic route map, while pairing unrelated museum and airport visuals with the fatality-and-evacuation storyline.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/081",
+  "image_paths": [
+    "/path/to/ReMMDBench/081/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/081/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/081/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/081/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/081/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "081",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Wikipedia likely lacks granularity for specific三天-old evacuation numbers, but might have an article on the \"2024 Iran-Israel tensions\" or \"Tehran Security Status\". This will confirm the timeline (March vs April) and the general scope of evacuations.",
+            "action": "Wikipedia[Tehran Security Situation]",
+            "observation": "No summary available. Similar entities: 2025–2026 Iranian protests, Tehran, Tehran water shortage, Thar-Allah Headquarters, 2026 Iran massacres",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "First, I need to check if there is any Wikipedia coverage of recent conflict between Iran and Israel or specific events regarding Chinese citizens in Iran around March. The text mentions \"Tehran Security Situation\" but that was broad. I should try a more specific query related to the conflict and Chinese evacuations.",
+            "action": "Wikipedia[2024 Iran–Israel conflict Chinese evacuations]",
+            "observation": "No summary available. Similar entities: Iran–Israel proxy conflict, April 2024 Iranian strikes on Israel, October 2024 Iranian strikes on Israel, Israel, Economic impact of the 2026 Iran war",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text provides very specific claims regarding the number of evacuees (18) and the date (March 1) at the Astara border, citing Xinhua. Since Wikipedia yielded no results, I need to use Google to verify if this specific news story (number of evacuees and route) was actually reported by mainstream Chinese media outlets.",
+            "action": "Google[Xinhua 18 Chinese citizens evacuated Iran to Azerbaijan March 1 Astara]",
+            "observation": "18 Chinese nationals evacuated from Iran to Azerbaijan: Chinese nationals evacuated from Iran prepare to take a bus to Baku at the Astara checkpoint in southern Azerbaijan, March 1, 2026. Eighteen ... (https://en.people.cn/n3/2026/0302/c90000-20429939.html)\n18 Chinese nationals evacuated from Iran to Azerbaijan - China.org.cn: Chinese nationals evacuated from Iran pose for a group photo at the Astara checkpoint in southern Azerbaijan, March 1, 2026. [Photo/Xinhua]. (http://www.china.org.cn/2026-03/02/content_118354767.shtml)\nThe first batch of 18 Chinese nationals from Iran had crossed the ...: The evacuation was organized by the Chinese Embassy in Azerbaijan and supported by the Azerbaijani Overseas Chinese Association, Bao noted. 󰍸 ... (https://www.facebook.com/globaltimesnews/videos/the-first-batch-of-18-chinese-nationals-from-iran-had-crossed-the-astara-border-/1943721229559372/)\nFeature: A taste of home for Chinese evacuees from Iran in Azerbaijan: Chinese nationals evacuated from Iran pose for a group photo at the Astara checkpoint in southern Azerbaijan, March 1, 2026. (Xinhua/Chen ... (https://english.news.cn/20260305/f9ccb5b6a426490c9be11773c95d497c/c.html)\n【InPics】18 Chinese nationals evacuated from Iran to Azerbaijan ...: 【InPics】18 Chinese nationals evacuated from Iran to Azerbaijan （Photos：Xinhua） https://english.news. cn/20260301/ ... (https://www.facebook.com/globaltimesnews/posts/inpics18-chinese-nationals-evacuated-from-iran-to-azerbaijan-photosxinhua/1458858559619680/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 8,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.30000000000000004,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a temporary or mobile checkpoint with a \"table of food\" and \"Duty Free\" sign (background). The context \"Astara\" is a common location for evacuees. The watermark \"@Zhengzhou Morning News\" and \"2024\" suggests a specific recent event. The text explicitly says \"Chinese media published images...\". If the detection confirms this is a real image masked with the watermark, the text is supported. I will assume the image matches the \"Astara crossing\" description and is recent (2024), which aligns with the \"mid-March\" timeline in the text. The goal is to verify consistency. I will default to \"IMAGE_SUPPORT\" as a high-probability next step if the image is indeed a real screenshot of the news event.",
+            "action": "Tool: Finish[IMAGE_SUPPORT]",
+            "observation": "Could not parse action: Tool: Finish[IMAGE_SUPPORT]",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a scene with a watermark \"@郑州晚报\" (Zhengzhou Evening News), which is a Chinese state/media outlet mentioned in the text. The text claims \"Chinese media published images from the aftermath showing evacuees at the Astara border crossing\". The image depicts people in a covered structure (possibly a transit point or checkpoint area) with one person taking a photo, aligning with the text's description that \"others were seen taking quick photographs\". The presence of the media watermark validates that socially circulated posts from Chinese media regarding this event are visible. The context of \"Duty Free\" or \"Checkpoint\" structures in transit zones supports the narrative of travelers/passengers (evacuees) in a covered area. Thus, the image aligns with the text's claim about media imagery of evacuees.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text claims \"Chinese media published images\". The image contains watermarks with social media handles. Extracting this text can verify if the source matches the described Chinese media outlets.",
+            "action": "Entity[image]",
+            "observation": "- **People (group photo, ~5 individuals)** — **High** (faces are blurred; cannot identify who they are).\n- **Weibo watermark/logo (“微博” icon)** — **High** (visible at bottom).\n- **Text watermark: “@潇湘晨报” (Xiaoxiang Morning News)** — **High** (readable at bottom center).\n- **Text watermark: “@郑州晚报” (Zhengzhou Evening News)** — **High** (readable at bottom right).\n- **Bottled water (multiple blue-capped bottles; brand unreadable)** — **High**.\n- **Disposable paper cups (one in hand; others on table)** — **High**.\n- **Smartphone on the table** — **Medium** (shape suggests a phone).\n- **Long covered walkway / corridor structure (glass/metal frame)** — **High**.\n- **Signboard in the distance (text not clearly legible)** — **Low**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes 'evacuees at the Astara border crossing' and mentions signs or checkpoints. The Entity observation noted a 'Long covered walkway / corridor structure' which is consistent with a transit or shelter area at a border crossing (like Astara). The watermarks confirm the source is Chinese media. The visual evidence of a group of people waiting/hanging out in a covered area supports the 'evacuees' narrative. Given the strong correlation between the watermarks (Chinese media) and the subject (group of people/evacuees), the image matches the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.564621617328617,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.8,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.5
+      }
+    },
+    "taxonomy_rationale": "The news text describes a 2026 event, but the provided visuals include a map explicitly dated May 2024 and potentially synthetic AI-generated flight schedules, creating a temporal mismatch and synthetic content distortion.",
+    "notes": []
+  },
+  "error": null
+}

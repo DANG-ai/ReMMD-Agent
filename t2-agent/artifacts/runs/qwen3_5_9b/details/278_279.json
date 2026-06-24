@@ -1,0 +1,177 @@
+{
+  "index": 278,
+  "sample_id": "279",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1749.61,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article’s main takeaway—that a rumor wave falsely or prematurely portrayed the USS Abraham Lincoln as being under attack amid real regional tensions—is broadly consistent. However, it slightly overstates how strongly the ship’s movements were linked to reported launches, and it uses edited and context-loose visuals that heighten the sense of an active live crisis beyond what the evidence establishes.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/279",
+  "image_paths": [
+    "/path/to/ReMMDBench/279/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/279/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/279/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/279/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/279/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/279/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/279/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/279/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/279/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/279/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "279",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Need to verify if this \"breaking news\" about USS Abraham Lincoln being targeted by Iran on March 1-2, 2026 is factual or fictional. The date is in the future (2026), which is a strong indicator this may be a fabricated story. Should search for actual deployment records and recent incidents.",
+            "action": "Wikipedia[query=USS Abraham Lincoln deployments and incidents]",
+            "observation": "No summary available. Similar entities: USS Thresher (SSN-593), USS Jarrett, Collins-class submarine, John C. Calhoun, Philadelphia",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Search external news sources for any reports of this specific incident or similar narratives that might identify this as a known hoax or a piece of disinformation that circulated on social media.",
+            "action": "Google[query=\"USS Abraham Lincoln\" \"Breaking News\" March 2026 hoax]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.3,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The text describes the \"Cover image\" as a \"file photo used for this story\" featuring the USS Abraham Lincoln presented with an \"alert-style treatment\" and \"breaking-news graphics.\" The provided image displays a carrier at sea overlaid with exactly these elements: a red \"BREAKING NEWS\" banner, a \"LIVE\" tag, and a news ticker. This visual consistency strongly suggests the image acts as the described cover image for the story.",
+            "action": "Detect[image]",
+            "observation": "- **Apparent compositing/graphic overlay:** The lower-third “BREAKING NEWS / LIVE / NEWS 24/7” banner looks like a clean, added broadcast-style template. The font, flat color blocks, and sharp edges are consistent with an overlay rather than something captured in-camera.\n\n- **No clear signs of AI image generation in the ship/sea/sky:** The aircraft carrier’s structure (deck markings, island superstructure, railings) and the **wake pattern** match a plausible hard turn at sea. Water texture and reflections look coherent, and the horizon line/atmospheric haze look natural.\n\n- **No obvious cut-and-paste artifacts:** Around the ship edges and wake, there aren’t visible halos, mismatched lighting, or jagged selection boundaries that would suggest the carrier was pasted into a different ocean/sky background.\n\n- **Color grading/mood treatment likely:** The scene has a slightly cinematic, cool-toned grade with a warm band near the horizon—plausible as editorial color correction rather than fabrication.\n\n**Overall:** The underlying photo appears authentic (or at least not visibly manipulated), while the “breaking news” elements are clearly **digitally added** presentation graphics. No direct visual evidence in the image itself supports the specific missile-strike narrative.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes the \"Cover image\" as being \"presented with... alert-style treatment.\" The image provided shows the USS Abraham Lincoln with exactly such text overlays. However, the text also notes that the \"material pushing that narrative\" included \"mime-type graphics\" and \"file footage.\" The image does not show the specific \"unfolding emergency\" described in the rumors (no smoke, no damage), but the text explicitly states it is a *file photo* (stock) not *evidence* of the event. The visual content matches the text's honest description of the cover image being a generic photo treated for effect, confirming the veracity of the text's claims regarding the image.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text states the image is a file photo of the USS Abraham Lincoln, a U.S. Navy aircraft carrier. I should use the Entity tool to identify the main object in the image to confirm it is indeed a U.S. Navy carrier, matching the description in the text.",
+            "action": "Tool[Entity[What type of naval vessel is shown in the image?]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should verify the text overlay in the image to ensure it matches the 'alert-style treatment' described in the article. I will use VQA to check the text content in the banner.",
+            "action": "VQA[What text is displayed in the red and white banners at the bottom of the image?]",
+            "observation": "\n\nThe red and white banners at the bottom of the image display the following text:\n\n**On the left side:**\n-   In the red box: \"**BREAKING NEWS**\"\n-   In the white box: \"**U.S. NAVY DEPLOYMENT AMID RISING TENSIONS**\"\n\n**On the right side:**\n-   In the top red box: \"**LIVE**\"\n-   In the white box below: \"**NEWS**\" and \"**24/7**\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to confirm the vessel in the image is a US aircraft carrier to match the text's description of the USS Abraham Lincoln. The text refers to it as a 'super carrier' and 'carrier strike group'. Verifying the ship type is essential.",
+            "action": "VQA[Is the main naval vessel in the image a United States Navy aircraft carrier?]",
+            "observation": "\n\nYes, based on the visual evidence and text overlays, the main naval vessel is a United States Navy aircraft carrier.\n\nSeveral identifiers confirm this:\n*   **Visual Features:** The ship displays key characteristics of the US Navy's **Gerald R. Ford class** (specifically the USS *Gerald R. Ford*, CVN-78). These include the island superstructure located on the starboard (right) side, the angled flight deck, the helicopter well on the port (left) bow, and the distinctive \"zero-wake\" hull design (a smooth, curved stern intended to reduce wake signatures) along with electromagnetic aircraft launch (EMALS) tracks visible on the deck.\n*   **Text Overlay:** The banner at the bottom explicitly reads \"U.S. NAVY DEPLOYMENT,\" further identifying the nationality of the vessel.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the previous VQA observation identifying the vessel as Gerald R. Ford and the text claiming it is Abraham Lincoln, there is a clear identity mismatch. The most efficient next step is to conclude the task.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.30000000000000004,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.7,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.85,
+        "C2 Contextual Inconsistency": 0.3,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text captions the image as the \"USS Abraham Lincoln,\" but verification details identify the hull features (EMALS tracks) as a Gerald R. Ford class carrier, indicating a semantic mismatch between the text label and the visual content, alongside an added visual overlay.",
+    "notes": []
+  },
+  "error": null
+}

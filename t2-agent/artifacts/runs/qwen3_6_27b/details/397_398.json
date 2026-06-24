@@ -1,0 +1,129 @@
+{
+  "index": 397,
+  "sample_id": "398",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1448.65,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "L’article s’appuie sur des faits réels distincts — une commande AerCap et une commande de VSR700 — mais les fusionne en un récit exagéré de relance industrielle immédiate et déjà visible sur les sites Airbus. Les images renforcent abusivement cette lecture en suggérant, par édition et mise en scène positive, qu’elles documentent directement cette séquence précise alors qu’elles n’en apportent pas la preuve.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/398",
+  "image_paths": [
+    "/path/to/ReMMDBench/398/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/398/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/398/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "398",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions a specific order by AerCap for A320neo and A321neo aircraft and discusses delivery preparation. The image shows an Airbus A320 (with 'neo' branding on the tail) on the tarmac, and crucially, a sign in the foreground that reads 'AERCAP' and 'Préparation livraison / Delivery preparation'. This directly links the company, the aircraft type, and the activity mentioned in the text. I need to verify the text on the sign and the aircraft livery to confirm this connection.",
+            "action": "Detect[image]",
+            "observation": "- **No obvious signs of AI synthesis:** The aircraft, runway environment, background planes, and heat haze/atmospheric softness look photographically consistent. Edges (landing gear, engine nacelle, tail) are clean without the “melted” artifacts often seen in generated images.  \n- **Lighting and shadows are coherent:** The plane’s shading and the ground tones match a single light direction; no mismatched highlights or unnatural shadow discontinuities.  \n- **Text and logos look plausible:** The AerCap sign in the foreground has crisp, readable bilingual text with consistent typography and perspective; the A320neo-style “neo” and “AIRBUS A320” markings on the fuselage look aligned with the aircraft curvature rather than pasted flat.  \n- **Depth/perspective consistency:** Foreground sign, midground grass/taxiway, and the aircraft scale/position feel consistent; no obvious cut-and-paste seams around the plane.  \n- **Minor note:** The image appears to be a composite-style layout only in the sense that it’s a single framed shot with a prominent foreground sign; nothing indicates the sign or aircraft was digitally inserted.\n\n**Overall:** The image appears authentic with no clear visual evidence of manipulation or synthetic generation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text discusses an order by AerCap for A320neo aircraft and the resulting industrial acceleration and delivery preparations in Toulouse. The image explicitly features an Airbus A320neo aircraft (identifiable by the 'neo' livery on the tail and 'AIRBUS A320' text) and a sign in the foreground reading 'AERCAP' and 'Préparation livraison / Delivery preparation'. The visual evidence directly corroborates the specific details of the news report regarding the company, aircraft type, and activity status. Therefore, the image supports the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.1,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future event (drone order notified in late 2025) and mismatches the context of the images (A320 delivery prep) with the text's narrative of industrial acceleration and location (Toulouse), creating a contextual inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

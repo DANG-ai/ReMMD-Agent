@@ -1,0 +1,157 @@
+{
+  "index": 75,
+  "sample_id": "076",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1349.12,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article builds a misleading impression that ivermectin has become a credible outbreak-linked therapeutic option for hantavirus, when the available source basis only supports that some social-media advocacy and sales chatter existed while officials said no evidence shows it works and supportive care remains standard. Edited images further make old or unrelated ivermectin material look like current, authoritative outbreak graphics, strengthening a false connection between the drug and the MV Hondius cluster.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/076",
+  "image_paths": [
+    "/path/to/ReMMDBench/076/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/076/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/076/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/076/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "076",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "I need to find the specific source of the text \"Doctors revisit ivermectin as hantavirus questions grow\" to confirm it's a real headline or caption associated with the MV Hondius story, as described in the news text.",
+            "action": "Google[\"Doctors revisit ivermectin as hantavirus questions grow\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should also check for the specific headline \"Doctors revisit ivermectin as hantavirus questions grow\" to see if it's a real article title, perhaps from a specific outlet.",
+            "action": "Google[\"Doctors revisit ivermectin as hantavirus questions grow\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The provided image clearly displays a plaque regarding the \"Discovery of Ivermectin\" with a news ticker at the bottom that reads \"Doctors revisit ivermectin as hantavirus questions grow\". This matches the text quoted in the news article perfectly. The news article describes this as a \"reformatted information card\" or \"cover image\" shared alongside posts about the MV Hondius outbreak. Since the image provided is exactly that graphic, the visual evidence supports the text's claim about the existence and content of this specific graphic.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 7,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.7,
+        "best_value": 0.85,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a specific image circulating online that pairs a graphic about ivermectin's history with a banner saying \"Doctors revisit ivermectin as hantavirus questions grow.\" The provided image shows exactly this: a plaque about the \"Discovery of Ivermectin\" and a blue banner with that exact text. To formally verify the content and ensure no subtle discrepancies, I will use the detection tool to analyze the image text.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a real photograph of an American Chemical Society plaque (“National Historic Chemical Landmark – Discovery of Ivermectin”) mounted on stone steps, but it has been **edited/repurposed** with a news-style banner.\n\n**Reasons it looks authentic (base photo):**\n- Plaque surface texture, lighting, and shadows look consistent and natural.\n- Perspective and depth-of-field match a typical outdoor close-up photo.\n- Fine text on the plaque is coherent and evenly engraved/printed (not the garbled text often seen in AI-generated images).\n\n**Signs of editing / compositing:**\n- A **lower-third headline bar** (“Doctors revisit ivermectin as hantavirus questions grow”) is clearly an added graphic overlay, not part of the photographed scene.\n- The banner’s crisp edges and styling contrast with the photographed plaque/steps, consistent with post-production addition.\n\n**No clear signs of AI/synthetic generation:**\n- No obvious warping, inconsistent reflections, duplicated textures, or nonsensical typography. The main manipulation is the added headline graphic, which can lend a “news” tone to an otherwise unrelated plaque photo.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions that \"reformatted information card[s]\" have circulated, implying digital editing or creation. The detection tool confirmed the image is a real photo of a plaque that has been digitally edited with a news banner. While the underlying photo is real, the text accurately describes the final product as a \"reformatted information card\" or a pairing of graphics. Thus, the image is consistent with the text's description of the visual material being discussed.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a specific image: \"a reformatted information card that says, 'Doctors revisit ivermectin as hantavirus questions grow'\". I need to verify if this text appears in the provided image. I will use VQA to read the text at the bottom of the image.",
+            "action": "VQA[What does the text at the very bottom of the image say?]",
+            "observation": "\n\nThe text at the very bottom of the image, inside the blue banner, says:\n\n**Doctors revisit ivermectin as hantavirus questions grow**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA result confirmed the text \"Doctors revisit ivermectin as hantavirus questions grow\" is present in the image, which matches the specific description in the news text. The image content (an Ivermectin landmark plaque) is consistent with the article's topic. I have enough information to declare a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.8242570599617114,
+      "p_fake_text": 0.19999999999999996,
+      "p_fake_image": 0.30000000000000004,
+      "p_fake_match": 0.0,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The primary visual (plaque) has been edited with a news banner overlay, which constitutes visual editing.",
+    "notes": []
+  },
+  "error": null
+}

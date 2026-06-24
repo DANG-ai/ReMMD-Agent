@@ -1,0 +1,165 @@
+{
+  "index": 77,
+  "sample_id": "078",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1201.95,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article starts from real facts about the Fort Campbell drone theft but reframes them to imply the case may be closer to an internal or administrative movement of equipment than a targeted theft. That insinuation is strengthened by an edited surveillance image suggesting official credentials and by unrelated imagery that nudges readers toward a misleading insider-security interpretation.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/078",
+  "image_paths": [
+    "/path/to/ReMMDBench/078/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/078/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/078/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/078/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/078/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "078",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "Performing a Google search for the specific details provided in the text, such as the Skydio X10D drone theft and the 101st Airborne connection.",
+            "action": "Google[Fort Campbell 101st Airborne drone theft Skydio X10D November 2025]",
+            "observation": "Fort Campbell drone theft suspects identified following public tips: The Skydio X10D Drone Systems were stolen in November 2025 from a locked storage area within a secured government building. The individuals ... (https://christiancountynow.com/news/267762-fort-campbell-drone-theft-suspects-identified-following-public-tips/)\nU.S. Army Fort Campbell - Facebook: The theft happened between November 21–24, 2025, and investigators are offering a $5,000 reward for information. The story is resurfacing now as ... (https://www.facebook.com/FortCampbell/posts/the-department-of-the-army-criminal-investigation-division-is-offering-a-reward-/1354644733361223/)\nArmy IDs suspected drone thieves after offering $5K reward for ...: The drones, which the Army Criminal Investigation Division identified as Skydio X10D systems, were last seen on the morning of Nov. 21, 2025 ... (https://defensescoop.com/2026/03/12/army-ids-suspects-stole-drones-fort-campbell-5000-dollar-reward/)\n$5K reward offered after four military drones stolen from Fort Campbell: According to the U.S. Army Fort Campbell, four Skydio X10D Drone systems were last seen on the morning of November 21, 2025, at the 326th ... (https://www.wsmv.com/2026/03/10/5k-reward-offered-after-four-military-drones-stolen-fort-campbell/)\nUS Army offers up to $5,000 reward for information after 4 drones ...: The Army's Criminal Investigation Division says the four Skydio X10D drone systems were last seen on November 21 inside the 326th Division ... (https://www.instagram.com/reel/DWHWYxSuaSO/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Although Google search provided strong evidence, checking Wikipedia for the specific incident (Fort Campbell drone theft) would provide an additional layer of official confirmation from an encyclopedia source, which is often part of the \"Wikipedia first\" preference if available.",
+            "action": "Wikipedia[Fort Campbell Skydio X10D drone theft 2025]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results confirm the factual claims in the text regarding the date (Nov 21-24, 2025), location (Fort Campbell), equipment (Skydio X10D), and reward ($5,000). The absence of a Wikipedia entry is typical for such specific, recent incidents, but the news reports provide sufficient corroboration.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.7,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text states that the Army released surveillance images showing two people inside the building. To verify this claim and ensure the image provided is indeed the referenced surveillance footage, I should first analyze the image in detail using the Detect tool to confirm it shows two individuals in the described setting.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like real CCTV stills:** The image is a side-by-side of two low-resolution, slightly blurry frames with flat lighting and visible compression—consistent with security-camera captures rather than AI-generated imagery or high-quality photography.  \n- **Intentional obfuscation present:** Both subjects’ faces appear **pixelated/blurred** in a rectangular way typical of privacy redaction. That is an edit, but it’s consistent with normal law-enforcement/public-release handling, not a sign of fabrication.  \n- **No clear generative artifacts:** I don’t see typical synthetic-image issues (warped geometry, impossible limb anatomy, inconsistent shadows, “melted” objects, nonsensical textures). The ceiling lights, hallway lines, and perspective look coherent.  \n- **No obvious compositing/tampering:** Edges around the people and objects don’t show clear cutout halos or mismatched noise patterns. The two panels appear to be separate frames/views, not a stitched fake scene.\n\n**Overall:** Aside from deliberate face blurring/redaction, the image appears visually authentic as surveillance footage with normal compression and motion blur, with no strong signs of AI synthesis or manipulation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the news text, the Army released surveillance images showing two people inside the secured building. The provided image displays exactly two individuals walking through an indoor hallway with office furniture and lighting consistent with a government facility. The grainy, low-resolution quality and rectangular pixelation on the faces are characteristic of security camera footage released by law enforcement, confirming the visual claim in the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text notes the suspects had \"authorized access to... the building.\" Checking for visible credentials or uniforms in the image can support this claim and confirm the match.",
+            "action": "VQA[Is the person on the left wearing an ID badge or access credential?]",
+            "observation": "\n\nYes, the person on the left is wearing an ID badge or access credential. It is hanging from a lanyard around their waist, visible against their left hip (viewer's left).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text emphasizes that the released images show \"two people\" who had \"authorized access.\" I have confirmed the ID on the left figure; verifying the right figure is essential to fully support the claim that both suspects possessed credentials.",
+            "action": "VQA[Is the person on the right wearing an ID badge or access credential?]",
+            "observation": "\n\nYes, the person on the right appears to be wearing an ID badge or access credential clipped to the upper left side of their jacket, just above the tan patch.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes releasing \"surveillance images showing two people\" who had \"authorized access.\" Visual evidence confirms two individuals in a facility-style setting, and VQA findings have identified ID badges on both, strongly supporting the claim of authorized access. The core textual details are visually validated.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.5848035476425731,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.8,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text and search results support the factual claim of the drone theft and identify details like authorized access, making it real text, but the high p_fake_image score and the \"Mixture\" verdict suggest the visual content is AI-generated/synthetic.",
+    "notes": []
+  },
+  "error": null
+}

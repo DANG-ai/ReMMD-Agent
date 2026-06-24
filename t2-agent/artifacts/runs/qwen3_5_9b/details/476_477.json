@@ -1,0 +1,129 @@
+{
+  "index": 476,
+  "sample_id": "477",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1068.76,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article’s central result claim is misleadingly rewritten as a confirmed Reddick victory and 3-for-3 start, while the visuals are manipulated or synthetic rather than authentic documentation of that claimed outcome. The package therefore creates a predominantly false impression through both textual distortion and non-authentic imagery.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/477",
+  "image_paths": [
+    "/path/to/ReMMDBench/477/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/477/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/477/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "477",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to first analyze the image content to verify the key entities mentioned in the news text: the driver (Tyler Reddick), the race (NASCAR Cup Series), the track (Circuit of the Americas), and the team (23XI Racing).",
+            "action": "Detect[image]",
+            "observation": "- **Overall look:** The scene reads as a normal motorsports victory-lane photo: consistent daylight, coherent shadows, realistic reflections on the car’s glass/paint, and natural crowd depth/blur. No obvious AI “smearing,” warped geometry, or impossible object interactions.\n\n- **Text/logos:** “Circuit of the Americas” signage and sponsor logos (Monster, Toyota, Goodyear, etc.) appear sharp and plausibly placed, with consistent perspective. No clear garbling typical of synthetic images.\n\n- **Edits present:** Multiple **faces are deliberately blurred/blocked** with rectangular masks. These masks have hard edges and uniform blur, indicating **post-processing/redaction** rather than camera artifact.\n\n- **No clear counterfactual elements:** Nothing in the image itself contradicts physical reality; the only notable manipulation is the privacy blurring.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The observation confirms the visual evidence in the image (driver's gear with 'REDDICK' nameplate, car #45, 23XI/Monster livery, and 'Circuit of the Americas' signage) aligns perfectly with the specific entities mentioned in the news text. The image supports the claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.8,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.95,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.85,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text invents a non-existent race at \"Circuit of the Americas\" for a future date (March 2026) and places real, likely past-period images into this fabricated context.",
+    "notes": []
+  },
+  "error": null
+}

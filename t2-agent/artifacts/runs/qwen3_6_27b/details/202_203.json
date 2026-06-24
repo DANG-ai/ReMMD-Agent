@@ -1,0 +1,170 @@
+{
+  "index": 202,
+  "sample_id": "203",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2184.43,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article is anchored in a real Section 702 stopgap extension, but it overstates what that action legally and practically implies by repeatedly suggesting it substantively preserves domestic watchlisting and routine exposure of ordinary Americans. Edited images and recaptioned screenshots are then used as if they document or corroborate that broader claim, even though they do not actually show Section 702 deliberations or proof of such abuses.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/203",
+  "image_paths": [
+    "/path/to/ReMMDBench/203/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/203/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/203/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/203/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/203/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/203/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/203/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/203/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/203/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/203/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "203",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will search for the specific phrase \"one of Washington’s most opaque surveillance fights burst back into public view\" to identify the source of the text and determine if it's real news or fiction.",
+            "action": "Google[\"one of Washington’s most opaque surveillance fights burst back into public view\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will search for the specific event described in the text: the extension of FISA Section 702 through April 30, 2026, and President Trump signing it on April 18, 2026. This will help determine if this is a real past event (if the current date is later than 2026) or a fictional/future scenario.",
+            "action": "Google[\"FISA Section 702 extension April 30 2026 Trump sign April 18\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes events in April 2026, specifically the signing of a FISA 702 extension by President Trump. The image also bears the date \"April 2026\". Since this date is in the future relative to the current time, these events have not occurred. The text appears to be a fictional scenario or a generated news article. The previous searches yielded no results for this text or event. I can conclude the text is false.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.98,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to analyze the image content to verify the text on the podium and the date stamp in the corner, comparing them with the details in the news text about the FISA 702 extension in April 2026.",
+            "action": "Detect[image]",
+            "observation": "- **Clear sign of editing (redaction/obscuring):** Nearly every person’s face is covered by a uniform, skin-toned square blur. The blocks are unnaturally consistent in shape/texture and don’t follow facial contours, indicating deliberate post-processing rather than natural blur or depth-of-field.\n\n- **Added graphic elements/text:** The podium placard reading **“NATIONAL SECURITY / FISA 702”** looks like an overlaid design (very clean typography, centered layout, high contrast, and a border treatment that resembles a graphic template more than a photographed sign). The top-right label **“Washington, April 2026”** is also a clear digital overlay.\n\n- **Compositing/cleanup look:** Aside from the face blocks and text overlays, the lighting and perspective across the scene are broadly consistent (sunlight, shadows, and depth). No obvious warped hands, impossible reflections, or mismatched edges are apparent.\n\n**Overall:** The base image appears to be a real photo that has been **heavily edited** with face-obscuring blocks and **added caption/placard graphics**, making it more of a designed political graphic than an untouched photograph.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly states that \"President Donald Trump signed the temporary measure.\" The image, however, depicts a different individual (a man with glasses, not Trump) giving a speech at a podium. Furthermore, the image contains digital overlays (podium text, date stamp) and AI-generated artifacts (irregular hands), indicating it is not a documentary photograph of the signing event described. The text describes a signing ceremony, while the image shows a speech, creating a factual mismatch between the primary action in the text and the visual content.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Verify the date and location stamp in the top right corner to see if it aligns with the April 2026 timeline in the text.",
+            "action": "VQA[What text is visible in the dark bar at the top right of the image?]",
+            "observation": "\n\nThe text visible in the dark bar at the top right is \"Washington, April 2026\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Verify the text on the podium to ensure it aligns with the article's main topic, which is the extension of FISA Section 702.",
+            "action": "VQA[What text is written on the blue sign attached to the front of the podium?]",
+            "observation": "\n\nNATIONAL SECURITY FISA 702",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image explicitly features a podium with the text \"NATIONAL SECURITY FISA 702\" and a location/date stamp \"Washington, April 2026\". This directly corresponds to the news text's subject matter (the extension of FISA Section 702) and the specific timeline mentioned (April 2026). The setting appears to be a formal press briefing or announcement, which fits the context of the legislative news described. Therefore, the image matches the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future political event (Trump signing FISA extension in April 2026), and the images contain clear digital overlays and edits (e.g., date stamps, placard text) consistent with the verification evidence.",
+    "notes": []
+  },
+  "error": null
+}

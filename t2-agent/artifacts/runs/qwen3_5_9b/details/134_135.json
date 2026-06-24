@@ -1,0 +1,141 @@
+{
+  "index": 134,
+  "sample_id": "135",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 692.56,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "世界報道自由デーが5月3日であり、報道の自由や情報アクセスを考える日という説明自体には事実基盤がある。一方で、添付画像は実際の当日の報道素材や関連現場を示すものではなく、編集されたニュース風画像や別文脈の写真をその文脈に接続しており、重要なミスリードを含む。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Society, Education & Employment",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/135",
+  "image_paths": [
+    "/path/to/ReMMDBench/135/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/135/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "135",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Need to verify the main claim that May 3 is World Press Freedom Day and check its official definition in Japanese Wikipedia. This is the primary factual anchor.",
+            "action": "Wikipedia[世界報道自由デー]",
+            "observation": "《报道STATION》 是日本朝日電視台及其ANN聯播網于週一至週五晚上10点档播出的直播新聞節目。\n",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the claim in the news text which centers on May 3rd being World Press Freedom Day and debates reigniting in Japan. The image shows a news broadcast graphic. I will check for the date, the event name, and relevant keywords.",
+            "action": "Detect[image]",
+            "observation": "画像は「ニュース番組風」の告知グラフィックで、写真というよりデザイン合成（もしくは生成）に見えます。明確な“改ざん写真”というより、最初から作られたビジュアル表現です。\n\n**編集・合成／生成を疑う点**\n- **人物の頭部が不自然**：頭が球体のようで、側面に機械パーツ、上に葉が生えているなど現実離れした造形。ニュースキャスターとしては明らかに演出（合成/生成）です。\n- **顔部分のモザイクが四角で均一**：実在人物の匿名化というより、素材隠し/演出として貼り付けたように見える単純なブロック処理。\n- **全体が“テンプレ”感の強いレイアウト**：「BREAKING NEWS」「NEWS」プレート、チェックリスト、日付バッジなどが均整に配置され、実写の報道画面というよりSNS拡散用の制作物。\n- **質感の一貫性の弱さ**：頭部（キャラクター的）とスーツ・机・スタジオ背景（写真/CG風）の質感が混在しており、合成っぽい。\n\n**真正らしく見える点（ただし“本物の報道映像”ではない）**\n- フォントや配色、テロップ構成は日本のニュース風デザインとして自然で、破綻した文字や意味不明な文章は目立ちません。\n- 光源や影も大きく破綻している箇所は少なく、「作り物として」整っています。\n\n**結論**\nこの画像は、現実の出来事をそのまま写した写真ではなく、ニュース番組を模した**制作グラフィック（合成/CG/生成の可能性が高い）**に見えます。実在の放送画面や現場写真の証拠としては弱いタイプです。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.1,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.6,
+        "C2 Contextual Inconsistency": 0.1,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "The image features an AI-generated character and the text 'Japan's Press Freedom Degree' conflicts with the text 'World Press Freedom Day' regarding the specific subject entity.",
+    "notes": []
+  },
+  "error": null
+}

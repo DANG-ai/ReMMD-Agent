@@ -1,0 +1,150 @@
+{
+  "index": 449,
+  "sample_id": "450",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1619.59,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "现有可核对的可靠信息只支持“乐山公交车身广告语引发争议、且后半句在流传画面中被遮挡”这一点；样本文本进一步把其上升为“公益宣传/部门牵头、校园周边与多线路高频投放、已紧急叫停撤下”等结论，但缺少可核验的官方来源支撑，且配图中存在明显编辑与图文语义/证据力度不匹配，导致整体叙事以误导为主。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会民生",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/450",
+  "image_paths": [
+    "/path/to/ReMMDBench/450/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/450/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/450/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/450/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/450/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/450/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/450/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/450/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/450/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/450/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "450",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 8,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news article describes a bus ad in Leshan claiming to have controversial slogans about chastity, specifically mentioning a \"Boy's betrothal gift\" viral variant. The provided image shows a bus in Leshan with text that matches the original slogan structure (\"Girls' dowry\", \"Infertility source\"). I should use the detection tool to verify the text content and location details explicitly.",
+            "action": "Detect[image]",
+            "observation": "从图像本身看，整体更像是一张真实拍摄的公交车现场截图，未见明显“AI合成/深度伪造”的典型痕迹，但属于“二次传播加字”的版式。\n\n**更像真实的迹象**\n- 公交车身上的反光、高光与车体曲面一致，文字随车身透视与弧度产生轻微形变，符合贴膜/车身广告的物理规律。\n- 车轮、护栏、车身接缝等细节在遮挡关系上自然；广告文字被护栏/车门结构部分挡住也合理。\n- 画面存在手机压缩/截屏常见的清晰度与噪点特征，没有看到边缘“融化”、不规则纹理重复等生成式图像常见问题。\n\n**可能的编辑/二次加工**\n- 画面上方的标题大字（白字黑边、黄字黑边）明显是后期叠加的新闻/短视频字幕层，不是现场公交车的一部分。\n- 标题文字边缘干净锐利、与背景的压缩噪点不一致，符合后期加字特征（这并不等于篡改了车身内容，只说明“图被加工过用于传播”）。\n\n**未发现的可疑点**\n- 未见车身广告文字区域有明显拼接边界、局部分辨率突变、光照方向不一致或字体边缘异常抠图痕迹。\n\n结论：图中“标题字幕”是后期添加的；公交车身广告本体在视觉上更像真实拍摄记录，暂无强证据表明车身内容被P图替换或由AI生成。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the image detection observation, the screenshot appears to be a genuine photo of the bus body, confirmed by realistic light reflection, shadow consistency, and lack of AI artifacts. The text on the bus ('沈洁是女孩...', '堕胎...') matches the core of the news report regarding the 'Leshan Bus' controversy and traditionalist slogans. The overlay title also aligns with the news context ('Administration restructuring'). The specific claim about 'Boy's Bride Price' is arguably a variation of the slogans visible (one is visible saying 'Girl' but the other implies the 'Bride Price' structure and the news focus is correct about the controversy). The image serves as direct evidence of the reported event.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The news discusses a specific controversial slogan regarding \"boy chastity\". I need to query the image to read the white characters on the blue bus body to verify the content and see if it aligns with the 'boy' or 'girl' description in the text.",
+            "action": "VQA[What is the specific slogan written on the blue advertisement banner on the side of the bus?]",
+            "observation": "\n\nBased on the image provided, the slogans written on the blue advertisement banner are arranged in two columns. Here is the specific text visible:\n\n**Left Column:**\n*   \"儿女是祖先的遗德\" (Children are the ancestors' left-behind virtue)\n*   \"是不孕不育的源头\" (is the source of infertility)\n*   \"贞洁，是女孩最高贵的嫁妆\" (Chastity is the girl's most noble dowry)\n\n**Right Column:**\n*   \"堕胎是断祖先血脉\" (Abortion is cutting off the ancestral bloodline)\n*   \"是万事不顺的根源\" (is the root cause of everything going wrong)\n*   \"贞洁，是高贵的聘礼\" (Chastity is a noble bride price)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text discusses the Leshan Public Transport Bureau's response regarding the ad. The provided image has a very prominent yellow overlay at the top. I should query this overlay to verify if it mentions the location (Leshan) and the specific response from the Transport Bureau to align with the news details.",
+            "action": "VQA[What does the large yellow overlay text at the top of the image say regarding the authority and the situation?]",
+            "observation": "\n\nThe large yellow overlay text states:\n\n**交通运输局：表述不妥**\n**已要求整改拆除**\n\nThis translates to \"Traffic Transportation Bureau: Inappropriate expression, has already requested rectification and removal.\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a controversial bus ad in Leshan, Sichuan, involving slogans about chastity and a response from the Transport Bureau. The image contains the slogans ('Chastity...', 'Infidelity/Bride Price') and the overlay text ('Sichuan Leshan Bus', 'Transport Bureau: Inappropriate expression...'). The location, authority, and core content match the description. I have sufficient evidence to conclude a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.739863622299141,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.5,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.5,
+        "C3 Pragmatic Inconsistency": 0.5
+      }
+    },
+    "taxonomy_rationale": "The image input contains news-report style overlays (yellow text on images 1, 2, 3, and chat screenshots) which constitute visual editing, and the news text notes conflicting user claims versus reporter findings, introducing slight contextual/primacy inconsistencies.",
+    "notes": []
+  },
+  "error": null
+}

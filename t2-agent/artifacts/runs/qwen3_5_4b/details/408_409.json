@@ -1,0 +1,180 @@
+{
+  "index": 408,
+  "sample_id": "409",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1832.74,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Der Artikel präsentiert einen vollständig ausformulierten Spielbericht mit konkretem Ergebnis, Torschützenbild und Schlussdramaturgie als Tatsachen, obwohl dafür keine belastbare Evidenz vorliegt und die zugespitzte Kernhandlung frei erfunden ist. Die zentralen begleitenden Bilder sind zudem generiert und werden in Nachrichtencaptions so gerahmt, als dokumentierten sie das behauptete Spielgeschehen.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/409",
+  "image_paths": [
+    "/path/to/ReMMDBench/409/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/409/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/409/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/409/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "409",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "Verify the match result and date between TSG Hoffenheim and Borussia Dortmund. The text claims a match in April 2026 on the 30th day of the Bundesliga, with a 2:1 score in the Home Game where Kramarić scored both penalties. This future date is suspicious (current date is ~late 2024), and general knowledge suggests this specific narrative (Kramarić winning both penalties) might be hallucinated or from a different context. I will search Wikipedia primarily to check the recent match results and penalty goals.",
+            "action": "Wikipedia[TSG 1899 Hoffenheim Borussia Dortmund match history 2024]",
+            "observation": "No summary available. Similar entities: TSG 1899 Hoffenheim, 2025–26 TSG 1899 Hoffenheim season, 2024–25 TSG 1899 Hoffenheim season, 2024–25 Bundesliga, 2025–26 Bundesliga",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text mentions a match on \"18. April 2026\". Since the current date is effectively 2024-2025, this is a specific future date claim. Wikipedia searches for specific match results were insufficient for the player. I will use Google to explicitly verify the existence of this specific match and the penalty claims.",
+            "action": "Google[Hoffenheim vs Dortmund match April 18 2026 Andrej Kramarić penalty]",
+            "observation": "Andrej Kramarić's penalty double beats Borussia Dortmund to boost ...: Andrej Kramarić converted two penalties as Hoffenheim boosted their UEFA Champions League hopes and all but ended Borussia Dortmund's title ... (https://www.bundesliga.com/en/bundesliga/news/hoffenheim-borussia-dortmund-match-report-highlights-matchday-30-36955)\nHoffenheim 2-1 Dortmund (Apr 18, 2026) Final Score - ESPN: TSG Hoffenheim vs. Borussia Dortmund - Game Highlights. 0:48. Andrej Kramaric scores from the spot. 0:57. Sehrou Guirassy with a Spectacular Goal vs. TSG ... (https://www.espn.com/soccer/match/_/gameId/746987/borussia-dortmund-tsg-hoffenheim)\nTSG Hoffenheim delivered a dramatic late blow to Borussia ...: 0 likes, 0 comments - footballsportsnewsairline1 on April 19, 2026: \"TSG Hoffenheim delivered a dramatic late blow to Borussia Dortmund, ... (https://www.instagram.com/reel/DXT0-iOkbvF/)\nThe Daily Bee: The Curse of the Kramarić - Borussia Dortmund: Niko Kovac was underwhelmed by the penalties called against his side in the Hoffenheim match. Niklas Süle's injury against Hoffenheim is ... (https://www.fearthewall.com/general/24021/the-daily-bee-the-curse-of-the-kramaric)\nHoffenheim 2 - 1 Borussia Dortmund (04/18) - Match Report: Match Events ; End of 90 Minutes. 2 - 1 ; Andrej Kramaric. Kramaric. Penalty. 90' + 8 ; 87'. Field Goal. Guirassy. (Bensebaini). Sehrou Guirassy ; Halftime. 1 - 0. (https://www.365scores.com/football/match/bundesliga-25/borussia-dortmund-hoffenheim-341-351-25)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results explicitly confirm a match between TSG Hoffenheim and Borussia Dortmund on April 18, 2026, with a 2-1 victory for Hoffenheim and Andrej Kramarić scoring two penalties (confirmed by headlines like \"Andrej Kramarić's penalty double\" and specific match reports). This aligns perfectly with the news text's claims regarding the date, score, scorer, and match outcome. The discrepancy in the match events snippet regarding Guirassy's goal doesn't override the headline confirmation of Kramarić's \"penalty double\".",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific match outcome and scene: Andrej Kramarić scoring free kicks for Hoffenheim against Dortmund in April 2026. The image visually depicts a player in a Hoffenheim blue kit near the penalty area or playing outside the box, with a Dortmund goalkeeper (yellow kit) and the Sudkurve stadium visible. The composition matches the text description of the scene (Kramarić running into stoppage time for the decisive action). While the date \"2026\" is futuristic and the player's team affiliation is historically unusual, the visual elements (kit colors, stadium signage, player positioning) are internally consistent with the text's narrative. This candidate argues that the image supports the text's content, assuming the scenario is possible within the context of the provided news article.",
+            "action": "Tool[IMAGE_SUPPORT]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a match between Hoffenheim and Borussia Dortmund where Kramarić scores penalties in the PreZero Arena. The image shows a player in a blue Hoffenheim kit (consistent with Kramarić's era at the club) preparing to take a penalty against a Dortmund goalkeeper in a suitable stadium with signposts matching the narrative (Sudkurve). The visual elements (player kit, opponent colors, goal situation) align perfectly with the text's description of the scene, suggesting the image captures the described moment despite the future date in the text.",
+            "action": "Tool[Finish[IMAGE_SUPPORT]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a Bundesliga match between Hoffenheim and Borussia Dortmund in 2026, featuring Andrej Kramarić scoring penalties at the Sudkurve. The image displays a player in a blue Hoffenheim kit running toward the goal with a ball, facing a goalkeeper in a yellow and black Dortmund kit. The bank billboard \"SUDKURVE HOFFENHEIM\" is clearly visible in the background. The visual details (kits, stadium signage, action) are internally consistent with the text's narrative describing the decisive second penalty.",
+            "action": "Detect[image]",
+            "observation": "The image looks like an authentic sports photograph with no clear signs of AI generation or heavy digital compositing.\n\n**Reasons it appears authentic**\n- Consistent stadium lighting and natural depth-of-field (sharp penalty taker/ball area, softer background crowd and far players).\n- Realistic motion/stance details and fabric folds on kits; no obvious “melted” textures or warped anatomy.\n- Goal net, posts, and perspective lines look geometrically consistent; no suspicious bending or duplicated patterns.\n- Noise/grain and color rendering are consistent across the frame, as in a low-light telephoto stadium shot.\n- Advertising boards and the “SÜDKURVE HOFFENHEIM” signage appear coherent and legible without typical AI text artifacts.\n\n**Possible minor edits**\n- The penalty taker’s face is visibly blurred/pixelated, consistent with a privacy edit/redaction rather than synthesis.\n- General color/contrast sharpening typical of editorial sports images may be present, but nothing suggests manipulation of the scene’s content.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text details a specific match between Hoffenheim and Borussia Dortmund at the PreZero Arena in 2026, featuring Andrej Kramarić. The image displays a player in a characteristic Hoffenheim blue kit facing a Dortmund goalkeeper in yellow and black. The background signage 'SUDKURVE HOFFENHEIM' and 'pre zero' advertising boards visually confirm the location and teams mentioned in the text, supporting the scenario.\\\"",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Check the scoreboard details in the background to verify the text caption stating 'Anzeigetafel ... zeigt 1:1' corresponds to the image state, as the visual content of the text caption should match the provided image.",
+            "action": "VQA[question: \"What score is displayed on the scoreboard?\"]",
+            "observation": "\n\nBased on the image provided, there is no scoreboard visible to display a score. The view is from behind the goal net, looking out toward the pitch.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To confirm the match with higher certainty, I should verify if the player in the blue jersey can be identified as Andrej Kramarić via the Entity tool, despite the scoreboard text being out of frame.",
+            "action": "Entity[node: \"Andrej Kramarić\"]",
+            "observation": "\n\n**Sports:**\n*   Soccer (Certainty: High - Primary activity in image)\n*   Football goal net (Certainty: High - Visible on the right)\n*   Soccer ball (Certainty: High - On the field)\n*   Goalkeeper (Certainty: High - Player in yellow kit)\n*   Footballer/Player (Certainty: High - Multiple players visible)\n*   Pitch/Field (Certainty: High - Green playing surface)\n\n**Locations:**\n*   **Südkurve Hoffenheim** (Certainty: High - Signage visible in the upper background)\n*   **PreZero Arena/Sportpark** (Inferred - \"pre zero\" banner suggests the location, associated with Hoffenheim)\n*   **Germany** (Certainty: Medium - Language on signage suggests German location)\n\n**Sports Teams & Organizations:**\n*   **1. FC Köln** (Certainty: Medium - Team is identifiable by blue home kit and player's facial features resemble Ezequiel Hernandez)\n*   **VfL Wolfsburg** (Certainty: Low - Team is identifiable by yellow goalkeeper kit and player's name/nike on back resembles Mattias Sanchet, but specific player confirmation is unlikely without clearer detail.)\n*   **Baden** (Certainty: Low - Likely the club involved if predictable from the badge or player identities)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous Entity tool call identified the player in the blue jersey as resembling Ezequiel Hernandez from 1. FC Köln, whereas the provided text and image caption claim it is Andrej Kramarić of TSG Hoffenheim. Additionally, while the location signage \"Sudkurve Hoffenheim\" matches the text, the team/player identity conflict indicates the image depicts a different scenario (likely Köln vs. VfL Wolfsburg) than the one described. Therefore, the image and text do not match.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a match in April 2026 (future), which is a fabrication of non-existent event and subsequent time-based mismatch with likely current imagery.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,172 @@
+{
+  "index": 211,
+  "sample_id": "212",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1811.22,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article's central report of an official post-WrestleMania reversal and restored Roman Reigns title reign is invented, and the visuals were created or altered to make that nonexistent decision look documented. The image set also misrepresents ordinary or synthetic scenes as evidence of the claimed ruling and belt reveal.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/212",
+  "image_paths": [
+    "/path/to/ReMMDBench/212/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/212/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/212/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "212",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "While Google provides the most current news, Wikipedia offers a definitive record of the results of the WrestleMania main event (likely WrestleMania 41 given my system date). I need to verify if the main event actually involved a reversal or if the result stood as originally presented. This will help distinguish if this is a new conspiracy theory or a completely false claim.",
+            "action": "Wikipedia[Main event result WrestleMania 41 outcome]",
+            "observation": "No summary available. Similar entities: WrestleMania XXVIII, WrestleMania XXIV, WrestleMania 39, WrestleMania 38, WWE",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news claims a controversial backstage reversal happened for the WrestleMania main event. The failure memory indicates parsing issues or a lack of candidates. I need to search Google for any reports of this specific backstage maneuver by WWE. This will clarify if this is a real event or fabrication.",
+            "action": "Google[search]: \"WWE main event result reversed backstage Raw after WrestleMania\"",
+            "observation": "Could not parse action: Google[search]: \"WWE main event result reversed backstage Raw after WrestleMania\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a specific backstage reversal of the main event result at WrestleMania, reinstating Roman Reigns as champion before Raw. The previous search was too specific or long. I will try a shorter, more direct Google search to find any reports of this specific backstage maneuver or if it's a confirmed WWnhs timeline event.",
+            "action": "Google[query]: \"WWE backstage main event reversal Roman Reigns Raw\"",
+            "observation": "Could not parse action: Google[query]: \"WWE backstage main event reversal Roman Reigns Raw\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.3,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "The user wants me to detect if the image supports or refutes the provided news text. The text claims a backstage call reversed a WrestleMania result for Roman Reigns, showing a \"Championship Decision Confirmed\" banner before Raw. The image shows Roman Reigns holding a belt with a similar banner in the background. However, the image exhibits strong AI generation artifacts, specifically in the hyper-realistic, vector-like tattoos on the arm and the unnatural skin texture. This indicates the image is synthetic and cannot verify the news text as factual reality.",
+            "action": "Detect[image]",
+            "observation": "- **Obvious edit/obfuscation:** The subject’s face is covered by a uniform, rectangular blur/block that doesn’t match natural motion blur. That indicates deliberate post-processing (likely anonymization or reuse of an image).\n- **Compositing/text plausibility:** The arena ribbon-board text “CHAMPIONSHIP DECISION CONFIRMED” looks very clean and readable, but it also blends reasonably with the scene’s perspective and lighting; nothing blatant like warped letters or broken kerning that often shows AI artifacts. Still, it could be an added overlay because it’s unusually on-the-nose for the accompanying claim.\n- **Lighting/edges:** The belt, arm, and hair have consistent lighting and sharp edges without the melted textures, extra fingers, or incoherent details commonly seen in synthetic images. The WWE belt detailing and stitching appear coherent.\n- **Overall authenticity cues:** The crowd, depth-of-field blur, and arena lighting look like a typical pro-wrestling event photograph. Aside from the face block (and possible added/selected signage text), the image largely reads as a real photo rather than AI-generated.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "While the image may have AI-indicating artifacts (like the observation suggests), it clearly depicts Roman Reigns holding a championship belt with a \"CHAMPIONSHIP DECISION CONFIRMED\" banner visible in the background. This visual content aligns perfectly with the key visual descriptors in the news text. If treating the image as a valid depiction of the described scene, it supports the narrative.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly names the wrestler as Roman Reigns and states he is back in place as champion. I need to verify the identity of the person in the image to confirm subject alignment.",
+            "action": "Entity[image]",
+            "observation": "- **WWE (World Wrestling Entertainment) logo** on a **WWE championship belt** (center plate) — **Very high certainty**.  \n- **WWE Championship belt** being held overhead — **Very high certainty**.  \n- **WWE RAW branding** visible on the arena ribbon/LED board (left side shows “RAW”) — **High certainty**.  \n- **Arena LED text:** “**CHAMPIONSHIP DECISION CONFIRMED**” — **Very high certainty** (clearly readable).  \n- **Pro-wrestling event arena/stadium setting** with crowd and lighting truss — **High certainty**.  \n- **A wrestler (unidentified person; face blurred)** holding the belt — **High certainty** (cannot identify individual).  \n- **Fan sign reading “OTC”** (partially visible) — **High certainty**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly names the wrestler as Roman Reigns, but the previous observation flagged the person as unidentified. To resolve this discrepancy and confirm the subject alignment between the text and image, I must explicitly verify the identity using VQA.",
+            "action": "VQA[Is the person holding the championship belt Roman Reigns?]",
+            "observation": "\n\nYes, the person holding the championship belt is Roman Reigns. He is recognizable by his appearance, including his tattoos and beard, and he is wearing the iconic \"I am Undisputed\" shirt associated with his \"Undisputed Era\" gimmick. The belt he is holding is the WWE Undisputed Championship.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA confirmed the person is Roman Reigns, which matches the news text. The news states the \"decision\" was confirmed before Raw, and the background image shows \"RAW\" and \"CHAMPIONSHIP DECISION CONFIRMED.\" The identity and the confirmed title status align perfectly with the narrative of the reversal happening on Raw.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.7,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.2,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims a fabricated backstage reversal of a wrestling result (T1), and the visual evidence shows a deliberately blurred face indicating editing (V2).",
+    "notes": []
+  },
+  "error": null
+}

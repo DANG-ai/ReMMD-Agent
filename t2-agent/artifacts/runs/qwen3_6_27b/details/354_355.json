@@ -1,0 +1,160 @@
+{
+  "index": 354,
+  "sample_id": "355",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "T1 Fabrication"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2420.87,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article’s central account matches the available evidence: NG-3 launched on April 19, 2026, achieved a notable booster recovery milestone, failed to place BlueBird 7 into its intended orbit because of an upper-stage problem, and was then subject to an FAA-required mishap investigation before flying again. The images are consistent with that narrative and do not introduce any false visual claim.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/355",
+  "image_paths": [
+    "/path/to/ReMMDBench/355/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/355/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/355/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/355/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/355/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/355/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/355/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/355/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/355/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/355/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "355",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "T1 Fabrication"
+    ],
+    "predicted_label": "verdict=True | taxonomy=T1 Fabrication",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I will also search for the specific payload \"BlueBird 7\" and the booster name \"Never Tell Me The Odds\" to see if these are real planned names or fabricated details for this \"news\" text.",
+            "action": "Google[AST SpaceMobile BlueBird 7 launch date \"Never Tell Me The Odds\" booster]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous search for specific details like \"BlueBird 7\" and \"Never Tell Me The Odds\" yielded no results, suggesting they might be fabricated. I need to confirm the general status of New Glenn to see if it has launched at all, and if so, how many times. If it hasn't launched, the text describing NG-3 in 2026 is likely fiction.",
+            "action": "Wikipedia[New Glenn]",
+            "observation": "No summary available. Similar entities: New Glenn, List of New Glenn launches, Blue Origin, John Glenn, BE-4",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous Wikipedia search for 'New Glenn' did not return a summary but suggested 'List of New Glenn launches' as a similar entity. Since the news text describes a specific launch (NG-3) in April 2026, checking the official launch manifest is the most direct way to verify if this mission exists or if the text is describing a future/fictional event. If the list shows no launches up to April 2026, or no NG-3 mission, the text is likely refuted.",
+            "action": "Wikipedia[List of New Glenn launches]",
+            "observation": "No summary available. Similar entities: List of New Glenn launches, New Glenn, List of Starship launches, List of New Glenn boosters, Lists of rocket launches",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes the launch of Blue Origin's New Glenn rocket, specifically mentioning its appearance as a \"heavy-lift\" vehicle and the location at Cape Canaveral (Launch Complex 36). The image shows a rocket launch. To formally verify that the rocket in the image matches the specific design of New Glenn (which has a distinct large-diameter first stage and a black interstage) and that the infrastructure (twin umbilical towers) matches LC-36, I should use the detection tool to analyze the image details.",
+            "action": "Detect[image]",
+            "observation": "The image appears **photographically authentic** with no clear signs of AI generation or compositing.\n\n**Reasons it looks real**\n- **Lighting and atmosphere** are consistent: the plume’s brightness blooms naturally, and the sky haze/low contrast matches long-distance telephoto launch photos.\n- **Motion/heat effects**: subtle blur/softening around the exhaust and faint distortion near the flame are plausible for a hot plume and atmospheric turbulence.\n- **Structural detail**: the two lattice towers, small service structure below, and distant water tower have coherent geometry, sharpness falloff, and scale consistent with depth and lens compression.\n- **Noise/grain and tonal gradation** look like a real camera capture rather than the overly-clean or texture-smeared look common in synthetic images.\n\n**No strong manipulation indicators noticed**\n- No mismatched edges/halos around the rocket or towers.\n- No obvious repeated textures, warped straight lines, or impossible shadows.\n- The exhaust plume and smoke cloud have natural, non-uniform detail.\n\nOverall, nothing in the image itself strongly suggests digital editing or synthetic generation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes the launch of Blue Origin's New Glenn rocket from Launch Complex 36 at Cape Canaveral. The image depicts a large rocket launching vertically with a significant exhaust plume, flanked by two tall, lattice-like umbilical towers. This visual configuration (specifically the twin towers and the rocket's appearance with a black interstage section) is consistent with the New Glenn vehicle at LC-36. The image visually corroborates the text's description of the launch event, the \"bright exhaust plume,\" and the infrastructure involved.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will use Entity extraction to identify key objects and potential labels in the image, which might help confirm the rocket's identity or the location (e.g., Cape Canaveral).",
+            "action": "Entity[image]",
+            "observation": "- **Rocket / launch vehicle** (high certainty): A rocket ascending with visible exhaust plume.\n- **Launch pad infrastructure / service towers** (high certainty): Two tall lattice towers flanking the rocket’s path (likely lightning towers).\n- **Exhaust plume / smoke cloud** (high certainty): Bright flame plume beneath the rocket and large smoke/steam cloud near the ground.\n- **Water tower** (high certainty): Elevated spherical/rounded tank on legs at right.\n- **Vegetation / scrub foreground** (high certainty): Dark tree/shrub line along the bottom.\n\n*Note:* No readable logos or text are visible, and the rocket’s specific model/organization can’t be identified with confidence from this image alone.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The visual evidence strongly supports the text: the rocket is a heavy-lift vehicle launching from a pad with two prominent lightning towers and a water tower in the distance, which corresponds to Launch Complex 36 mentioned in the text as the site for the New Glenn launch. The rocket's appearance (tall, white, distinct interstage) is consistent with New Glenn. The text describes the launch event, and the image depicts that event. Therefore, the image matches the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9283177667225558,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text narrates a specific New Glenn launch and payload outcome in April 2026 as a completed past event, fabricating details about a future mission that has not yet occurred.",
+    "notes": []
+  },
+  "error": null
+}

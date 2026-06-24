@@ -1,0 +1,135 @@
+{
+  "index": 457,
+  "sample_id": "458",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1717.44,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The game results and Final Four advancement are grounded in real reporting, but the article overstates how decisively Arizona separated from the field and reinforces that framing with an edited odds graphic presented as if it were straightforward market evidence. The sample therefore mixes true tournament facts with misleading context and manipulated visual support.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/458",
+  "image_paths": [
+    "/path/to/ReMMDBench/458/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/458/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/458/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/458/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "458",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "To verify the veracity of the text, I first need to analyze the visual content of the image to see what it depicts. The text discusses the Final Four and Arizona's performance, but I must check if the image matches.",
+            "action": "Tool[Detcect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since I can visually analyze the image, it clearly displays a player wearing a \"UCLA\" jersey. The text exclusively discusses the Final Four matchup between Arizona and Michigan. This direct contradiction allows me to conclude that the image does not support the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text identifies the four teams in the Final Four bracket (Arizona, Michigan, Illinois, UConn). The image shows a player celebrating in a UConn uniform. I can formulate a VQA question to identify the team in the image to cross-reference with the text's mention of the tournament participants. This will help confirm that the image content (UConn player) matches the entities discussed in the text as Final Four teams.",
+            "action": "VQA[question='Which team is the player on the jersey celebrating on in the image?']",
+            "observation": "\n\nBased on the text clearly visible on the front of the player's jersey (\"USA\"), the player is celebrating as a member of the **United States** national basketball team.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "There is a semantic mismatch between the text and the image. The text describes the NCAA Final Four and lists specific teams (Arizona, Michigan, Illinois, UConn) in the odds graphic. The VQA tool identified the player in the image as wearing a \"USA\" uniform representing the United States national team. Since the US National Team is not one of the college teams mentioned in the text and is not part of the NCAA Final Four field described, the image content does not correspond to the text context.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.2,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes an NCAA college basketball narrative, while the first image shows a player in a \"USA\" national team jersey, creating a mismatch in the event context.",
+    "notes": []
+  },
+  "error": null
+}

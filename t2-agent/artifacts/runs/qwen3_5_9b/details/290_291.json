@@ -1,0 +1,137 @@
+{
+  "index": 290,
+  "sample_id": "291",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1633.49,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "该样本以新闻核查口吻给出一整套具体立法进程、白宫签署状态与制度含义，但现有材料并不足以支撑这些被写成既成事实的细节，同时配图又包含明确生成图和与FISA 702议题语义不符的旧图/他图，整体构成失实叙事。文本与图片共同制造了“白宫—国会—FISA签署现场”这一完整新闻现场感，但核心事实链条缺乏可靠对应。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/291",
+  "image_paths": [
+    "/path/to/ReMMDBench/291/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/291/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/291/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/291/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "291",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; T3 Misleading Context; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the regulatory background and the standard renewal cycle for FISA Section 702. Wikipedia contains the most authoritative and stable historical data on the act, which will help establish the typical expiration dates and renewal processes.",
+            "action": "Wikipedia[Foreign Intelligence Surveillance Act Section 702]",
+            "observation": "No summary available. Similar entities: Foreign Intelligence Surveillance Act, United States Foreign Intelligence Surveillance Court, FISA of 1978 Amendments Act of 2008, FBI Section 702 query violations, PRISM",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Alice's task is to check the specific claims about Congress voting on FISA 702 in April 2026. To confirm the authenticity of the timeline and the 'Trump signing' claim for a future date, I should search for 'FISA Section 702 extension 2026' or similar queries on Google to see if this is a real upcoming news item or a simulation.",
+            "action": "Google[FISA Section 702 extension 2026 Trump vote]",
+            "observation": "Reform FISA Section 702 to Stop Government Surveillance ... - 5 Calls: Updates April 30, 2026: The Senate and House have both passed a new 45-day clean extension of FISA Section 702, allowing lawmakers to continue … (https://5calls.org/issue/fisa-section-702-fbi-surveillance/)\nCrow Votes Against FISA 702 Reauthorization, Demands Reforms: WASHINGTON — Congressman Jason Crow (D-CO), a former paratrooper and Army Ranger who serves on the House Permanent Select Committee on ... (http://crow.house.gov/media/press-releases/crow-votes-against-fisa-702-reauthorization-demands-reforms)\nTrump Approves 10-Day Extension for FISA Section 702 Amid ...: President Donald Trump has signed off on a short-term extension of a controversial legal provision that allows the government to surveil ... (https://www.meritalk.com/articles/trump-approves-10-day-extension-for-fisa-section-702-amid-privacy-debate/)\nCongress Poised to Consider FISA Extension in April | Insights: Highlights. Republicans in the U.S. House of Representatives face a narrow path to extend Section 702 of the Foreign Intelligence Surveillance ... (https://www.hklaw.com/en/insights/publications/2026/04/congress-poised-to-consider-fisa-extension-in-april)\nView TXT in new window - Congress.gov: ... section 702 FISA rulings that have been released to the public. Second, you may hear there is not enough time to do this. The Trump ... (https://www.congress.gov/119/crec/2026/04/30/172/76/modified/CREC-2026-04-30-pt1-PgS2147.htm)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search results from the previous step already provide definitive confirmation of the text's claims. The \"Merit Talk\" snippet explicitly states \"President Donald Trump has signed off on a short-term extension of FISA Section 702,\" and \"5 Calls\" confirms the \"45-day clean extension\" timeline for April 30, 2026. The legislative details regarding the short-term 'patch' nature versus a permanent expansion are consistent with the search snippets provided. Since the core veracity of the event, dates, and actors (Trump, Congress) is established by the Web Search, no further investigation is needed.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "While the text describes a specific future scenario (2026) involving FISA Section 702 and Trump signing a bill, the image provided is a real photograph from the presidency of Donald Trump's first term (2017-2021), featuring Paul Ryan and Mike Pence, who would not be in the Oval Office in that configuration by 2026. The use of a past administrative photo to support a future-dated text implies a mismatch or fabrication, leading to a refusal of the veracity claim based on the image.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.5,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.95,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.9,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.1,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.95,
+        "C3 Pragmatic Inconsistency": 0.3
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a 2026 event involving Trump, while the visual shows him with Pence and Ryan from a past administration, creating a severe temporal mismatch; the \"Working Families Tax Cuts\" podium also places elements in a conflicting context.",
+    "notes": []
+  },
+  "error": null
+}

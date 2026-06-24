@@ -1,0 +1,155 @@
+{
+  "index": 20,
+  "sample_id": "021",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1579.65,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "样本文本把“龙虎榜25只个股中17只机构净卖出”的局部统计，推导并夸大为“机构与北向资金主导砸盘、全市场踩踏且下跌大概率延续”，证据链不足且存在明显的图像编辑与图文语义不一致，整体给受众的主要结论偏向误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "金融市场",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/021",
+  "image_paths": [
+    "/path/to/ReMMDBench/021/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/021/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "021",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 1.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text provided includes a future date (March 20, 2026) and makes very specific claims about market data (S&P 399001, specific stocks like Meiliyun and Jinlang Tech). This suggests it may be hallucinated or a fabricated text. I need to verify if this text exists in any news source or if the date is valid. I will try to search for the full text snippets to see if it's a known piece of content.",
+            "action": "Google[2026年3月20日 美利云 锦浪科技]",
+            "observation": "锦浪科技股份有限公司2025年度向不特定对象发行可转换公司债券 ...: 在本次发行的可转债存续期间，当公司股票在任意连续三十个交易日中至少有十五个交易日的收盘价低于当期转股价格的85%时，公司董事会有权提出转股价格向下 ... (http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=300763&id=11510442)\n锦浪科技:93.76 0.41% +0.38 300763 搜狐证券 - 搜狐股票: 个股概况. 2026-03-31, 数值, 同比%, 当季环比%. 每股收益, 0.15, -69.39, -. 每股 ... 更多>>. 一日; 二日; 三日. 第357名. 锦浪科技. -11977. 电力设备( ... (https://q.stock.sohu.com/cn/300763/index.shtml?spm=stockpc.cn_300763.loginpop.6.1777593600069Op7YsjU)\n[PDF] 锦浪科技股份有限公司: 公司本次发行的可转换公司债券未提供担保措施，如果存续期间出现对经营. 管理和偿债能力有重大负面影响的事件，本次发行的可转换公司债券可能因未提. 供担保 ... (https://pdf.dfcfw.com/pdf/H2_AN202504081653365812_1.pdf)\n深股通现身20只个股龙虎榜 - 证券时报: 净买入的有上能电气、锦浪科技、美利云等，净买入金额分别为25433.62万元、21155.39万元、13304.80万元。净卖出的有顺钠股份、顺灏股份、合肥城建等，净卖出 ... (https://www.stcn.com/article/detail/3688723.html)\n4.87亿资金抢筹源杰科技，机构狂买美利云丨龙虎榜 - 21财经: 4.87亿资金抢筹源杰科技，机构狂买美利云丨龙虎榜. 2026年03月20日18:41 21世纪经济报道21投资通 余诗棋. 3月20日，上证指数下跌1.24%，深证成指下跌 ... (https://www.21jingji.com/article/20260320/herald/519ad3fc41fb09139c6f36b2ac489419.html)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Although the previous Google search returned results consistent with the text's date and stock mentions (Meiliyun, Jinlang Tech), the core issue is the date itself. Reporting on market closings on a March 20th date in 2026 (a future date) as established news is a fundamental impossibility for real-time news verification. This indicates the text is a fabrication or a prediction presented as fact.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "To strictly follow the instruction \"Use Detect[image]\", I should invoke the detection tool to formally evaluate the veracity of the image relative to the news text. This tool will analyze the image content against the text claims regarding market data. I propose this action to proceed with the formal verification process before concluding.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a stock chart of the Shenzhen Composite Index with the headline \"End-of-Day Dive\". While the visual style matches the news description of a market crash, the news text explicitly claims a date of \"March 20, 2026\". Since this is a future date and the market performance (index around 13,000) doesn't align with the typical data for the specific month of 2026 (or even 2024 where the price 13866 is inconsistent with the end of March highs), the text is factually unsupported.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Visually confirm if the chart displays the \"tail end\" of the trading session with a sharp decline to match the headline \"End of day dive\".",
+            "action": "VQA[question:Does the chart show a significant price drop at the end of the trading session (e.g., around 14:56)?]",
+            "observation": "\n\nYes, the chart shows a significant price drop at the end of the trading session.\n\n**Evidence from the image:**\n*   **Visual Annotation:** There is a large, bright red arrow pointing sharply downwards on the right side of the chart. This is a standard visual cue used to highlight a sudden decline or \"plunge.\"\n*   **Text Overlay:** Large red Chinese characters at the top read \"尾盘跳水\" (*Wěipán tīau shuǐ*), which translates to \"End-of-day crash\" or \"End-of-session plunge.\"\n*   **Timestamps:** The data on the right side lists multiple rows with the time **14:56**. In the Chinese stock market, trading ends at 14:56 (followed by a 5-minute \"chop\" round at 14:59), so this confirms the activity is happening at the very end of the session.\n*   **Price Action:** The candlestick pattern shows a downward trend culminating in the final period, visually supported by the downward arrow and the relative position of the final blue candle compared to the previous bars.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The headline in the news text explicitly states \"A-share tail end dive again\" (A股尾盘再度跳水). The image features large red text \"尾盘跳水\" (End-of-day dive) prominently displayed. I can use VQA to confirm this text match, which is a strong indicator of relevance.",
+            "action": "VQA[question:What is the large red Chinese text displayed at the top center of the chart?]",
+            "observation": "\n\nThe large red Chinese text displayed at the top center of the chart is \"**尾盘跳水**\" (wěi pán tiào shuǐ), which translates to \"market close price plummet\" or \"end-of-day diving,\" indicating a significant drop in price at the end of the trading session.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image explicitly displays the text \"尾盘跳水\" (End-of-day dive) in red, matching the headline in the news text \"A股尾盘再度跳水\". The candlestick chart shows a significant downward trend at the 14:56 mark (end of the day), corroborating the \"dive\" described in the text. The evidence is sufficient to conclude a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The images display distinct digital overlays (red text, arrows) on stock charts that are not part of standard exchange data feeds, indicating visual manipulation to emphasize market movements.",
+    "notes": []
+  },
+  "error": null
+}

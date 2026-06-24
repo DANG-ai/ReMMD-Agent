@@ -1,0 +1,138 @@
+{
+  "index": 285,
+  "sample_id": "286",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2499.37,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The story turns unverified social-media allegations into a reported narrative by inventing the SWAT incident details, overstating or fabricating King's formal security relationship to Rep. Jasmine Crockett, and using synthetic visuals and ambiguous photos as if they were evidentiary support. The result is a false account whose central factual propositions are not reliably established by the available source material.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/286",
+  "image_paths": [
+    "/path/to/ReMMDBench/286/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/286/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/286/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/286/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/286/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/286/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/286/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/286/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/286/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/286/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "286",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.7,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a scene at night with a prominent sign reading \"Children's Medical Center Dallas\". It shows an armored vehicle marked \"DALLAS POLICE\" and officers wearing tactical gear with \"SWAT\" on their vests. This visual evidence strongly aligns with the news text describing a Dallas SWAT operation at the Children's Health campus (which operates Children's Medical Center Dallas) during a standoff. I will use the Detect tool to formally extract and confirm these visual details.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic news-style photograph with no clear signs of AI generation or composited elements.\n\n**Reasons it looks authentic**\n- **Consistent lighting/exposure:** The mix of garage lighting and police emergency lights produces believable color casts and reflections on the pavement and vehicles, with no mismatched illumination between subjects.\n- **Plausible depth/perspective:** Lines of the garage ramps, columns, and signage converge naturally; scale relationships between officers, vehicles, and the structure look correct.\n- **Fine detail coherence:** Readable signage (“Children’s Medical Center Dallas,” “Exit Only,” “Entrance”) and crisp textures (tactical gear, vehicle markings) look like normal camera capture rather than smeared or irregular AI text/detail.\n- **No obvious edge artifacts:** Outlines around officers, vehicles, and the taped perimeter don’t show cutout halos or inconsistent blur that would suggest splicing.\n\n**No obvious manipulation indicators noticed**\n- No duplicated people/objects, warped geometry, or impossible shadows.\n- No inconsistent noise patterns or compression blocks localized to one region that would hint at pasted-in content.\n\nOverall, nothing in the image itself strongly suggests digital editing or synthetic generation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image prominently features the \"Children's Medical Center Dallas\" sign and Dallas Police/SWAT officers, which directly corroborates the text's description of the location (Children's Health campus) and the nature of the incident (Dallas SWAT operation). The visual evidence of the police perimeter and tactical gear aligns with the narrative of a standoff.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I need to confirm the specific location name. The sign says \"Children's Medical Center Dallas\". The text refers to \"Children's Health\". These are the same entity (Children's Medical Center Dallas is part of the Children's Health system). The visual elements of the police response (SWAT, armored vehicle, police SUV) match the text's description of the event.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a narrative about a security guard's death and employment with Rep. Jasmine Crockett (T1), while the provided document image shows a campaign finance report for \"America First Action, Inc.\" (a Trump PAC) paying \"Mike King Security LLC,\" which contradicts the text's claim that the filings belong to Crockett's campaign (C2).",
+    "notes": []
+  },
+  "error": null
+}

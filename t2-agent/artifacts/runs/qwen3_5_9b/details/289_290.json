@@ -1,0 +1,131 @@
+{
+  "index": 289,
+  "sample_id": "290",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1274.05,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "本文は、トラック諸島近海にある台風4号が日本の大雨や交通障害に結び付いているかのように述べるが、その因果関係と接近見通しを裏付ける確かな根拠がない。さらに、進路図は改変画像で、他の写真も本文の主張を直接示す証拠として不適切に使われているため、全体の核心は成り立たない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/290",
+  "image_paths": [
+    "/path/to/ReMMDBench/290/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/290/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/290/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "290",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the consistency between the text and the image. The first step is to use the Detect tool to analyze the image content, specifically looking for the date, typhoon number (Shinrakou/4), location, and any other metadata provided by the Japan Meteorological Agency.",
+            "action": "Detect[image]",
+            "observation": "- **What the image is:** It appears to be a **screenshot of the Japan Meteorological Agency (気象庁) typhoon track map UI**, with standard cartographic styling, gridlines, and interface buttons.\n- **Signs of manipulation/synthesis:**  \n  - No obvious AI-generation artifacts (warped text, inconsistent fonts, malformed icons) are visible.  \n  - The map elements (track cones, dashed forecast line, circles, timestamps) look clean and consistently rendered as typical vector graphics from an official web map.  \n  - No mismatched lighting/shadows or pasted photographic elements (it’s not a photo; it’s a UI graphic).\n\n- **Potential red flags / counterfactual concerns (image-only):**  \n  - The **date shown in the top-left** reads **“2026年04月12日03時”** (April 12, 2026, 03:00). If the accompanying claim refers to another year, this could indicate **miscontextual reuse** rather than visual editing.\n  - The storm number “4” and track depiction look like standard overlays; nothing suggests the track was manually drawn on top beyond normal UI rendering.\n\n**Overall:** The image itself looks **authentic as a direct screenshot** of a weather-agency map interface, with **no clear signs of digital tampering or synthetic generation**. The main concern is **context/date mismatch**, not visual manipulation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text asserts that Typhoon No. 4 caused heavy rain in Fukuoka on the 10th. The image, dated the 12th, shows Typhoon No. 4 located south of the Philippines near the Truk Islands, with a forecast track moving north (dates 14th, 15th, 16th show it approaching Kyushu). If the typhoon were in the Truk area on the 12th, it would have been in the open ocean (thousands of km away) on the 10th. Therefore, it could not have caused rain in Fukuoka on the 10th. I should refute the claim.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.1,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.1,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

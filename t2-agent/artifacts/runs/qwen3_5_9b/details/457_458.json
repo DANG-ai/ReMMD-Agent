@@ -1,0 +1,132 @@
+{
+  "index": 457,
+  "sample_id": "458",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1815.26,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The game results and Final Four advancement are grounded in real reporting, but the article overstates how decisively Arizona separated from the field and reinforces that framing with an edited odds graphic presented as if it were straightforward market evidence. The sample therefore mixes true tournament facts with misleading context and manipulated visual support.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/458",
+  "image_paths": [
+    "/path/to/ReMMDBench/458/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/458/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/458/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/458/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "458",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.5,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The text claims Arizona beat Purdue 79-64 in the West Region final and that UConn is a major contender (10%). The image shows a UConn player in a game setting.\nVerifying the text claims:\n1.  **Arizona vs Purdue (79-64) in West Region Final:** In reality, **Arizona beat Oklahoma** in the West Region final (not Purdue). Purdue was eliminated earlier (or won a different game). In 2022, Arizona beat No. 16 Purdue in the first round, but in 2022, Purdue did not reach the Final Four. In 2024, Arizona beat Oregon. In 2021, Arizona beat Auburn. The text's matchup (Arizona vs Purdue) in the Final Four context seems false for a specific recent year.\n2.  **Michigan vs Tennessee (95-62):** Michigan beat Tennessee in the 2022 Sweet 16? No. In 2022, Michigan beat Syracuse. In 2024, Michigan beat Texas Tech? No. Michigan beat Texas Tech in 2019 (Big Ten Final).\n3.  **UConn:** The text mentions UConn in the odds and the bracket, but the specific matchups cited (Arizona-Purdue, Michigan-Tennessee) appear to be historical hallucinations or incorrect facts regarding the 2024 tournament (the only one where UConn was a major Final Four seed, despite ruining the season).\n4.  **Yaxel Lendeborg:** The names \"Lendeborg\" and \"Cadeau\" don't match the known rosters for the hypothetical 2024 championship scenarios (Cadeau is a Duke/Georgetown name, Lendeborg is a Toledo/Duke name).\nThe text is presumbly about the **2024 tournament** but hallucinates the bracket results (Arizona vs Purdue, Michigan vs Tennessee).\nTherefore, the text is **false**.",
+            "action": "Detect[image]",
+            "observation": "- **Type of image:** Looks like a real sports photograph/frame from a broadcast—natural crowd blur, depth-of-field, and consistent arena lighting.\n\n- **Obvious editing present:** The players’/people’s faces are **pixelated/blurred in square blocks**, which is a deliberate post-processing effect (privacy redaction). That’s the clearest sign of manipulation.\n\n- **No strong signs of AI synthesis:** Jerseys, arms/hands, crowd, and lighting appear coherent (no extra fingers, warped logos, inconsistent shadows, or impossible geometry). The blur blocks look like an overlay rather than generative artifacts.\n\n- **Counterfactual/claims alignment:** The image itself doesn’t contain readable text tying it to the specific Arizona/Michigan Final Four narrative; it just shows a UConn player celebrating with a crowd. So it may be **context-mismatched** to the accompanying story, even if the photo is authentic.\n\n**Overall:** Likely an authentic sports image with **intentional face redaction**, and no clear indicators of synthetic generation; potential issue is **misleading context** rather than a doctored scene.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a specific 2024 tournament scenario (Arizona vs. Purdue in West Regional Final, Michigan vs. Tennessee in Midwest) that contradicts actual historical records (Arizona beat Villanova in 2024 Final Four, Michigan didn't beat Tennessee in this way). The image shows a UConn player celebrating, which is irrelevant to verifying the false game scores and opponents mentioned in the text. Since the image does not validate the false core claims and the text relies heavily on factual hallucinations, it fails veracity checks.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.21544346900318836,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates player-team affiliations (Koa Peat for Arizona) and dates (2021) conflicting with the image's \"2026\" logo, alongside visual face redaction.",
+    "notes": []
+  },
+  "error": null
+}

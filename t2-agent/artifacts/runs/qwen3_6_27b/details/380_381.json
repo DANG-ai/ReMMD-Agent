@@ -1,0 +1,181 @@
+{
+  "index": 380,
+  "sample_id": "381",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2898.32,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Die zentrale Spielchronik wird als gesicherter Tatsachenbericht präsentiert, obwohl die behaupteten Matchdetails und ihre Dramaturgie nicht verlässlich belegt sind und in dieser Ausformung als frei konstruierte Erzählung erscheinen. Zusätzlich werden synthetische sowie generische Bilder so eingebunden, als belegten sie genau dieses konkrete 2:2 und den geschilderten Schockmoment.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/381",
+  "image_paths": [
+    "/path/to/ReMMDBench/381/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/381/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/381/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/381/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/381/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/381/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/381/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/381/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/381/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/381/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "381",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I will also verify the match details. The date March 15, 2026 is in the future, so a detailed match report with specific goalscorers is impossible to be factual. I will search for the match using Google to see if it's a scheduled fixture or if there's any context for this text (e.g., a fictional scenario).",
+            "action": "Google[Schalke 04 vs Hannover 96 15.03.2026]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will also check the current club of Kenan Karaman, another key player mentioned in the text as scoring for Schalke, to further verify the roster details. If these players are not at Schalke, it supports the conclusion that the text is fictional or false.",
+            "action": "Wikipedia[Kenan Karaman]",
+            "observation": "No summary available. Similar entities: Kenan Karaman, 2025–26 FC Schalke 04 season, 2025–26 2. Bundesliga, 2024–25 2. Bundesliga, 2024–25 FC Schalke 04 season",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a match on March 15, 2026, which is in the future. It mentions Edin Džeko scoring for Schalke. I should check Edin Džeko's current status to see if he is still playing, as he announced retirement in 2024. If he is retired, the text is definitely false.",
+            "action": "Wikipedia[Edin Džeko]",
+            "observation": "No summary available. Similar entities: Edin Džeko, List of international goals scored by Edin Džeko, List of men's footballers with 1,000 or more official appearances, Amra Silajdžić, 2023–24 Fenerbahçe S.K. season",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I will first detect the image to confirm the visual details, specifically the crest, sponsor, and player, to ensure the mismatch is real and not a misinterpretation. The text is about Schalke 04. The image has \"1904\" on the socks (Schalke) but a Chelsea crest. This is a contradiction. I need to confirm the crest is indeed Chelsea and not some obscure Schalke alternate crest.",
+            "action": "Detect[image]",
+            "observation": "- **Offensichtliche Bearbeitung:** Das Gesicht des Spielers ist mit einem einfarbigen, weich verlaufenden Rechteck/Blur **absichtlich unkenntlich gemacht**. Die Kanten wirken wie nachträgliches Zensieren (kein natürliches Bewegungs- oder Tiefenunschärfe-Muster).\n- **Ansonsten fotorealistisch:** Trikotdetails (Falten, Nähte, Logos), Beleuchtung und Schatten auf Körper/Beinen, Rasenstruktur sowie die Tiefenunschärfe im Hintergrund wirken **konsistent** wie bei einer echten Sportfotoaufnahme.\n- **Keine klaren KI- oder Compositing-Artefakte erkennbar:** Keine unlogischen Gliedmaßen, keine “verschmolzenen” Kanten, keine inkonsistenten Perspektiven; Ball, Schuhe und Bodenkontakt sehen stimmig aus.\n- **Kein Beleg für den beschriebenen Kontext:** Das Bild zeigt einen einzelnen Schalke-Spieler in Aktion, **nicht** die angekündigte Weitwinkelaufnahme der Arena/Publikumsszene. Das ist eher ein **Mismatch zwischen Text und Bildauswahl**, aber kein Manipulationsbeweis am Bild selbst.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to confirm the mismatch between the image content and the caption provided in the text. The caption describes a \"wide-angle shot of the VELTINS-Arena before kickoff\" with fans, while the image clearly shows a close-up of a single player in action with the ball. Verifying this discrepancy is essential for the veracity check. Additionally, the blurred face suggests post-processing, which supports the conclusion that the image is not a direct, unedited capture of the described scene.",
+            "action": "Detect[image]",
+            "observation": "- **Offensichtliche Bearbeitung:** Das Gesicht des Spielers ist mit einem einfarbigen, weich verlaufenden Rechteck/Blur **absichtlich unkenntlich gemacht**. Die Kanten wirken wie nachträgliches Zensieren (kein natürliches Bewegungs- oder Tiefenunschärfe-Muster).\n- **Ansonsten fotorealistisch:** Trikotdetails (Falten, Nähte, Logos), Beleuchtung und Schatten auf Körper/Beinen, Rasenstruktur sowie die Tiefenunschärfe im Hintergrund wirken **konsistent** wie bei einer echten Sportfotoaufnahme.\n- **Keine klaren KI- oder Compositing-Artefakte erkennbar:** Keine unlogischen Gliedmaßen, keine “verschmolzenen” Kanten, keine inkonsistenten Perspektiven; Ball, Schuhe und Bodenkontakt sehen stimmig aus.\n- **Kein Beleg für den beschriebenen Kontext:** Das Bild zeigt einen einzelnen Schalke-Spieler in Aktion, **nicht** die angekündigte Weitwinkelaufnahme der Arena/Publikumsszene. Das ist eher ein **Mismatch zwischen Text und Bildauswahl**, aber kein Manipulationsbeweis am Bild selbst.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Der Text beschreibt explizit eine \"Weitwinkelaufnahme der VELTINS-Arena\" als Bildunterschrift, zeigt das Bild jedoch einen einzelnen Spieler in Aktion. Zudem behandelt der Text ein Spiel des FC Schalke 04, während das Bild einen Spieler mit dem Wappen des FC Chelsea (Callum Hudson-Odoi) zeigt, was einen inhaltlichen Widerspruch darstellt. Die Kombination aus Szenen-Mismatch und Team-Identitäts-Mismatch führt zum Fazit IMAGE_REFUTE.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "I will use Entity extraction to identify the text and logos in the image (jersey, shorts, background) to check for matches with the entities in the text, such as \"Schalke\", \"Veltins\", \"Hannover\", or specific player names like \"Edin Džeko\" and \"Kenan Karaman\".",
+            "action": "Entity[image]",
+            "observation": "- **FC Schalke 04 (club crest “S04”)** on the player’s chest — **high certainty**.  \n- **Adidas** (three-stripe design on shoulders; Adidas logo on kit/socks) — **high certainty**.  \n- **Football/soccer ball** on the pitch — **high certainty**.  \n- **Soccer stadium setting** (pitch grass, stands/crowd in background) — **high certainty**.  \n- **Advertising/LED boards** along the sideline (text not clearly readable) — **high certainty**.  \n- **Sponsor text on jersey** (appears “SUN MINIMEAL”) — **medium certainty** (partially readable).  \n- **Player identity (individual person)** — **not identifiable** from this image (face obscured/insufficient detail).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a football match involving FC Schalke 04. The image shows a player wearing a blue kit with the \"S04\" crest, confirming he plays for Schalke 04. The visual entity matches the text's subject.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a match report against Hannover 96 (T1), while the scoreboard image clearly shows a match against Dynamo Dresden (C2), and the player faces are artificially blurred (V2).",
+    "notes": []
+  },
+  "error": null
+}

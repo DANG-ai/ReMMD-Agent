@@ -1,0 +1,133 @@
+{
+  "index": 363,
+  "sample_id": "364",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1741.57,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "L’article repose sur une base réelle — des revendications concurrentes autour de Kidal et un discours malien de redéploiement vers Anéfis — mais il mélange ce noyau d’actualité avec des éléments visuels et contextuels présentés de façon trompeuse. Des accusations plus anciennes contre des civils sont rapprochées de l’offensive d’avril sans séparation temporelle nette, et les images donnent l’impression de documenter directement les événements récents autour de Kidal alors qu’au moins une partie du matériel visuel est éditée ou replacée hors de son contexte précis.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/364",
+  "image_paths": [
+    "/path/to/ReMMDBench/364/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/364/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/364/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/364/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "364",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will detect the image to confirm the visual details, specifically looking for the text \"KIDAL\" on the rock and the armed men in the vehicle, to ensure it aligns with the news report about the region and the conflict.",
+            "action": "Detect[image]",
+            "observation": "- **No obvious signs of AI/synthetic generation:** The scene has consistent lighting and shadows, realistic depth/haze in the desert background, and natural textures (rock surface, paint wear, dust on the vehicle).\n- **No clear digital cut-and-paste artifacts:** The painted “KIDAL” lettering sits plausibly on the rock with consistent perspective and edge behavior; no visible haloing, mismatched blur, or seam lines around the text or subjects.\n- **Compression looks normal:** Mild JPEG compression is present, but nothing suggests localized tampering (no “sharper-than-rest” patches or inconsistent noise patterns in one area).\n- **Counterfactual elements not evident from the image alone:** The image depicts an armed pickup with passengers near a “KIDAL” marker in a desert setting, which is internally coherent. The photo itself doesn’t contain visual proof of date, actors, or specific events claimed in the accompanying text.\n\n**Overall:** The image appears like an authentic documentary photograph; I don’t see strong indicators of manipulation or synthetic creation based on visual inspection alone.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image features a large rock painted with \"KIDAL\" and a pickup truck carrying armed men in a desert environment. This visual evidence directly corresponds to the news text, which discusses the city of Kidal in Mali as a center of combat involving armed groups (like the FLA) and the Malian army, mentioning \"véhicules armés\" and the specific location. The image confirms the setting and the presence of armed actors described in the report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text is about the city of Kidal in Mali and the fighting there. The image prominently features a rock with the word \"KIDAL\" painted on it. I should verify this text to confirm the location matches the article's subject.",
+            "action": "VQA[What is the word painted in large white letters on the rock in the foreground?]",
+            "observation": "\n\nThe word painted in large white letters on the rock is **KIDAL**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly displays the word \"KIDAL\" painted on a large rock, which is the central location discussed in the news text regarding the conflict in Northern Mali. Additionally, the image shows armed men in a truck, which aligns with the text's description of \"véhicules armés\" and \"combattants\" in the region. The visual evidence strongly supports the content of the article.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample is classified as 'Mostly True' with high confidence scores for real imagery and matching context, indicating no significant distortions or fabrications.",
+    "notes": []
+  },
+  "error": null
+}

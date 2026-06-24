@@ -1,0 +1,141 @@
+{
+  "index": 427,
+  "sample_id": "428",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1945.7,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "Der Artikel trifft den Kern der Lage im Wesentlichen, dehnt aber den Umfang der gerichtlichen Beanstandung sprachlich etwas aus, indem mehrfach von \"zentralen Aussagen\" oder \"Kernaussagen\" gesprochen wird, obwohl sich die Entscheidung präziser auf einzelne Formulierungen und Zuspitzungen bezieht. Zusätzlich enthält das Bildmaterial bearbeitete bzw. stark zugeschnittene Darstellungen, die als visuelle Zuspitzung funktionieren, ohne den Hauptsachverhalt vollständig zu verfälschen.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/428",
+  "image_paths": [
+    "/path/to/ReMMDBench/428/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/428/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/428/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/428/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/428/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/428/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/428/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/428/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/428/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/428/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "428",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a future court ruling in 2026 regarding Correctiv. The image shows a courtroom setting. While the setting matches the topic (a court case), the specific event described (ruling on March 17, 2026) is in the future. Thus, the image cannot be authentic documentation of the described event. It is likely a generic stock photo. In veracity detection, using a generic or anachronistic image for a specific news claim is a refutation.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to determine if the image matches the text. The text describes a legal case involving \"Correctiv\" and \"Gerrit Huy\" (an AfD politician) regarding a \"Potsdam meeting\". The text mentions a judgment by the Berlin Regional Court. The image shows a courtroom setting with an elderly woman and a man in a legal robe. I need to verify if the woman is Gerrit Huy or if the scene matches the description. The woman appears much older than Gerrit Huy (born 1965) would be in 2026. She resembles Alice Schwarzer. The man is wearing a robe, indicating a legal proceeding. I will use VQA to confirm the setting and the woman's appearance/identity to confirm the mismatch.",
+            "action": "VQA[What kind of room is shown in the image, and what is the man wearing?]",
+            "observation": "\n\nBased on the visual evidence, the room appears to be a **courtroom**, **hearing room**, or a **formal meeting room** (indicated by the long table, documents, laptop, and the attire of the man).\n\nThe man is wearing a **black robe** (likely a judicial robe), a **white collared shirt**, a **tie**, and **glasses**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions a judgment involving \"Correctiv\" and \"Gerrit Huy\". The image shows a woman (likely Alice Schwarzer) and a man in a robe. I need to verify if the image depicts the specific trial mentioned in the text or a different event involving the person identified.",
+            "action": "VQA[Is the woman in the image Alice Schwarzer?]",
+            "observation": "\n\nYes, the woman in the image is Alice Schwarzer.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text discusses a legal case involving \"Correctiv\" and an AfD politician named \"Gerrit Huy\". The image shows Alice Schwarzer in a courtroom. Since the key figure mentioned in the text (Gerrit Huy) is not the person in the image (Alice Schwarzer), the image does not match the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.8,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future legal ruling in 2026 and contains internal errors (gender/name mismatch), while the visuals include images of Alice Schwarzer who is not mentioned in the text (Contextual Inconsistency) and a graphic claiming a \"Presseämter\" ruling which contradicts the text's \"Landgericht\" claim (Semantic Inconsistency).",
+    "notes": []
+  },
+  "error": null
+}

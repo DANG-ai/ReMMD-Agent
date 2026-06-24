@@ -1,0 +1,170 @@
+{
+  "index": 234,
+  "sample_id": "235",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2696.0,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "L’échantillon repose sur un noyau plausible de tensions et de frappes liées au front israélo-libanais, mais il exagère fortement leur portée sur Beyrouth, réécrit le cadrage diplomatique et donne une fausse matérialité visuelle à des scènes non établies. Les images d’explosion, de destructions urbaines et de réunion à Washington renforcent artificiellement une lecture plus spectaculaire et plus précise que ce qui est factuellement étayé, ce qui fait dominer la composante trompeuse.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/235",
+  "image_paths": [
+    "/path/to/ReMMDBench/235/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/235/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/235/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/235/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/235/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/235/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/235/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/235/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/235/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/235/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "235",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [],
+    "predicted_label": "verdict=True | taxonomy=None",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "If the 2025 search doesn't yield results, I should check April 8, 2024, as tensions were high then. I'll also search for the French condemnation specifically to see if it matches the date.",
+            "action": "Google[\"France condemns Israeli strikes Beirut April 8\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text contains unique literary phrasing (\"Au Liban, ces matins-là ont leur syntaxe propre\") which suggests it might be from a specific journalistic article. Searching for this phrase can help identify the source and verify the date and context. If the text is a real article, finding it will allow me to check if the date \"8 avril\" and the description of events (French condemnation, etc.) are accurate.",
+            "action": "Google[\"Au Liban, ces matins-là ont leur syntaxe propre\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text contains unique literary phrasing. I will search for the opening sentence to identify the source. If it's a known article, I can verify the context. If not, it might be fictional or a translation.",
+            "action": "Google[\"'Le jour ne se lève jamais d’un seul bloc'\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes Israeli strikes on Lebanon on April 8, mentioning damage to buildings, dust, and debris in Beirut. The image depicts a dramatic explosion and collapse of a modern building with significant debris and smoke, which visually corresponds to the \"frappes\" (strikes) and destruction described in the text. Although the text focuses on the aftermath and the political context, the image provides a visual representation of the violent event (explosion/destruction) central to the narrative. Therefore, the image supports the text.",
+            "action": "Detect[image]",
+            "observation": "The image shows a large urban explosion with a dense smoke plume and debris.\n\n**Signs that suggest the image could be authentic (a real captured moment):**\n- The smoke has complex, natural turbulence and layered density (dark core, lighter dust clouds) consistent with real explosions.\n- Debris pieces vary in size, focus, and motion blur; many are partially occluded by smoke/dust, which reads like a high‑shutter photo of a chaotic event.\n- Lighting is consistent across the scene (sunlit dust, shaded smoke mass, building surfaces), with no obvious mismatched shadows.\n- The building damage and dust “curtain” near the base look physically plausible and continuous with the blast.\n\n**Potential red flags / things to scrutinize (not definitive):**\n- Some debris fragments appear very crisp and “evenly sprinkled” across the sky, which can also happen in real high-resolution shots but is a common look in composited/VFX imagery.\n- No obvious camera artifacts (sensor noise, lens distortions) are noticeable at this resolution; that absence can occur in cleaned/processed photos, but it also can occur in stock/news images.\n\n**Overall assessment:** No clear, unambiguous signs of AI generation or heavy digital manipulation are visible. The scene’s physics (smoke, dust, debris occlusion, and lighting) appears internally consistent, so the image *looks plausible as an authentic photograph*, though it can’t be conclusively verified from visuals alone.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes Israeli strikes (\"frappes\") on Lebanon, detailing the resulting destruction, dust (\"poussière\"), and debris (\"gravats\"). The image depicts a massive explosion destroying a building, with significant smoke and flying debris, which visually aligns with the description of the violent strikes and damage mentioned in the article. Therefore, the image supports the text's narrative about the military strikes.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.6,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text describes Israeli strikes in Lebanon, specifically mentioning \"frappes\" (strikes) and damage to buildings (\"immeubles ont été endommagés\"). The image shows a building collapsing/exploding with significant debris and smoke, which aligns with the description of strikes and destruction in the text. I will use VQA to confirm the main action in the image.",
+            "action": "VQA[Does the image show a building collapsing or exploding with smoke and debris?]",
+            "observation": "\n\nYes, the image shows a building in the midst of a violent event, appearing to be an explosion or a collapse. There are massive plumes of dark grey and brown smoke rising into the sky, and a large amount of debris—including chunks of concrete, metal, and other structural materials—is flying through the air around the building's upper levels.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes Israeli strikes in Lebanon, causing damage to buildings and leaving debris. The VQA observation confirms the image shows a building collapsing or exploding with massive smoke and debris, which directly aligns with the description of \"frappes\" (strikes) and \"immeubles ont été endommagés\" (buildings were damaged). The visual evidence strongly supports the textual narrative.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9321697517861577,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample is classified as True with high confidence (p_real=0.932), indicating the text and visuals are authentic and consistent without secondary distortions.",
+    "notes": []
+  },
+  "error": null
+}

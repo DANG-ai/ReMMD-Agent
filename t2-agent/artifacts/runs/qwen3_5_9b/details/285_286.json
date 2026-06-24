@@ -1,0 +1,154 @@
+{
+  "index": 285,
+  "sample_id": "286",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1324.03,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The story turns unverified social-media allegations into a reported narrative by inventing the SWAT incident details, overstating or fabricating King's formal security relationship to Rep. Jasmine Crockett, and using synthetic visuals and ambiguous photos as if they were evidentiary support. The result is a false account whose central factual propositions are not reliably established by the available source material.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/286",
+  "image_paths": [
+    "/path/to/ReMMDBench/286/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/286/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/286/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/286/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/286/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/286/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/286/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/286/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/286/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/286/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "286",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.39999999999999997,
+        "best_trajectory": [
+          {
+            "thought": "The text claims an incident occurred at \"Children's Health campus\" in Dallas, specifically a parking garage stand-off. The image shows a sign for \"Children's Medical Center Dallas,\" which is the primary facility of the Children's Health system, confirming the location. The text details a strategic police response involving SWAT officers and police vehicles. The image features exactly this: a Dallas Police Memorial vehicle (stacker) and a standard patrol SUV with active lights, alongside officers in SWAT gear (identifiable by berets and vests). The presence of yellow police tape and the tactical positioning matches the text's description of an active police perimeter. The lighting (night/dusk) may seem contrary to \"March morning\" at sunrise, but police operations at that scale often persist into the evening, or the text focuses on the start time while the image captures the scene's atmosphere generally. The visual elements of the location and the type of police response match the factual claims of the story.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to cross-reference the description of the law enforcement response, specifically the \"Dallas SWAT,\" with the visual evidence of the officers' gear in the image.",
+            "action": "VQA[What do the tactical vests of the officers in the foreground say?]",
+            "observation": "\n\nSWAT",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the specific location mentioned in the news text (\"Children's Health\", \"Dallas\") by reading the sign in the image to ensure the scene depicted is indeed the reported location.",
+            "action": "VQA[What does the blue sign above the garage entrance say?]",
+            "observation": "\n\nThe blue sign above the garage entrance reads:\n\n**Children's Medical Center**\n**Dallas** **(P)**\n\nBelow that, smaller text indicates \"**Exit Only**\" on the left and \"**Entrance**\" on the right.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly states the event occurred \"just after sunrise\" and on a \"March morning,\" implying daylight conditions. The image shows a dark scene with artificial lighting, characteristic of night time. This discrepancy in time of day is a significant indicator of a mismatch.",
+            "action": "VQA[Is the scene in the image taking place during the day or at night?]",
+            "observation": "\n\nBased on the visual evidence, the scene is taking place at **night**.\n\nHere are the clues:\n*   **Darkness:** The overall environment is dark, and the tops of the buildings are shadowed.\n*   **Artificial Lighting:** The scene is illuminated by artificial lights, such as the lights inside the parking garage, the lights on the building windows, and streetlights.\n*   **Emergency Lights:** The police vehicle on the right has its blue emergency lights flashing, which is most effective and necessary at night.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The strongest evidence available is the discrepancy in the time of day. The text describes the event as happening \"just after sunrise\" and on a \"March morning,\" implying daylight. The VQA tool observation for the image confirms the scene is taking place at \"night\" with emergency lights active and no sunlight. This is a definitive contradiction.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The verification evidence identifies a mismatch between the text description of a \"sunrise\" scene and the nighttime image, alongside a discrepancy in facility names (\"Children's Health\" vs \"Children's Medical Center Dallas\"), indicating contextual inconsistency, synthetic visual content, and text fabrication.",
+    "notes": []
+  },
+  "error": null
+}

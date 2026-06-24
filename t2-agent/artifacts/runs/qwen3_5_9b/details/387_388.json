@@ -1,0 +1,137 @@
+{
+  "index": 387,
+  "sample_id": "388",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1018.36,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T3 Misleading Context"
+    ],
+    "rationale": "关于“网传坍塌视频为AI生成、重庆近期未发生立交桥坍塌且警方介入调查”的核心结论与辟谣信息一致；但文本将传播语境包装为“节后返程高峰期间”等更具即时性的时间框架，易让受众误以为事件发生在当下特定节点，属于语境时间上的误导性呈现。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会-网络治理与公共安全",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/388",
+  "image_paths": [
+    "/path/to/ReMMDBench/388/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/388/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "388",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.6,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I need to check the specific details about the \"Chongqing Nan'an Interchange\" and whether there was a recent claim that it was AI. The text mentions \"Nan'an District\" and \"Nan'an Interchange\", which corresponds to the 2022 Chongqing railway intersection collapse. The text claims authorities say no collapse happened \"recently\" and the video is AI. This sounds like a piece of misinformation claiming the famous 2022 collapse is a fake. I will verify the specific claim.",
+            "action": "Wikipedia[Chongqing railway intersection collapse]",
+            "observation": "No summary available. Similar entities: List of bridge failures, List of rail accidents (2020–present), Kolkata Metro, Jiuzhaigou, Kaifeng",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 1.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.3,
+        "best_trajectory": [
+          {
+            "thought": "The text explicitly states the video is AI-generated. If the visual analysis confirms synthetical characteristics (which common knowledge of similar viral tropes suggests), it would corroborate the text's description. Thus, if the image is confirmed as AI-generated, it supports the text's assertion.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text identifies a \"Chongqing Nan'An Interchange\" collapse. I need to verify this specific location name in the image to check the textual consistency. Asking VQA to read the banner will confirm if the location matches the news report.",
+            "action": "VQA[What is written on the blue banner in the foreground?]",
+            "observation": "\n\nThe blue banner in the foreground has the Chinese text: **重庆“南岸立交”坍塌事故救援现场**\n\nThis translates to \"Chongqing 'Nan'an Intersection' Collapse Accident Rescue Scene\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.15874010519681994,
+      "p_fake_text": 0.6,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text explicitly refutes the event shown in the visual material, creating a semantic conflict, while the image is visualized as AI-generated synthetic content as confirmed by the text.",
+    "notes": []
+  },
+  "error": null
+}

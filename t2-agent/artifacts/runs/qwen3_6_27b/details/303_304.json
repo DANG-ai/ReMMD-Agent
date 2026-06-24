@@ -1,0 +1,129 @@
+{
+  "index": 303,
+  "sample_id": "304",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2046.03,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article mixes real Indiana weather trends with misleading statewide framing and manipulated storm imagery. Genuine reports of a temperature drop and some tornado-related activity are overstated by presenting localized forecast data as statewide and by using an edited tornado map that exaggerates Indiana's in-state tornado footprint.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/304",
+  "image_paths": [
+    "/path/to/ReMMDBench/304/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/304/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/304/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "304",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text states that overnight lows in Indiana are expected to be in the low to mid 30s, with some places dropping below freezing. The image is a map titled \"Tonight's Area Forecast Southwestern Indiana\" showing temperatures like 30F, 31F, 32F, 33F, and 34F across various towns. This visual evidence directly supports the textual claim about the temperature range for the night.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text states that overnight lows are expected to fall into the \"low to mid 30s\". I should verify the specific temperature readings on the map to see if they align with this forecast.",
+            "action": "VQA[What are the temperature values shown on the map?]",
+            "observation": "\n\nBased on the visible map, the temperature forecast values range from **30°F to 34°F**.\n\nHere are the specific temperature readings visible for various locations:\n\n*   **30°F:** Oaklawn, Bicknell, Odon\n*   **31°F:** Vincennes, Monroe City, Elora, Washington, Loogootee, Alfordville, Jasper, Huntingburg (and partially visible in the top right corner)\n*   **32°F:** Princeton, Poseyville, Oakland City, Lynnville, Birdseye, Dale\n*   **33°F:** Fort Branch, Darmstadt, Evansville, Mount Vernon, Newburgh, Boonville, Chrisney, Leopold, Tell City\n*   **34°F:** Rockport",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The temperatures on the map (ranging from 30°F to 34°F) perfectly align with the text's description of overnight lows falling into the \"low to mid 30s\". Additionally, the map title \"Tonight's Area Forecast Southwestern Indiana\" confirms the location matches the text's focus on Indiana.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a weather event (sharp swing, tornadoes, specific temperatures) that aligns perfectly with the visual content, but the high probability of fake images (`p_fake_image=0.900`) and specific hallucinations in the map (e.g., placing \"Monroe City\" in SW Indiana) indicate that both the visual content and the accompanying text are synthetic fabrications.",
+    "notes": []
+  },
+  "error": null
+}

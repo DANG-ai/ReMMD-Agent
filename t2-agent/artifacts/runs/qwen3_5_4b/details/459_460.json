@@ -1,0 +1,132 @@
+{
+  "index": 459,
+  "sample_id": "460",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1808.11,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The story reverses the likely center of gravity of the trend by foregrounding an NBA controversy that is weakly supported in the source material while downplaying clearer evidence that Tottenham-Leeds football posts were a major, direct driver of #Spurs activity. It also uses football imagery, including an edited and a generated image, to illustrate a basketball-led narrative, creating both visual and cross-modal mismatch.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/460",
+  "image_paths": [
+    "/path/to/ReMMDBench/460/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/460/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/460/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/460/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "460",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The image provided shows a football (soccer) stadium, specifically the Recycle Room at Tottenham Hotspur's home stadium, featuring pyro flames and \"Spurs\" branding on banners. The news text describes a real-time social media surge driven by an NBA game between the San Antonio Spurs and Minnesota Timberwolves, specifically focusing on Victor Wembanyama's ejection in the NBA playoffs. The text claims the \"review sequence that ignited debate\" (an NBA basketball sequence) was one of the widely shared visuals. However, the image depicts a soccer match setup (Tottenham Hotspur) and appears to show football fans reacting to a soccer game. There is a fundamental mismatch between the NBA basketball content described in the text and the football (soccer) visual content shown in the image, despite the shared team nickname. This suggests the image does not support the text's primary claim about NBA visuals.",
+            "action": "Detect[image]",
+            "observation": "- **Likely composited broadcast graphic:** The top-left overlay (“UNDER REVIEW / Late Controversy / NBA Replay Center” with an NBA logo) looks like a TV-style lower-third/bug placed on top of an otherwise normal stadium photo. Its crisp edges and flat design are consistent with an added graphic rather than something physically present in the scene.\n\n- **Cross-sport mismatch / counterfactual framing:** The image shows a **soccer/football pitch** (center circle, penalty areas, typical stadium layout) with **pyrotechnics** and banners—this does not match an NBA game setting. So if it’s presented as a cover image for an NBA Spurs–Timberwolves controversy, it’s misleading by context even if the photo itself is real.\n\n- **No strong signs of AI image synthesis:** Crowd texture, stadium structure, perspective, and lighting look coherent. The flames/pylons align with the field and cast plausible brightness; no obvious warped geometry, duplicated crowd patterns, or impossible shadows.\n\n- **No obvious heavy photo manipulation besides overlays:** I don’t see clear cut-and-paste seams, mismatched blur, or inconsistent noise across the main photo. The primary authenticity concern is **miscontextualization** (soccer stadium used for an NBA narrative) and the **added “Under Review” graphic**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "While the text body explains the Hashtag overlap, the visual presentation in the article creates a strong Counterfactual framing or misleading effect. The text caption identifies the image as \"Cover image: fans react before [NBA] the game... the review sequence... became one of the night's most widely shared visuals.\" This implies the image depicts the NBA review sequence or NBA fans. However, the image clearly depicts a soccer stadium (Tottenham Hotspur), not an NBA arena. The \"Under Review / NBA Replay Center\" overlay looks composited or misleadingly placed on a soccer field. In veracity detection, an image that reflects a different sport than the main event described (NBA) when presented as visual cover material is typically a Refutation, even if the text later explains the context of the overlap. The visual mismatch suggests the image is misleadingly used to represent the NBA controversy.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.7,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Based on the entity extraction of \"NBA Replay Center\" and the \"Playoffs\" text in the image, which directly echoes the text content, and considering the \"Cover image\" caption in the text links to the #Spurs NBA surge/stories used as a visual, the image correctly matches the primary subject matter of the news article, confirming a cross-modal match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Verification identifies an added broadcast overlay graphic (V2) and a soccer stadium used to illustrate an NBA review sequence (C2).",
+    "notes": []
+  },
+  "error": null
+}

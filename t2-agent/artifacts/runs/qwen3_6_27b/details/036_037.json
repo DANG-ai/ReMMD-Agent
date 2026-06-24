@@ -1,0 +1,136 @@
+{
+  "index": 36,
+  "sample_id": "037",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2683.92,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本用被编辑过的“转播画面/现场大屏/数据卡”来强化“蒯曼4比1王艺迪”的既定结果，同时正文又出现局数与赛制表述自相矛盾（如暗示“第六局”“七局激战”），并把一场假定比分的队内胜负夸大推导为“席位基本锁定”，因此整体给受众的主要结论具有明显误导性。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "体育赛事",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/037",
+  "image_paths": [
+    "/path/to/ReMMDBench/037/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/037/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/037/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/037/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/037/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/037/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/037/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/037/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/037/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/037/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "037",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text reports on a match between Kuai Man and Wang Yidi in the 2026 Singapore Smash, with a score of 4-1. The image contains a broadcast overlay that explicitly states \"WTT新加坡大满贯2026\", \"女单1/8决赛\" (Women's Singles Round of 16), and \"蒯曼 4:1 王艺迪\". The visual text confirms the event name, round, players, and score described in the news. Therefore, the image supports the news content.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will use VQA to confirm the text visible in the image overlay to ensure it matches the news text details about the event, match stage, and score.",
+            "action": "VQA[What text is visible in the black and white overlay at the bottom of the image?]",
+            "observation": "\n\nWTT新加坡大满贯2026\n女单1/8决赛\n蒯曼 4:1 王艺迪",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA result confirms that the text overlay in the image (\"WTT新加坡大满贯2026\", \"女单1/8决赛\", \"蒯曼 4:1 王艺迪\") matches the details in the news text perfectly (event, round, score, players). The text explicitly references \"Fig 1\" as a screenshot showing this exact overlay. Therefore, the image and text are a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a detailed report of a future 2026 match (T1), while the visuals are contextually mismatched, showing a male player for a women's match and a different tournament (Chongqing vs Singapore) in the background (C2), with scoreboards and text overlays clearly added (V2).",
+    "notes": []
+  },
+  "error": null
+}

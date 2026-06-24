@@ -1,0 +1,146 @@
+{
+  "index": 80,
+  "sample_id": "081",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 891.17,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article is built on a real news event and genuine evacuation reporting, but it misleadingly fuses separate strands of the regional crisis into one narrative around the Chinese death. It also uses a manipulated border-road image and a fully synthetic route map, while pairing unrelated museum and airport visuals with the fatality-and-evacuation storyline.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/081",
+  "image_paths": [
+    "/path/to/ReMMDBench/081/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/081/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/081/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/081/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/081/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "081",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the main claim about a Chinese national being killed in Iran and the subsequent evacuation efforts, specifically via the Astara border crossing. I will search for recent news regarding Chinese citizens in Iran and any reports of fatalities.",
+            "action": "Google[Chinese national killed in Iran evacuation Astara]",
+            "observation": "The Iran conflict killed one Chinese citizen in capital Tehran, while ...: The Iran conflict killed one Chinese citizen in capital Tehran, while more than 3,000 were evacuated, China's foreign ministry said on Monday, ... (https://www.facebook.com/Reuters/posts/the-iran-conflict-killed-one-chinese-citizen-in-capital-tehran-while-more-than-3/1482738097050251/)\nMinistry: China mourns death of one Chinese national in Teheran ...: BEIJING/BAKU - One Chinese national died in Teheran in the military conflict, the Chinese Foreign Ministry said on Monday. (https://www.chinadailyhk.com/hk/article/629644)\nA Chinese citizen has died in Tehran amid ongoing military conflicts ...: A Chinese citizen has died in Tehran amid ongoing military conflicts. China has offered assistance to the family and coordinated evacuations ... (https://www.instagram.com/p/DVa1C1dCN_K/)\nEvacuations from Iran continue through Azerbaijan's Astara border.: Most recently, 24 Chinese citizens were evacuated from Iran to Azerbaijan through the Astara crossing. Two citizens of the United Arab ... (https://www.instagram.com/reel/DVjM7NvDGiu/)\nChina says 1 citizen dead in US, Israeli strikes on Iran ... - YouTube: The Iran conflict killed one Chinese citizen in Tehran, the capital, while more than 3000 were evacuated, China's foreign ministry said on ... (https://www.youtube.com/watch?v=D-GRx3FKxKw)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search results confirm the main points of the article: a Chinese citizen died in Tehran during the conflict, and evacuations are ongoing through the Astara border crossing in Azerbaijan. The details about the number of evacuees and the location align with the search results.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a group of men, appearing to be Chinese nationals, in a long covered walkway structure. One man is taking a selfie. The watermark indicates it is from a Chinese media outlet (@潇湘晨报). This aligns with the text stating \"Chinese media published images... showing evacuees at the Astara border crossing\" and \"others were seen taking quick photographs after crossing.\" The setting matches the description of the border crossing infrastructure.",
+            "action": "Detect[image]",
+            "observation": "The photo looks like a real, conventional smartphone image of people in a covered corridor next to a table with water and food. Perspective, lighting, reflections in the glass panels, and depth-of-field all appear consistent.\n\nNotable signs of **editing**:\n- **Faces are digitally obscured** with opaque, square/rectangular blur blocks. The blocks have sharp edges and uniform blur, typical of deliberate redaction added after the photo was taken (not an in-camera effect).\n- There are **media/watermark overlays** at the bottom (Chinese outlet-style watermarks), indicating reposting or publication, but not necessarily manipulation of scene content.\n\nNo clear signs of **AI generation or compositing**:\n- No obvious warped geometry, inconsistent shadows, duplicated textures, or impossible object shapes.\n- Hands, cups, bottles, and table items look coherent and physically plausible.\n\nOverall: the underlying scene appears authentic, with post-processing limited to privacy blurring and added watermarks.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a group of people in a covered walkway structure, consistent with a border crossing or transit area. One man is taking a selfie, which aligns with the text's mention of \"others were seen taking quick photographs after crossing.\" The watermarks from Chinese media outlets (@潇湘晨报, @郑州晚报) confirm the source mentioned in the text (\"Chinese media published images\"). The setting and the activity (selfie taking) support the narrative of evacuees documenting their journey or arrival. The faces of the background individuals appear obscured, which is common for privacy in such reports, but the overall scene is authentic and matches the description.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The text describes the evacuation of Chinese citizens from Iran, specifically mentioning the Astara border crossing and people taking photos. The image displays a group of East Asian individuals in a covered transit area with water bottles and food, seemingly resting or waiting. The presence of Chinese news watermarks and the act of taking a selfie strongly correlate with the text's description of Chinese media publishing images of evacuees. Therefore, the image matches the news content.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.46415888336127786,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample exhibits visual editing due to digital face obscuration in the evacuation photo and a contextual inconsistency where a flight board image displays a future date (2026) unrelated to the 2024 news event.",
+    "notes": []
+  },
+  "error": null
+}

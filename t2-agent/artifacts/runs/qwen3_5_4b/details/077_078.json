@@ -1,0 +1,172 @@
+{
+  "index": 77,
+  "sample_id": "078",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1449.27,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article starts from real facts about the Fort Campbell drone theft but reframes them to imply the case may be closer to an internal or administrative movement of equipment than a targeted theft. That insinuation is strengthened by an edited surveillance image suggesting official credentials and by unrelated imagery that nudges readers toward a misleading insider-security interpretation.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/078",
+  "image_paths": [
+    "/path/to/ReMMDBench/078/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/078/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/078/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/078/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/078/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "078",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.7,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "If Wikipedia does not provide enough information or confirms the text is fictional/hypothetical, I will use Google web search to find news reports from 2025/2026 regarding this specific theft to verify the existence of the incident and the specific details provided.",
+            "action": "Google[Fort Campbell Skydio drone theft 2025 announcement]",
+            "observation": "Fort Campbell drone theft suspects identified following public tips: The Skydio X10D Drone Systems were stolen in November 2025 from a locked storage area within a secured government building. The individuals ... (https://christiancountynow.com/news/267762-fort-campbell-drone-theft-suspects-identified-following-public-tips/)\nArmy IDs suspected drone thieves after offering $5K reward for ...: The Army said that it identified two suspects in the case of four stolen drones from Fort Campbell, Kentucky, after offering a $5000 reward. (https://defensescoop.com/2026/03/12/army-ids-suspects-stole-drones-fort-campbell-5000-dollar-reward/)\nU.S. Army Fort Campbell - Facebook: Four advanced military drones were stolen from a secure building at Fort Campbell, according to the U.S. Army. The theft happened between ... (https://www.facebook.com/FortCampbell/posts/the-department-of-the-army-criminal-investigation-division-is-offering-a-reward-/1354644733361223/)\nArmy offers reward for info that leads to Fort Campbell drone thieves: \"We can confirm that a Department of the Army Criminal Investigative Division investigation began in late November 2025 into the theft of four ... (https://www.foxnews.com/us/us-army-offers-up-to-5000-reward-information-4-drones-stolen-fort-campbell-kentucky)\n$5K reward offered after four military drones stolen from Fort Campbell: According to the U.S. Army Fort Campbell, four Skydio X10D Drone systems were last seen on the morning of November 21, 2025, at the 326th ... (https://www.wsmv.com/2026/03/10/5k-reward-offered-after-four-military-drones-stolen-fort-campbell/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Following the instruction to \"Use Wikipedia first,\" I will search Wikipedia for the specific incident or a summary of the drone theft event at Fort Campbell. This will verify if the event is a documented, verifiable entry in the encyclopedia, strengthening the veracity.",
+            "action": "Wikipedia[Fort Campbell Skydio X10D drone theft]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results confirm the existence of the Fort Campbell drone theft in November 2025 involving Skydio X10D drones, a $5,000 reward, and suspects identified. While the Wikipedia search was insufficient, the news articles corroborate the main facts. Based on this strong alignment, the text is supported.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.4,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Based on a preliminary visual inspection, the image displays two individuals in a hallway, consistent with the description of \"surveillance images showing two people\" in the text. Since the visual evidence directly aligns with the news report, I can also proceed to finalize the verification directly.",
+            "action": "Tool[Finish[IMAGE_SUPPORT]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "As an alternative approach, I can attempt to run the 'Detect' tool first to explicitly run the visual analysis function, although the visual evidence already strongly looks consistent. This ensures that no step is missed before the final decision. The image shows masked figures which fits the description of suspects.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like real CCTV stills:** The image is a side-by-side of two low-resolution, slightly blurry frames with flat lighting and visible compression—consistent with security-camera captures rather than AI-generated imagery or high-quality photography.  \n- **Intentional obfuscation present:** Both subjects’ faces appear **pixelated/blurred** in a rectangular way typical of privacy redaction. That is an edit, but it’s consistent with normal law-enforcement/public-release handling, not a sign of fabrication.  \n- **No clear generative artifacts:** I don’t see typical synthetic-image issues (warped geometry, impossible limb anatomy, inconsistent shadows, “melted” objects, nonsensical textures). The ceiling lights, hallway lines, and perspective look coherent.  \n- **No obvious compositing/tampering:** Edges around the people and objects don’t show clear cutout halos or mismatched noise patterns. The two panels appear to be separate frames/views, not a stitched fake scene.\n\n**Overall:** Aside from deliberate face blurring/redaction, the image appears visually authentic as surveillance footage with normal compression and motion blur, with no strong signs of AI synthesis or manipulation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the 'Detect' tool output which identified the image as authentic surveillance footage with standard privacy redaction and no AI artifacts, the visual evidence is sufficient to conclude the text is supported. I should proceed to finalize the verification.",
+            "action": "Tool[Finish[IMAGE_SUPPORT]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The 'Detect' tool has successfully analyzed the image and confirmed it is authentic surveillance footage with intentional face blurring, which aligns with the news text's mention of released surveillance images. There are no signs of AI manipulation or compositing. Given this strong evidence, the text is supported by the image.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.3,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I will use the Entity detection tool to identify and extract key objects or persons from the image. This will help in cross-referencing details like clothing, carried items, or location features (e.g., lockers, white walls) with the text description of the suspects and the facility.",
+            "action": "Entity[image]",
+            "observation": "- **Two adult people (faces blurred)** — **High** (clearly visible individuals; identity not determinable)\n- **Long gun / rifle-like object (right person, in hand)** — **Medium** (shape suggests a long firearm; details unclear)\n- **Possibly a second long gun / rifle-like object (right person, other hand)** — **Low–Medium** (another long object present; hard to confirm)\n- **ID badges/lanyards on both people** — **Medium** (rectangular badge shapes visible)\n- **Indoor corridor/office/warehouse-like interior** — **High** (hallway, cabinets/lockers, ceiling lights)\n- **Overhead ceiling lights** — **High**\n- **Storage cabinets/lockers along the walls** — **Medium–High**\n- **Office chair(s) in background** — **Medium**\n- **No clear logos, landmarks, or identifiable organizations** — **High** (none readable/recognizable)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "With the Entity tool having confirmed \"Two adult people\" and \"ID badges,\" the visual evidence strongly aligns with the text's description of \"two suspects\" and \"authorized access\" to the building. The most efficient next action is to conclude the cross-modal matching with a MATCH, as the key identifying information from the image (number of people, presence of ID) matches the narrative provided in the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.6214465011907718,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.19999999999999996,
+      "p_fake_match": 0.7,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.19999999999999996,
+        "C1 Semantic Inconsistency": 0.7,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text and images are verified as supported and consistent with each other, matching the \"Mostly True\" verdict. Standard privacy obfuscation (blurring) present in the CCTV footage does not constitute a distortion or fabrication.",
+    "notes": []
+  },
+  "error": null
+}

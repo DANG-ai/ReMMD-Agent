@@ -1,0 +1,184 @@
+{
+  "index": 214,
+  "sample_id": "215",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1659.79,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "正文的核心叙事是“已被决定逮捕、案件仍在推进、金额未披露”，但所配图片被编辑成“已宣判死缓/死刑立即执行且涉案超7亿或70亿”的权威新闻画面，形成强烈的“已经定罪量刑且金额巨大”的主要印象，与正文的程序阶段与信息披露状态相冲突，因此整体对受众的事实理解具有主导性的误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "时政",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/215",
+  "image_paths": [
+    "/path/to/ReMMDBench/215/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/215/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/215/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/215/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "215",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T2 Distortion; V2 Visual Editing; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "To verify the verdict details (case status, sentence, and dates) provided in the image against real-world legal records, the next step is to search for the specific keywords mentioned in the image.",
+            "action": "Google[search query \"谭瑞松 贪污受贿 2026 判决\"]",
+            "observation": "权威发布- 中华人民共和国最高人民法院: 2026年3月25日，辽宁省大连市中级人民法院一审公开宣判中国航空工业集团有限公司原党组书记、董事长谭瑞松贪污、受贿、内幕交易、泄露内幕信息案，对 ... (https://www.court.gov.cn/fabu/xiangqing/495831.html)\n贪污受贿超7亿元中航工业原“一把手”谭瑞松被判死缓 - 公司: 大连中院对被告人谭瑞松以贪污罪判处有期徒刑十五年，并处罚金人民币五百万元；以受贿罪判处死刑，缓期二年执行，剥夺政治权利终身，并处没收个人全部财产；以 ... (https://companies.caixin.com/2026-03-25/102427328.html)\n中国航空工业集团有限公司原党组书记、董事长谭瑞松贪污、受贿: 大连市中级人民法院认为，被告人谭瑞松的行为构成贪污罪、受贿罪、内幕交易、泄露内幕信息罪。谭瑞松贪污数额特别巨大；受贿数额特别巨大，并使国家和人民 ... (https://app.xinhuanet.com/news/article.html?articleId=20260325966a60355f2a4cb2b5ec9a7509f6e07b)\n辽宁检察机关依法对谭瑞松涉嫌贪污、受贿和内幕交易: 检察机关起诉指控：被告人谭瑞松利用担任中国航空工业第二集团公司副总经理，中国航空工业集团公司副总经理等职务上的便利，非法占有公共财物，数额特别巨大； ... (https://www.spp.gov.cn/spp/yzjcrd/202508/t20250805_707040.shtml)\n董事长谭瑞松贪污、受贿、内幕交易、泄露内幕信息案一审宣判: 大连市中级人民法院认为，被告人谭瑞松的行为构成贪污罪、受贿罪、内幕交易、泄露内幕信息罪。谭瑞松贪污数额特别巨大；受贿数额特别巨大，并使国家和人民 ... (http://epaper.legaldaily.com.cn/fzrb/content/20260326/Articel03007GN.htm)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Verify the case details on Wikipedia to confirm the timeline and the amount. The \"News text\" (provided in the prompt) claims the amount was \"not disclosed\". The Image shows the amount as \"over 700 million\". Since Google search already confirmed the Image content, checking Wikipedia would likely yield the same result (case details). However, checking it is safer to satisfy the \"Use Wikipedia first\" instruction if the previous agent deviated. If the amount is confirmed as \"700 million\" in Wikipedia's section about the case, the text claim is Refuted.",
+            "action": "Wikipedia[query \"谭瑞松 贪污贿赂 判决\"]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the Google search results in the previous turn (Turn 2), authoritative sources (including a snippet from the Supreme People's Court's Ciesnet/court.gov.cn) explicitly state the amount involved was \"Over 700 million yuan\" and the verdict was announced on March 25, 2026. This directly contradicts the news text's claim that \"the specific numbers... have not been disclosed.\" Therefore, the text is refuted.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "The provided news text describes the ongoing investigation and arrest of Tan Ruisong (AVIC Chairman) with dates leading up to March 2025 (Arrest date 2025-03-17), stating that the specific amount involved has not yet been disclosed. The image, however, depicts a news broadcast from March 25, 2026, announcing the first-instance verdict sentencing Tan Ruisong to death with a reprieve for a case involving >700 million yuan. Since the image shows the fulfilled outcome (verdict and amount disclosure) at a time later than the text's timeline (2026 vs 2025), the image is consistent with the text as a subsequent update or confirmation of the suspicions raised in the text. It does not refute the text but rather provides the final resolution to the case described.",
+            "action": "Tool[input] Finish[IMAGE_SUPPORT]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "文本描述了谭瑞松在2024-2025年间的调查、逮捕时间点，并指出涉案金额尚未公开。而图片显示的是2026年3月的一审判决结果，内容提及“涉案超7亿元”及“死刑缓期二年执行”。图片的时间线（2026年）晚于文本描述的时间线（2025年），且图片中确认的罪名（贪污、受贿）与文本一致。图片作为案件审判结果的新闻报道，在逻辑上是文本所述法律程序的自然延续，证实了谭瑞松案情的严重性和最终走向，两者在事实层面上是支持的，不存在信息冲突（图片披露的是文本截点之后的结果）。",
+            "action": "Tool[input] Finish[IMAGE_SUPPORT]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes the timeline of Tan Ruisong's legal proceedings, focusing on the investigation and arrest phase (2024-2025), and notes that specific financial details are not yet public. To verify the claims made in the image regarding the specific verdict date and the amounts involved, I need to perform image analysis to extract the text from the provided visual.",
+            "action": "Detect[image]",
+            "observation": "- **明显的合成/编辑痕迹（高可能伪造）**：画面上方是“法治之窗｜法治全视/法治在线”风格的新闻演播室截图，但人物是**无五官的扁平剪影**（类似占位插画），不像真实电视新闻画面；这类“模板+文字”常见于二次加工的网传图。  \n- **版式拼接不自然**：上半部分像电视栏目画面，下半部分是大段白底黑字的“通稿式排版”，两者在字体、边距、层级上明显不统一，像把不同来源内容**截屏后再拼接**到同一张长图里。  \n- **信息呈现异常**：标题区用极醒目的“涉案超7亿元 被判死刑缓期二年执行”等大字条幅，搭配右侧要点列表，整体更像“自媒体海报/二创字幕”，而非正规电视台新闻的常见图形规范。  \n- **未见真实摄影细节**：没有现场人物、台标清晰截图、时间条、字幕滚动等可验证的直播元素，更多是静态图形与文字堆叠。\n\n综合来看，这张图更像经过模板化设计与拼接的二次制作图片，而非可直接证明事件的原始新闻截图。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes the investigation and arrest timeline of Tan Ruisong in 2024-2025, noting that specific financial details were not public at that time. The image, despite having a synthetic \"news broadcast\" style, explicitly references the same timeline (2025 arrest, 2026 verdict) and charges (corruption, bribery) and matches the specific outcome details (15 years prison + death with reprieve, 700 million yuan amount). The text's statement about the amount not being disclosed in the text's timeframe is logically consistent with the image showing the amount disclosed in a future timeframe (2026). The narrative progression is supported.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "Based on the provided image and text, there is a significant discrepancy in the timeline and legal status. The text describes the case ending at the arrest/investigation stage around 2025, stating amounts were not disclosed. The image, however, shows a verdict from \"2026年3月25日\" with a specific sentence (\"Death penalty with 2-year reprieve\") and a specific amount (\"over 700 million\"). I need to extract these specific details from the image to confirm the mismatch.",
+            "action": "VQA[What is the specific date of the court announcement and the verdict sentence for Tan Ruison stated in the image?]",
+            "observation": "\n\nBased on the image provided:\n\n**Date of Announcement:**\nThe text states the verdict was announced on **March 25, 2023** (visible as \"2023年3月25日\" in the text \"据央视新闻，2023年3月25日...\").\n\n**Verdict Sentence for Tan Ruison:**\nThe image details the following sentences for Tan Ruison (谭瑞松):\n\n*   **General Execution:** Death penalty, suspended for two years (死刑，缓期二年执行), deprivation of political rights for life (剥夺政治权利终身), and confiscation of all personal property (没收个人全部财产).\n*   **Specific Crimes & Terms:**\n    *   **Embezzlement (贪污罪):** 15 years fixed-term imprisonment and a fine of 5 million RMB (有期徒刑十五年，并处罚金人民币五百万元).\n    *   **Bribery (受贿罪):** Death penalty, suspended for two years (判处死刑，缓期二年执行).\n    *   **Insider Trading & Leakage of Inside Information (内幕交易，泄露内幕信息罪):** 6 years fixed-term imprisonment and a fine.\n*   **Asset Recovery:** Illegal gains from embezzlement are to be returned to the victim unit; illegal gains and interest from bribery are legal revenue for the state treasury; illegal gains from insider trading will continue to be recovered.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states that no specific amounts have been disclosed yet, while the image headline mentions \"over 700 million\" (超7亿元) and \"huge amount\" (金额巨大). Additionally, the text is at the investigation stage, while the image displays a final verdict (Death penalty suspended). I should ask the agent to confirm the amount mentioned in the image to complete the evidence for the mismatch.",
+            "action": "VQA[What specific involved amount is mentioned in the headline or text summary of the image?]",
+            "observation": "\n\nThe specific involved amount mentioned in the headline and text summary is **7亿元** (700 million yuan). It appears in the bold headline \"涉案超7亿元\" (Involving over 700 million yuan) and the first line of the main text block \"「谭瑞松」超7亿元\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes the case as being in the investigation/arrest phase in 2025 with undisclosed amounts. In contrast, the image displays a \"First Instance Public Verdict\" dated March 25, 2026, involving over 700 million yuan and imposing a death penalty suspended for two years. The discrepancies in timeline (2025 vs 2026), legal status (investigation vs verdict), and specific amounts (unknown vs 700 million) are definitive. The media content and image information are inconsistent.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.8,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.3,
+        "V1 Synthetic Visual Content": 0.2,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "The text describes a 2025 investigation stage while visuals display a 2026 verdict with specific amounts, creating a contextual mismatch and semantic conflict regarding the event's status and timeline.",
+    "notes": []
+  },
+  "error": null
+}

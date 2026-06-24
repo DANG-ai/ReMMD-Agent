@@ -1,0 +1,143 @@
+{
+  "index": 336,
+  "sample_id": "337",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2451.38,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Le récit textuel repose sur un socle réel — des défilés du 1er-Mai ont bien eu lieu en France avec les revendications mentionnées et des chiffres divergents selon les acteurs — mais l’échantillon devient globalement trompeur par l’usage d’images manipulées ou fabriquées présentées comme illustratives d’un reportage authentique. Les visuels exagèrent l’ampleur et la tension de la journée à Paris, tandis qu’une affiche institutionnelle recadrée d’origine congolaise est réinsérée de façon ambiguë comme si elle relevait du contexte français ; l’impression dominante produite sur le lecteur est donc plus spectaculaire et plus homogène que ce que le texte factuel permet réellement d’établir.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/337",
+  "image_paths": [
+    "/path/to/ReMMDBench/337/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/337/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/337/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "337",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 7,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a May 1st demonstration in France involving unions like the CGT, with demands regarding prices, salaries, and retirement. I need to verify if the image shows these specific elements. I will use the Detect tool to identify the text on the banners and flags, specifically looking for \"CGT\", \"1er Mai\", and keywords related to the protest demands like \"prix\" (prices) or \"retraites\" (retirement).",
+            "action": "Detect[image]",
+            "observation": "- **Overall look:** The scene (crowd density, flags, lighting, depth of field, and perspective) looks consistent with a real photograph of a demonstration. No obvious AI-style artifacts (warped geometry, inconsistent shadows, melted textures) stand out.\n\n- **Clear sign of editing:** Many faces have been **deliberately blurred/pixelated** in rectangular patches. The blur is uniform and blocky, consistent with **post-processing/anonymization** rather than camera motion blur.\n\n- **Text/signs:** Placards and banners contain readable French text with consistent fonts/paint strokes and alignment. No obvious “gibberish text” or malformed lettering typical of some synthetic images.\n\n- **Compositing clues:** Edges around signs, flags, and heads look clean and naturally occluded by one another; I don’t see obvious cut-and-paste halos or mismatched lighting between foreground and background.\n\n**Conclusion:** The image appears **authentic as a photo**, with **intentional privacy blurring** applied to faces. No strong indicators of synthetic generation or deceptive compositing beyond that.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image depicts a scene consistent with the news text: a crowd of protesters holding flags and signs related to May 1st (\"1er Mai\"), the CGT union, and demands regarding prices (\"PRIX\") and retirement (\"RETRAITES\"). The presence of the TotalEnergies logo on a sign and the French tricolor sash worn by the man in the green jacket (likely a mayor) adds specific contextual details that align with a French labor protest. While the text on the main banner (\"POUER\") is unusual, it could be interpreted as a typo or a specific slogan. The overall composition and lighting appear to represent the event described.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text is about the \"1er-Mai\" (May 1st) demonstrations. I see a white sign on the right side of the image that appears to have \"1er Mai\" written on it. I want to confirm this date to establish a temporal match between the image and the text.",
+            "action": "VQA[What date is written on the white sign on the right side of the image?]",
+            "observation": "\n\n1er Mai",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text highlights demands regarding prices (\"blocage des prix\") and retirement (\"retraite\"). The large purple banner at the bottom contains text that appears to relate to these topics. I want to read the text on this banner to confirm if the visual evidence aligns with the reported demands.",
+            "action": "VQA[What text is written on the large purple banner at the bottom of the image?]",
+            "observation": "\n\nBased on the image, the large purple banner at the bottom contains the following text:\n\n**Main text:**\n\"POUER LES PRIX\" (Note: This appears to be a typo, possibly intended to be \"POUSSER LES PRIX\" or \"POUR LES PRIX\")\n\n**Smaller text below:**\n\"NERGIES • SERVICES PUBLICS • RETRAITES • ÉCOLOGIE ...\" (The word \"ÉNERGIES\" is partially cut off on the left)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes May 1st (\"1er-Mai\") protests in France, specifically mentioning Paris and the CGT union, with demands regarding prices (\"prix\") and retirement (\"retraite\"). The image contains a sign explicitly stating \"1er Mai\", a red flag with \"CGT\" and \"ILE DE FRANCE\" (matching the Paris location and union mentioned), and a banner mentioning \"RETRAITES\" and \"PRIX\". The visual evidence aligns perfectly with the textual description of the event, location, participants, and themes.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The verification evidence explicitly notes that faces in the image have been deliberately blurred/pixelated, which constitutes visual editing.",
+    "notes": []
+  },
+  "error": null
+}

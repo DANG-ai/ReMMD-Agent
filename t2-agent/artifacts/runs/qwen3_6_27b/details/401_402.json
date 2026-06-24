@@ -1,0 +1,141 @@
+{
+  "index": 401,
+  "sample_id": "402",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2505.6,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article inflates a mix of localized tornado damage, one rare tornado-emergency warning in Indiana, generic preparedness messaging, and Hawaii flood/severe-weather monitoring into a broader national tornado-emergency narrative. That false escalation is reinforced by edited and synthetic visuals that depict tornadoes and simultaneous tornado-emergency alerts that were not actually documented.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/402",
+  "image_paths": [
+    "/path/to/ReMMDBench/402/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/402/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/402/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/402/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/402/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/402/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/402/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/402/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/402/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/402/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "402",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text describes tornado damage in rural Illinois, specifically mentioning damaged homes, barns, grain bins, snapped trees, and debris. The image shows a rural scene with a white house that has lost part of its roof, a red barn with significant roof damage, a silo (grain bin), a large snapped tree, and scattered debris. Emergency vehicles are present. In the background, a tornado or dark storm funnel is visible. This visual evidence aligns perfectly with the description of the EF-1 tornado damage in Madison County or St. Clair County, Illinois.",
+            "action": "Detect[image]",
+            "observation": "The image appears largely **authentic** (a real photograph) with no clear indicators of AI generation or compositing.\n\n**Reasons it looks authentic**\n- **Consistent lighting and weather:** The dark storm base, diffuse daylight, and low-contrast tones match an overcast severe-weather scene. Shadows and highlights across the houses, barn, and debris field are coherent.\n- **Natural fine detail:** Debris distribution, damaged roofing, splintered tree trunk, and scattered small objects look irregular in a realistic way rather than patterned or smeared.\n- **Perspective and scale consistency:** The tornado funnel, farm structures, vehicles, and people all sit in a plausible spatial relationship with correct relative sizes and depth cues (haze in the distance, sharpness foreground-to-background).\n- **No obvious seam artifacts:** I don’t see hard cut lines, mismatched edges, or inconsistent blur around the funnel or damaged structures that would suggest a pasted-in element.\n\n**Possible but non-definitive concerns**\n- The tornado funnel is visually striking and well-centered, but that alone isn’t evidence of manipulation.\n- If there was editing, it would most likely be **routine photo adjustments** (contrast/saturation) rather than synthetic content; nothing clearly “breaks” physically.\n\n**Conclusion:** No strong visual signs of digital manipulation or synthetic generation are apparent; the scene reads as a genuine storm-damage photo with a tornado in the background.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly depicts the aftermath of a severe weather event, specifically tornado damage, as described in the text. We see a rural setting with a white house suffering roof damage, a red barn with significant roof damage, a silo (grain bin), and a large tree that has been snapped in half. Debris is scattered across the ground. In the background, a dark storm cloud/funnel is visible. This visual evidence directly supports the text's description of \"homes damaged, grain bins twisted and broken, and trees ripped apart\" in rural Illinois.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a tornado event in rural Illinois, specifically mentioning damage to homes, grain bins, trees, and barns. I need to confirm if a tornado is visible in the image to establish the primary context.",
+            "action": "VQA[Is a tornado funnel cloud visible in the background sky?]",
+            "observation": "\n\nYes, a tornado funnel cloud is clearly visible in the background sky, extending downwards from the dark storm clouds on the left side.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly depicts the aftermath of a tornado, matching the text's description of damage to homes, barns, and trees in rural Illinois. The presence of emergency vehicles and the visible tornado funnel cloud further confirm the match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7663094323935531,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.51,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes severe weather events occurring on \"March 11,\" but the supporting weather map image (Image 2) is dated \"May 25, 2024,\" and other map images show a date of \"Mar 11, 2026,\" indicating a mismatch in time context between the text's narrative and the visual evidence provided.",
+    "notes": []
+  },
+  "error": null
+}

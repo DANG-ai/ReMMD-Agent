@@ -1,0 +1,139 @@
+{
+  "index": 190,
+  "sample_id": "191",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1891.47,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article presents an unverified and asserted-as-fact employment relationship between Diamon-Mazairre Robinson/Mike King and Rep. Jasmine Crockett's security detail, and it reinforces that claim with AI-generated images posed as if they were documentary support. The visuals do not authentically depict the alleged campaign-security role or the SWAT scene, so they falsely strengthen the article's central claim.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/191",
+  "image_paths": [
+    "/path/to/ReMMDBench/191/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/191/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/191/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "191",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "I need to analyze the image to confirm the identities of the people and the context. The truck in the background reads \"JASMINE CROCKETT FOR CONGRESS\", which links the image to the text about Rep. Jasmine Crockett. The man next to her appears to be security personnel, which aligns with the text about Mike King working security for her.",
+            "action": "Detect[image]",
+            "observation": "- **Clear evidence of editing (redaction/obscuring):** Multiple faces are covered with uniform, soft-edged blur blocks. This is consistent with deliberate anonymization added after the photo was taken, not a camera artifact.\n\n- **Otherwise looks like a real photograph:** Lighting, shadows, depth of field, and background detail (crowd, vehicles, signage) are coherent and natural. No obvious AI-generation artifacts (warped geometry, inconsistent reflections, malformed hands) stand out.\n\n- **No visible “counterfactual” additions tied to the story:** The image shows a public/campaign-like scene with a “JASMINE CROCKETT” sign in the background, but nothing in the pixels indicates a SWAT shooting, hospital garage, or the described standoff. So it doesn’t visually substantiate those claims on its own.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows Rep. Jasmine Crockett speaking with a man wearing an earpiece (suggesting security) in front of a \"Jasmine Crockett for Congress\" truck. This visual evidence directly aligns with the text's claim that Robinson (alias Mike King) worked security for her campaign and appeared with her at public events. Although the image does not depict the fatal shooting, it corroborates the background context and relationship described in the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "To verify the connection to the news text mentioning \"Rep. Jasmine Crockett's campaign\", I should check the text on the vehicle in the background to see if it matches her name and campaign status.",
+            "action": "VQA[What does the sign on the blue truck in the background say?]",
+            "observation": "\n\nThe sign on the blue truck in the background says:\n\n**JASMINE**\n**CROCKETT**\n**FOR CONGRESS**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The sign in the background confirms the location is a campaign event for Jasmine Crockett. To fully verify the match, I should confirm that the woman in the foreground is indeed Jasmine Crockett, as mentioned in the text.",
+            "action": "VQA[Is the woman in the black jacket in the image Representative Jasmine Crockett?]",
+            "observation": "\n\nYes, the woman in the black jacket is Representative Jasmine Crockett. This is confirmed by the campaign sign visible on the vehicle in the background which reads \"JASMINE CROCKETT FOR CONGRESS.\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays Representative Jasmine Crockett at a campaign event, evidenced by the \"JASMINE CROCKETT FOR CONGRESS\" sign on the vehicle in the background. The news text states that the deceased fugitive, Diamon-Mazairre Robinson, \"worked security for Rep. Jasmine Crockett’s campaign\" and \"appeared with Crockett at campaign and public events.\" The man standing directly beside Crockett in the image fits the visual description of a security detail or close associate at such an event. Therefore, the image serves as visual confirmation of the relationship and context described in the text, specifically the part about him appearing with her at campaign events.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.46415888336127786,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The verification evidence explicitly identifies clear evidence of editing (redaction/obscuring of faces) in the visual material, while the text appears to correspond to reported news events.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,128 @@
+{
+  "index": 260,
+  "sample_id": "261",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1699.39,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Text stützt sich auf einen realistisch wirkenden politischen Terminrahmen, verschiebt aber den Kontext so, dass eine Rolle Robert Habecks bei genau diesen Konsultationen nahegelegt wird. Zugleich verstärkt ein bearbeitetes Bild diese ungesicherte Zuordnung und macht aus einer plausiblen Nachrichtendarstellung eine irreführende Kontextkombination.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/261",
+  "image_paths": [
+    "/path/to/ReMMDBench/261/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/261/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "261",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text states that Chancellor Friedrich Merz met with Zelensky. The image shows Zelensky (left) walking with a man in a blue suit (right). The man in the blue suit does not look like Friedrich Merz (who has grey hair and distinct features). Additionally, Merz is not the current Chancellor. The text describes an event that likely did not happen as described (Merz as Chancellor), and the visual evidence (the man's appearance) contradicts the claim that it is Merz.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I also need to verify the identity of the man on the right, who is wearing a blue suit, to see if he matches the text's mention of Friedrich Merz.",
+            "action": "VQA[Who is the man on the right wearing the blue suit?]",
+            "observation": "\n\nBased on the visual evidence, the man on the right wearing the blue suit is **Rishi Sunak**, who was the Prime Minister of the United Kingdom. He is pictured walking alongside Ukrainian President Volodymyr Zelenskyy (the man on the left in black).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states that the meeting is between German Chancellor Friedrich Merz and Ukrainian President Volodymyr Selenskyj. The previous VQA observation identified the man on the right as Rishi Sunak, not Friedrich Merz. This is a direct contradiction regarding the identity of the key figure mentioned in the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a meeting involving Chancellor Friedrich Merz (who is not Chancellor), while the synthetic images depict Rishi Sunak, creating a direct semantic conflict between the textual claim and visual identity.",
+    "notes": []
+  },
+  "error": null
+}

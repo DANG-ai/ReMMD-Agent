@@ -1,0 +1,129 @@
+{
+  "index": 396,
+  "sample_id": "397",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1356.1,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "本文の中核事実は素材要約とおおむね一致しているが、蒸気確認の描写がやや視覚的に強められている。加えて、使用画像は当日の蒸気漏れ現場そのものを示す確認画像ではなく、本文が想起させる時点・文脈と完全には一致していない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/397",
+  "image_paths": [
+    "/path/to/ReMMDBench/397/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/397/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "397",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.7,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.2,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the image corresponds to the location and event mentioned in the text. The news text describes a steam leak at Kansai Electric's Minami-Renzo Unit 3. I will use the Detect tool to analyze the image content to confirm the location.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic aerial/telephoto photograph of an industrial facility (looks like a nuclear plant complex by structure), with no clear signs of AI synthesis or compositing.\n\n**What supports authenticity**\n- Consistent lighting and shadows across buildings, pipes, and terrain; no mismatched illumination.\n- Coherent perspective and scale: roof vents, windows, railings, roads, and coastline align naturally.\n- Natural-looking atmospheric haze/telephoto softness and slight compression artifacts typical of news imagery.\n- Fine structural detail (grids, vents, catwalks) remains geometrically consistent without “warping” artifacts.\n\n**Potential edits / uncertainties (minor)**\n- No obvious copy-paste seams, duplicated textures, or object boundary halos are visible.\n- If anything, the image may be mildly resized or compressed, but that’s normal and not indicative of manipulation.\n\n**Counterfactual content**\n- The photo does not visibly show steam leakage; it’s more of a contextual facility shot. The image alone doesn’t confirm the described incident.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to confirm if the architectural layout in the image matches a *historical* state of Mihama Unit 3 (prior to 2011 shutdown) or if the text is trying to trick me with a different plant. While the plant resembles a Kansai facility (Mihama or Naka), the specific configuration (dome, glass building) might correspond to a different active unit (e.g. Naka Unit 3). If the image is of Naka, the text claiming \"Mihama\" is a mismatch. Given the high likelihood of the text being misinformation about a decommissioned plant, continuing to verify if the image *specifically* contradicts the text's premises (location/name) would be safe. If it's a mismatch, Refute. If it is a match and the text is actually from ~2000, it might be Support (but contextually, this looks like news-in-the-present).",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions a specific visual event: 'white steam seen on surveillance cameras' at 'turbine building side'. I need to verify if this visual element corresponds to reality in the provided image. Asking a VQA question about the presence of steam will help determine if the text description matches the image content.",
+            "action": "VQA[Is there white steam visible in the image?]",
+            "observation": "\n\nYes, white steam is visible rising near the center-right side of the large white building in the foreground.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a steam leak in the turbine building at a nuclear power plant. The image depicts a nuclear facility near the ocean, and the VQA observation confirmed the presence of white steam rising near a building structure. This visual evidence aligns directly with the textual description of a steam leak.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image exhibits strong characteristics of AI-generated content (p_fake_image=0.900), making the visual material the primary source of the distortion in this composite pair.",
+    "notes": []
+  },
+  "error": null
+}

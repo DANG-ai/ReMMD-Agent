@@ -1,0 +1,136 @@
+{
+  "index": 410,
+  "sample_id": "411",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1196.4,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "Der Artikel stellt eine nicht belegte EU-Genehmigung des deutschen Industriestrompreises als abgeschlossene Tatsache dar und baut darauf den gesamten Nachrichtenrahmen auf. Zugleich werden synthetische bzw. nur allgemein passende Bilder so eingesetzt, als dokumentierten sie die konkrete Freigabe und offizielle Verkündung.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/411",
+  "image_paths": [
+    "/path/to/ReMMDBench/411/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/411/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/411/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/411/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/411/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "411",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.3,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the image matches the text description. The text mentions a 'Hero-Bild' (Hero Image) showing an 'Official announcement of the industrial electricity price in Brussels' with representatives. The image shows two individuals at podiums with German and EU flags, which is the standard setting for a high-level EU governance announcement. The people appear to be officials (a man in a suit and a woman in a suit), consistent with Commission and Government representatives. The visual scene perfectly matches the caption provided in the text.",
+            "action": "Detect[image]",
+            "observation": "- **Offensichtliche Bearbeitung:** Die Gesichter beider Personen sind stark weichgezeichnet/pixelig überdeckt. Das ist eine klare nachträgliche Anonymisierung/Redaktion und kein natürliches Unschärfeverhalten der Kamera.\n- **Sonstige Manipulationsspuren:** Abgesehen von der Gesichtsverdeckung wirken Licht, Schatten, Perspektive und Tiefenschärfe konsistent (scharfe Pulte/Mikrofone/Flaggen im Fokusbereich, unscharfe Kameras/Publikum im Vordergrund durch geringe Schärfentiefe). Keine erkennbaren Schnittkanten, Doppelkonturen oder unplausible Texturen.\n- **Synthetik-/KI-Hinweise:** Keine typischen KI-Artefakte (verzerrte Hände, unlogische Flaggenmuster, „schmelzende“ Kanten, inkonsistente Details). Szene wirkt wie ein reales Pressefoto in einem Konferenzraum/Briefing-Setting.\n- **Counterfactual/inhaltliche Plausibilität aus dem Bild allein:** Das Bild zeigt allgemein eine Pressekonferenz mit EU- und Deutschlandflagge; es liefert jedoch **keinen** visuellen Beleg für die konkrete Behauptung „EU-Kommission genehmigt Industriestrompreis“ (keine lesbaren Beschriftungen/Schilder, kein Text auf dem Podium).\n\n**Fazit:** Das Bild wirkt überwiegend authentisch als Presse-/Konferenzfoto, mit klarer nachträglicher Gesichtsverpixelung als Bearbeitung.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Previous verification flagged 'Offensichtliche Bearbeitung' (obvious editing) and claimed pixelation of faces. In the context of veracity, explicit evidence of face pixelation usually suggests a manipulated image designed to look like a press photo but falsified for user data protection or fabrication. This specific observation indicates manipulation, distinguishing the image from a genuine source press photo.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes an official announcement in Brussels/Berlin with a podium featuring EU and Federal flags. I need to verify if the image shows these specific flags to establish cross-modal alignment. I will ask a VQA question to identify the visible flags.",
+            "action": "VQA[What flags are visible in the background behind the speakers?]",
+            "observation": "\n\nBased on the image, there are two flags visible in the background on the left side:\n\n1.  The **flag of Germany** (black, red, and gold horizontal stripes).\n2.  The **flag of the European Union** (blue field with a circle of twelve gold stars).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA step confirmed the presence of the German and EU flags, which matches the text caption's description of \"EU- und Bundesflaggen\". This strong alignment confirms the visual identity of the event described in the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7047298732064892,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.3,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The verification evidence identifies obvious post-editing (face blurring) on the visual material, classifying it as visual editing.",
+    "notes": []
+  },
+  "error": null
+}

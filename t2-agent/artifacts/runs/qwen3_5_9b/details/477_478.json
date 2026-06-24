@@ -1,0 +1,161 @@
+{
+  "index": 477,
+  "sample_id": "478",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1473.14,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "本文の中核である「4月21日朝の管制システム障害で羽田空港を中心に運航や搭乗手続きへ影響が出て、午前中に解消した」という点は証拠と整合する。ただし、「各地に広がった」とする影響範囲の表現はやや広めで、利用者投稿写真も本文の中心事象と時刻・場所が厳密に一致する現場証拠とは限らない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/478",
+  "image_paths": [
+    "/path/to/ReMMDBench/478/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/478/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "478",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [],
+    "predicted_label": "verdict=True | taxonomy=None",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "First, I should check the Wikipedia for any major aviation accidents or incidents at Haneda Airport, specifically looking for recent years where air traffic control issues might be documented in the 'accident and incident' section.",
+            "action": "Wikipedia[羽田空港 事故 2023]",
+            "observation": "東京國際機場 是位於日本東京都大田區的機場，因座落於羽田地區而通稱為羽田機場，啟用於1931年8月25日，與成田機場並列為東京兩大聯外機場，亦為日本國內航線樞紐。根據日本《空港法》，該機場被分類為據點機場。机场占地約1,522公頃，擁有3座航廈、4條跑道，無論在面積、起降航班或旅客流量上，均為日本民航機場之最；2019年名列世界客運流量第5高的機場。\n",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a specific ANA notice regarding a \"National control system malfunction\". This matches the content of the news text. I should check Google for the recent event involving ANA and air traffic control to verify the date and scope.",
+            "action": "Google[ANA 国内 管制システム 不具合 遅延]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a specific incident on April 21 involving air traffic control issues at Haneda Airport, leading to cancellations. I need to verify the content of the image to see if it contains relevant information about flight suspensions or system malfunctions.",
+            "action": "Detect[image]",
+            "observation": "- **撮影内容の整合性**: 空港の大型案内モニターを斜めから撮った写真に見えます。画面のパース（台形歪み）や、天井照明の映り込み・画面上部の反射が自然で、現場での撮影らしい質感です。  \n- **文字表示の自然さ**: 日本語のフォント、行間、均一なアンチエイリアス（文字の縁の滑らかさ）、ANAロゴの解像感が一貫しており、生成画像にありがちな文字の崩れ（不自然な字形・綴りの乱れ・行の不揃い）は目立ちません。  \n- **画面外周・筐体の一貫性**: モニターの黒いベゼル（枠）や下部の構造物との境界が自然で、切り貼りや合成で出やすい不自然な縁取り・ハロー（輪郭の光り）も見当たりません。  \n- **右端の表示**: 右側に別の表示エリア（便名らしき縦並び）が途中まで写り込んでいますが、これは撮影フレーミングによるもので、不自然なレイヤー合成のズレには見えません。  \n- **総合判断**: この画像単体からは、明確なデジタル加工・合成・AI生成特有の破綻は確認できず、**実際の空港モニターを撮影した本物らしい写真**に見えます。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a suspension of flights at Haneda Airport due to ATC issues. The image clearly shows an ANA announcement screen with Japanese text stating that flight boarding is suspended due to \"air traffic control system malfunctions nationwide\". This direct visual evidence of a similar announcement strongly supports the details in the news text regarding the system trouble and flight stoppages.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text states that departures were stopped due to an \"air traffic control system trouble.\" I need to verify if the image also mentions a similar reason for the suspension. I will ask a VQA question to extract the reason for the restrictions from the text in the image.",
+            "action": "VQA[What is the reason for stopping boarding given in the notice on the board?]",
+            "observation": "\n\nThe notice states that boarding is stopped because **there are malfunctions in the air traffic control systems nationwide** (\"全国的に管制システムが不具合となっている\").\n\nThis system issue has led to restrictions at the security checkpoints.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The reason extracted from the image (\"air traffic control system malfunctions\") perfectly matches the news headline's cause. To further verify the context, I will check the airline identity, as the text mentions airlines were announcing flight changes and the image shows a specific carrier's notice.",
+            "action": "Entity[What is the name of the airline shown in the logo at the bottom of the notice?]",
+            "observation": "\n\nBased on the image provided, here are the visible entities:\n\n*   **ANA Logo:** Located at the bottom center of the screen, featuring the letters \"ANA\" next to a blue triangle containing a white bird graphic.\n*   **ANA (All Nippon Airways):** Visible in the text as \"ANA WEBサイト\" (within the announcement) and partially visible in the list of codes on the far right edge.\n*   **Digital Information Board:** The large screen displaying the message, likely located in an airport terminal.\n*   **Japanese Announcement Text:** A block of text explaining a disruption. Key phrases include \"ご案内\" (Notice/Information) in the blue header at the top left, and text mentioning \"全国\" (national), \"管制システム\" (control system), \"搭乗を中断\" (boarding suspended), \"保安検査場\" (security checkpoint), and \"地上交通\" (ground transportation).\n*   **Partial Flight List:** Visible on the extreme right edge, showing horizontal rows of information, partially cut off.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text specifically mentions 'Haneda Airport' as the center of the disruption, while the image identifies the airline as ANA. To verify if this ANA notice is indeed from Haneda Airport (as opposed to Narita), I will ask a question to check for any location indicators in the image text.",
+            "action": "VQA[Does the image text mention a specific airport location like 'Haneda' or include Haneda in the service area?]",
+            "observation": "\n\nNo, the image text does not mention a specific airport location like 'Haneda' or include it in the service area.\n\nThe text refers to issues affecting flights \"全国\" (nationwide) and directs passengers to check the \"ANA WEB SITE,\" but it does not explicitly name the airport.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image text explicitly states that boarding is suspended due to malfunctions in the national air traffic control systems. This perfectly matches the news headline describing \"air traffic control system trouble\" at Haneda Airport and elsewhere. The airline logo is ANA, which is consistent with the news text mentioning airlines and rescheduling. This strong alignment of reason and actor supports a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9654893846056297,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a real event consistent with the image (ANA screen showing a control system warning), and the verification verdict confirms the sample is real with no match inconsistencies.",
+    "notes": []
+  },
+  "error": null
+}

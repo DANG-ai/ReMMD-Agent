@@ -1,0 +1,147 @@
+# ReMMD-Agent — qwen3.5-9b v2 configuration
+#
+# Key changes vs. configs/default.yaml (which targets GPT-5.2):
+#   • LLM: qwen3.5-9b (vision-language, hosted by sciverse)
+#   • Atomic parsing: NEW "split" mode — three independent qwen calls run
+#     concurrently per sample (image-only, cross-modal, text-only) and atoms
+#     are merged into the same schema downstream code expects. This boosts
+#     retrieval coverage and gives each modality its own focused prompt.
+#   • Prompts: explicit v2 prompt names for final_judge / image_analyzer /
+#     text_analyzer. The originals (final_judge.txt, image_analyze.txt,
+#     text_analyze.txt) are NOT touched and remain the default for the
+#     legacy "single" / "multi" atomic_mode runs.
+#   • Judge: relies on the final_judge_v2 prompt's anti-bias rules + few-shot
+#     examples for L2 decisions; analyzer L2 union is OFF (judge is
+#     authoritative on L2 to avoid analyzer over-flagging poisoning L1).
+#   • Concurrency: 125 — 500 samples are completed in ~4 concurrent waves.
+#
+# Run with:
+#   python scripts/run_eval.py --config configs/qwen_v2.yaml --tag qwen_v2_full500
+# Smoke test (5 samples, 5 concurrent workers):
+#   python scripts/run_eval.py --config configs/qwen_v2.yaml --tag qwen_v2_smoke --limit 5 --concurrency 5
+
+llm:
+  model: "qwen3.5-9b"
+  base_url: "http://YOUR_QWEN_9B_ENDPOINT/v1"
+  api_key: "qwen"
+  temperature: 0.0
+  judge_temperature: 0.0
+  image_analyzer_temperature: 0.0
+  text_analyzer_temperature: 0.2
+  pattern_temperature: 0.0
+  # Split-mode atomic temperatures — diversify lightly so the three calls
+  # surface different atoms but stay coherent.
+  atomic_image_temperature: 0.0
+  atomic_cross_modal_temperature: 0.2
+  atomic_text_temperature: 0.0
+  # Token budgets per call type.
+  max_tokens: 8192               # legacy single-shot atomic (unused in split mode)
+  max_tokens_atomic_image: 6144  # split-mode image-only parser
+  max_tokens_atomic_cross_modal: 6144  # split-mode cross-modal parser
+  max_tokens_atomic_text: 8192   # split-mode text-only parser
+  max_tokens_judge: 16384        # final judge — JSON with structured reasoning
+  max_tokens_pattern: 4096       # pattern detector (disabled by default)
+  max_tokens_image_analyzer: 8192  # focused per-image vision pass
+  max_tokens_text_analyzer: 6144   # focused text-distortion pass
+  # qwen3.5-9b is a thinking model; we disable thinking for all calls so
+  # the JSON output fits comfortably under the token budget.
+  atomic_enable_thinking: false
+  judge_enable_thinking: false
+  pattern_enable_thinking: false
+  image_analyzer_enable_thinking: false
+  text_analyzer_enable_thinking: false
+  request_timeout: 600
+  use_proxy: false               # qwen endpoints are intranet, no proxy
+  proxy_url: null
+  retry_max_attempts: 6
+  retry_backoff_seconds: 5
+
+embedding:
+  model: "qwen3-embedding-8b"
+  base_url: "http://YOUR_QWEN_EMBEDDING_ENDPOINT/v1"
+  api_key: "qwen"
+  max_input_chars: 32000
+  batch_size: 8
+  request_timeout: 600
+  use_proxy: false
+  retry_max_attempts: 6
+  retry_backoff_seconds: 5
+
+vision:
+  # Per-image resize for cross-modal atomic, image_analyzer, final judge.
+  max_image_side: 896
+  # Higher resolution for the focused image_analyzer (V1/V2 cues).
+  max_image_side_analyzer: 1280
+  # Slightly higher resolution for the image-only atomic parser to capture
+  # fine OCR / overlay details.
+  max_image_side_split_image: 1024
+  max_images_per_call: 6
+  jpeg_quality: 92
+
+search_tools:
+  google_serper:
+    api_key: ""
+    endpoint: "https://google.serper.dev/search"
+  baidu:
+    api_key: ""
+    endpoint: ""
+  x:
+    api_key: ""
+    endpoint: ""
+
+paths:
+  bench_root: "/path/to/ReMMD-Agent/ReMMD-agent/ReMMDBench"
+  corpus_jsonl: "/path/to/ReMMD-Agent/ReMMD-agent/rag_database/corpus.jsonl"
+  sample_to_evidence: "/path/to/ReMMD-Agent/ReMMD-agent/rag_database/sample_to_evidence.json"
+  level1_doc: "/path/to/ReMMD-Agent/ReMMD-agent/一级标签.txt"
+  level2_doc: "/path/to/ReMMD-Agent/ReMMD-agent/二级标签.docx"
+  rag_index_dir: "/path/to/ReMMD-Agent/ReMMD-agent/agent/rag_index"
+  runs_dir: "/path/to/ReMMD-Agent/ReMMD-agent/agent/runs"
+  prompts_dir: "/path/to/ReMMD-Agent/ReMMD-agent/agent/prompts"
+
+rag:
+  # Aggressive retrieval — let the judge filter, not RAG. Each sample's memory
+  # bank is small (~15-20 evidence items); we recall almost everything that
+  # is loosely relevant and let the LLM reason over it.
+  top_k_per_atom: 12
+  max_evidence_per_sample: 30
+  min_score: 0.0
+  per_type_quota:
+    image_content: 12
+    news_snippet: 12
+    fact_brief: 10
+    fact_check: 6
+    social_post: 6
+
+pipeline:
+  concurrency: 125               # 500 / 125 = 4 waves
+  save_atomic_points: true
+  save_retrieved_evidence: true
+  save_judge_io: true
+  resume: true                   # skip samples whose final result file already exists
+  # ===== NEW SWITCHES =====
+  atomic_mode: "split"           # "single" | "multi" | "split"
+  atomic_n_passes: 3             # only used when atomic_mode == "multi"
+  # Explicit prompt names for the qwen v2 stack (so legacy single/multi runs
+  # still default to the original atomic_parse / final_judge / image_analyze /
+  # text_analyze prompts).
+  judge_prompt_name: "final_judge_v2"
+  image_analyzer_prompt_name: "image_analyze_v2"
+  text_analyzer_prompt_name: "text_analyze_v2"
+  split_image_prompt_name: "image_atom_parse"
+  split_cross_modal_prompt_name: "cross_modal_atom_parse"
+  split_text_prompt_name: "text_atom_parse"
+  # L2 SIGNAL AGGREGATION between final-judge and analyzers:
+  #   "off"        — judge L2 wins, no analyzer L2 mixed in.
+  #   "always"     — analyzer active L2 is always unioned into judge L2.
+  #   "selective"  — analyzer L2 is unioned ONLY when the judge already
+  #                  predicted non-True (judge has at least one L2 OR judge
+  #                  L1 != True). This preserves clean True posts (which the
+  #                  judge correctly leaves L2=[]) while boosting recall on
+  #                  already-non-True posts where analyzers see additional cues.
+  analyzer_union_policy: "selective"
+  # back-compat: ignored when `analyzer_union_policy` is set.
+  use_analyzer_l2_union: null
+  use_pattern_detector: false    # superseded by image_analyzer + text_analyzer
+  use_image_analyzer: true       # dedicated vision pass for V1/V2/C-labels
+  use_text_analyzer: true        # dedicated text pass for T1/T2/T3/C1 labels

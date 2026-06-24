@@ -1,0 +1,127 @@
+{
+  "index": 139,
+  "sample_id": "140",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1436.18,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "社交平台素材最多只能支撑“部分城市、部分加油站在调价前出现排队”这一现象，但样本文本将其上纲为“断供迹象”“全国性严重供给紧张”并宣称“95号已普遍破10元/升”，属于把局部、短时的赶在调价前加油行为误导为全国性供应危机；同时配图中关键“限购/停售/高油价”证据包含编辑与生成内容，削弱其作为现场证明的可信度。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会民生",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/140",
+  "image_paths": [
+    "/path/to/ReMMDBench/140/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/140/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/140/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "140",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.7,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Based on the visual evidence, the image directly validates the news text's claims regarding the queues and the specific \"95# 100 yuan limit\" signage. The scene, lighting, and specific textual details on the worker's notice board are consistent with the 'pre-adjustment window' panic buying scenario described (e.g., inventory tight, queuing). Therefore, the image supports the veracity of the report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "First, I need to verify the specific text mentioned in the news text regarding the purchase limit. The text mentions a sign saying \"100 yuan limit per car\". I will use VQA to read the sign in the image.",
+            "action": "VQA[What is written on the white paper sign attached to the pillar on the right?]",
+            "observation": "\n\nThe white paper sign on the pillar reads:\n\n**95#暂限购**\n**100 元/车**\n**(库存紧张)**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the VQA result, the sign in the image reads \"95#暂限购 100 元/车 (库存紧张)\". This matches the news text's description of the image caption (\"图1...限购100元临时提示牌\") and the specific detail in the body text (\"单车限额50元—100元\"). The image evidence supports the textual claims shown in the image caption perfectly, confirming the cross-modal match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7047298732064892,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.30000000000000004,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.30000000000000004,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The article describes a real-world event (queues at gas stations) visually corroborated by the provided images, and although minor textual errors (e.g., year) exist, the overall content is factually supported and consistent.",
+    "notes": []
+  },
+  "error": null
+}

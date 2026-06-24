@@ -1,0 +1,153 @@
+{
+  "index": 428,
+  "sample_id": "429",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1672.96,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article uses some plausible launch and pricing details as an anchor, but it overextends affiliate-post and retailer-style references into a broad Apple-sanctioned product narrative, especially around the supposed MacBook Neo and display wave. Its visuals further reinforce that impression through an edited MacBook Pro image and by presenting reused promo-style graphics as if they were current official launch materials tied to the same rollout.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/429",
+  "image_paths": [
+    "/path/to/ReMMDBench/429/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/429/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/429/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/429/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "429",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.39999999999999997,
+        "best_trajectory": [
+          {
+            "thought": "Verify the existence and announcement of a 'MacBook Neo' model at $599. This specific naming convention and price point is highly specific and unusual for Apple's current product ladder. I will search Google to confirm if there have been any official leaks, announcements, or widespread rumors about this specific model launching alongside a new MacBook Pro.",
+            "action": "Google[MacBook Neo Apple March 2025 launch]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to confirm the release date mentioned in the text and image caption matches.",
+            "action": "VQA[What specific date is listed on the bottom banner of the image?]",
+            "observation": "\n\nThe specific date listed on the bottom banner is March 11.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Now that the release date matches, I should verify that the chip models mentioned in the text (M5 Pro / M5 Max) are consistent with the text displayed in the image banner to ensure full alignment.",
+            "action": "VQA[What specific chip models are listed in the text on the bottom banner?]",
+            "observation": "\n\nThe specific chip models listed in the text on the bottom banner are **M5 Pro** and **M5 Max**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes significant preorder activity for the new MacBook Pro line, specifically for M5 Pro/M5 Max models release on March 11. The image prominently features a 'Preorder now' overlay and highlights these specific chips. I need to verify that the 'Preorder' claim in the text is visually supported by this mandatory 'Preorder now' call to action in the image.",
+            "action": "VQA[What is the main call to action written in large white text on the black overlay in the top right corner?]",
+            "observation": "\n\nPreorder now",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the date, chip models (M5 Pro / M5 Max), and the \"Preorder now\" call to action have been verified to match between the news text and the image, and the image banner explicitly confirms these core details, the primary task of cross-modal matching for the MacBook Pro updates is satisfied.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.5,
+      "p_fake_match": 0.8,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.95,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.85,
+        "V2 Visual Editing": 0.6,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text invents non-existent chip variants and products (M5 Neo) and false release dates, while images are AI-generated renders or heavily edited with overlays.",
+    "notes": []
+  },
+  "error": null
+}

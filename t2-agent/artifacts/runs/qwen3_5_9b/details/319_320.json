@@ -1,0 +1,138 @@
+{
+  "index": 319,
+  "sample_id": "320",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 910.74,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "本文の地震発生時刻、震源、規模、最大震度、津波なしという説明は使用画像の内容と整合しており、画像も関連報道の文脈に合致している。本文と画像の間に事実関係や文脈のずれは確認できない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/320",
+  "image_paths": [
+    "/path/to/ReMMDBench/320/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/320/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "320",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.3,
+        "best_value": 0.44999999999999996,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the news text against the image. The text describes an M6.2 earthquake in Southern Tokachi, Hokkaido. I will use the Detect tool to check the visual evidence for this specific event, looking for magnitude, location, and time details in the image overlays.",
+            "action": "Detect[image]",
+            "observation": "- **合成・編集の有無**: 画面上のテロップ（「最新」バッジ、地図インサート、震度表示、時刻表示など）はテレビ報道で一般的な**後付けCG**で、これは編集ですが不自然な合成痕は見当たりません。  \n- **背景映像の整合性**: 都市の俯瞰映像は全体に低解像度・圧縮ノイズがあり、放送/ネット配信由来の品質に見えます。建物の輪郭や遠景の霞み方も自然で、**生成画像にありがちな不整合（歪んだ窓・文字の崩れ・不自然な反復模様など）**は確認できません。  \n- **揺れの描写**: 静止画像1枚のため、地震による揺れそのものの真偽は判断できませんが、少なくともこのフレーム内で**物理的に矛盾する要素**は見当たりません。  \n- **結論**: これは「背景映像＋ニュース用のCGオーバーレイ」という構成で、**意図的な捏造合成やAI生成の強い兆候は薄く、全体としては報道画面として自然**に見えます。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a specific earthquake (M6.2, Southern Tokachi, 27th early morning, Obihiro/Shindo 4 reported). The image overlay explicitly states \"Southern Tokachi region\", \"5:23 approx\", \"M6.2\", and confirms Obihiro City with Shindo 4. The data in the image aligns perfectly with the text, validating the report's details about the earthquake's magnitude and location.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to check which city is specifically identified with an intensity level in the bottom left corner of the image to compare with the locations mentioned in the news text.",
+            "action": "VQA[Which city is labeled with 'Shindo 4' in the bottom left overlay?]",
+            "observation": "\n\nBased on the text in the bottom left overlay, the city labeled with 'Shindo 4' (震度4) is **Obihiro City** (帯広市).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should verify the earthquake magnitude mentioned in the text by checking the map overlay in the image.",
+            "action": "VQA[What is the magnitude (規模) listed on the map overlay in the bottom right?]",
+            "observation": "\n\nThe magnitude listed on the map overlay in the bottom right is M6.2.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Comparing the magnitude mentioned in the news text (M6.2) with the data in the bottom right map overlay of the image (M6.2) confirms a match in seismic magnitude.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.6463304070095652,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.7,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.7,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image and text are consistent with a real news broadcast, showing matching earthquake details and textual overlays without distortion or conflict.",
+    "notes": []
+  },
+  "error": null
+}

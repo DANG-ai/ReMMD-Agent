@@ -1,0 +1,143 @@
+{
+  "index": 460,
+  "sample_id": "461",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1413.17,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The piece stretches a single speculative social-media remark into a leaguewide, fast-developing trade narrative and uses edited or generic draft imagery to make that speculation look visually substantiated. The dominant impression is that the Giants were actively at the center of Thibodeaux trade movement, which is not supported by the source basis provided.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/461",
+  "image_paths": [
+    "/path/to/ReMMDBench/461/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/461/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/461/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/461/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/461/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/461/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/461/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/461/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/461/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/461/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "461",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text explicitly states this is the \"2026 NFL Draft\" taking place in Pittsburgh. This is a future event relative to current reality (the 2024 draft was in Detroit, 2025 in LA). Furthermore, Kayvon Thibodeaux is already a drafted player for the Giants (2023), not a draft prospect in 2026 in the same way. I need to use Detect[image] to analyze the image for any dates, context clues, or AI artifacts that would confirm this is a generic/stylized graphic rather than a authentic record of a 2026 event.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a **designed sports graphic/composite**, not a straight, unedited photograph.\n\n**Signs of editing / compositing**\n- The background includes a **stylized draft-board UI** (rows labeled “RD 1, RD 2…” with dotted bars). It’s flattened, softly blurred, and reads like a template overlay rather than a real scene.\n- The lower-left contains **clean vector text and logos** (“GIANTS DAY 2 / DRAFT DAY BUZZ”) with glowing lines and framing—typical broadcast/social-media graphic elements.\n- The player cutout has a **studio-like separation** from the background (sharp subject vs. smooth gradient backdrop), consistent with a photo placed onto a designed background.\n\n**Notable manipulation**\n- The player’s face area is covered by a **rectangular blur/patch**, indicating deliberate obscuring/editing.\n\n**What looks authentic within it**\n- The player photo itself (uniform textures, lighting on pads/helmet, shadows on arms) looks like a **real game/action photograph** that has been repurposed, rather than an obviously AI-generated person.\n\nOverall: **edited graphic using a real photo**, with intentional face obfuscation and added draft-themed design elements.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "First, I should query the image to extract the text in the graphic to verify it matches the news headline about 'Giants Day 2'.",
+            "action": "VQA[What is the text in the blue banner at the bottom left?]",
+            "observation": "\n\nThe text in the blue banner at the bottom left reads:\n\n**GIANTS**\n**DAY 2**\n\nBelow that, in a red banner section, it says:\n\n**DRAFT DAY BUZZ**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The key subject \"Giants Day 2\" and the context \"Draft Day Buzz\" in the image graphics correspond perfectly to the news headline and content describing the Giants' strategic silence and buzz during Day 2 of the draft. This visual evidence strongly supports a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.8,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent \"2026 NFL Draft\" and specific fantasy player picks (Colton Hood), while the image is a compositing edit with graphic overlays and a blurred face.",
+    "notes": []
+  },
+  "error": null
+}

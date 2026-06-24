@@ -1,0 +1,163 @@
+{
+  "index": 496,
+  "sample_id": "497",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1129.83,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The main draft facts and overall portrayal of the event are grounded in available evidence, but the article slightly overstates UCLA's first-round prominence and exaggerates the immediacy and scale of the merchandise rollout. The lead merchandise graphic is also contextually mismatched with a story primarily about draft results and event narrative rather than retail assets.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/497",
+  "image_paths": [
+    "/path/to/ReMMDBench/497/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/497/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/497/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/497/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/497/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "497",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Since the draft has presumably not happened yet or is a hypothetical/future text, or if the text is fictional/misdated (given today is 2026 or earlier depending on real time), I will verify the most recent draft info (2024/2025) to see if this is a hallucinated news piece or a genuine report. But first, Wikipedia is the standard place to confirm draft orders.",
+            "action": "Wikipedia[2025 WNBA Draft]",
+            "observation": "No summary available. Similar entities: 2025 WNBA draft, 2026 WNBA draft, WNBA draft, 2024 WNBA draft, WNBA expansion draft",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims Azzi Fudd was the #1 pick in the 2026 WNBA Draft for the Dallas Wings, but Azzi Fudd was actually selected 15th overall in the 2024 WNBA Draft. The 2026 draft is in the future relative to the current date (2024), suggesting this text is fictional or hallucinated. I need to verify the actual 2024 draft order to confirm the discrepancy.",
+            "action": "Google[2024 WNBA Draft pick order Azzi Fudd]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous Wikipedia search didn't yield specific information on the 2026 draft order, which aligns with it likely being in the future or not yet published. I need to verify if this specific text or headline exists online to determine if it's real news or hallucinated content. I will search for the main claim about Azzi Fudd being the 1st pick in 2026.",
+            "action": "Google[2026 WNBA Draft Azzi Fudd 1st pick",
+            "observation": "Could not parse action: Google[2026 WNBA Draft Azzi Fudd 1st pick",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.45,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the 2026 WNBA Draft was presented by State Street Investment Management and featured merchandise. The image explicitly states \"WNBA DRAFT 2026 PRESENTED BY STATE STREET INVESTMENT MANAGEMENT\" and displays team jerseys consistent with the draft narrative. I will use the detection tool to verify these specific visual matches.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the tool is reportedly unavailable, I will rely on my visual analysis. The image explicitly features the text \"WNBA DRAFT 2026\" and \"PRESENTED BY STATE STREET INVESTMENT MANAGEMENT,\" which directly matches the lead sentence of the news text. The image displays basketball jerseys for Seattle, Dallas, and Minnesota, aligning with the text's description of draft merchandise for \"the first three selections\" and the specific highlights of Dallas and Minnesota. The visual branding and sponsorship match the reported text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "Extract entities from the image to verify visual mentions of 'State Street', 'WNBA', '2026 Draft', and the specific teams 'Dallas' and 'Minnesota' against the text content.",
+            "action": "Entity[image]",
+            "observation": "- **WNBA** (league name/text at top) — **High certainty**\n- **“DRAFT 2026”** (event title/year text) — **High certainty**\n- **State Street** (sponsor name/logo) — **High certainty**\n- **SPY (SPDR S&P 500 ETF)** (sponsor mark/text) — **High certainty**\n- **Nike swoosh** (on the jerseys) — **High certainty**\n- **Seattle Storm** (implied by “SEATTL” on green/yellow jersey) — **High certainty**\n- **Dallas Wings** (implied by “DALLAS” on navy jersey) — **High certainty**\n- **Minnesota Lynx** (implied by “MINNESOTA” on blue jersey) — **High certainty**\n- **Basketball texture/background** (top background resembles a basketball) — **Medium-high certainty**\n- **No identifiable real person visible** — **High certainty**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA action will confirm the specific text on the jersey matches the 'Minnesota' in the text. Given the strong alignment of core entities (Sponsor: State Street, Event: 2026 WNBA Draft) between the image and news text, and confirmation of team identifiers, the image successfully serves as the lead image described.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.8,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a 2026 WNBA Draft as a completed event with specific results (Azzi Fudd, Olivia Miles), which is a fabricated scenario (T1 Fabrication), and the images are classified as synthetic with high confidence (V1 Synthetic Visual Content).",
+    "notes": []
+  },
+  "error": null
+}

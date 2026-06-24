@@ -1,0 +1,130 @@
+{
+  "index": 251,
+  "sample_id": "252",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1780.73,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本文本把“网传/博主讨论”的信息包装成“官方已上架开售并给出明确开售时间、门店现货”等确定性结论，同时用被编辑与生成的图片去“证明”全系UWB与支持Apple Find My等关键卖点；这些核心证据链条本身是合成/篡改的，导致整体结论不成立。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "科技数码",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/252",
+  "image_paths": [
+    "/path/to/ReMMDBench/252/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/252/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "252",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify the news text against the image. The text claims the Xiaomi Tag is available for 69 yuan, supports UWB, and starts selling on March 3rd at 10:00. The image shows a Xiaomi Mall product page for \"Xiaomi Tag\" priced at \"¥69\", featuring \"全系UWB\" (Full series UWB), and stating \"3月3日10:00开售\" (Sale starts March 3rd 10:00). The image also shows \"Xiaomi Tag X1\" selected at the bottom. The visual evidence aligns perfectly with the key facts in the news text regarding price, features, and launch date.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify if the news text matches the image. The text claims the Xiaomi Tag tracker starts at 69 yuan. I need to verify this price from the image.",
+            "action": "VQA[What is the price of the Xiaomi Tag shown in the image?]",
+            "observation": "\n\nBased on the image, the price of the Xiaomi Tag is **¥69** (69 Yuan). It is listed as \"¥69起\" (starting from ¥69) in the top section and simply \"¥ 69\" in the product details section.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous action verified the price is 69 yuan, which matches the text \"起售价69元\". The text also mentions the product name \"Xiaomi Tag\", launch time \"3月3日10点开启首销\", and feature \"全系UWB\". I should verify these details in the image to ensure a complete match. The image shows \"Xiaomi Tag\", \"3月3日10:00开售\", and \"全系UWB/厘米级定位\". It also has a watermark \"@小白测评\", and the text mentions \"小白测评\" as a blogger discussing the product. All key details align.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates claims about the product supporting Apple Find My and the images are likely AI-generated (indicated by high p_fake_image score and hallucinated model name \"X1\") to support these false claims.",
+    "notes": []
+  },
+  "error": null
+}

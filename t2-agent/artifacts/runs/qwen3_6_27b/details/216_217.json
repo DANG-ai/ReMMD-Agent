@@ -1,0 +1,137 @@
+{
+  "index": 216,
+  "sample_id": "217",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2624.19,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "本文の中心的な方向性である『海峡情勢の再緊迫が物流・原油・日本株に影響している』という説明には事実基盤があるが、「再封鎖」「再び閉じたかのような空気」といった表現が、全面封鎖に近い印象をやや強く与えている。加えて、株式画面の画像には注目帯やハイライトの編集が施されており、投資家の関心の高まりを実際以上に視覚的に補強している。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/217",
+  "image_paths": [
+    "/path/to/ReMMDBench/217/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/217/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/217/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/217/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/217/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/217/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/217/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/217/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/217/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/217/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "217",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses maritime tension in the Strait of Hormuz, specifically mentioning tankers, merchant ships, and naval activity. The image shows multiple vessels on the water, which appears to be a maritime scene. To confirm the types of ships (e.g., whether they are indeed tankers or merchant vessels as described) and to ensure there are no contradicting elements (like a different location or type of vessel), I should first use the detection tool to analyze the image content.",
+            "action": "Detect[image]",
+            "observation": "- 画像は海上に複数の船舶が写る遠景の写真で、全体に霞（もや）や大気遠近の影響でコントラストが低く、水平線付近がぼんやりしています。この「霞み方」は自然で、合成でよく出る不自然な輪郭の切り抜き感は目立ちません。  \n- 船体・マスト周りのエッジも概ね滑らかで、周囲だけ不自然にシャープ／ぼけている箇所や、貼り付けに伴う白フチ・ハローは見当たりません。  \n- 水面の波や反射も一貫しており、船の周囲だけ波形が破綻している、影・映り込みが欠けるといった典型的な合成痕も確認できません。  \n- 画質はやや圧縮が強く（ニュース配信っぽい低解像・ノイズ）、細部は潰れていますが、これは編集というより配信/保存による劣化として自然です。  \n\n結論：この画像単体からは、明確なデジタル合成・生成AI特有の破綻・不自然な改変の兆候は強くなく、遠景を撮った実写写真に見えます。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous analysis confirmed the image is a genuine photograph of ships at sea without signs of digital manipulation. The news text discusses maritime tension in the Strait of Hormuz, specifically mentioning tankers, merchant ships, and naval activity. The image depicts vessels consistent with commercial shipping, which aligns with the text's subject matter. Therefore, the image supports the context of the news report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses tensions in the Strait of Hormuz involving tankers and merchant ships. I need to verify if the image contains ships, specifically tankers or cargo vessels, to confirm the match.",
+            "action": "Entity[image]",
+            "observation": "- **Two cargo/tanker ships (foreground, center and right)** — High certainty (large ocean-going vessels; exact ship names not readable).\n- **Distant ship or offshore structure (far left)** — Medium certainty (silhouette suggests another vessel/industrial platform, but too far to confirm).\n- **Sea/ocean waterline** — High certainty.\n- **Hazy sky/horizon** — High certainty.\n- **Possible buoy/navigation marker (near right horizon)** — Low–medium certainty (thin vertical shape; could be a buoy or small marker).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes tensions in the Strait of Hormuz involving tankers and merchant ships. The entity detection in the previous step identified \"Two cargo/tanker ships\" and a \"Distant ship\" at sea. This visual evidence of ships at sea aligns perfectly with the text's subject matter regarding maritime traffic and tensions. Therefore, the image matches the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.739863622299141,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes events in April 2020 (referencing \"Trump President\" and specific April tensions), but the accompanying stock portfolio screenshots show transaction dates from November 2020 (e.g., \"2020/11/13\"), indicating a mismatch in time context between the text narrative and the visual evidence.",
+    "notes": []
+  },
+  "error": null
+}

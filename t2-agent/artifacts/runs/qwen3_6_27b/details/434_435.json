@@ -1,0 +1,171 @@
+{
+  "index": 434,
+  "sample_id": "435",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2089.48,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Die zentrale Nachricht eines bereits beschlossenen Bundestagsgesetzes am 24. April 2026 ist frei erfunden und wird mit detaillierten, aber unbelegten Verfahrens-, Auszahlungs- und Wirkungsbehauptungen ausgeschmückt. Dazu werden synthetische Bilder als scheinbare Dokumentation des nicht belegten Beschlusses eingesetzt und zeitlich wie inhaltlich eng an die erfundene Parlamentsentscheidung gekoppelt.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/435",
+  "image_paths": [
+    "/path/to/ReMMDBench/435/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/435/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/435/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/435/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/435/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/435/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/435/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/435/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/435/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/435/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "435",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.85,
+        "best_trajectory": [
+          {
+            "thought": "The image contains a text on a screen: \"TOP 4: Erste Beratung des von der Bundesregierung eingebrachten Entwurfs eines Gesetzes zur Senkung der Energiesteuer auf Energieträger und zur Änderung sonstiger Erstattungsregelungen\". This looks like a specific legislative title. I need to search for this title to find out when it was actually debated in the Bundestag, which will likely reveal the real date of the photo and contradict the \"2026\" date in the text.",
+            "action": "Wikipedia[\"Gesetz zur Senkung der Energiesteuer auf Energieträger und zur Änderung sonstiger Erstattungsregelungen\"]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a specific agenda item on the screen: \"TOP 4: Erste Beratung des von der Bundesregierung eingebrachten Entwurfs eines Gesetzes zur Senkung der Energiesteuer auf Energieträger und zur Änderung sonstiger Erstattungsregelungen\". This indicates a \"First Reading\" (Erste Beratung), which contradicts the news text claiming it is the final vote after 2nd and 3rd readings. Furthermore, the news text claims the date is April 24, 2026. I need to find the actual date when this specific law was debated in its first reading to refute the timeline.",
+            "action": "Google[\"Bundestag TOP 4 Erste Beratung des von der Bundesregierung eingebrachten Entwurfs eines Gesetzes zur Senkung der Energiesteuer auf Energieträger und zur Änderung sonstiger Erstattungsregelungen\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims the image is a photo from April 24, 2026, showing the final vote (\"Schlussabstimmung\") on the energy tax reduction act. The display board in the image clearly shows \"Erste Beratung\" (First Reading), which contradicts the \"Schlussabstimmung\" and \"2. und 3. Lesung\" mentioned in the text. Furthermore, the date is in the future, making a real photo impossible. The stylized eagle and blurry faces suggest the image is AI-generated. Therefore, the image refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.7,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the text on the display board to see if it matches the \"Schlussabstimmung\" (final vote) described in the image caption and text, or if it shows something else like \"Erste Beratung\" (first reading). This is a key detail for matching the specific parliamentary stage.",
+            "action": "VQA[What text is visible on the large black screen on the wall?]",
+            "observation": "\n\nTOP 4\nEine Antwort der von der Bundesregierung\ndargelegten Entwurf eines Gesetzes zur\nSenkung der Energiesteuer auf Energieerzeugnisse\nund zur Änderung anderer Erlaubnisvorschriften",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will verify the specific text on the screen again to confirm the \"Entwurf\" vs \"Gesetz\" discrepancy and check if there are any other details like dates or specific names that contradict the text.",
+            "action": "VQA[What exactly does the text on the screen say regarding the stage of the law (e.g., Entwurf, Gesetz)?]",
+            "observation": "\n\nThe text on the screen identifies the document as an **\"Entwurf eines Gesetzes\"** (Draft of a law).\n\nSpecifically, the relevant line reads:\n\"...eingereichten **Entwurf eines Gesetzes** zur...\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text on the screen says \"TOP 4\" and \"Entwurf eines Gesetzes zur Senkung der Energiesteuer...\". The image caption claims the screen shows the \"Schlussabstimmung zum 2. Energiesteuersenkungsgesetz\". These do not match. The screen shows an agenda item (likely early stage given \"Entwurf\"), not the final vote, and lacks the \"2.\" designation.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future event (April 2026), the visuals contain AI-generated artifacts (e.g., the eagle in Image 1, the politician in Image 4), and there are direct conflicts between the text and images regarding the premium amount (1,000 vs. 3,000 Euro) and the date/status of the legislation (2026/Passed vs. 2024/Draft).",
+    "notes": []
+  },
+  "error": null
+}

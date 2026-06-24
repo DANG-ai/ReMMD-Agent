@@ -1,0 +1,136 @@
+{
+  "index": 227,
+  "sample_id": "228",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2317.16,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article builds a real backdrop of strikes in Beirut into a more dramatic and more directly connected regional emergency than the evidence supports. It overstates a broad Middle East security advisory into a Lebanon-specific evacuation push, uses an edited alert graphic to reinforce that reading, and visually/textually ties a separate Bahrain incident to the Lebanon story as if it were part of the same operational chain.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/228",
+  "image_paths": [
+    "/path/to/ReMMDBench/228/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/228/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/228/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/228/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/228/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "228",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes Israeli strikes in Beirut's southern suburbs with smoke rising over neighborhoods. The provided image shows a night scene with a large plume of dark smoke rising behind a multi-story building in an urban setting. To confirm the details and ensure the visual content aligns with the specific description of the event (strikes, smoke, Beirut location), I should use the Detect tool to analyze the image.",
+            "action": "Detect[image]",
+            "observation": "The image looks like a plausible low-light phone photo of an urban street at night with a large dark smoke plume rising behind mid-rise buildings. I don’t see clear indicators of AI generation or obvious compositing.\n\nSigns that support authenticity:\n- Lighting/exposure looks consistent with a handheld night shot: blown-out streetlights, sensor noise/grain, and haze/flare near the bottom.\n- Perspective and geometry (buildings, wires, traffic lights) align naturally; no warped edges or “melting” structures typical of some synthetic images.\n- The smoke plume has irregular, natural-looking billows and blends into the night sky without hard cutout edges.\n\nMinor things that could raise questions but aren’t strong manipulation evidence:\n- The bottom area has a foggy/washed veil that could be lens flare, smudged lens, or compression—not necessarily editing.\n- The smoke is very dark and prominent; without metadata or additional angles, you can’t confirm what caused it from the image alone.\n\nOverall: no strong visual signs of digital manipulation; appears consistent with an authentic nighttime scene capturing a smoke plume.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text reports Israeli strikes in Beirut with smoke rising over neighborhoods. The provided image shows a night scene with a large plume of dark smoke rising behind a multi-story building in an urban setting. The Detect tool analysis confirms the image appears authentic, with natural lighting, perspective, and smoke behavior consistent with a real-world event. The visual content of a large smoke plume in a city aligns directly with the news description of strikes and rising smoke. Therefore, the image supports the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes \"thick plumes\" and \"smoke\" rising over urban districts in Beirut at night. The image shows a large, dark cloud rising above a building in a city street at night. I need to confirm that the dark cloud is indeed smoke to establish a match with the text's description of the aftermath of strikes.",
+            "action": "VQA[What is the large dark cloud rising into the sky above the building in the center of the image?]",
+            "observation": "\n\nBased on the visual evidence, the large dark cloud rising into the sky is a plume of **smoke**. It appears to be billowing up from behind or above the central building, suggesting a fire or explosion is taking place.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly shows a large plume of dark smoke rising into the night sky above a multi-story building in an urban setting. This visual evidence directly corresponds to the news text's description of \"thick plumes\" and \"smoke\" rising over \"heavily populated neighborhoods\" in Beirut following strikes. Additionally, the presence of people standing on the street in the foreground aligns with the text's mention of \"residents gathering in the streets.\" The visual and textual elements are consistent.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The provided images accurately support the text's claims regarding smoke in Beirut, traffic jams, the State Department security alert highlighting Lebanon, and the Bahrain hotel strike, with no evidence of fabrication, distortion, or inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

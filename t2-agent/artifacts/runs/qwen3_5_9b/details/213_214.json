@@ -1,0 +1,144 @@
+{
+  "index": 213,
+  "sample_id": "214",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 641.6,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T3 Misleading Context"
+    ],
+    "rationale": "文本对“40天连雨”等说法的科学解释方向基本符合辟谣信息与气象部门口径：这类展示多属于更长时间尺度的趋势/概率信息，不能等同于每天必下雨；但文中对App提示的呈现方式把长期趋势与短期预报并列叙述、且未在第一时间明确其“气候预测/算法推演”属性，容易造成读者将长期趋势误读为逐日预报的语境错置，因此判为 Mostly True。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "天气与公共服务/气象预报解读",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/214",
+  "image_paths": [
+    "/path/to/ReMMDBench/214/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/214/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/214/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/214/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "214",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Search for the specific news story regarding Changsha Meteorological Bureau responding to \"40 days of continuous rain\" warnings. This is needed to verify if the \"viral\" app warning mentioned in the text actually occurred and how the authorities (public service/officials) clarified the situation.",
+            "action": "Google[\"Changsha meteorological bureau 40 days of rain prediction\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous search for the official response was too broad. I should search for the specific viral news or the clarification from the meteorological bureau regarding the \"40 days of continuous rain\" warning, potentially using Chinese keywords for better results.",
+            "action": "Google[\"长沙 40天连续降雨 天气App\" (Changsha 40 days continuous rain weather app)]",
+            "observation": "实时天气-40日精准天气 - App Store: 实时天气可以为您提供未来24小时及40日天气信息的应用。 此应用包含如下免费功能： 24小时天气：实时展示未来24小时，每小时的天气信息日出日落：当地日出日落时间生活 ... (https://apps.apple.com/us/app/%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94-40%E6%97%A5%E7%B2%BE%E5%87%86%E5%A4%A9%E6%B0%94/id6449727076)\n长沙要连下40天雨？非精确预报（2026·03·17） - 中国雄安官网: 长沙要连下40天雨？ ... 日起，长沙正式开启降温、降雨模式。有网民发现，部分天气App预测显示，3月15日起，长沙未来40天有连续降雨、未来90天春雨几乎“全勤”。 (https://www.xiongan.gov.cn/20260318/85b921afed614ae69b42ca45d05dd5f7/c.html)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search result from the official website (China Xiongan) directly addresses the \"Changsha 40 days rain\" headline and date, matching the article snippet found in the Google search. The snippet confirms the date (March 15-17), the temperature drop context, and the 'non-precise forecast' topic, strongly aligning with the text's narrative about the mix-up in app forecasts vs. official short-term forecasts. While further verification of specific numbers is ideal, the core narrative is supported.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses a weather situation in Changsha where mobile apps showed confusing \"40-day continuous rain\" predictions, which meteorologists clarified are often long-term trend data, not precise daily forecasts. The image displays a digital billboard explicitly labeled \"非精确预报\" (Imprecise forecast) showing a timeline of dates with rain icons. This visual content directly illustrates the specific \"imprecise forecast\" mentioned in the overlay text (\"Non-precise forecast news photo\" and \"Changsha to rain 40 days?\"). The billboard serves as evidence for the text's core argument: that public-facing weather data can look like continuous rain but represents a trend rather than certainty. The rainy street scene further grounds the location in Changsha as described.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "First, I need to confirm the presence of the specific \"40 days\" headline mentioned in the news text (referencing the rumor about future weather apps). The image has a large overlay text. Using VQA to ask for this specific text will establish a strong keyword match between the news and the image.",
+            "action": "VQA[What is the main headline text overlaid on the right side of the image?]",
+            "observation": "\n\nThe main headline text overlaid on the right side of the image reads:\n\n**长沙要连下40天雨?!**\n**非精确预报 相关新闻配图**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text discusses the specific rumor of 40 days of rain in Changsha, often appearing on weather apps. The image headline explicitly asks \"长沙要连下40天雨?!\" which directly matches this rumor mentioned in the text. Additionally, the sub-headline \"非精确预报 相关新闻配图\" (Non-precise forecast, relevant news illustration) aligns perfectly with the text's explanation that these are long-term climate trends, not exact daily forecasts. This strong thematic and factual alignment leads to a MATCH.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The news text is verified as accurate and grounded in real-world search results, while the images are AI-generated synthetic content (high p_fake_image score) depicting the rainy scene described in the article.",
+    "notes": []
+  },
+  "error": null
+}

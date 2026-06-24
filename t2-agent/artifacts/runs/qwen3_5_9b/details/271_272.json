@@ -1,0 +1,161 @@
+{
+  "index": 271,
+  "sample_id": "272",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1414.94,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "The article’s central account of Kennesaw State earning an automatic NCAA tournament bid, hosting a Selection Sunday gathering, and drawing Gonzaga is broadly consistent with the source material. However, it embellishes the scale and intensity of the event, and the lead image has been deliberately edited to heighten the Selection Sunday atmosphere beyond the original scene.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/272",
+  "image_paths": [
+    "/path/to/ReMMDBench/272/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/272/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/272/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/272/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/272/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/272/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/272/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/272/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/272/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/272/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "272",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to cross-reference the specific bracket details (No. 14 seed, Gonzaga, West Region) and the opponent history to confirm if this was a recent reality or a fabricated narrative.",
+            "action": "Google[Kennesaw State NCAA bracket seed 2025 Gonzaga]",
+            "observation": "Gonzaga men earn No. 3 seed, will play Kennesaw State in first ...: Gonzaga men earn No. 3 seed, will play Kennesaw State in first round of NCAA Tournament in Portland. (https://www.swxlocalsports.com/spokane/gonzaga/mens-basketball/gonzaga-men-earn-no-3-seed-will-play-kennesaw-state-in-first-round-of-ncaa/article_ee9c50e3-c5bb-4f67-8428-74da60008e7c.html)\nMBB Meets Kennesaw State in First Round of NCAA Tournament: - The Zags are 38-21 all-time as a single-digit seed, with an 18-2 record in first round games. - Gonzaga is a three seed, for the fourth time ... (https://gozags.com/news/2026/3/15/mens-basketball-mbb-meets-kennesaw-state-in-first-round-of-ncaa-tournament.aspx)\nOwls Earn No. 14 Seed in West Region, Face No. 3 Gonzaga on ...: – Kennesaw State men's basketball received the No. 14 seed in the West Region and will face 3-seeded Gonzaga in the first round of the 2026 NCAA ... (https://ksuowls.com/news/2026/3/15/mens-basketball-2026-ncaa-tournament-announcement.aspx)\n3 SEED! Gonzaga opens up the NCAA Tournament ... - YouTube: The Gonzaga Bulldogs earned a No. 3 seed in the NCAA Tournament, squaring off against No. 14 seed Kennesaw State in Portland. (https://www.youtube.com/shorts/NchQKd9sDR8)\nKennesaw State men's basketball earns No. 14 seed, to face ...: 14 seed in the West Region. They will face No. 3 seed Gonzaga at the Moda Center in Portland, Oregon on Thursday. The celebration was just the ... (https://www.kennesaw.edu/news/stories/2026/ksu-mens-basketball-earns-14-seed-march-madness.php)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results in the trajectory confirmed the specific details (Gonzaga No. 3, Kennesaw State No. 14, West Region, Portland) which align perfectly with the text. Since the search results are robust and match the facts in the text, I can also consider finishing the task now, though checking Wikipedia would be the standard protocol.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes Kennesaw State Owls being selected for the NCAA tournament after winning the Conference USA title. The image shows a large screen with \"KENNESAW STATE OWLS SELECTED\" and the NCAA March Madness logo. To ensure verifiable accuracy, I should use the detection tool to confirm the text on the screen matches the news narrative before concluding.",
+            "action": "Detect[image]",
+            "observation": "The image shows multiple signs of being edited/composited rather than a single authentic photo:\n\n- **Faces are deliberately blurred/obscured** with smooth blocks that don’t match natural motion blur or depth-of-field, indicating post-processing.\n- **Confetti looks like an overlay**: many pieces are similarly sharp and uniformly lit across different depths, with repetition-like shapes and less natural interaction with subjects (no visible shadowing on people/clothes).\n- **Background/foreground separation is too clean**: the central subject is very crisp while the arena and crowd feel like a separate plate; the cutout edges and contrast suggest a composite.\n- **Scoreboard/graphic text appears designed** (“KENNESAW STATE OWLS SELECTED”) with a polished poster-like look rather than a photographed jumbotron; it reads like a promotional graphic inserted into a stadium scene.\n- Overall, the scene has a **highly stylized, promotional rendering** (cinematic lighting, heavy sharpening, uniform color grading) consistent with a generated or heavily edited sports hype image.\n\nNet: it appears **heavily edited/composited** (and possibly partially synthetic), not a straightforward documentary photograph.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous observation highlighted critical signs of AI generation and compositing, specifically the blurred/indistinct faces in the crowd, uniformly lit overlay confetti, and the stylized/promotional look of the scoreboard text. These artifacts suggest the image is synthetic or heavily manipulated, not a raw documentary photo of the specific broadcast moment. If the visual evidence is fabricated, it undermines the trustworthiness of the accompanying text, which contains specific claims (seeds, dates, matchups) that cannot be verified by this fake image.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes Kennesaw State being selected for the NCAA tournament. I need to gather specific visual evidence from the image to confirm this match. I will ask the vision model to identify the text on the screen behind the person.",
+            "action": "VQA[What text is displayed on the scoreboard or screen in the background?]",
+            "observation": "\n\nBased on the image, the text displayed on the scoreboard/screen in the background includes:\n\n*   **KENNESAW STATE** (at the top)\n*   **OWLS** (in yellow script below \"Kennesaw State\")\n*   **SELECTED** (in large white letters)\n*   **NCAA MARCH MADNESS** (part of the logo below \"Selected\")\n*   **KENNESAW STATE** (small text in the bottom left corner of the frame)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To further validate the visual details mentioned in the text, such as the team's branding and logos, I will use the Entity tool to extract visible entities like the logos and text elements present in the image.",
+            "action": "Entity[image]",
+            "observation": "- **Kennesaw State University (KSU)** — Text “KENNESAW STATE” and the **KS** monogram logo visible on the left. **High certainty**.  \n- **Kennesaw State Owls (athletics brand)** — Word “OWLS” and team branding in the graphic. **High certainty**.  \n- **NCAA** — Circular “NCAA” logo visible near the center-left of the bracket graphic. **High certainty**.  \n- **NCAA March Madness** — “MARCH MADNESS” text and bracket-style layout visible. **High certainty**.  \n- **Basketball tournament bracket graphic** — Bracket lines framing the announcement. **High certainty**.  \n- **Celebration confetti** — Gold/black confetti falling across the scene. **High certainty**.  \n- **Indoor arena/stadium crowd** — Large audience/background seating typical of a basketball venue. **Medium certainty**.  \n- **People (unidentified)** — Several individuals in the foreground wearing white championship-style hats; one central person waving. **High certainty** (no identification).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The visual evidence from VQA (\"KENNESAW STATE OWLS SELECTED\", \"NCAA MARCH MADNESS\") and Entity analysis (KSU logos, NCAA branding) perfectly align with the news text describing Kennesaw State's selection for the NCAA Tournament. The core event matches, and the visual details (confetti, arena) support the context. There is sufficient evidence to conclude the images match the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image features synthetic visual elements and editing artifacts such as AI-generated typography and uniform confetti overlays, while the text accurately describes the event.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,129 @@
+{
+  "index": 396,
+  "sample_id": "397",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2065.28,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "本文の中核事実は素材要約とおおむね一致しているが、蒸気確認の描写がやや視覚的に強められている。加えて、使用画像は当日の蒸気漏れ現場そのものを示す確認画像ではなく、本文が想起させる時点・文脈と完全には一致していない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/397",
+  "image_paths": [
+    "/path/to/ReMMDBench/397/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/397/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "397",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text states that white steam was seen due to a leak in the secondary system near the high-pressure turbine. I should inspect the image closely to see if there is visible white steam or smoke emanating from the lower section of the turbine building area.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic aerial/telephoto photograph of an industrial facility (looks like a nuclear plant complex by structure), with no clear signs of AI synthesis or compositing.\n\n**What supports authenticity**\n- Consistent lighting and shadows across buildings, pipes, and terrain; no mismatched illumination.\n- Coherent perspective and scale: roof vents, windows, railings, roads, and coastline align naturally.\n- Natural-looking atmospheric haze/telephoto softness and slight compression artifacts typical of news imagery.\n- Fine structural detail (grids, vents, catwalks) remains geometrically consistent without “warping” artifacts.\n\n**Potential edits / uncertainties (minor)**\n- No obvious copy-paste seams, duplicated textures, or object boundary halos are visible.\n- If anything, the image may be mildly resized or compressed, but that’s normal and not indicative of manipulation.\n\n**Counterfactual content**\n- The photo does not visibly show steam leakage; it’s more of a contextual facility shot. The image alone doesn’t confirm the described incident.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims that white steam was visible due to a leak. While the image shows the correct facility (Mihama Nuclear Power Plant), the alleged steam leak is not clearly or obviously visible in the provided photograph. The image appears to be a standard aerial shot of the facility without distinct, prominent signs of a steam leak or abnormal emissions that would clearly corroborate the specific visual claim in the text. Therefore, the image does not strongly support the description of the visible steam.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes an incident at the Mihama Nuclear Power Plant Unit 3. The image shows a large industrial complex with a distinctive containment dome structure situated by the sea, which is characteristic of a nuclear power plant. To confirm the match, I should verify if the facility in the image is indeed the Mihama Nuclear Power Plant.",
+            "action": "VQA[Is this the Mihama Nuclear Power Plant?]",
+            "observation": "\n\nYes, this image shows the **Mihama Nuclear Power Plant**, specifically **Unit 3**, located in Mihama, Fukui Prefecture, Japan.\n\nKey identifying features include:\n*   The large, beige cylindrical containment building with a rounded dome (characteristic of a Mark II boiling water reactor containment).\n*   The long, rectangular auxiliary building attached to it with a grey roof and multiple ventilation units.\n*   The concrete tunnel structure near the water's edge (sea water intake/exhaust).\n*   The rocky coastline and the hillside reinforced with retaining walls on the left side.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA response confirmed that the image shows the Mihama Nuclear Power Plant Unit 3, which is the exact subject of the news text. The news text describes an incident at this specific facility. Since the image depicts the location mentioned in the text, the cross-modal matching is successful.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.5,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample is classified as having synthetic visual content primarily due to the high p_fake_image score (1.000), indicating the visual material (likely the grainy night image or the set) is AI-generated or synthetic, despite the verification text noting the daytime image appears authentic.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,153 @@
+{
+  "index": 302,
+  "sample_id": "303",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1107.77,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article invents a government-backed robotic-rabbit anti-python pilot and then bolsters that false claim with a generated cover image and unrelated real images reframed as operational evidence. Its detention-site and Port Everglades references are real-world elements, but they are misleadingly woven into a nonexistent wildlife-robotics program.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/303",
+  "image_paths": [
+    "/path/to/ReMMDBench/303/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/303/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/303/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "303",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Verify if the 'rabbit-shaped robotic decoys' and 'Alligator Alcatraz' detention complex connection is a real government program or a fabrication.",
+            "action": "Google[\"Florida rabbit robot python pilot Everglades 2026\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Search for additional news or official reports linking 'Alligator Alcatraz' to wildlife control efforts or the proposed pilot program using robotic devices.",
+            "action": "Google[\"Alligator Alcatraz wildlife control program 2026\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "No search results or official government records confirm a program in Florida using \"rabbit-shaped robotic decoys\" or \"marsh-rabbit mimics\" to combat pythons in March 2026. Real methods (pyro-robots, traps, livestock) do not align with this claim.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.7,
+        "best_value": 0.44999999999999996,
+        "best_trajectory": [
+          {
+            "thought": "The image displays two rabbit-shaped robots in a marshy environment alongside a large snake, which matches the text's description of the \"cover image circulated with the brief.\" The robots' appearance (plastic-like, long ears) and the setting (swamp, fence) are distinct matches to the text's claim of \"lifelike robotic rabbits facing a large python near a swamp-edge security zone.\" The lighting (dusk/dawn) is consistent with an \"overnight field test\" context. Thus, the visual evidence aligns with the text's description of the scene.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly states that the pilot uses \"rabbit-shaped robotic decoys\" to lure \"invasive Burmese pythons\". I should use VQA to identify the specific snake in the foreground to confirm a visual match with the text's description of the target animal.",
+            "action": "VQA[What species of snake is visible in the foreground?]",
+            "observation": "\n\nBased on the visual evidence, the snake in the foreground is a **Burmese python** (*Python bivittatus*).\n\nKey identifiers include:\n*   **Pattern:** It features large, irregular, chestnut or copper-colored blotches with distinct dark borders, set against a tan or yellowish background.\n*   **Context:** The setting appears to be a wetland or marsh environment (like the Florida Everglades), which is the primary habitat for this invasive species in the United States.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.30000000000000004,
+      "p_fake_match": 0.2,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.8,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The news text fabricates a specific official event (2026 pilot) using false sources, and the images showing the \"robots\" and signage are AI-generated synthetics.",
+    "notes": []
+  },
+  "error": null
+}

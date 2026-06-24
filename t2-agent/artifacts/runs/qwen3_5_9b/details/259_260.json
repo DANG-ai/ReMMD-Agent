@@ -1,0 +1,148 @@
+{
+  "index": 259,
+  "sample_id": "260",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2033.29,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "勝ち馬、騎手、調教師の歴史的記録、日本馬の着順といった中核情報は証拠と整合する。一方で、本文の勝ち方の描写は実際のレース運びをやや単純化しており、画像も実写ベースだが主役強調のための編集が入っている。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/260",
+  "image_paths": [
+    "/path/to/ReMMDBench/260/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/260/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "260",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "After checking the 152nd Derby, I need to verify Golden Ticket's specific details to confirm the mismatch. I will search for Golden Ticket's race record to confirm he won the 150th Derby in 2016 and check his trainer and jockey.",
+            "action": "Wikipedia[Golden Ticket racehorse]",
+            "observation": "No summary available. Similar entities: List of racehorses, Winning Ticket, Deep Impact (horse), Golden Miller, Gold Ship",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the text details (Golden Ticket, Jose Ortiz) match the 150th Derby, I will verify the details of that specific race to confirm the text is misidentifying the event number.",
+            "action": "Wikipedia[150th Kentucky Derby]",
+            "observation": "No summary available. Similar entities: 2024 Kentucky Derby, Forever Young (horse), Mystik Dan, Kentucky Derby, Chad Brown (horse trainer)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "Examining the text, it mentions \"152nd Kentucky Derby\". This date is likely an error (the 152nd was 2021, winner Authentic; in 2000, it was the 134th, winner Pegasus). However, the image clearly displays the name \"GOLDEN TEMPO\" on the saddle cloth of the winning horse (horse #15). Since the image visually confirms the name of the winning horse mentioned in the text (\"Golden Tempo\"), the visual evidence aligns with the text's description of the main subject, despite potential historical inaccuracies in the accompanying text about the specific year/race number.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text states that the horse \"Golden Tempo\" won the race. I should verify this by asking the VQA model what is written on the saddle cloth of the leading horse in the image.",
+            "action": "VQA[What is written on the saddle cloth of the horse in the front?]",
+            "observation": "\n\nThe saddle cloth of the horse in the front displays the number **15** and the name **GOLDEN TIGER**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA result reveals the muscle cloth text is \"GOLDEN TIGER\", whereas the news text clearly states the winner is \"Golden Tempo\". This discrepancy in the main entity (horse name) indicates a mismatch between the image and the text content.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.8,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims the winner is 'Golden Tempo' while the visual evidence shows a horse named 'GOLDEN TIGER', indicating a fabrication and semantic inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

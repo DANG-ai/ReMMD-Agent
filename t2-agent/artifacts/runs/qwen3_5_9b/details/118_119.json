@@ -1,0 +1,139 @@
+{
+  "index": 118,
+  "sample_id": "119",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1467.1,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article contains a real, plausible account of a Texas refinery incident and accurately notes that cause and sabotage were not publicly established, but it misleadingly blends that event with unrelated refinery fires from other places and times. Edited images from other incidents are presented in a way that strips away identifying context, encouraging readers to connect them to the Port Arthur blast or its immediate visual aftermath.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/119",
+  "image_paths": [
+    "/path/to/ReMMDBench/119/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/119/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/119/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/119/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/119/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/119/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/119/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/119/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/119/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/119/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "119",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.5,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.39999999999999997,
+        "best_trajectory": [
+          {
+            "thought": "I am checking if the provided image is a real photograph of the Valero Port Arthur refinery fire mentioned in the text. The text describes a specific real-world event (March 2022). The image depicts a fire consistent with industrial facility imagery, but the visual artifacts (smooth smoke, overly perfect lighting, repetitive pipe structures) strongly indicate this is a synthetic/AI-generated image rather than an authentic photo from the incident. Therefore, the image does not verifiably support the reality of the specific event described in the news text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes the fire at speed, mentioning \"lights flashing against steel pipe racks and storage tanks\" and explicitly referencing \"night shots of tanks lit from below\". The image shows a large industrial fire at night with prominent pipes in the foreground and burning tanks. I should verify the time of day and the condition of the scene to confirm alignment with the textual description.",
+            "action": "VQA[What time of day is the scene depicted in the image?]",
+            "observation": "\n\nThe scene is depicted at **night**. The sky is completely dark, and the only sources of illumination are the massive fire and an artificial light pole.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly mentions \"lights flashing against steel pipe racks and storage tanks\". The image foreground clearly shows complex piping, while the background contains large cylindrical structures. Verifying if these are storage tanks will confirm a key visual anchor from the text.",
+            "action": "VQA[Can you identify steel pipe racks and storage tanks in the scene shown in the image?]",
+            "observation": "\n\nYes, the image clearly shows both elements:\n\n*   **Steel pipe racks:** In the foreground and extending into the middle ground, there are extensive networks of pipes arranged in rows, which are characteristic of steel pipe racks used in industrial complexes.\n*   **Storage tanks:** In the background, silhouetted against the fire and the night sky, you can see several large, cylindrical structures that are storage tanks.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.8,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.95,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text describes the scene \"by dawn\" when the flare faded, but the image depicts a major fire at \"night\" with a dark sky, indicating a time and context mismatch.",
+    "notes": []
+  },
+  "error": null
+}

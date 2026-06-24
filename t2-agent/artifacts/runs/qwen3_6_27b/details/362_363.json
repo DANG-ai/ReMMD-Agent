@@ -1,0 +1,155 @@
+{
+  "index": 362,
+  "sample_id": "363",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1048.67,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "样本关于“3月20日晚金银跳水、黄金跌破4600并到4576附近、白银跌幅扩大”的核心事实与原始素材记录一致，但文本把盘中急跌渲染为“单日跌超4%”“年内最大单日跌幅之一”并外推到更广泛的零售端反应，证据支撑不足且存在强度夸大；同时配图中存在对行情截图的明显二次编辑（裁剪时间窗、收窄纵轴并叠加醒目箭头/文案）以强化‘断崖式下跌’的视觉冲击。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/363",
+  "image_paths": [
+    "/path/to/ReMMDBench/363/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/363/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/363/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/363/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "363",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I will double check the date or other details if possible, but the price match is definitive. The text describes a drop on March 20th. The image shows a time axis ending near 24:00, consistent with an evening/overnight session report. The specific price point 4576.609 is the strongest link.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify the news text with the image. The text claims that the spot gold price fell and was trading around 4576.609 USD/oz. The image is a screenshot of a trading interface for \"伦敦金现\" (London Gold Spot) showing a large green number \"4576.609\". The text also mentions a drop below 4600, and the image shows a \"Low\" (最低价) of 4562.280 and a current price of 4576.609, confirming it is below 4600. The chart shows a sharp decline at the end. The image directly corroborates the specific price and the trend described in the text.",
+            "action": "Detect[image]",
+            "observation": "图像看起来像是一张手机行情软件的截图，整体更偏“真实截屏”，未见明显的 AI 合成痕迹（如物体畸变、文字乱码、光影不一致等）。\n\n可疑/可能经过二次编辑的点（但证据不强）：\n- 这是“屏幕内容截图”，本身就容易被裁剪或拼接；当前画面只呈现分时走势与右侧成交列表，无法排除后期为了强调“跳水”而裁掉更长时间尺度或其他对比信息。\n- 价格显示到小数点后三位（4576.609）在不同平台可能存在，但也常被用作“精确感”强化传播；仅凭图像无法确认是否与真实行情一致。\n- 未看到明显的拼接边缘、覆盖文字层错位、字体不统一、像素块/压缩异常集中等典型 PS 痕迹；界面元素（图表、数字、按钮栏）对齐正常。\n\n结论：从“图像本身的视觉一致性”看较可信、像原生截图；但截图类内容天然可被裁剪选择性呈现，真实性关键取决于其是否来自真实软件与对应时间段（这点仅凭图片无法证实）。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text mentions a specific price of \"4576.609 USD/oz\" circulating in the market for spot gold. The image is a screenshot of a trading interface for \"London Gold Spot\" (伦敦金现) displaying the large current price of exactly \"4576.609\". The text also states the price fell below 4600 USD/oz and fluctuated around 4570. The image confirms this with a \"Low\" (最低价) of 4562.280 and the current price near 4576. Although the image shows a change of -1.59% while the text mentions participants interpreting it as a \"drop over 4%\", the specific price match and the confirmation of the price being below 4600 strongly support the core factual claims of the text regarding the specific market moment described.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions a specific price point \"4576.609 USD/oz\" as the latest circulating transaction price. I need to verify if this specific number appears in the image to confirm the match.",
+            "action": "VQA[What is the large green number displayed prominently on the left side of the screen?]",
+            "observation": "\n\n4576.609",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions the price breaking through 4600 USD/oz. I should verify if the chart's lowest price is below 4600 to confirm this detail.",
+            "action": "VQA[What is the lowest price value shown on the chart, labeled as '最低价' or visible at the bottom of the price range?]",
+            "observation": "\n\nThe lowest price value shown on the chart, labeled as '最低价', is **4562.280**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions the market interpreted the drop as \"over 4%\". The chart shows a -1.59% change from the previous close. To verify if the intraday volatility supports the \"4%\" interpretation, I need to check the highest price of the day. The drop from the high (4736.480) to the low (4562.280) is approximately 3.7%, which is close to 4% and could explain the market sentiment/exaggeration.",
+            "action": "VQA[What is the highest price value shown on the chart, labeled as '最高价' or visible at the top of the price range?]",
+            "observation": "\n\nThe highest price value labeled as '最高价' is **4736.480**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions a specific transaction price of \"4576.609 USD/oz\" and that the price broke below 4600 USD/oz, oscillating near 4570 USD/oz. The VQA observations confirm the main price is 4576.609, the lowest price is 4562.280 (confirming the break below 4600), and the highest price is 4736.480. The chart title is \"London Gold Spot\" (伦敦金现), matching the text. The intraday drop from high to low is approximately 3.7%, which is close to the \"over 4%\" interpretation mentioned in the text. The specific price match is definitive.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a fabricated market event (gold prices around 4600 USD/oz, which is historically inaccurate for the stated time), and Image 2 contains obvious visual edits (red arrow, text overlay \"4600 broken\" on a chart with mismatched Y-axis values relative to the header price).",
+    "notes": []
+  },
+  "error": null
+}

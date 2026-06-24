@@ -1,0 +1,133 @@
+{
+  "index": 464,
+  "sample_id": "465",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1741.29,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "Die zentrale Protest- und Prüfbehauptung ist frei erfunden und wird durch künstlich erzeugte, offiziell wirkende Visuals scheinbar belegt. Zugleich stützen das echte Jubelbild und die generierten Grafiken weder semantisch noch in ihrer Wirkung die behauptete institutionelle Eskalation, sondern verleihen der Falschmeldung nur scheinbare Glaubwürdigkeit.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/465",
+  "image_paths": [
+    "/path/to/ReMMDBench/465/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/465/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/465/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "465",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "While the final score in the image (1:2) corresponds to the text's \"2:1 von RB Leipzig\" (away win), the specific details of the match events are contradictory. The text states the winning goal was scored by Yan Diomande in the 50th minute. The image explicitly lists \"OPENDA 27' | SESKO 63'\" as the scorers for RB Leipzig. Since a match cannot have two different sets of goal scorers for the same result, the image contradicts the text regarding the match details.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions a specific goal by \"Yan Diomande in the 50. Minute\". I need to check the goal scorers listed in the image to see if this matches. The image has names under the team names.",
+            "action": "VQA[Who are the goal scorers listed for RB Leipzig at the bottom right?]",
+            "observation": "\n\nBased on the text at the bottom right of the image, the goal scorers listed for RB Leipzig are **Openda** (27') and **Sesko** (63').",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the winning goal (\"Siegtreffer\") was scored by Yan Diomande in the 50th minute. The image explicitly lists the goal scorers for RB Leipzig as Openda (27') and Sesko (63'). Additionally, the text uses the hashtag #Bundesliga, while the image header clearly states \"2. BUNDESLIGA\". These are direct contradictions.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample fabricates a future news event (T1) with a synthetic graphic (V1), where the text claims Yan Diomande scored the winner while the graphic lists Sesko (C1), and uses a generic template email with mismatched team names (C2).",
+    "notes": []
+  },
+  "error": null
+}

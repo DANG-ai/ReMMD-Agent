@@ -1,0 +1,170 @@
+{
+  "index": 109,
+  "sample_id": "110",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1126.19,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article’s central account is consistent with the provided source summary: the hashtag trend, reports of third-day strikes and smoke over Tehran, U.S. protests, and congressional war-powers discussions all align. The reused images depicting smoke and damage in Iran are consistent with the article’s framing and show no indicated manipulation.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/110",
+  "image_paths": [
+    "/path/to/ReMMDBench/110/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/110/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "110",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the news text which claims a specific future date (March 2, 2026) and an escalation of US-Israeli strikes involving smoke over Tehran. Since this is a specific news text about a potentially ongoing conflict, using Wikipedia can help establish if this event is a significant documented occurrence or if it's hallucinated/fake news.",
+            "action": "Wikipedia[smoke over Tehran US Israel strike escalation]",
+            "observation": "No summary available. Similar entities: Twelve-Day War, List of attacks during the 2026 Iran war, 2026 Iran war, Hezbollah–Israel conflict (2023–present), Timeline of the 2026 Iran war",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the initial Wikipedia search failed to provide a specific summary but found \"2026 Iran war\" as a similar entity, I should pivot to Google to find real-time news coverage from March 2026 regarding the strikes and smoke over Tehran. Wikipedia often has aggregations, but specific AP reporting needs to be verified via search engines.",
+            "action": "Google[\"smoke over Tehran\" \"US\" \"Israel\" strikes \"March 2 2026\"]",
+            "observation": "Video shows black smoke over Tehran's Moniriyeh district after US ...: Video shows black smoke over Tehran's Moniriyeh district after US-Israel strike ... — U.S. Central Command (@CENTCOM) March 2, 2026 · Inside ... (https://www.iranintl.com/en/202603028368)\nUs Israel Strikes Iran February 2026 Oil Impact - Instagram: Smoke over Tehran as US, Israel strike Iran Smoke billowed over the ... March 2, 2026 – The Middle East has entered a dangerous new ... (https://www.instagram.com/popular/us-israel-strikes-iran-february-2026-oil-impact/)\nIran-Israel Conflict: Oil, Markets, and Global Economy Implications: As the US-Israel-Iran war enters its third day on March 2, 2026 ... smoke over Tehran's intelligence headquarters and strikes near former ... (https://www.linkedin.com/posts/parshkothari_iran-vs-israel-and-usa-everything-you-activity-7433563938807574528-1sso)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Google search results explicitly confirm the central claim of the text: US and Israel strikes in Iran on March 2, 2026, with black smoke visible over Tehran's Moniriyeh district. Additionally, the search results mention the war entering its third day on this specific date, aligning with the text's narrative. The evidence is sufficient to support the news text.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a massive plume of black smoke rising from a fortified border area with a fire visible at the base. This visual evidence aligns perfectly with the news report describing strikes and smoke over Tehran, confirming the veracity of the text.",
+            "action": "Tool[Finish[IMAGE_SUPPORT]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The visual evidence in the image matches the key claims in the article regarding smoke and visible damage associated with strikes in the region described. The scene depicts an area consistent with the border or urban infrastructure of Tehran mentioned in the text.",
+            "action": "Tool[Finish[IMAGE_SUPPORT]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To confirm the events described in the text (strikes, security, smoke), I must first analyze the image content. The visual evidence of smoke and fortified areas is key. I will run the Detect tool to retrieve the assessment of the image for comparison.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly displays a massive black smoke plume rising from a fire near a fortified wall, which directly correlates with the news text reporting 'smoke was visible over Tehran' and war strikes. The visual evidence is strong enough to support the narrative without further delay.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "Verify visual evidence supporting the news claim about smoke visible over a specific area.",
+            "action": "VQA[Does the image show large black smoke rising from the ground?]",
+            "observation": "\n\nYes, the image shows a massive plume of large black smoke rising from the ground, seemingly originating behind a concrete wall with visible flames.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The visual evidence confirms the presence of large black smoke, which aligns with the text. The next logical step is to verify if the location shown in the image is indeed Tehran, as reported in the news text, to fully confirm the match.",
+            "action": "VQA[Does the image appear to show an urban area in Tehran, Iran, consistent with the news report?]",
+            "observation": "\n\nYes, the image appears to show a significant fire producing a large plume of black smoke. To the left, there is a multi-story concrete residential building, and a long concrete wall topped with barbed wire runs across the foreground. In the background, there are arid, rolling hills. These features—a mix of residential buildings, perimeter fencing, and hilly terrain—are consistent with the outskirts of an urban area in Tehran, Iran, often seen in news reports regarding fires or border incidents in the region.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous trajectory has already confirmed the presence of flames and black smoke and validated that the location is consistent with the outskirts of Tehran, Iran. Since the primary visual evidence (smoke in a city consistent with Tehran) directly supports the news report's claim, the most logical conclusion is to finalize the matching.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.41601676461038084,
+      "p_fake_text": 0.19999999999999996,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future conflict scenario, while the image is identified as synthetic, creating a textual-visual mismatch regarding the event's reality.",
+    "notes": []
+  },
+  "error": null
+}

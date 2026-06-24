@@ -1,0 +1,150 @@
+{
+  "index": 29,
+  "sample_id": "030",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1917.79,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "本文は、死亡報道そのものの真偽を断定するのではなく、日本語圏X上にどのような投稿が存在し、どのような文言や画像が共有されていたかという確認可能な範囲に限定して叙述している。提示された元投稿、補助記録、画像内容はいずれも本文の説明と整合しており、核心主張に歪みはない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/030",
+  "image_paths": [
+    "/path/to/ReMMDBench/030/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/030/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/030/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/030/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/030/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/030/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/030/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/030/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/030/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/030/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "030",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; T3 Misleading Context; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 1.0,
+        "visits": 8,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Another approach is to check the Wikipedia article for \"Ayatollah Khomeini\" or \"Ali Khamenei\" to confirm birth/death dates and verify if any recent rumors or predictions regarding a \"death in March 2026\" exist officially. This will help ground the veracity if the text is describing a specific person.",
+            "action": "Wikipedia[Ayatollah Khomeini]",
+            "observation": "No summary available. Similar entities: Ruhollah Khomeini, Death and state funeral of Ruhollah Khomeini, Mausoleum of Ruhollah Khomeini, Ahmad Khomeini, Ruhollah Khomeini's return to Iran",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the status of Ayatollah Khamenei to confirm if he is alive, as the text describes his death in March 2026 as a rumored past event. If he is alive, the text describing his death is refining into a false scenario or a fictional future prediction presented as fact. I will check the article for his current status and reliability of life news.",
+            "action": "Wikipedia[Ayatollah Khamenei]",
+            "observation": "No summary available. Similar entities: Ali Khamenei, Assassination of Ali Khamenei, Khamenei family, Mojtaba Khamenei, Masoud Khamenei",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify if this specific news narrative about Khamenei's death in early March 2026 and the associated X (Twitter) posts/images has circulated anywhere. If this text is a known piece of misinformation or a prediction presented as news, checking the source or related content will help confirm its veracity.",
+            "action": "Google[\"haìnei\" death 2026 japan news search]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims a specific rumor circulating on X in March 2026 about Ayatollah Khamenei's death. Since the current date (relative to my knowledge) is prior to March 2026, this is a future date or a fictional scenario. No results were found on Wikipedia or Google previously for this event. Based on this data, the text describes a non-existent event as fact or current news.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a series of news reports and a specific image context from March 2026. The image shows a large congregation of men in prayer. This matches the text's description of a 'Friday prayer' scene. Since the request is an Image Veracity Detection, I should generate two candidates. The first candidate will analyze the visual content against the text description and conclude with IMAGE_SUPPORT based on the match between the 'large prayer scene' description and the visual. The second candidate might also conclude IMAGE_SUPPORT because the image content (large group of men praying) is the only verifiable objective fact provided and matches the narrative's claim of a 'large-scale prayer scene' at the 'University of Tehran' mentioned as a visual memory fragment.",
+            "action": "finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The provided image clearly shows a large crowd of individuals bowing in prayer, wearing white or light-colored robes. This visual description perfectly matches the text's account of the \"Friday prayer at Teheran University\" attached to the post, which is described as having \"most of the screen filled with large number of attendees\" and a \"strong sense of orderly crowds\". Based on this strong visual-textual correspondence regarding the main subject (the prayer scene), the match is confirmed.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 1.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a false event (Khamenei's death in 2026) and miscites the visual content by associating real, living images with a fictional death scenario.",
+    "notes": []
+  },
+  "error": null
+}

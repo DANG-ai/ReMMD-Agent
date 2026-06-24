@@ -1,0 +1,145 @@
+{
+  "index": 180,
+  "sample_id": "181",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 920.66,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "本文には一部実際の障害報道と整合する要素がある一方、政府内の動きに関する未裏付け記述が挿入され、画像は案内板表示の改変や生成画像で被害の見え方を大きく誇張している。とくに画像群は本文が述べる『不正アクセスは確認されていない』という内容とも意味レベルで食い違い、全体として信頼できる記録報道にはなっていない。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/181",
+  "image_paths": [
+    "/path/to/ReMMDBench/181/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/181/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/181/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/181/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "181",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a specific incident on the \"21st\" morning involving ATC system failures, starting with a Fukuoka ATC issue causing capacity drops at Kobe, leading to delays at Haneda. The text includes specific recovery times (10:52 AM). I need to verify if there was a major ATC outage in Japan on the 21st of any month that matches these specific details (Fukuoka -> Kobe -> Haneda). Common incidents are usually centered in Tokyo. This specific chain of causality seems highly detailed and potentially fake or referring to a minor event mischaracterized. I will search for historical records of this specific incident.",
+            "action": "Google[羽田空港 欠航 航空交通管制システム トラブル 21日]",
+            "observation": "「システム保守作業時に障害」 21日にあった国交省の航空管制 ...: トラブルは21日午前5時半ごろ発生。福岡航空交通管制部から、飛行計画を各地に送るシステムに不具合が生じた。全日空と日航だけで欠航は約250便 ... (https://www.sankei.com/article/20260424-CPUOFFD53NINNKF43FC5MH26XI/)\n管制システムトラブルで終日混乱…羽田空港などで欠航相次ぐ 全国 ...: 国土交通省などによりますと4月21日午前7時すぎ、羽田空港など各地の空港で管制システムのトラブルが発生し、羽田空港では15分間ほど全ての航空便が出発 ... (https://s.mxtv.jp/tokyomxplus/mx/article/202604221000/detail/)\n航空管制システムに一時不具合 250便超欠航 - 時事通信: 21日午前5時40分ごろ、国土交通省の航空管制システムに不具合が発生し、飛行計画のやりとりに支障が生じた。日本航空によると、この影響で羽田空港 ... (https://www.jiji.com/jc/article?k=2026042100374&g=soc)\n【管制システムにトラブル】全国的に空の便で欠航や遅れ - YouTube: 21日朝早く、航空管制システムにトラブルが起き、全国的に空の便の欠航や遅れが出ています。 （2026年4月21日放送） この動画の記事を読む＞ ... (https://www.youtube.com/watch?v=2u7OvWKiGxQ)\n航空管制システム障害 全国で航空便出発できず JALとANAで欠航 ...: 羽田空港では、午前7時すぎに管制システム障害の影響で、全ての運航便の出発を取りやめました。まもなく復旧し発着はできるようになったものの、多くの便 ... (https://www.fnn.jp/articles/-/1033201)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a departure hall, likely Haneda Airport Terminal 2, crowded with people. The departure board on the right lists flights, and crucially, displays a \"SYSTEM ERROR\" in red text for specific flights (e.g., 12:10 NAGOYA), which directly matches the \"fault processing capability\" and \"back-up switch\" description in the text.",
+            "action": "Detect[image]",
+            "observation": "- **Overall authenticity:** The scene reads as a straightforward real photo of a busy airport terminal. Perspective, depth, and crowd scale are consistent, with natural-looking lighting and reflections on the floor and glass.\n\n- **No clear signs of AI/synthetic generation:** Architectural lines (ceiling ribs, window grid, railing) remain coherent without the warped geometry or “melting” patterns often seen in generative images. People and objects (luggage, stanchions, carts) look consistent at typical photo resolution for a wide shot.\n\n- **No obvious digital compositing/editing artifacts:** I don’t see mismatched shadows, duplicated crowd patterns, inconsistent blur, or hard cutout edges around signage or people.\n\n- **Text/signage consistency:** The large “B” zone sign and the departures board appear integrated into the scene with plausible lighting and angles. The board contains readable items like “SYSTEM ERROR,” but there’s no visible sign it was pasted on (no haloing or sharpness mismatch noticeable at this resolution).\n\n**Conclusion:** Based on the image alone, it appears authentic with no strong indicators of manipulation or synthetic generation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a crowded air terminal departure hall with a departure board on the right. Crucially, the board shows specific flight statuses, including \"SYSTEM ERROR\" in red text (visible for flights like NAGOYA and SENDAI), which directly corroborates the news report describing a \"fault processing capability\" and \"back-up switch\" leading to \"delays or flight cancellations.\" The architectural features (ribbed ceiling, glass facade) and crowd behavior align with a high-traffic hub like Haneda Airport, mentioned in the text. Given the previous detection confirmed visual authenticity and lack of AI artifacts, the image's visual evidence strongly validates the news claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The image features a crowded airport terminal with a departure board displaying \"SYSTEM ERROR\" and destinations like \"NEW CHITOSE\" (New Chitose), which matches the news text mentioning \"Haneda Airport\" and \"New Chitose\" being affected. The clock shows approximately 10:50, aligning with the text's mention of restoration at 10:52 AM. The visual content and text are consistent.",
+            "action": "Finish[Match]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims the cause was a system malfunction with no intrusion, but an image displays a screen saying 'NETWORK INTRUSION DETECTED', and the text mentions the 21st (implied April 21st) while an image shows a date of December 22nd.",
+    "notes": []
+  },
+  "error": null
+}

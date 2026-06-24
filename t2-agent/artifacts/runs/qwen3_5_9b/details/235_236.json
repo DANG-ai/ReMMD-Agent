@@ -1,0 +1,166 @@
+{
+  "index": 235,
+  "sample_id": "236",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1571.17,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article’s central claim is broadly accurate: the discussed change is an administrative move toward automatic registration, not the return of active conscription. However, the text slightly overstates how sweeping and settled the transition is, and the military-heavy imagery creates a stronger sense of activation and mobilization than the article’s legal explanation supports.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/236",
+  "image_paths": [
+    "/path/to/ReMMDBench/236/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/236/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/236/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/236/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/236/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/236/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/236/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/236/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/236/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/236/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "236",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to check the general status of the Selective Service System on Wikipedia to see if the shift to automatic registration is a known fact or a recent news development. This will help contextualize whether the text is describing a long-standing policy or a specific upcoming change.",
+            "action": "Wikipedia[\"Selective Service System\"]",
+            "observation": "No summary available. Similar entities: Selective Service System, Conscription in the United States, Draft board, Vietnam War draft, Military Selective Service Act",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the initial Wikipedia query for the general \"Selective Service System\" page returned no summary, I should try querying the \"Military Selective Service Act\" instead. The current demographics and registration rules are often detailed in the statutory language, so this might provide the legal grounding to verify if an administrative change is authorized by law or just a proposal.",
+            "action": "Wikipedia[\"Military Selective Service Act\"]",
+            "observation": "No summary available. Similar entities: Military Selective Service Act, Selective Service System, Selective Service Act, Rostker v. Goldberg, Solomon Amendment",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Wikipedia searches didn't return results. I need to search Google for specific information about the Selective Service automatic registration plan for 2026 to verify the claims in the news text.",
+            "action": "Google[Selective Service automatic registration 2026]",
+            "observation": "About Selective Service: The Selective Service System (SSS) is a federal agency that registers men to create an index, structure and classification process for individuals ages 18 ... (https://www.sss.gov/about/)\nAutomatic registration for US military draft to begin in December: Under the new rule, men will be registered automatically within 30 days of their 18th birthdays. Women are still ineligible for the draft, even ... (https://thehill.com/policy/defense/5822914-automatic-registration-military-draft/)\nAutomatic military draft registration takes effect in December. Here's ...: Young, eligible men will be automatically registered for the military draft pool starting in December as part of a measure tucked into the ... (https://www.cnn.com/2026/04/09/politics/us-military-draft-registration-2026)\nSelective Service System - Wikipedia: Beginning on December 18, 2026, the requirement for male U.S. residents ages 18 through 25 to register themselves with the Selective Service System will be ... (https://en.wikipedia.org/wiki/Selective_Service_System)\nAutomatic registration for US military draft to begin in late 2026: Eligible men will automatically be registered in the military draft pool by December as part of an effort to streamline the previous ... (https://www.youtube.com/watch?v=LREDzfF-1ow)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text explicitly describes the \"Cover image\" as a U.S. Armed Forces recruiting station with service logos. I need to verify that the building signage in the image matches the text \"U.S. ARMED FORCES RECRUITING STATION\" and the described logos to ensure the caption accurately describes the visual evidence provided.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic photo of a U.S. Armed Forces Recruiting Station in an urban streetscape (looks like a real storefront façade with a large LED American flag display), with no obvious signs of AI generation or heavy compositing.\n\n**Reasons it appears authentic**\n- **Consistent perspective and geometry:** Building lines, signage, street poles, and the LED flag structure all align with a single camera viewpoint; no warped architecture or impossible angles.\n- **Natural lighting and shadows:** The people, sidewalk, and building surfaces share consistent ambient daylight; no mismatched shadow directions that would suggest pasted-in elements.\n- **Plausible detail and textures:** Metal grille patterning, seal emblems, window frames, and street fixtures have realistic fine detail without the smeary/“invented” textures common in synthetic images.\n- **Motion blur/defocus looks photographic:** A few pedestrians have slight blur consistent with movement during a real exposure.\n- **LED panel artifacts are plausible:** The flag display shows banding/scanline-like effects and segmented panels consistent with photographing an electronic screen.\n\n**Potential minor edits (not deceptive)**\n- Some faces appear **blurred**, which is typical privacy redaction and not evidence of scene manipulation.\n\n**No clear red flags**\n- I don’t see obvious cut-and-paste edges, mismatched resolution regions, duplicated patterns, or inconsistent reflections indicating digital tampering.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a building facade with the text \"U.S. ARMED FORCES RECRUITING STATION\" and the specific seals for the Army, Navy, Air Force, and Marines as described in the text. The visual content aligns with the \"Cover image\" description in the article, confirming the scene is indeed of a recruiting station with the specified logos.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The image caption in the text says it is a recruiting station, and the image title/signage confirms \"U.S. ARMED FORCES RECRUITING STATION\". The logos match the service branches mentioned (Army, Navy, Air Force, Marines). The text also mentions a \"strip mall,\" which might be a description error as it looks like a city street (NYC), but the main visual elements (Station, Logos, Flag screen) perfectly match the described subject matter and the \"Cover image\" context.",
+            "action": "Entity[image]",
+            "observation": "- **“U.S. ARMED FORCES RECRUITING STATION” sign** — High certainty (clearly readable text on building).\n- **U.S. Armed Forces Recruiting Station building/facade** — High certainty (the whole structure matches the sign).\n- **Large LED display of the United States flag** — High certainty (distinct stars/stripes on the screen).\n- **U.S. military branch seals (Army, Navy, Air Force, Marines)** — High certainty (four circular emblems with branch names visible).\n- **Pedestrians/people** — High certainty (multiple individuals in foreground); **no identification of individuals**.\n- **Urban street infrastructure (traffic signal pole, streetlights, security cameras)** — Medium–high certainty (visible poles, fixtures, camera-like devices).\n- **Digital billboard showing partial “mac” text** — Medium certainty (only partial letters visible; likely an ad/brand fragment).\n- **Poster/advertisement on the right (“…BARKS” readable)** — Medium certainty (text partially legible; exact brand unclear).\n- **Multi-story building exterior behind the station** — High certainty (windows/stonework visible).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Entity observations from the previous step provided high certainty evidence that the image displays the \"U.S. ARMED FORCES RECRUITING STATION\" sign and the specific U.S. military branch seals, which fully aligns with the \"Cover image\" description in the text. The main subject matter matches perfectly.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text presents future or hypothetical policy updates (2026 automatic registration) as breaking news and includes fabricated URLs, constituting a fabrication of non-existent events.",
+    "notes": []
+  },
+  "error": null
+}

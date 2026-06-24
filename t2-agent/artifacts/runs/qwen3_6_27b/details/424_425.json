@@ -1,0 +1,132 @@
+{
+  "index": 424,
+  "sample_id": "425",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3083.8,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article's game result and basic scoring summary are grounded in real reporting, but it misleadingly folds a genuine Phillies social post from March 31 into the March 30 game narrative. Edited image overlays and captions reinforce that wrong time/event framing, creating a contextual mismatch between the visuals and the text.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/425",
+  "image_paths": [
+    "/path/to/ReMMDBench/425/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/425/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/425/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "425",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 8,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The image contains a clear overlay with the date \"MARCH 30\", the score \"NATIONALS 13, PHILLIES 2\", and the text \"PHILLY'S LONE SPARK\". It features a player with \"MARCHAN\" and the number \"63\" on his jersey swinging a bat. This aligns perfectly with the news text describing Rafael Marchan's home run as the only highlight in a 13-2 loss on March 30. I will use the detection tool to formally verify these visual details.",
+            "action": "Detect[image]",
+            "observation": "- **Overall look:** The scene (baseball player mid-swing, stadium crowd, depth of field) has consistent lighting, shadows, perspective, and natural motion/pose, which leans **authentic**.\n- **Clear sign of editing:** Many faces in the crowd and the player’s face are covered with uniform square/blur blocks. This is characteristic of **intentional redaction/anonymization** added after the photo was taken, not an in-camera effect.\n- **Broadcast-style graphic:** The bottom scoreboard banner (“MARCH 30 | NATIONALS 13, PHILLIES 2” and “PHILLY’S LONE SPARK”) appears like a **standard overlay** added in post (normal for sports social media), with clean edges and consistent alignment.\n- **No strong AI/synthetic artifacts:** I don’t see typical generative errors (warped bats/hands, inconsistent stitching on uniform, impossible anatomy, broken crowd geometry). The player, uniform pinstripes, and equipment details look coherent.\n\n**Conclusion:** The underlying photo appears likely genuine, with **post-processing overlays and face blurring/redaction** applied. No obvious evidence of fully synthetic generation or counterfactual visual elements within the image itself.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly displays a baseball player with \"MARCHAN\" on the back of his jersey swinging a bat. The graphic overlay at the bottom confirms the date as \"MARCH 30\" and the final score as \"NATIONALS 13, PHILLIES 2\". Additionally, the text \"PHILLY'S LONE SPARK\" corresponds directly to the article's description of Rafael Marchán's home run as the team's \"only real highlight.\" All visual elements align perfectly with the provided news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text provides the final score (Nationals 13, Phillies 2) and the date (March 30). The image contains a text overlay at the bottom. I need to check if this overlay matches the game details in the text.",
+            "action": "VQA[What is the text in the dark blue banner at the bottom of the image?]",
+            "observation": "\n\nThe text in the dark blue banner at the bottom of the image is:\n\n**MARCH 30 | NATIONALS 13, PHILLIES 2**\n**PHILLY'S LONE SPARK**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text overlay in the image explicitly confirms the date \"MARCH 30\" and the score \"NATIONALS 13, PHILLIES 2\", which matches the news text perfectly. Furthermore, the overlay text \"PHILLY'S LONE SPARK\" corresponds directly to the news text describing Rafael Marchán's home run as \"Philadelphia's only real highlight\". The visual of the batter wearing the Phillies uniform with the name \"MARCHAN\" visible on the back reinforces this connection.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The visual material contains clear post-processing edits, including broadcast-style text overlays (\"MARCH 30 | NATIONALS 13, PHILLIES 2\", \"RAV4TH INNING MOMENTS\") and face blurring/redaction blocks, which characterizes it as visually edited content.",
+    "notes": []
+  },
+  "error": null
+}

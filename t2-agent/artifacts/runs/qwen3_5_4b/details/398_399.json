@@ -1,0 +1,159 @@
+{
+  "index": 398,
+  "sample_id": "399",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T3 Misleading Context",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1494.56,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article takes ordinary event-specific branding, hospitality, and a single John Cena appearance and repeatedly reframes them as evidence of a broader Tampa rollout and institutional Cena role that the available evidence does not establish. It also uses edited visuals and image-text pairings to make speculative interpretations look like documented proof.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/399",
+  "image_paths": [
+    "/path/to/ReMMDBench/399/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/399/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/399/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/399/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/399/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/399/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/399/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/399/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/399/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/399/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "399",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T3 Misleading Context",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T3 Misleading Context; C2 Contextual Inconsistency; C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text details a high-stakes wrestling show inside \"Benchmark International Arena\" with specific ring mats and premium hospitality setups. The image completely lacks these elements, instead displaying a street view with no indication of a wrestling venue, arena rings, or the Tampa location. The visual content is entirely unrelated to the event described in the caption.",
+            "action": "Tool[IMAGE_REFUTE]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous attempt to interface using 'Tool[IMAGE_REFUTE]' was incorrect based on the available action schema. I will reformulate the action to use the correct completion command, adding a brief verification step to ensure there is no misinterpretation of the scene context.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unmanipulated street photograph.\n\n**Reasons it looks authentic**\n- **Consistent perspective and geometry:** Building lines, the street centerline, parked cars, and the distant skyline all converge naturally to a single vanishing point with no warping or mismatched angles.\n- **Lighting and shadows match:** Sunlight direction is coherent across trees, façades, and vehicles; shadow softness and contrast look consistent with real outdoor conditions.\n- **Natural detail and noise:** Fine textures (brickwork, fire escapes, leaves, asphalt) look continuous and photographic rather than AI-smoothed or pattern-repeated.\n- **No obvious compositing seams:** Edges around cars, tree branches, and building silhouettes don’t show cutout halos or blending artifacts.\n\n**Potential edits (minor/typical)**\n- Possible mild global processing (contrast/saturation/sharpening), which is common in normal photography, but nothing suggests targeted object insertion/removal.\n\n**Counterfactual note**\n- The accompanying WWE/Tampa narrative doesn’t match what’s shown: this is a quiet city street scene with no arena, ring, branding, or event elements visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a heavily branded WWE wrestling event inside an arena, featuring a ring, ring mat, and John Cena in a suit. The provided image shows an outdoor city street with parked cars and apartment buildings, which contains none of the specific domestic or event-related imagery described in the news article. There is no visual corroboration of the Tampa event location or the arena showing inside.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 1.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will use Entity analysis on the image to systematically scan for text-related keywords (WWE,arena,ring,Cena) to confirm the lack of overlap between the image content and the text's focus.",
+            "action": "Entity[image]",
+            "observation": "- **Urban residential street (likely New York City–style streetscape)** — medium certainty (brick row buildings, fire escapes, tree-lined street, yellow centerlines; no definitive signage).\n- **Mid/high-rise skyscraper in the distance** — low certainty on exact building identity (recognizable “NYC skyline” feel but not enough detail to name).\n- **Brick apartment buildings with exterior fire escapes (right side)** — high certainty.\n- **Mixed low-rise buildings (left side)** — high certainty (facades and storefront-style ground floors visible).\n- **Street trees / canopy** — high certainty.\n- **Parked cars/SUVs along both sides** — high certainty.\n- **Crosswalk markings and double yellow centerline** — high certainty.\n- **Street signs on poles (unreadable at this resolution)** — medium certainty (sign shapes present but text not legible).\n- **No clearly identifiable people, logos, or named organizations** — high certainty.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To double-check the conclusion, I will query the image visually to ensure there are indeed no wrestling-related elements (ring, logo, crowd) that were missed by the initial text-based entity analysis.",
+            "action": "VQA[question: \"What kind of event is taking place in the large arena shown in the image?\"]",
+            "observation": "\n\nBased on the image provided, there is no large arena visible. The image shows a city street lined with trees and parked cars, with tall buildings and a skyscraper in the distance. There is no evidence of an event taking place in an arena.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a WWE event taking place inside an arena in Tampa, but the provided image shows a generic urban street scene with parked cars and buildings. There is no arena, crowd, or wrestling imagery visible, indicating a clear discrepancy between the text and the image context.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 1.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 1.0
+      }
+    },
+    "taxonomy_rationale": "Text describes a WWE event in Tampa, but the image is a generic city street scene unrelated to the event.",
+    "notes": []
+  },
+  "error": null
+}

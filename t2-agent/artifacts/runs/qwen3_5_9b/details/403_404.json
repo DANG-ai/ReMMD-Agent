@@ -1,0 +1,153 @@
+{
+  "index": 403,
+  "sample_id": "404",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1150.29,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本将“官方推出的量化引医计划+可直接注册+统一高薪待遇包”包装成近乎已成型政策，并用两张“文件截图/封面信息图”强化可信度，但关键政策文件与具体数字、条款缺乏可核验的真实对应，且图文在核心数字与事件归属上自相矛盾，整体结论不成立。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会民生",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/404",
+  "image_paths": [
+    "/path/to/ReMMDBench/404/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/404/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/404/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/404/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "404",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The provided infographic lists key headlines about \"Hong Kong high salary grabbing doctors,\" \"entry salary 70k\", \"housing support,\" \"simplified registration,\" and \"specialist recruitment.\" These points correspond directly to the news text's discussion of the \"Global Doctor Introduction Plan,\" recruitment marketing tactics (70k start), and policy measures for non-local doctors. I need to visually verify the text and details against the image content.",
+            "action": "Detect[image]",
+            "observation": "这张图**明显不是一张现场照片**，而是由多张素材拼接并叠加大量文字与图标的宣传海报/封面图，存在明确的“编辑合成”痕迹：\n\n- **多元素拼贴**：左上是监护仪/医疗设备特写，右上是医生手持听诊器的近景，右下是几位穿白大褂的背影，底部是香港夜景天际线；这些画面在光线、景深与拍摄视角上不统一，典型“图库素材拼接”风格。  \n- **大量后期排版**：大标题、渐变色文字、对勾列表、卡通图标（房子、证件、医生团队等）均为明显叠加的图形元素，不属于原始拍摄内容。  \n- **边缘/融合不自然**：人物与背景的分离感较强，像是剪切后放置到统一底图上；底部夜景与上部医院环境的衔接也呈现设计式渐变/遮罩效果。  \n- **未见AI生成常见瑕疵**：文字笔画规则、图标线条干净，人物肢体也未出现明显畸形或“融化”；更像人工设计的合成海报，而非纯AI生成图片。\n\n结论：图像本身是**经过明显编辑的合成宣传图**，不具备“现场照片”式的真实性证明力；其信息表达主要依赖后期添加的文字内容。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a collage-style infographic about Hong Kong recruiting doctors with salaries starting at 70k HKD. The text mentions this 70k figure as a marketing pitch cited in the \"Market and Salary\" section. However, the text *also* explicitly claims authority evidence in the bracketed section [配图1] showing a document titled \"Global Doctor Introduction Plan (2026)\" with 95k salary. Since the provided image lacks this specific title and points (showing 70k instead of 95k/5000), and the text's claim is that the image is the \"Global Plan\" summary, there is a conflict between the text's description of the evidence and the actual image provided.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "文本描述【配图1】为“全球引医计划（2026）”文件截图，抬头“首阶段引入5000名医生”，“住院医起薪HK$95,000/月”。但图片标题看似为新闻标题而非文件抬头，且提到“入门月薪7万港元起”，与文本描述的95,000存在差异。需要验证图片中的具体文字内容。",
+            "action": "VQA[请识别图片顶部的最高级标题文字及其包含的主要政策点]",
+            "observation": "\n\n图片顶部的最高级标题是：**香港高薪抢医生**\n\n图片中包含的主要政策点有：\n1.  **提供吸引住屋津贴与支援**\n2.  **简化海外医生注册路径**\n3.  **针对性招募紧缺专科人才**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA observation reveals that the image's primary headline is \"Hong Kong High Salary Grabs Doctors\" and entry salary \"HK$70,000\". The text description of 'Image 1' explicitly claims the header is \"Global Recruitment Plan (2026)\" and mentions a salary of \"HK$95,000\". There is a conflict in the title and salary figures. To confirm this mismatch definitively, I need to verify if the text \"5000 doctors\" or \"95,000\" appears in the image, which is critical for identifying the document described in the text.",
+            "action": "VQA[请明确识别图片中是否有文字显示“首阶段引入5000名医生”以及具体的薪资数字，例如“95,000”或“九万五”的表述]",
+            "observation": "\n\n图片中未显示“首阶段引入5000名医生”的文字。\n\n关于薪资数字，图片中显示的是“入门月薪7万港元起”，并没有“95,000”或“九万五”的表述。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "虽然已有结论，但为了确保万无一失，排除图片中是否存在极小的文字或水印包含\"95000\"或\"2026\"等文本信息，利用实体抽取工具结构化获取图片中的所有数字和文本对象，进行二次比对。",
+            "action": "Entity[image]",
+            "observation": "- **香港（Hong Kong）维多利亚港夜景/天际线**（含疑似港岛北岸与九龙对望的海港景观）— 高确信度  \n- **国际金融中心二期（Two IFC）大楼轮廓**（天际线中最高、顶部发亮的塔楼，外形相符）— 中等确信度  \n- **医院/医疗场景**（走廊内多名穿白大褂人员、右侧医生手持听诊器）— 高确信度  \n- **病人监护仪/心电监测仪**（左侧屏幕显示波形）— 高确信度  \n- **听诊器**（右侧人物手中）— 高确信度  \n- **图标：住房补贴/房屋**（手托房子图标）— 高确信度  \n- **图标：医生注册/文件**（人物+证件/文档图标）— 高确信度  \n- **图标：医疗团队/医护人员**（多名医护卡通图标、医疗十字/器械）— 高确信度  \n- **中文文字内容**：“香港高薪抢医生 / 入门月薪7万港元起？…提供吸引住屋津贴与支援…简化海外医生注册路径…针对性招募紧缺专科人才” — 高确信度  \n\n注：图中人物为普通医护形象，无法也不应识别为具体真实个人。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the Evidence: Text claims Image 1 is 'Global Medical Talents Plan (2026)' with '5000 doctors' and '95k salary'. VQA and Entity results show Image is 'Hong Kong High Salary Grabs Doctors' with '70k salary'. The document title and key salary data (95k vs 70k) contradict the text description completely. The image is likely a news graphic, not the document described.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image is a composite editorial collage (Visual Editing) and the text describes image content (\"5000/95k\") that visibly differs from the actual image content (\"70k\") (Contextual Inconsistency).",
+    "notes": []
+  },
+  "error": null
+}

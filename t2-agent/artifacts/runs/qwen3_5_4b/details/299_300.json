@@ -1,0 +1,170 @@
+{
+  "index": 299,
+  "sample_id": "300",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1384.46,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article starts from a real policy change and real online discussion about fuel prices, but it overstates that event into a nationwide crisis narrative of scarcity, panic buying, and emergency state intervention. That misleading framing is reinforced by edited images that add purchase-limit signs and longer queues, causing the visuals to falsely support claims of shortages and rationing.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/300",
+  "image_paths": [
+    "/path/to/ReMMDBench/300/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/300/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/300/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/300/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/300/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/300/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/300/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/300/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/300/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/300/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "300",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text contains highly specific technical details (increase cut from 2,205 yuan/ton to 1,160 yuan/ton, etc.). I will search Google to verify if these specific figures have been reported by major news outlets or official government sources for March 23, 2026.",
+            "action": "Google[March 23 2026 China fuel price hike 2205 yuan per ton]",
+            "observation": "China limits fuel price hike to cushion impact of rising oil prices: Under the current pricing mechanism, gasoline and diesel prices would have been set to rise by 2,205 yuan per metric ton, and 2,120 yuan per ... (https://www.reuters.com/world/asia-pacific/china-limits-fuel-price-hike-cushion-impact-rising-oil-prices-2026-03-23/)\nChina eases planned fuel price hikes as Asia reels from energy crisis: Gasoline and diesel prices were initially set to rise by 2,205 yuan (£239; $320) and 2,120 yuan per tonne respectively – but after ... (https://www.bbc.com/news/articles/cwyvxejqyx4o)\nChina will raise its retail prices of gasoline and diesel from Mar. 10 ...: China has increased retail fuel prices by +695 yuan per ton for gasoline and +670 yuan per ton for diesel, following a sharp rise in global oil ... (https://www.instagram.com/p/DV_gowNCDVn/)\nChina's Fuel Prices Reach New Heights, Sparking Fears of Inflation ...: Based on international oil prices, gasoline would have increased by 2,205 yuan per ton and diesel by 2,120 yuan per ton. However, the NDRC said ... (https://www.visiontimes.com/2026/03/23/chinas-fuel-prices-reach-new-heights-sparking-fears-of-inflation-economic-strain.html)\nChina sees long lines at the gas pump as Mideast turmoil hits - CNBC: Prices were tipped to go up to 2,205 yuan per metric ton — the equivalent of about $1 per gallon. ... hike to 1,160 yuan per metric ton. (https://www.cnbc.com/2026/03/23/long-lines-at-the-gas-pump-in-china-as-mideast-turmoil-hits-.html)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "According to the task instructions, I should use Wikipedia first. I will search the BigWiki database for \"China fuel price 2026\" to find the official notice or a Wikipedia article summarizing this specific gas price hike event.",
+            "action": "Wikipedia[content= Tian Sha Gas station queue March 23 2026]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Although Google search has already provided supporting PDFs for the core event (March 23 2026, price hike limits), the task instruction dictates using Wikipedia first. Since my previous Wikipedia query (\"Tian Sha Gas station queue...\") was too specific/image-centric and failed, I should try a broader, neutral search query on Wikipedia related to the official policy/NDRC announcement to see if there is an official coverage summary before finalizing.",
+            "action": "Wikipedia[query= NDRC fuel price adjustment March 2026]",
+            "observation": "No Wikipedia entry found.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the Google search results (Reuters, BBC, CNBC) provided in the observation explicitly confirm the core details of the text—the date (March 23, 2026), the price reduction from 2,205 to 1,160 yuan/ton, and the context of \"Mideast turmoil\"—the evidence seems sufficient to support the text. Wikipedia searches failed, likely due to the specific nature of this simulated future event. I can confidently conclude that the news text is supported by the available data.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The image explicitly contains a \"20L limit\" sign, which represents a fuel quantity restriction. The text describes a scenario where authorities announced controls to hold down prices, leading to public anticipation of \"rush\" and \"controls\". The visual evidence of a restrictive sign (\"Limited\") aligns with the text's theme of \"temporary controls\" and \"government intervention\". Therefore, the image supports the veracity of the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions a specific price increment of \"0.30\" in the formula for gasoline price adjustments. The image shows a gas station at night with cars and trucks, and there is a price sign upside down in the background that clearly reads \"0.30\". This visual detail confirms the text's specific claim. The general scene of cars queuing at a gas station at night on the pump island also matches the text's description of the situation perfectly.",
+            "action": "VQA[What is the price increment shown on the red sign in the background?]",
+            "observation": "\n\nBased on the red LED sign board visible in the background to the left of the yellow pillar, the visible text indicates a price increment of **0.3** (specifically, it appears to read \"0.3元/升\" or 0.3 yuan per liter).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text mentions price adjustments for \"gasoline and diesel\". The previous VQA confirmed the red sign shows a 0.3 increment. I should verify the black sign to confirm it indicates gasoline grades (like 92/95) as the text focuses heavily on gasoline.",
+            "action": "VQA[What fuel grades are displayed on the black sign in the foreground?]",
+            "observation": "\n\nThe black sign in the foreground displays **92/95** as the fuel grades.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.27144176165949063,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.8,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims a perceived price increase of 0.87 yuan/L but the visual evidence shows a sign indicating a 0.3 yuan/L increment, creating a semantic mismatch. Additionally, the image has a high probability (0.800) of being synthetic/flashy V1 content according to internal analysis.",
+    "notes": []
+  },
+  "error": null
+}

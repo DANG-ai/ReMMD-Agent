@@ -1,0 +1,167 @@
+{
+  "index": 365,
+  "sample_id": "366",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1659.25,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "公开可核对的信息仅能支持“按通报完成约7小时出舱并安装空间碎片防护装置、人员分工与返回舱段”等事实；文本将这些事实进一步解读为“疑似碎片击中后的临时修补、险情与隐瞒”，属于把不确定猜测包装成主要叙事结论。配图中两张关键“疑点图”经裁剪、对比度/锐化与红圈箭头标注后被当作证据使用，但其所指向的“裂痕/碎屑/擦伤”无法从原始公开通报中得到验证，且与呈现“作业顺利、状态稳定”的画面在语义与证据指向上不匹配，整体误导性大于真实成分，因此判为 Mostly False。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "科技与航天",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/366",
+  "image_paths": [
+    "/path/to/ReMMDBench/366/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/366/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/366/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/366/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/366/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/366/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/366/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/366/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/366/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/366/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "366",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will also search Google for the specific headline or the crew combination to see if this is a known piece of fiction or a misidentified image/article.\nThe image provided might be from a previous mission (e.g., Shenzhou 14 where Zhang Lu flew).\nThe text mentions \"Shenzhou 21 crew completed the second spacewalk... on March 16, 2026\".\nIf today is before March 2026, this is impossible.\nI'll search for the headline and the crew names.",
+            "action": "Google[\"神舟二十一号\" \"第二次出舱\" \"2026年3月16日\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous search for the specific headline and date \"2026年3月16日\" yielded no results, which is suspicious given the detailed nature of the text. The date 2026 is in the future relative to the current date (2024). This strongly suggests the text is fictional. To confirm, I should check the status of \"Shenzhou 21\". I will search Wikipedia for \"Shenzhou 21\" to see if it exists or has a planned date. If it doesn't exist or is planned for later, the text is false.",
+            "action": "Wikipedia[Shenzhou 21]",
+            "observation": "No summary available. Similar entities: Shenzhou 21, Shenzhou (spacecraft), Shenzhou 22, China Manned Space Program, Shenzhou 20",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a spacewalk on \"Shenzhou 21\" in March 2026, which is a future date. The crew listed (Zhang Lu, Wu Fei, Zhang Hongzhang) includes Zhang Lu, who flew on Shenzhou 14. I need to verify if Shenzhou 21 has a publicly announced crew and if the other names are valid astronauts. I will also check if the image is actually from Zhang Lu's mission on Shenzhou 14.",
+            "action": "Google[\"神舟二十一号\" 乘组名单]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims that the Shenzhou 21 crew completed a spacewalk on March 16, 2026. Since the current date is before March 2026, this report describes a future event as if it has already happened. Additionally, searching for the specific article headline and crew details yields no results. The text mentions astronaut Zhang Lu, who flew on Shenzhou 14; the image is likely reused from that earlier mission. The detailed \"rumors\" and \"leaks\" about a future event confirm this is a work of fiction or a simulation.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.5,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text reports on a \"Shenzhou 21\" EVA in March 2026, discussing rumors of \"suspected anomalies\" and \"temporary wrap up\". It mentions \"Figure 1\" as a \"smooth\" looking screenshot. The provided image shows an astronaut's gloved hand working on the station, appearing to be a standard EVA scene without obvious damage. To verify if this image corresponds to the \"Figure 1\" described (smooth, stable) or if it contains hidden anomalies, and to check if it's consistent with a real EVA (which might refute the 2026 date if it's a known past image), I need to analyze the image content.",
+            "action": "Detect[image]",
+            "observation": "从图像本身看，更像是**经过明显后期处理/合成**的画面，而不是一张直接拍摄的原始舱外作业照片，主要迹象：\n\n- **强烈的暗角与选择性提亮**：画面四周明显压暗，中间主体（手套、设备）被刻意提亮、对比拉高，呈现“宣传图/剪辑封面”的风格。\n- **边缘抠图/合成感**：右侧白色航天服手臂与背景交界处很“干净”、过渡偏硬，背景也有不自然的模糊与压暗，像是把主体从原图中抠出再叠到底图上。\n- **整体色彩与锐化不一致**：手套与设备细节对比很高，但背景结构层次被压扁，局部还有偏色与锐化痕迹，符合二次加工（调色、锐化、降噪/压缩）的特征。\n- **屏幕拍摄/再编码条纹**：画面能看到细微的竖向纹理/条带，像是从视频帧或屏幕截图再加工、再压缩输出的结果。\n\n未见到那种“一眼就是AI生成”的典型错误（例如结构彻底错乱、物理光照完全不自洽），但这张图**很不像未经处理的原始影像**；更可能是“视频截图 + 调色/暗角/局部增强（甚至叠加）”后的传播图，因此用它来证明“外壁异常细节”会有较大误导空间。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a \"Shenzhou 21\" EVA taking place in March 2026 and presents the image as a screenshot from this event. However, the visual content of the image—specifically the design of the EVA suit, the robotic arm, the solar array structures, and the distinct orange cable—matches official imagery from earlier Tiangong station missions, such as the Shenzhou 12 EVA in June 2021 (installation of the solar array drive mechanism). The use of a ~2021 photo to illustrate a 2026 event indicates the image is misattributed and anachronistic, thereby refuting the text's claim that it is a contemporary screenshot of the reported event.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.5,
+        "best_value": 0.3,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.5,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future spacewalk event (Shenzhou 21 in 2026) that has not occurred, the visual material includes screenshots that are clearly edited with red circles and annotations to highlight \"suspected anomalies,\" and these images (likely from past missions) are contextually mismatched with the fabricated future timeline.",
+    "notes": []
+  },
+  "error": null
+}

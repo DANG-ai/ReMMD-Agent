@@ -1,0 +1,123 @@
+{
+  "index": 432,
+  "sample_id": "433",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1613.55,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "文本关于“600公斤砂金矿”为谣言、官方已回应并开展巡查且未发现私自淘金的表述与辟谣信息一致；但配图为生成内容，属于合成视觉素材，不满足“完全真实记录”的要求，因此不应标为完全真实。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会治理与自然资源管理",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/433",
+  "image_paths": [
+    "/path/to/ReMMDBench/433/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/433/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "433",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the content of the image, specifically the text on the sign held by the officials, to see if it matches the news report about the \"600kg gold mine\" rumor in Huoshan County.",
+            "action": "Detect[image]",
+            "observation": "- **明显编辑痕迹**：画面中两位正面人物的脸部被打了大块马赛克/模糊遮挡（矩形、边缘很硬），这属于后期隐私处理，不是生成伪造本身，但说明图像被编辑过。  \n- **未见合成/AI生成常见破绽**：除打码区域外，整体光照方向一致、人物与桌牌的遮挡关系自然；衣物纹理、警服标识、桌面透视与景深（背景虚化）都符合真实相机拍摄特征，没有明显“融化文字/多余肢体/不合理边缘”等合成或生成瑕疵。  \n- **文字与物体一致性**：桌牌中文排版清晰，标语板、文件页与印章样式看起来也较连贯；桌上玻璃罐与纸张的比例、阴影和接触边缘自然。  \n\n**结论**：图像看起来像真实现场照片，唯一明确的后期处理是对人脸的马赛克遮挡；未发现明显的拼接、篡改或AI合成迹象。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a sign explicitly stating that the claim of a \"600kg gold mine\" in Huoshan is a rumor. This aligns perfectly with the news text which debunks the claim. The image appears to be a real photo of a press conference or public announcement regarding this issue. Thus, the image supports the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions a rumor about \"estimated reserves about 600 kg\" of gold in Huoshan. I need to verify if the sign in the image displays this specific figure to confirm the connection.",
+            "action": "VQA[What number and unit of gold reserves are written on the white sign on the table?]",
+            "observation": "\n\n600 kilograms",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text discusses a rumor about \"estimated reserves about 600 kg\" of gold in Huoshan, Anhui, and states it lacks factual basis. The image displays a sign explicitly stating that the claim \"Anhui Huoshan has 600 kg of gold reserves\" is a rumor. The specific quantity (600 kg) and location (Huoshan, Anhui) align perfectly between the text and the visual evidence on the sign.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7663094323935531,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The verification evidence explicitly identifies post-processing face masking (blurring) in the images, which falls under visual editing, while the text and images are consistent in reporting the debunking of the rumor.",
+    "notes": []
+  },
+  "error": null
+}

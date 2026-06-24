@@ -1,0 +1,134 @@
+{
+  "index": 105,
+  "sample_id": "106",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3268.26,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article mixes some real event-night social posts and betting screenshots with an edited fight-card image that is misleadingly framed as if it were a post-fight results board. That creates a distorted impression that the graphic authentically documented confirmed outcomes and validated picks from the night.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/106",
+  "image_paths": [
+    "/path/to/ReMMDBench/106/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/106/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/106/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "106",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The image clearly depicts MMA fighter Charles Oliveira at a UFC event, identifiable by his distinct tattoos, platinum hair, and UFC shorts. He is surrounded by team members wearing white shirts with \"OLIVEIRA\" printed on the back, and the background shows a large arena with green lighting typical of a major UFC card. This visual evidence directly supports the text's description of \"Charles Oliveira celebration posts\" and \"ringside images linked to UFC326 and Oliveira\" circulating on social media.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like a real event photograph:** The scene has consistent arena lighting (strong starburst lens flares from overhead rigging), believable depth-of-field, natural motion blur, and coherent reflections/highlights on skin, gloves, and the camera equipment. The octagon fencing, crowd, and broadcast camera all align with a typical UFC in-cage post-fight moment.\n\n- **Clear signs of post-processing (but not “fake scene” generation):** Multiple faces are covered with **rectangular blur/censor blocks**. Those blocks have uniform soft edges and don’t match natural blur patterns, indicating deliberate editing for privacy.\n\n- **No strong indicators of AI/synthetic generation:** No obvious geometry warping, impossible anatomy, inconsistent shadows, or garbled text patterns jump out. The visible text (e.g., “UFC”) appears coherent.\n\n- **Minor quality artifacts are consistent with a compressed/edited media image:** Slight haloing and compression around high-contrast edges (lights, fence) looks like normal JPEG/social-media processing rather than compositing.\n\n**Conclusion:** The underlying photo appears authentic, with intentional **face redaction** added afterward. No clear evidence of the entire scene being digitally fabricated.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image depicts Charles Oliveira in a UFC octagon, identifiable by his tattoos, platinum hair, and the \"DO BRONXS\" signage in the background. This visual evidence directly corroborates the news text's description of \"ringside images linked to UFC326 and Oliveira\" and \"Charles Oliveira celebration posts\" circulating on social media. The authentic nature of the scene supports the text's narrative about the event-night surge.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses Charles Oliveira and UFC 326. I need to confirm the identity of the central figure in the image to see if it matches the subject of the text.",
+            "action": "VQA[Who is the fighter in the center of the image?]",
+            "observation": "\n\nBased on the visual evidence, the fighter in the center is **Charles Oliveira**.\n\nThis is confirmed by:\n*   The name \"**OLIVEIRA**\" printed on the back of the white shirts worn by the two men in the foreground.\n*   The arena screens in the background displaying \"**CHARLES OLIVEIRA**\" and his nickname \"**'DO BRONX'**\".\n*   His distinctive appearance, including platinum blonde hair and chest tattoos.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly depicts Charles Oliveira (confirmed by previous VQA and visual cues like \"OLIVEIRA\" on shirts and arena screens) celebrating in the octagon. The news text discusses \"Charles Oliveira celebration posts\" and \"ringside images linked to UFC326 and Oliveira\" that were trending. The image is a prime example of such a ringside celebration image. Therefore, the image matches the content described in the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The verification evidence explicitly identifies post-processing and face redaction (rectangular blur blocks) in the visual content, confirming visual editing.",
+    "notes": []
+  },
+  "error": null
+}

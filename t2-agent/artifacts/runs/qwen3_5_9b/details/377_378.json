@@ -1,0 +1,155 @@
+{
+  "index": 377,
+  "sample_id": "378",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1124.21,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "The article's main medical takeaway is broadly accurate: suspected cardiac arrest requires calling 911, starting CPR, and using an AED if available rather than relying on ordinary transport. However, it slightly overstates the taxi warning into a near-universal rule for serious heart-related symptoms, and several accompanying graphics are edited translations redesigned to look like polished English public-health materials.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/378",
+  "image_paths": [
+    "/path/to/ReMMDBench/378/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/378/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/378/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/378/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "378",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the existence of the specific public-health post mentioned in the text and confirm if the medical advice regarding taxis versus ambulances is accurate. The text claims a graphic circulating online advises against taking a taxi for cardiac emergencies. I will search for this graphic and the associated viral claim to verify the context.",
+            "action": "Google[\"Warning signs before a cardiac emergency\" graphic taxi ambulance advice]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text references a specific popular \"public-health post\" and graphic. Searching the exact title of the image and the specific claim about taxis will help identify the source of the viral content and verify if the described graphic is real or if this advice is a widespread misconception being corrected.",
+            "action": "Google[\"Warning signs before a cardiac emergency\" graphic taxi advice]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the medical advice described in the text: that taking a taxi for a suspected cardiac emergency is considered \"wrong\" or dangerous compared to calling emergency services. Since the text claims this is a \"widely shared public-health post,\" I should first verify if this aligns with standard medical guidelines (AHA, Red Cross) regarding transport for cardiac arrest. If the imaging guidelines support this, the core message is likely true even if the viral post is anecdotal.",
+            "action": "Wikipedia[Cardiac arrest first aid and emergency transport guidelines]",
+            "observation": "No summary available. Similar entities: First aid, Cardiopulmonary resuscitation, ABC (medicine), Emergency medical services, Emergency Preservation and Resuscitation",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses symptoms of a heart emergency, specifically mentioning dizziness and shortness of breath. The image explicitly labels these symptoms under \"Warning signs before a cardiac emergency.\" I should use tool to verify if the image content aligns with the text's medical claims and description of the graphic.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a designed infographic/illustration rather than a real photograph, so “manipulation” mainly means graphic editing/layout.\n\n**Signs of editing**\n- The two people’s faces are covered with rectangular blurred blocks. These look like intentional pixelation/blur overlays (privacy redaction), not natural motion blur.\n- Flat, vector-style drawings with clean outlines, uniform colors, and icon elements (heart/ECG line, sweat drops) indicate it’s digitally created artwork.\n\n**Signs it’s not AI-synthetic or deceptively composited**\n- Text is clean and readable with consistent fonts and alignment; no typical AI text warping or misspellings.\n- Lines, shadows, and spacing are consistent across elements (title banner, numbered symptom boxes), suggesting standard graphic design software rather than an AI-generated scene.\n- No obvious cut-and-paste seams, mismatched lighting, or perspective conflicts (it’s a flat layout).\n\n**Counterfactual elements**\n- None visible in the image itself beyond being a simplified educational graphic. The blur blocks obscure faces, but that’s consistent with deliberate redaction rather than fabrication.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a specific English-language health graphic circulating online that lists warning signs of a cardiac emergency. The description specifically mentions symptoms such as \"dizziness, lightheadedness,\" \"chest discomfort,\" and \"shortness of breath.\" The provided image is a graphic with the exact title \"Warning signs before a cardiac emergency\" and explicitly lists these symptoms (labeled 1 and 2) under illustrations of the described conditions. The image content directly matches the textual description of the viral graphic.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.1,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.3,
+        "T3 Misleading Context": 0.5,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.2,
+        "C2 Contextual Inconsistency": 0.4,
+        "C3 Pragmatic Inconsistency": 0.5
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent viral post and claims generic medical infographics support a specific taxi warning not found in the images, while verification identifies visual signs of editing like redaction blocks.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,136 @@
+{
+  "index": 23,
+  "sample_id": "024",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 696.73,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article is anchored in a real audit-related development, but it misleadingly frames old or unverified social-media allegations as part of the current wave created by that official review. The edited visuals further repackage archival screenshots into a current-news presentation that implies a tighter connection to the DOJ audit than the evidence supports.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/024",
+  "image_paths": [
+    "/path/to/ReMMDBench/024/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/024/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "024",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The provided image appears to be a generic, sensationalized graphic often found on social media platforms like X and Telegram, rather than an official document from the Justice Department. The text claims the \"DOJ INSPECTOR GENERAL\" has opened an audit, but the image looks like a \"collage of screenshots\" or fan content described in the text. Additionally, the news text references a future date (April 23, 2026) relative to the current context. While the image matches the *text's claims*, text indicates the whole narrative involves rumors (\"collages... spreading\", \"Melania flare-up\"), and the specific official audit may not be happening or the date is fabricated, leading to a second candidate view that the image supports a disinformation campaign rather than verifiable facts, thus refuting the text's implied authority/validity.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses Ghislaine Maxwell and images linked to her. I need to identify the image entity to confirm if the visual subject aligns with the person being scrutinized in the text.",
+            "action": "Entity[image]",
+            "observation": "- **Text: “DOJ FILES AUDIT”** — **High certainty** (clearly readable on-screen headline).\n- **Organization reference: DOJ (U.S. Department of Justice)** — **High certainty** (explicit acronym “DOJ”).\n- **Text: “Maxwell scrutiny returns”** — **High certainty** (clearly readable lower-third text; “Maxwell” referenced but not enough to identify a specific person from image alone).\n- **Unidentified person (face obscured/blurred)** — **High certainty** (a human figure is visible, but identity cannot be determined).\n- **Water/sea background** — **Medium-high certainty** (looks like a body of water; no specific location identifiable).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly discusses a \"DOJ FILES AUDIT\" and \"Maxwell scrutiny.\" The image contains textual overlays that read \"DOJ FILES AUDIT\" and \"Maxwell scrutiny returns.\" This direct textual correspondence between the image's captionings and the article's headline/subject matter confirms the image is contextually relevant and accurately reflects the content of the news story.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a 2026 DOJ audit and a fake \"Melania\" film with parody reviews, while the image contains visually synthetic elements like AI-generated posters and a collage layout.",
+    "notes": []
+  },
+  "error": null
+}

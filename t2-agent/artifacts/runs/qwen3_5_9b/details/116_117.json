@@ -1,0 +1,159 @@
+{
+  "index": 116,
+  "sample_id": "117",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1402.49,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本对“长护险自2016年起开展国家试点、四川省出台省级实施方案”等事实有真实依据，但把地方性推进与试点扩面包装成“2026年起全国同步全面建制、全国统一待遇与自动覆盖且不额外缴费”等强结论，并用生成/编辑图片与错置场景的配图来强化“全国已普遍落地办理”的印象，导致读者对推进范围、统一程度与缴费/待遇细节形成显著偏差，因此整体为真假混杂（Mixture）。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会民生",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/117",
+  "image_paths": [
+    "/path/to/ReMMDBench/117/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/117/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/117/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/117/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/117/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/117/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/117/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/117/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/117/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/117/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "117",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Analyzing the news text, it claims to be a report on \"Sixth Insurance\" (Long-Term Care Insurance) issued in **2026** (specifically Feb 12, 2026 Sichuan plan). The image provided shows slide data titled \"2.1.1 Patient Situation\" and \"2.1.5 Insurance Demand\" with a \"China Insurance Future Research\" watermark. The image content (generic health stats and a \"2.1.5\" slide) does not match the specific \"2026 Sichuan Policy\" narrative or the described \"Interviews/Scene\" texts in the news. The text contains a future date (2026) which is a strong indicator of hallucination or fabrication relative to the current time, and the image lacks such specific claims. The text describes \"App Screenshots\" and \"Field Interviews,\" while the image is a static slide deck. This is a mismatch.",
+            "action": "Detect[image]",
+            "observation": "从图像本身看，更像是**真实的PPT/报告截图**，未见明显“AI合成”痕迹，但存在**版权水印叠加**与“转发/截屏”特征：\n\n- **重复斜向浅灰水印**：整张图上均匀分布的斜体水印（类似“***网/资料”一类的防盗印）是后期在源文件或平台侧自动加的覆盖层，不是自然拍摄场景会出现的纹理。\n- **版式高度一致、元素对齐正常**：三段页面均有统一的蓝色页眉/页脚、编号标题（如“2.1.1/2.1.5”）、图表字体与配色一致，像同一套模板导出/截屏，符合真实报告页的呈现。\n- **图表细节逻辑正常**：柱状图、热力图、饼图的边缘干净，文字未见AI常见的乱码/笔画崩坏；坐标轴、图例、百分比标注整体可读且排版规整。\n- **未见明显拼接/局部篡改痕迹**：没有发现异常的边缘羽化、光照不一致、重复纹理、错位透视或局部模糊块等常见PS拼接迹象。\n\n结论：该图整体看起来像**带平台水印的资料截图/导出图片**，水印属于叠加编辑/平台处理；除此之外，没有强烈证据表明图表内容被AI生成或被明显篡改。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a specific event ('Sichuan Plan 2026') and claims to show 'Field Photos' and 'App Screenshots' in its body. The provided image is a screenshot of a PPT slide deck (with watermarks) showing generic health data statistics. There is no evidence in the image to support the specific '2026' claims, nor does the image content match the described 'Field Photos' or 'App Screenshots' (which are different from PPT slides). While the topic (insurance demand stats) loosely correlates, the image fails to verify the news text's specific claims about the 2026 policy or the 'News' format described. The text's reference to 'News text' contradicts the 'Research Report Slides' nature of the image.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Alternatively, I can extract the key entities such as statistics, disease names (nodules, chronic disease), and insurance terms from the image to compare them with the entities in the news text (pilot cities, long-term care, eligibility). This will help confirm if there is a cross-modal match.",
+            "action": "Entity[image]",
+            "observation": "- **Chinese-language report/presentation slide** (very certain) — Multi-section layout with headings like “2.1.1 患病情况” and “2.1.5 保障需求”.\n- **Health/medical topics referenced** (very certain) — Terms visible include **结节类疾病** (nodular diseases), **糖尿病** (diabetes), **高血压** (hypertension), **高血脂** (hyperlipidemia), **心脑血管疾病** (cardio-cerebrovascular disease), **手术** (surgery), **重大疾病** (critical illness).\n- **Charts/visualizations** (very certain) — Bar chart (gender comparison), line chart (disease duration), heatmap/table (distribution), and pie chart (insurance needs).\n- **Section headers with numbering** (very certain) — “2.1.1” appears twice and “2.1.5” appears once.\n- **Decorative isometric city/medical-themed icon in top-right of each section** (likely) — Small blue-toned graphic; appears as a repeated decoration rather than a specific logo.\n- **Diagonal watermark text across the slide** (likely) — Repeated faint diagonal marks; text not clearly legible, so source/organization can’t be identified.\n- **No identifiable people, specific landmarks, or clear brand logos** (very certain).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the specific content of the last section (2.1.5) in the image to see if it discusses Long-term Care Insurance or matches the news text's focus on '6th Insurance'. I will use VQA to read the header and key statistics.",
+            "action": "VQA[What is the full title text of section 2.1.5 shown in the blue header at the bottom of the slide?]",
+            "observation": "\n\n2.1.5 保障需求：75%以上带病体愿意额外支付保费以承保既往疾病",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to assess if the document in the image discusses Long-term Care Insurance (LHUX) as mentioned in the text, or if it focuses on general disease history/health insurance needs. The text in section 2.1.5 mentions pre-existing disease coverage, which is likely health insurance, not typically LHUX (which is for nursing care). I should ask VQA to clarify the exact insurance topic or if \"Long-term Care\" is mentioned anywhere in the visible text.",
+            "action": "VQA[Does the text in section 2.1.5 or any other section mention 'Long-term Care Insurance' (长期护理保险) or nursing care, or is it solely about general health insurance/pre-existing condition coverage?]",
+            "observation": "\n\nBased on the provided image, **No**, there is no mention of \"Long-term Care Insurance\" (长期护理保险) or nursing care.\n\nHere is the breakdown of the evidence:\n\n*   **Section 2.1.5 (Bottom):** The heading states \"Security needs: >75% of insured with conditions are willing to pay extra premiums to cover pre-existing conditions.\" The text elaborates that over 75% hope for products that \"cover already contracted diseases\" (承保已患疾病). The pie chart details preferences on whether past diseases can be covered (with a surcharge) or if only other diseases can be covered. There is no mention of long-term care.\n*   **Section 2.1.1 (Top and Middle):** This section lists specific medical conditions such as \"nodular diseases\" (结节类疾病), \"chronic diseases\" (慢性病), \"cardiovascular/cerebrovascular diseases\" (心脑血管疾病), and \"cancer\" (癌症). It discusses prevalence and duration of these specific illnesses, not nursing care.\n\nTherefore, the content is solely focused on **general health insurance** and consumer demand for coverage regarding **pre-existing conditions**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text discusses 'Social Security 6th Insurance', which is explicitly defined as Long-term Care Insurance (nursing care for the disabled). The image content (VQA observation) confirms it deals with 'Health Insurance' regarding 'Pre-existing conditions' for diseases like nodules and diabetes, with no mention of nursing care or disability assessment. The core subject matter (Nursing Care vs Pre-existing Condition Health Insurance) does not align.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.21544346900318836,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.5,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.8,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.5,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future document date (2026) and presents AI-generated images as real evidence.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,157 @@
+{
+  "index": 293,
+  "sample_id": "294",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1579.03,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "样本把可核对的“暂停处理公告概要”与一套更严重的“永久禁入、即刻下架、追缴上缴”等升级处置捆绑叙述，并用伪造的网页截图强化结论，但缺少任何可验证的正式来源支撑；图像所呈现的“永久禁入通知”本身为生成内容，且与已知公告的处分性质与力度不一致，整体核心结论不成立。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "军事国防",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/294",
+  "image_paths": [
+    "/path/to/ReMMDBench/294/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/294/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "294",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.75,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the penalty is effective from Feb 27, 2026. The image shows the release time as \"2026-02-27 22:27:44\" and the suspension time as \"2026-02-27\". The text claims the reason is refusing to sign a contract. The image confirms \"中标后无正当理由拒不签订合同\". The text claims the handling department is the Joint Logistics Support Force Procurement Management Department. The image confirms \"联勤保障部队采购管理部门\". The text is consistent with the image.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes an official announcement from the Army Procurement Network regarding a penalty against Hailan Home Group. The text states the company was penalized for \"refusing to sign a contract without justified reasons after winning the bid\" and suspended from procurement activities. The text also mentions the effective date as February 27, 2026, and the department as the Joint Logistics Support Force Procurement Management Department. I need to verify if the provided image matches these details.",
+            "action": "Detect[image]",
+            "observation": "从图像本身看，这更像是一张“网页截图/翻拍屏幕”的低清图片，未见明显 AI 生成常见的畸变（如文字扭曲成乱码、结构不可能的 UI 元素、边缘融化等）。但它也有一些“可疑/易伪造”的点，无法仅凭图像确认其真实性：\n\n## 看起来相对真实的地方\n- **整体网页结构一致**：顶部横幅、导航栏、搜索框、分页/标签样式、表格布局等元素排列规整，符合常见政府/机构门户页面的样式逻辑。\n- **文字大多可读且排版稳定**：标题、字段表格、红色按钮/标签在视觉上比较“像截图”，没有明显的生成式图像常见的字体漂移与笔画断裂。\n\n## 可能存在编辑/伪造风险的迹象\n- **分辨率较低、压缩重**：细节糊，给“局部改字/贴字”提供了掩护空间；很多关键字段无法清晰核对（这类截图常用于传播时规避核验）。\n- **关键时间/标签区域可被单独替换**：页面右上/标题下方的红色标签、日期时间等位置是最容易被后期覆盖的区域；在该图里这些区域也因糊而不易鉴别是否有拼接边缘或字体不一致。\n- **缺少可核验的浏览器信息**：截图没有显示完整地址栏、域名、浏览器 UI、系统时间等，这会降低“来源可追溯性”，也是伪造截图常见的呈现方式。\n- **整体像“二次传播图”**：底部有水印/署名样式（类似社交平台转载），说明可能经过平台二次压缩与再编辑，进一步增加不可验证性。\n\n## 结论\n仅就图像而言：**没有明显的 AI 合成/深度伪造痕迹**，但由于是**低清二传截图且缺乏地址栏等关键溯源信息**，属于**“容易被篡改、无法仅凭图像确证真伪”**的类型。建议以原始网页链接/可访问页面或更高清原始截图来核验。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions rumors of a \"permanent ban\" but distinguishes this from the official announcement shown in the image. The image clearly shows a \"Suspension Treatment Announcement\" (暂停处理公告概要) with a specific start date of 2026-02-27. The text accurately describes the content of this specific image (suspension, reason, department). The fact that the text mentions rumors separately does not invalidate the support for the core claims about the official document. The image serves as evidence for the \"official announcement\" part of the story.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions that Heilan Home Group Co., Ltd. (海澜之家集团股份有限公司) was punished. I need to verify if the company name in the image matches this.",
+            "action": "VQA[What is the supplier name (供应商名称) listed in the \"Handled Supplier Information\" (被处理供应商信息) section?",
+            "observation": "Could not parse action: VQA[What is the supplier name (供应商名称) listed in the \"Handled Supplier Information\" (被处理供应商信息) section?",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the reason for the punishment mentioned in the text (\"中标后无正当理由拒不签订合同\") against the image. I will ask for the suspension reason.",
+            "action": "VQA[What is the reason for suspension listed in the image?]",
+            "observation": "\n\nBased on the image provided, the reason for suspension (labeled as \"暂停事由\" in the \"违规处理结果\" section) is:\n\n**中标后无正当理由拒不签订合同**\n\nThis translates to: **Refusal to sign the contract without justifiable reason after winning the bid.**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions that the handling was made by the \"Joint Logistics Support Force Procurement Management Department\" (联勤保障部队采购管理部门). I need to verify if the \"Handling Department\" (处理部门) in the image matches this.",
+            "action": "VQA[What is the handling department (处理部门) listed at the bottom of the table?]",
+            "observation": "\n\n联勤保障部队采购监管部门",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have verified the key details from the text against the image. The text describes an official announcement from the Army Procurement Network regarding Heilan Home Group Co., Ltd. The image displays an announcement titled \"Summary of Suspension Handling Announcement for Heilan Home Group Co., Ltd.\" (关于对海澜之家集团股份有限公司暂停处理公告概要), which matches the text's description of the announcement format. The reason for suspension in the text (\"Refusal to sign contract without justifiable reason after winning bid\") matches the image exactly (\"中标后无正当理由拒不签订合同\"). The handling department in the text (\"Joint Logistics Support Force Procurement Management Department\") is slightly different from the image (\"Joint Logistics Support Force Procurement Supervision Department\"), but this is a minor terminology variation likely referring to the same entity. The date (2026-02-27) and company name also match. The image corresponds to the official announcement described in the first part of the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.34199518933533934,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text reports a military procurement punishment event with a future date (2026) which is factually impossible/fabricated, and the accompanying images appear to be doctored screenshots (indicated by the future date and lack of browser UI) supporting this fabricated narrative.",
+    "notes": []
+  },
+  "error": null
+}

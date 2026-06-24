@@ -1,0 +1,159 @@
+{
+  "index": 74,
+  "sample_id": "075",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2016.41,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The piece builds a real public-health vocabulary around an inadequately supported event and inflates a limited or uncertain monitoring scenario into a visually documented ship-linked containment response in Omaha. Its edited and repurposed images are presented as if they directly show Hondius-related screening, briefings, and transport activity, which materially strengthens a misleading narrative.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/075",
+  "image_paths": [
+    "/path/to/ReMMDBench/075/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/075/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/075/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/075/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/075/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/075/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/075/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/075/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/075/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/075/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "075",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [],
+    "predicted_label": "verdict=True | taxonomy=None",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Verifying the MV Hondius connection to the University of Nebraska Medical Center and whether it went there.",
+            "action": "Google[MV Hondius hantavirus University of Nebraska Medical Center]",
+            "observation": "Hantavirus monitoring updates | Nebraska Medicine Omaha, NE: All 16 passengers from the MV Hondius cruise ship are now being monitored and assessed in the National Quarantine Unit at Dr. Edwin G. & Dorothy Balbach Davis ... (https://www.nebraskamed.com/hantavirus/quarantine-updates)\nTwo MV Hondius passengers exposed to hantavirus have been ...: Two MV Hondius passengers exposed to hantavirus have been transferred to UNMC's National Quarantine Unit in Omaha. (https://www.facebook.com/3NewsNow/posts/two-mv-hondius-passengers-exposed-to-hantavirus-have-been-transferred-to-unmcs-n/1426934482807203/)\nA dangerous experiment is playing out on a cruise ship with hantavirus: ... MV Hondius become sickened or die with a suspected or confirmed case of hantavirus. ... © 2026 University of Nebraska Medical Center. Policies ... (https://www.unmc.edu/healthsecurity/transmission/2026/05/06/a-dangerous-experiment-is-playing-out-on-a-cruise-ship-with-hantavirus/)\nPassengers from MV Hondius cruise ship arrive at University of ...: The travelers had been exposed to Hantavirus while on the ship and placed into the National Quarantine Unit at UNMC shortly after arrival. (https://www.kwit.org/podcast/spm-news/2026-05-11/passengers-from-mv-hondius-cruise-ship-arrive-at-university-of-nebraska-medical-center)\nNebraska officials provide hantavirus outbreak update tied to MV ...: Live look at the MV Hondius as health officials in Nebraska provide updates on the hantavirus outbreak linked to the cruise ship. (https://www.youtube.com/watch?v=nFDYnFz6jUw)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "A quick search and the provided 'Observation' notes from UNMC (University of Nebraska Medical Center) confirm the MV Hondius cruise ship, the Hantavirus link, and the destination in Omaha. The text's details about the quarantine unit match the headlines ('All 16 passengers......'). Given this solid evidence, I can safely conclude that the text is supported.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes the CD-C response to the MV Hondius at UNMC in Omaha, mentioning health screening and the ship. The image shows a ship (\"Health Screening Area\" sign with CDC logo, high-visibility vests) consistent with the text's description of the ship (MV Hondius) and the CDC's role in screening/tracing. The visual elements support the narrative of the event described.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes the CDC's health screening and quarantine response for travelers from the MV Hondius at the University of Nebraska Medical Center (UNMC) in Omaha, Nebraska. It explicitly mentions \"vans moved through the medical campus\" and a \"secured receiving area at the University of Nebraska Medical Center.\" The text acknowledges the ship as a \"metaphor\" at the \"edge of the story\" rather than being physically present at the medical campus. The image, however, clearly depicts a scenario in a port (indicated by the dock, the water, the large car carrier ship in the background, and USCBP officers in uniform) with a \"Health Screening Area\" sign. This visual evidence points to the scene of the ship's original processing (likely the Port of Miami, where Greek tourists often travel) or a generic port, not the medical campus in Omaha. The presence of the actual ship (or a similar car carrier) at a port contradicts the text's setting, which describes an inland medical campus scenario for quarantined travelers.",
+            "action": "Tool[IMAGE_REFUTE]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the analysis, the news text describes a specific scene at the University of Nebraska Medical Center in Omaha (inland campus, quarantining travelers from a ship that was originally in a port). The image, however, clearly depicts a port environment with a large car carrier ship, water, and a 'Health Screening Area' sign. The visual evidence of a port setting contradicts the text's description of the Omaha medical campus scenario. Therefore, the image refutes the text's specific setting.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.4,
+        "visits": 4,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly mentions the \"Centers for Disease Control and Prevention\" (CDC) as the agency monitoring the outbreak. I will use the Entity tool to search for \"CDC\" in the image to verify if the logo or text visible on the sign matches this entity.",
+            "action": "Entity[search \"CDC\"]",
+            "observation": "\n\nBased on the visual evidence in the image, here are the visible entities:\n\n*   **Health Screening Area Sign:** A prominent blue A-frame sign in the foreground with white text reading \"Health Screening Area.\" (Certainty: High)\n*   **CDC Logo:** Visible on the sign itself and on the dark blue jackets/uniforms worn by some officials. (Certainty: High)\n*   **Yellow High-Visibility Vests:** Worn by a large group of people, likely port workers or industrial personnel. (Certainty: High)\n*   **Face Masks:** Several individuals are wearing blue surgical masks, consistent with health screening protocols. (Certainty: High)\n*   **Metal Crowd Control Barriers:** Silver metal fencing separating the foreground area. (Certainty: High)\n*   **Orange Traffic Cone:** Situated on the ground near the barriers in the lower right. (Certainty: High)\n*   **Large White Vessel:** A large multi-deck ship (appearing to be a cruise ship or large passenger liner/relief vessel) docked in the background center. (Certainty: High)\n*   **Red Industrial Vessel/Barge:** A large vessel with a reddish-brown hull visible in the background on the left side. (Certainty: High)\n*   **Industrial Structures:** Industrial buildings and cranes visible on the far right background. (Certainty: High)\n*   **Journalists/Cameramen:** Several individuals holding professional cameras and equipment, suggesting media presence. (Certainty: High)\n*   **Harbor/Water:** The body of water reflecting the dusk lighting. (Certainty: High)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The cross-modal matching criteria are clearly met. The text describes a CDC response to an MV Hondius ship event involving \"Health Screening Area\" and \"quarantine units\". The image shows a \"Health Screening Area\" sign with the CDC logo, a large vessel in the harbor (consistent with the ship event), and staff in protective gear (matches \"clinical staff\"). Given the high confidence in the entities already found, I should conclude the match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.865349742184445,
+      "p_fake_text": 0.19999999999999996,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text and images consistently describe the same hantavirus outbreak response involving the MV Hondius, with no factual distortions or contextual mismatches.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,183 @@
+{
+  "index": 493,
+  "sample_id": "494",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1958.6,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "L’article s’appuie sur des faits réels — défaite 0-3, rotation d’effectif, proximité d’une demi-finale de Coupe et bonne dynamique rennaise — mais il extrapole ces éléments en les présentant comme la preuve claire d’un choix structuré de \"sacrifice\" du championnat. Les images éditées renforcent artificiellement cette lecture en orientant la signification de documents réels vers une conclusion plus forte que ce que les preuves disponibles permettent d’établir.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/494",
+  "image_paths": [
+    "/path/to/ReMMDBench/494/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/494/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/494/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/494/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/494/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/494/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/494/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/494/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/494/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/494/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "494",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.4,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims a specific football match between Strasbourg and Rennes occurred on Sunday, April 19, 2026, resulting in a 0-3 loss for Strasbourg. Given that this date is in the future relative to the current real-world timeline, this appears to be a hallucination or fake news. I will search for the match to confirm if it has been recorded anywhere.",
+            "action": "SearchGoogle[\"Strasbourg 0-3 Rennes 19 avril 2026\"]",
+            "observation": "Tool 'SearchGoogle' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since Google search is not available and the date is in the future, I should attempt to check Wikipedia for this match which would be the first resource to consult according to the instructions.",
+            "action": "Wikipedia[Strasbourg 0-3 Rennes April 2026]",
+            "observation": "No summary available. Similar entities: 2025–26 Coupe de France, 2026–27 Ligue 1, 2025–26 RC Strasbourg Alsace season, 2025–26 Ligue 1, Julien Stéphan",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a Ligue 1 match between Strasbourg and Rennes that took place on April 19, 2026, resulting in a 0-3 loss for Strasbourg. Since the current date is pre-2026, this appears to be a hallucinated future scenario or a 'futuristic' news piece. However, to be rigorous, I must check if this matches any projections or existing data in Wikipedia articles for the 2025-26 season. I will first attempt to find the specific match or the season summary for RC Strasbourg in Wikipedia.",
+            "action": "Wikipedia[2025–26 RC Strasbourg Alsace season]",
+            "observation": "No summary available. Similar entities: 2025–26 RC Strasbourg Alsace season, RC Strasbourg Alsace, RC Strasbourg Alsace (women), 2024–25 RC Strasbourg Alsace season, RC Strasbourg Alsace in European football",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.7,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the content of the image by reading the overlaid text to identify the main subject and keywords. The banner says \"ONZE RAJEUNI AVANT NICE\", which needs to be confirmed against the news text.",
+            "action": "VQA[What is the large white text displayed on the blue banner at the top of the image?]",
+            "observation": "\n\nONZE RAJEUNI AVANT NICE",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify if the team represented in the image matches Strasbourg ('Racing') mentioned in the text by identifying the club logo or name on the jersey.",
+            "action": "VQA[What is the logo or text visible on the upper right chest of the blue jersey worn by the player on the far right?]",
+            "observation": "\n\nBased on the visual evidence:\n\n*   **On the player's upper right chest (viewer's left):** There is the **Adidas logo** and the text **\":hage\"** (likely part of \":hagen\").\n*   **On the player's upper left chest (viewer's right):** There is the **\"Pierre-Schmidt\"** logo along with a club crest.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have confirmed the banner text mentions \"ONZE RAJEUNI AVANT NICE\". The news text discusses a match by Strasbourg (\"Le Racing\") where the team played a rejuvenated lineup before the French Cup semi-final against Nice. To confirm a MATCH, I need to verify that the team in the image is indeed Strasbourg/Racing.",
+            "action": "VQA[What is the text visible on the shorts of the players?]",
+            "observation": "\n\nBased on the image, the visible text on the shorts includes:\n\n*   **Numbers:** \"21\", \"20\", \"28\", and \"45\" are visible on the legs of the shorts.\n*   **Logo Text:** Underneath an elephant logo on the shorts, the text \"**Lorient bleu**\" is visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the observation, the shorts clearly display \"Lorient bleu\" underneath an elephant logo, identifying the team as FC Lorient. The news text explicitly discusses the team \"Strasbourg\" (\"Le Racing\"). Since the team in the image (Lorient) does not match the team in the text (Strasbourg), there is a clear mismatch in team identity despite the shared opponent \"Nice\" and the context of a rejuvenated lineup.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.85,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.65,
+        "V2 Visual Editing": 0.55,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.5,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a specific future match (April 2026) presented as a past event, and the visuals show conflicting branding (\"Lorient bleu\" on shorts) that contradicts the text's entity context.",
+    "notes": []
+  },
+  "error": null
+}

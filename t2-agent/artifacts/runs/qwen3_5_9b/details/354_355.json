@@ -1,0 +1,160 @@
+{
+  "index": 354,
+  "sample_id": "355",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1659.54,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article’s central account matches the available evidence: NG-3 launched on April 19, 2026, achieved a notable booster recovery milestone, failed to place BlueBird 7 into its intended orbit because of an upper-stage problem, and was then subject to an FAA-required mishap investigation before flying again. The images are consistent with that narrative and do not introduce any false visual claim.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/355",
+  "image_paths": [
+    "/path/to/ReMMDBench/355/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/355/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/355/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/355/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/355/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/355/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/355/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/355/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/355/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/355/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "355",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The article makes specific claims about a flight involving AST SpaceMobile's BlueBird 7 and an FAA mishap investigation in April 2026. I need to search for any recent news reports or official announcements regarding this specific payload and mission outcome to confirm if these details correspond to reality or are fictional.",
+            "action": "Google[New Glenn BlueBird 7 launch April 2026 news]",
+            "observation": "New Glenn's Third Mission Slated for April 19 - Blue Origin: Blue Origin announced the launch date for New Glenn's third mission, slated to launch no earlier than Sunday, April 19, 2026. (https://www.blueorigin.com/news/new-glenn-ng-3-mission)\nThird flight of Blue Origin's New Glenn rocket to feature 1st reuse of ...: Third flight of Blue Origin's New Glenn rocket to feature 1st reuse of booster. April 19, 2026 Spaceflight Now. Blue Origin's New Glenn rocket ... (https://spaceflightnow.com/2026/04/19/third-flight-of-blue-origins-new-glenn-rocket-to-feature-1st-reuse-of-booster/)\nReplay: New Glenn Mission NG-3 Webcast - YouTube: New Glenn's third mission lifted off on Sunday, April 19, 2026, from Launch Complex 36 at Cape Canaveral Space Force Station. (https://www.youtube.com/watch?v=enQ_IXtfm9I)\nAST SpaceMobile Addresses Today's Orbital Launch of BlueBird 7 ...: \"BlueBird 8 to 10 expected to be ready to ship in approximately 30 days\" From reading this we might get shipping mid May instead of April. (https://www.reddit.com/r/ASTSpaceMobile/comments/1sq0azp/ast_spacemobile_addresses_todays_orbital_launch/)\nThird New Glenn launch suffers upper stage malfunction - SpaceNews: Blue Origin's New Glenn suffered a malfunction of its second stage on the rocket's third flight April 19, stranding its payload in an ... (https://spacenews.com/third-new-glenn-launch-suffers-upper-stage-malfunction/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous search results and the provided observation contain clear confirmation of the mission date (April 19, 2026), the payload (AST SpaceMobile's BlueBird 7), the second-stage mishap, and the FAA investigation. The details align perfectly with the provided text. Since the core factual claims are strongly supported by the retrieved search snippets (which act as ground truth in this context), suggesting the text is supportable is the most prudent course of action for one candidate, while a Wikipedia check on naming conventions serves as a thoroughness check for the other.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.3,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the visual content of the image against the text's claims about a rocket launch. The text specifies a New Glenn launch in Florida, showing a heavy-lift vehicle leaving the pad with service towers. I should use Detect[image] to check if the rocket type, launch environment (Florida landscape, Water Tank), and activity (vertical ascent with smoke plume) align with the description of a New Glenn launch and Cape Canaveral facilities.",
+            "action": "Detect[image]",
+            "observation": "The image appears **photographically authentic** with no clear signs of AI generation or compositing.\n\n**Reasons it looks real**\n- **Lighting and atmosphere** are consistent: the plume’s brightness blooms naturally, and the sky haze/low contrast matches long-distance telephoto launch photos.\n- **Motion/heat effects**: subtle blur/softening around the exhaust and faint distortion near the flame are plausible for a hot plume and atmospheric turbulence.\n- **Structural detail**: the two lattice towers, small service structure below, and distant water tower have coherent geometry, sharpness falloff, and scale consistent with depth and lens compression.\n- **Noise/grain and tonal gradation** look like a real camera capture rather than the overly-clean or texture-smeared look common in synthetic images.\n\n**No strong manipulation indicators noticed**\n- No mismatched edges/halos around the rocket or towers.\n- No obvious repeated textures, warped straight lines, or impossible shadows.\n- The exhaust plume and smoke cloud have natural, non-uniform detail.\n\nOverall, nothing in the image itself strongly suggests digital editing or synthetic generation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Use Detect[image] to verify the visual evidence against the text's claims of a Blue Origin/New Glenn launch from Florida.",
+            "action": "Detect[image]",
+            "observation": "The image appears **photographically authentic** with no clear signs of AI generation or compositing.\n\n**Reasons it looks real**\n- **Lighting and atmosphere** are consistent: the plume’s brightness blooms naturally, and the sky haze/low contrast matches long-distance telephoto launch photos.\n- **Motion/heat effects**: subtle blur/softening around the exhaust and faint distortion near the flame are plausible for a hot plume and atmospheric turbulence.\n- **Structural detail**: the two lattice towers, small service structure below, and distant water tower have coherent geometry, sharpness falloff, and scale consistent with depth and lens compression.\n- **Noise/grain and tonal gradation** look like a real camera capture rather than the overly-clean or texture-smeared look common in synthetic images.\n\n**No strong manipulation indicators noticed**\n- No mismatched edges/halos around the rocket or towers.\n- No obvious repeated textures, warped straight lines, or impossible shadows.\n- The exhaust plume and smoke cloud have natural, non-uniform detail.\n\nOverall, nothing in the image itself strongly suggests digital editing or synthetic generation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a specific future launch event (April 2026) involving Blue Origin's New Glenn. The provided image is a photorealistic rocket launch from a FAB-like facility (likely Cape Canaveral based on the towers). However, since New Glenn has not flown yet (in reality), this text appears to be a fabrication or a fictional scenario. The image, being a real photo (from a previous tool call), likely depicts a different rocket (e.g., SLS, Falcon Heavy, or a generic heavy lift) being used to mislead the viewer into thinking this is the New Glenn. Therefore, the image does not verify the specific claim of the text, and the text claims a non-existent event.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions Launch Complex 36 at Cape Canaveral and a coastal environment. I should check if the image contains visual cues consistent with a coastal launch site, like the water tower visible in the background, to confirm the setting matches the description.",
+            "action": "VQA[Describe the background structure visible on the right side of the launch site.]",
+            "observation": "\n\nOn the far right side of the image, set back in the distance, there is a large water tower. It features a large, rounded tank resting atop a metal support framework with legs.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous trajectory verified the launch site location using VQA. To ensure complete modal matching, I should definitively check if the rocket in the image is identifiable as the New Glenn model or contained text indicators like \"New Glenn\" from the Entity tool.",
+            "action": "Entity[What rocket model is shown?]",
+            "observation": "\n\nBased on the visual evidence, here are the visible entities:\n\n*   **Falcon 9 Rocket:** A white rocket with a black penetration band (second stage) is ascending vertically in the center. (Certainty: High)\n*   **Launch Tower:** Two tall, metal lattice structures flanking the rocket on either side. These are the fixed launch towers at the pad. (Certainty: High)\n*   **Exhaust Plume / Smoke:** A bright trail of exhaust and a large plume of white smoke billowing from the engines and堆积ing on the ground. (Certainty: High)\n*   **Water Tower:** A cylindrical tank on legs visible on the far right side of the image. (Certainty: High)\n*   **Vegetation:** Dark silhouettes of trees or bushes running across the bottom of the frame. (Certainty: High)\n*   **SpaceX:** While the logo isn't clearly visible in this specific silhouette, the distinctive design of the Falcon 9 rocket identifies the organization. (Certainty: Very High)\n*   **Kennedy Space Center:** The specific configuration of the tower and the surrounding landscape strongly indicates Launch Complex 39A at KSC. (Certainty: High)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The preceding Entity tool output identified the rocket as a Falcon 9 by SpaceX with high certainty. The text explicitly discusses Blue Origin's New Glenn launch. The specific rocket design in the image is SpaceX's Falcon 9 (black second stage, white first stage), which directly contradicts the Blue Origin vehicle mentioned in the text. This indicates a MISMATCH between the textual content and the visual evidence.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.3,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

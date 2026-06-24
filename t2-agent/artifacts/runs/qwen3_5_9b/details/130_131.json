@@ -1,0 +1,145 @@
+{
+  "index": 130,
+  "sample_id": "131",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1448.5,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The piece presents invented labor-market figures and invented expert interpretation as confirmed contents of an official BLS release, then uses synthetic and miscontextualized visuals to make the false report appear documented. It also overstates general AI-exposure research into supposed direct evidence from the February jobs report, creating a fabricated causal narrative about AI-driven job losses.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/131",
+  "image_paths": [
+    "/path/to/ReMMDBench/131/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/131/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/131/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/131/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/131/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/131/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/131/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/131/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/131/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/131/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "131",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T2 Distortion; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "The image displays the exterior of the Bureau of Labor Statistics building in Washington DC, which aligns with the text's reference to the Labor Department headquarters. The presence of the BLS name on the building confirms the location associated with the official report mentioned in the article, supporting the visual narrative context.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unedited photograph of a government office building facade.\n\n- **Consistent architecture and lighting:** Shadows, sun angle, and highlights on columns/window frames are coherent across the scene; no mismatched lighting that would suggest compositing.\n- **Natural perspective and geometry:** Vertical lines, window alignment, and facade details look optically consistent (no warped or “AI-melted” structural elements).\n- **Text looks physically present:** “BUREAU OF LABOR STATISTICS” lettering has consistent spacing, perspective, and shadowing consistent with signage on the building rather than digitally overlaid text.\n- **No obvious generative artifacts:** No repeated textures, smeared edges, or unnatural detail transitions typical of synthetic images.\n- **No clear editing seams:** I don’t see cutout halos around people/poles/signs or abrupt resolution changes that would indicate pasted elements.\n\nNothing in the image itself indicates the “February 2026” claims; it simply shows the BLS building exterior.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly describes an image showing the \"familiar stone facade of the Labor Department headquarters in Washington.\" The provided image clearly displays the Bureau of Labor Statistics building with the text \"BUREAU OF LABOR STATISTICS\" visible on the facade. This match confirms the visual description in the text is accurate.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "Verify the text on the building facade matches the agency mentioned in the news report (\"Bureau of Labor Statistics\").",
+            "action": "VQA[What text is written above the entrance of the building?]",
+            "observation": "\n\nThe text written above the entrance of the building is \"BUREAU OF LABOR STATISTICS\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text on the building facade (\"BUREAU OF LABOR STATISTICS\") directly identifies the agency central to the news report. The text describes an image of the Labor Department headquarters, which this building corresponds to. This establishes a strong semantic match between the visual and textual content.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

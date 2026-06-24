@@ -1,0 +1,135 @@
+{
+  "index": 462,
+  "sample_id": "463",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1788.88,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本前半关于以色列境内警报与拦截的描述可作为一般新闻叙述成立，但将“迪戈加西亚基地遇袭”绑定为“同一轮行动”并用经过叠加标注的图片作为佐证，造成时间地点语境错置与图文归属不一致。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/463",
+  "image_paths": [
+    "/path/to/ReMMDBench/463/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/463/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "463",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text focuses on a missile attack and military response (\"Israel detecting Iranian ballistic missiles\", \"nighttime\", \"interception trails\"). The provided image is clearly about a different topic: an economic report on an \"oil shock\" and \"US economy\" (visible in the tweet text and caption). The visual content (daytime refinery smoke) also contradicts the text's description of nighttime missile interceptions. Since the image is completely unrelated to the event described in the text, it refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text refers to \"Fig 1\" and \"Fig 2\" which are described as showing \"night sky\", \"missile trails\", and \"interception火光\" (firelight). The provided image clearly shows a daytime scene with a large plume of smoke from a facility. I should verify the visual content of the image to confirm it depicts an industrial site rather than missile interceptions in the night sky.",
+            "action": "VQA[Describe the visual content of the image, including the type of facility and the time of day.",
+            "observation": "Could not parse action: VQA[Describe the visual content of the image, including the type of facility and the time of day.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA action failed due to a syntax error (missing closing bracket). I need to retry describing the image to confirm it depicts a daytime industrial site with smoke, which contradicts the \"night sky\" and \"missile trails\" mentioned in the news text.",
+            "action": "VQA[Describe the visual content of the image, including the type of facility and the time of day.]",
+            "observation": "\n\nThe image shows a large industrial facility, likely an oil refinery or petrochemical plant, characterized by numerous tall towers, pipes, and storage tanks. Massive plumes of thick, dark grey smoke are billowing into the sky from the complex, obscuring much of the background. Palm trees are visible in the foreground along a perimeter fence. The lighting indicates it is daytime, although the heavy smoke creates a hazy atmosphere. A black caption bar at the bottom reads, \"Attacks on Middle East energy sites deepen threat to US economy, analysts say.\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes nighttime missile attacks and interceptions involving Israel and Iran, with specific mentions of \"night sky\" and \"missile trails\". The provided image, confirmed by the VQA observation, depicts a daytime scene of an industrial facility (likely an oil refinery) with smoke plumes and a caption discussing the economic impact of attacks on Middle East energy sites. The visual content and the text content are completely different in subject matter, time of day, and context. Therefore, the image does not match the news text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future event (date 2026) and falsely describes the first image as \"night air defense\" when it shows a daytime oil refinery, creating a context mismatch.",
+    "notes": []
+  },
+  "error": null
+}

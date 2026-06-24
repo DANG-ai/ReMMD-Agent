@@ -1,0 +1,126 @@
+{
+  "index": 416,
+  "sample_id": "417",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1155.05,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本中关于使馆安全提醒、经埃及塔巴口岸协助转移撤离等信息具有现实背景与一定真实性，但样本把与以色列无关或来源不明的旧图/他国街景损毁画面，以及被二次编辑拼贴的“拦截夜空图”，包装成“昨夜以色列北部/特拉维夫周边”的现场证据，造成关键图片证据链在地点与事件归属上错置。整体呈现为：真实的撤离提醒与风险提示，叠加了被误置语境与被编辑的视觉材料来强化“被打穿”的直观冲击，因此属于真假要素并存、且误导部分对受众理解同样重要的混合型样本。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突与地缘政治",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/417",
+  "image_paths": [
+    "/path/to/ReMMDBench/417/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/417/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/417/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/417/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "417",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.7,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I will extract entities from the image to identify the main topic, then compare it with the news text to verify if the 'Israel pierced' narrative mentioned in the text is present in the image visual or text overlays.",
+            "action": "Entity[image]",
+            "observation": "- **CCTV-7 / “央视军事” (China Central Television – Military channel) logo** (top-left star logo with “央视军事”): **High**  \n- **Chinese on-screen headline text**: “3月25日 我使馆将组织在以中国公民撤离！” (“Mar 25: Our embassy will organize the evacuation of Chinese citizens in Israel!”): **High**  \n- **Chinese lower-third caption text** referencing **“中国驻以色列使馆” (Chinese Embassy in Israel)** and advising Chinese citizens in Israel to leave/relocate: **High**  \n- **Weibo watermark/handle** “@连线记者” with Weibo icon (bottom): **High**  \n- **News studio / broadcast set background** (graphic arcs and panels): **Medium**  \n- **Human news anchor/presenter** (face intentionally blurred/obscured): **High** — **not identifiable** from this image.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a CCTV News broadcast with the headline \"Embassy will organize evacuation of Chinese citizens in Israel!\", which directly aligns with the news text's focus on the Chinese embassy's safety reminders and evacuation plans for the conflict described. Since the primary topic (China's response in Israel) matches perfectly, and the entity extraction has confirmed the key elements, it is safe to conclude the match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7663094323935531,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes Figure 2 as a net user photo processed twice, indicating visual editing, while the main image is a real CCTV clip matching the event context.",
+    "notes": []
+  },
+  "error": null
+}

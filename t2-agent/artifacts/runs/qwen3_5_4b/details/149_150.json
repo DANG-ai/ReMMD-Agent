@@ -1,0 +1,140 @@
+{
+  "index": 149,
+  "sample_id": "150",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1299.31,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本把一个“曼彻斯特桥洞烧烤摊”包装成有可见合规标识、疑似被纳入试点并有本地媒体/居民背书的真实事件，但关键证据链所依赖的核心配图为生成图，且图中关键信息（地点线索、设备形态、合规贴纸归属等）与文本叙事存在明显不一致，从而导致整体叙事的主要支撑基础失效。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/150",
+  "image_paths": [
+    "/path/to/ReMMDBench/150/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/150/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/150/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/150/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/150/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/150/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/150/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/150/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/150/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/150/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "150",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T2 Distortion; T3 Misleading Context; V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 9,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a BBQ stall in Manchester under a bridge, featuring BBQ skewers and shashlik. The image shows a night scene under a brick underpass with a large illuminated sign reading \"BBQ SKEWERS\" and \"烧烤\" (BBQ). There is a long line of people, dressed in cool weather, which matches the description of a weekend night crowd. A blue sign in the background reads \"CITY CENTRE\". The scene visually aligns perfectly with the narrative of a street food spot in an underpass, confirming the existence and general atmosphere described.",
+            "action": "Detect[image]",
+            "observation": "- **Overall impression:** The scene looks like a normal night street photo under a rail/road arch: consistent perspective, lighting, shadows, and realistic surface reflections on the wet pavement. No obvious AI “melted” geometry or repeated textures.\n\n- **Signs of possible editing:**  \n  - Several **faces are blurred** in a uniform way, consistent with privacy redaction done after capture (not a generative artifact).  \n  - The image has **strong HDR/contrast sharpening** (very crisp bricks, bright sign glow, deep shadows), which suggests post-processing, but not content manipulation.\n\n- **Text/signage consistency:**  \n  - The stall signage (“烧烤 BBQ SKEWERS / BBQ SKEWERS & GOURMET SHASHLIKS”) is sharp, aligned with the signboard plane, and lit consistently.  \n  - The road sign “CITY CENTRE” matches typical UK-style signage and perspective.\n\n- **No clear counterfactual/synthetic cues:** Smoke, flame, reflections, string lights, and crowd spacing look coherent; no mismatched edges, halos, or warped lines around objects that would strongly indicate compositing or AI generation.\n\n**Conclusion:** Appears to be an authentic photograph with minor post-processing and intentional face blurring, not an obviously manipulated or synthetic image.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Analysis Observation confirms the image appears to be an authentic photograph with no manipulative artifacts. The visual content—a BBQ stall under a brick arch, a \"CITY CENTRE\" sign, a queue of people in winter clothing, and illuminated menus—perfectly aligns with the news text's description of a Chinese BBQ stall in Manchester under a bridge. The camera quality and lighting cues are consistent with a real street shot rather than AI generation. Given this strong alignment, I proceed to confirm the veracity.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The visual content (BBQ stall with 'CITY CENTRE' sign, queue of people, bridge structure arching overhead) strongly aligns with the text's description of a weekend BBQ stall under a bridge in Manchester. I am confident in confirming the document is about this scene.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7113786608980126,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.19999999999999996,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.5,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.8,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.5,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims prices are in Yuan (11 yuan, 41 yuan), but images (specifically Image 2) show prices in Pounds (£11, £41) and one image (Image 9) is explicitly AI-generated, creating a price distortion and mismatch.",
+    "notes": []
+  },
+  "error": null
+}

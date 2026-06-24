@@ -1,0 +1,150 @@
+{
+  "index": 103,
+  "sample_id": "104",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2539.94,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The central story is invented: there is no evidence of any NCAA postgame reversal, scoring correction, or official bracket update awarding Minnesota the Elite 8 spot over UCLA. The article reinforces this false narrative with synthetic visuals and miscaptioned source photos that do not depict the claimed aftermath or outcome.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/104",
+  "image_paths": [
+    "/path/to/ReMMDBench/104/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/104/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/104/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/104/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "104",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; T3 Misleading Context; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I will check the Wikipedia page for the 2024 NCAA Division I women's basketball tournament to see if there are any notable controversies regarding a scoring review that changed the bracket between Minnesota and UCLA. I will also look at the index page for the Seattle/Spokane regionales if applicable.",
+            "action": "Wikipedia[2024 NCAA Division I women's basketball tournament]",
+            "observation": "No summary available. Similar entities: 2024 NCAA Division I women's basketball tournament, NCAA Division I women's basketball tournament, 2026 NCAA Division I women's basketball tournament, 2024 NCAA Division I men's basketball tournament, 2026 NCAA Division I softball tournament",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to check if there was a \"Sacramento Regional\" for the 2024 or 2025 Women's Basketball tournament, as the text contradicts the image's \"Spokane Regional\" label. A location mismatch is a strong indicator that the text is incorrect or describing the wrong event.",
+            "action": "Google[\"Sacramento Regional women's basketball 2024 2025 bracket UCLA\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims a specific \"overnight NCAA review\" regarding a \"bookkeeping issue\" altered the result of the Minnesota vs. UCLA game, sending Minnesota to the Elite 8. This contradicts the image which shows a routine Sweet 16 game (78-69). I will search for news reports regarding this specific controversy to verify if such a scoring correction actually occurred.",
+            "action": "Google[\"2024 NCAA women's basketball Minnesota UCLA scoring review bracket change\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.3,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the game was in Sacramento (Golden 1 Center). The image shows a \"Spokane Regional\" tournament bracket. This is a clear location contradiction. The text discusses a specific \"Sacramento\" scenario (UCLA vs Minnesota review issue), but the image shows a \"Spokane\" bracket. Even if the scores or matchup are similar in some other year, the venue explicitly labeled in the image disproves the text's location-specific claims, rendering the image verification result as refute because it shows a different regional tournament than what is described.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.5,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.9,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.2,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text is fabricated (T1, V1) and claims synthetic visuals, but the text and visual mismatch in place (Sacramento vs Spokane).",
+    "notes": []
+  },
+  "error": null
+}

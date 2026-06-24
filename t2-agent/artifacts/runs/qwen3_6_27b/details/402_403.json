@@ -1,0 +1,152 @@
+{
+  "index": 402,
+  "sample_id": "403",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1292.34,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article inflates a casual social post about enjoying Graeter’s during March Madness into an asserted retail campaign and relies on edited images to make that claim appear documented. The attached visuals are manipulated and the timing context is misleading, especially because the sign itself references April 1, 2026 rather than proving a current tournament-week launch.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/403",
+  "image_paths": [
+    "/path/to/ReMMDBench/403/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/403/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/403/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "403",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [],
+    "predicted_label": "verdict=True | taxonomy=None",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if Graeter's has a \"March Madness\" promotion with \"Limited Tournament Flavors\". The image shows a sign with this text. I also need to check the specific date mentioned: \"April 1st, 2026\". This date is in the future (assuming current date is 2024/2025) and is April Fools' day, which is suspicious. I will search for the campaign and the specific date to see if it's a real promo, a typo, or a joke.",
+            "action": "Google[\"Graeter's March Madness flavors limited tournament\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The specific date \"April 1, 2026\" is highly specific and suspicious (April Fool's Day, future date). I will search for this exact date in conjunction with the company and flavors to see if there is any online record of this specific promotion or sign.",
+            "action": "Google[\"Graeter's April 1 2026 flavors\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims that the sign points to new flavors arriving on April 1, 2026. The image clearly displays the text \"NEW FLAVORS RELEASE ON APRIL 1ST, 2026\" at the bottom. The text also mentions \"Graeter's\" and \"March Madness\", both of which are prominent in the image. The lack of search results suggests this might be a very specific or new campaign, but the visual evidence directly supports the specific claims made in the text about the content of the sign.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify the veracity of the news text based on the provided image. The text describes a Graeter's promotion for March Madness with limited tournament flavors and a release date of April 1st, 2026. The image shows a sign for Graeter's that explicitly says \"YOU'RE TASTING MARCH MADNESS\", \"LIMITED TOURNAMENT FLAVORS IN STORES NOW\", and \"NEW FLAVORS RELEASE ON APRIL 1ST, 2026\". The visual elements (basketball, hoop) also match the description. I will first detect the image content to confirm these details.",
+            "action": "Detect[image]",
+            "observation": "- **Looks like a real photo of a printed sign**: The paper has natural glare and slight perspective skew, and it’s sitting on a textured white foam surface (consistent with a cooler/lid insert). Edges and shadows look coherent rather than “cut out.”\n- **Text and typography are clean and consistent**: No garbled letters, uneven kerning, or AI-typical text artifacts. The Graeter’s logo and the “March Madness” layout look like normal brand design work.\n- **No obvious digital compositing**: I don’t see mismatched lighting, duplicated patterns, warped lines, or blurry halos that would suggest elements were pasted in.\n- **Potential counterfactual/oddity is in the content, not the pixels**: The line “NEW FLAVORS RELEASE ON APRIL 1ST, 2026” is unusual for a “March Madness” themed promo, but it appears to be part of the original printed design rather than an edited overlay.\n\nOverall, the image itself appears authentic (a straightforward photo of promotional signage) with no clear signs of synthetic generation or manipulation.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly displays a promotional sign for Graeter's featuring \"MARCH MADNESS\" branding and the text \"LIMITED TOURNAMENT FLAVORS IN STORES NOW,\" which aligns with the news text's description of a tournament-themed lineup. Most importantly, the sign explicitly states \"NEW FLAVORS RELEASE ON APRIL 1ST, 2026,\" directly corroborating the news text's specific claim about the release date shown on the sign. The visual elements like the basketball and hoop further confirm the theme. Thus, the image supports the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly mentions that a sign points to new flavors arriving on \"April 1, 2026\". To verify this cross-modal match, I should use VQA to extract the specific date mentioned on the sign in the image.",
+            "action": "VQA[What date is listed at the bottom of the sign for the new flavors release?]",
+            "observation": "\n\nApril 1st, 2026",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation confirms the specific date \"April 1st, 2026\" mentioned in the news text. The image also clearly displays the brand \"Graeter's\" and the phrase \"MARCH MADNESS\" along with basketball imagery (hoop, ball, court lines), which aligns perfectly with the news description of a \"tournament-themed lineup\" and \"in-store promo materials\". The text \"LIMITED TOURNAMENT FLAVORS IN STORES NOW\" is also visible. All key details match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9321697517861577,
+      "p_fake_text": 0.09999999999999998,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The provided text and images describe a consistent and verifiable promotional campaign (Graeter's March Madness ice cream), with the text accurately reflecting the details visible in the images (such as the specific release date on the sign), indicating no fabrication, distortion, or inconsistency.",
+    "notes": []
+  },
+  "error": null
+}

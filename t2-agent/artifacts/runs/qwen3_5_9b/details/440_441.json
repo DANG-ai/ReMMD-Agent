@@ -1,0 +1,148 @@
+{
+  "index": 440,
+  "sample_id": "441",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1010.04,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article is broadly grounded in the source material: Airbnb did announce nationwide Memorial Day anti-party screening for some higher-risk entire-home bookings and separately promoted World Cup 2026 experiences. However, it slightly overstates the likely blocking effect of the safeguards, and the lead image is edited with a warning-style badge that pushes a harsher enforcement tone than the underlying reporting supports.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/441",
+  "image_paths": [
+    "/path/to/ReMMDBench/441/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/441/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "441",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=True | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "I will search for \"Airbnb anti-party technology May 12\" to verify if Airbnb actually made this announcement on that specific date and whether they are rolling out anti-party tech specifically for Memorial Day weekend.",
+            "action": "Google[Airbnb anti-party technology May 12 Memorial Day]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text also mentions a separate announcement regarding FIFA World Cup 2026 fan experiences. I need to verify the existence of this specific event offering to validate the second part of the claim independently.",
+            "action": "Google[Airbnb FIFA World Cup 2026 fan experiences]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Although the visual evidence strongly suggests the text is accurate, I should first use the detection tool to formally analyze the image content and verify the presence of the specific elements mentioned in the text (key handoff, red shield icon) before making a definitive conclusion.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a real photo that has been **digitally edited/augmented** rather than fully synthetic.\n\n**Signs of editing / compositing**\n- A **red shield icon with an exclamation mark** is placed between the hands with a **glow/bloom effect**. This graphic looks like a UI/illustration element, not a physical object in the scene.\n- The glow lighting from the shield **doesn’t convincingly illuminate** nearby surfaces (hands/keys) in a physically consistent way; it reads as an overlay.\n- The shield’s edges are very crisp and uniform compared with the natural texture and slight softness of the photographed hands and background.\n\n**Signs the base photo is authentic**\n- The hands, keys, and keychain show **natural skin texture**, realistic highlights/shadows, and consistent depth of field.\n- Background blur and color gradient look like a typical shallow-focus photo shot on a wooden floor.\n\n**Conclusion**\n- Likely an **authentic stock-style handoff photo** with a **digitally added warning/shield graphic** to convey a safety/enforcement message. No strong indicators of full AI generation, but clear evidence of **graphic overlay editing**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The observation confirms the presence of a key handoff and a red shield with an exclamation mark, which aligns perfectly with the text description. Since the text explicitly states Airbnb used an \"image of a key handoff with a red warning-style shield\" in social posts, the visual evidence directly corroborates the claim. The base photo being authentic and the graphic being a digital overlay is consistent with a marketing/social post campaign, reinforcing the text's description of their enforcement message.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9321697517861577,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.1,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text references a specific \"May 12\" Airbnb announcement that search verification found no results (fabrication), while the key-handoff image features a digitally added shield overlay (visual editing).",
+    "notes": []
+  },
+  "error": null
+}

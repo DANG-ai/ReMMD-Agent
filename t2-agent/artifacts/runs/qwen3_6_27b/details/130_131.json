@@ -1,0 +1,155 @@
+{
+  "index": 130,
+  "sample_id": "131",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3956.8,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The piece presents invented labor-market figures and invented expert interpretation as confirmed contents of an official BLS release, then uses synthetic and miscontextualized visuals to make the false report appear documented. It also overstates general AI-exposure research into supposed direct evidence from the February jobs report, creating a fabricated causal narrative about AI-driven job losses.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/131",
+  "image_paths": [
+    "/path/to/ReMMDBench/131/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/131/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/131/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/131/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/131/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/131/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/131/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/131/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/131/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/131/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "131",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.7,
+        "best_value": 0.85,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a labor report from \"February 2026\", which is a future date, treating it as a past event. Additionally, the text claims the image shows the \"Labor Department headquarters\", but the image clearly displays the \"Bureau of Labor Statistics\" building (as seen in the text on the facade). The Bureau of Labor Statistics building is distinct from the U.S. Department of Labor headquarters (the Frances Perkins Building). Therefore, the text contains factual errors regarding both the timeline and the building identification.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.05,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions the \"Bureau of Labor Statistics\" and describes an image showing the \"familiar stone facade of the Labor Department headquarters\". I need to verify if the provided image matches this description by reading the text on the building facade.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unedited photograph of a government office building facade.\n\n- **Consistent architecture and lighting:** Shadows, sun angle, and highlights on columns/window frames are coherent across the scene; no mismatched lighting that would suggest compositing.\n- **Natural perspective and geometry:** Vertical lines, window alignment, and facade details look optically consistent (no warped or “AI-melted” structural elements).\n- **Text looks physically present:** “BUREAU OF LABOR STATISTICS” lettering has consistent spacing, perspective, and shadowing consistent with signage on the building rather than digitally overlaid text.\n- **No obvious generative artifacts:** No repeated textures, smeared edges, or unnatural detail transitions typical of synthetic images.\n- **No clear editing seams:** I don’t see cutout halos around people/poles/signs or abrupt resolution changes that would indicate pasted elements.\n\nNothing in the image itself indicates the “February 2026” claims; it simply shows the BLS building exterior.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly displays the text \"BUREAU OF LABOR STATISTICS\" on the building facade. The news text is primarily about a report released by the Bureau of Labor Statistics. The visual identification of the agency's building directly supports the subject matter of the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly mentions the \"Bureau of Labor Statistics\" and the \"Labor Department headquarters\". The image shows a large, classical building with an inscription above the entrance. Using VQA to read this inscription will directly verify if the building in the image corresponds to the entity mentioned in the text.",
+            "action": "VQA[What is written on the stone facade above the entrance of the building?]",
+            "observation": "\n\nThe stone facade above the entrance reads \"**BUREAU OF LABOR STATISTICS**\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA result explicitly identified the text on the building as \"**BUREAU OF LABOR STATISTICS**\". The news text discusses a report released by the \"Bureau of Labor Statistics\" and mentions \"the familiar stone facade of the Labor Department headquarters\". The image shows this exact building. The text and image align perfectly on the primary entity (the agency) and the visual description (stone facade of the headquarters). Therefore, the image matches the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3914867641168864,
+      "p_fake_text": 0.7,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future event (February 2026 labor report) and describes visual elements, including a \"synthetic social card,\" while the provided visual evidence includes charts and screenshots dated February/March 2025, creating a temporal mismatch.",
+    "notes": []
+  },
+  "error": null
+}

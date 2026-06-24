@@ -1,0 +1,154 @@
+{
+  "index": 365,
+  "sample_id": "366",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1346.14,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "公开可核对的信息仅能支持“按通报完成约7小时出舱并安装空间碎片防护装置、人员分工与返回舱段”等事实；文本将这些事实进一步解读为“疑似碎片击中后的临时修补、险情与隐瞒”，属于把不确定猜测包装成主要叙事结论。配图中两张关键“疑点图”经裁剪、对比度/锐化与红圈箭头标注后被当作证据使用，但其所指向的“裂痕/碎屑/擦伤”无法从原始公开通报中得到验证，且与呈现“作业顺利、状态稳定”的画面在语义与证据指向上不匹配，整体误导性大于真实成分，因此判为 Mostly False。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "科技与航天",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/366",
+  "image_paths": [
+    "/path/to/ReMMDBench/366/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/366/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/366/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/366/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/366/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/366/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/366/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/366/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/366/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/366/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "366",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; T3 Misleading Context; V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a close-up of an astronaut's gloved hand working on the exterior of a space station, interacting with various mechanical structures and thermal insulation strips. This visual content aligns perfectly with the \"Standard Press Release\" narrative described in the text (EVA mission, station maintenance). The image does not show the \"suspected cracks,\" \"scattered debris,\" or \"red circles\" mentioned in the text as part of the *rumor* evidence, implying the visual evidence supports the \"intact station\" narrative rather than the \"accident\" or \"emergency patch\" narrative. Since the image confirms the EVA event and lacks the anomalous features claimed in the sensationalized rumors, it supports the factual baseline of the news article while visually refuting the specific \"damage\" claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "Next, I need to verify the broader context and entities. The text mentions \"screenshots\" circulating on social media with specific markings. I should use the Entity tool to describe the visual scene comprehensively—identifying the astronaut, the equipment, and any background context—to ensure the image is indeed related to the Shenzhou-21 EVA described in the text.",
+            "action": "Entity[image] (Generate a detailed caption describing the key visual elements: the astronaut's suit, the equipment being touched, and any visible cables or labels)",
+            "observation": "Could not parse action: Entity[image] (Generate a detailed caption describing the key visual elements: the astronaut's suit, the equipment being touched, and any visible cables or labels)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To further verify the match, I need to confirm the background details mentioned in the text, specifically the presence of a space station structure or mechanical arm, which aligns with the 'Lunar Station' (questioned as Wentian) context in the article.",
+            "action": "VQA[Does the background of the image show a space station module or mechanical arm structure?]",
+            "observation": "\n\nYes, the background of the image shows elements of a space station, likely the International Space Station (ISS).\n\nSpecifically, you can see:\n*   **Solar Arrays:** The large white structure with blue and white stripes in the upper left is an external solar array wing.\n*   **Structural Framework:** There are various metal rails, brackets, and the orange cable (an umbilical), which are part of the station's external truss and mechanical structures.\n*   **Walkways/Rungs:** There appear to be ladder-like rungs or handrails typical of the station's exterior walkways where astronauts perform maintenance.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly mentions that social media screenshots were annotated with \"red circles\" and \"arrows\" to mark \"suspected cracks\" or \"burnout edges\". I need to verify if the image provided contains these specific overlays, as this defines whether it is the disputed visual evidence.",
+            "action": "VQA[Are there red circles or red arrows superimposed on the image marking cracks, edges, or anomalies on the equipment?]",
+            "observation": "\n\nNo, there are no red circles or red arrows superimposed on the image marking cracks, edges, or anomalies. The prominent red/orange object visible is a braided cable or conduit that is part of the equipment assembly, not a marking overlay.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3419951893353394,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.2,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.95,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.8,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.2,
+        "C3 Pragmatic Inconsistency": 0.6
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a non-existent mission (Shenzhou 21, 2026), uses real entities in a fake context (T1, T3), and is supported by AI-generated images with overlay manipulations (V1, V2).",
+    "notes": []
+  },
+  "error": null
+}

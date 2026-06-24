@@ -1,0 +1,166 @@
+{
+  "index": 386,
+  "sample_id": "387",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2065.91,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本一方面基于真实存在的微博帖文与截图传播现象，确有把多来源材料并列转发、引发交易圈讨论的事实基础；但同时通过对截图进行局部改图并在叙事中用“议息当晚/公布后数小时”等时间锚点串联，把原本不同日期与性质的内容拼接成同一事件链，造成受众对发生时间与证据来源的系统性误判，因此整体呈现为真假混杂。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经投资",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/387",
+  "image_paths": [
+    "/path/to/ReMMDBench/387/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/387/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/387/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/387/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "387",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T2 Distortion; V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "Textual Claim: The text describes a market situation in mid-March (specifically March 17-18) where XAU/USD (Spot Gold) fluctuated aggressively around $5000 per oz, with lows around $4806 and highs near $5017.",
+            "action": "Google[query] XAU/USD price March 18 5000 history",
+            "observation": "Could not parse action: Google[query] XAU/USD price March 18 5000 history",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text asserts that Gold reached $5000 (range 4973-5045) in mid-March (3月17-18). Historically, Gold prices in 2023 and 2024 have been between $1900 and $2300. Reaching $5000 is impossible in the current economic context. I need to verify the actual Gold price data for March 2023 or 2024 to confirm this economic claim is refuted.",
+            "action": "Google[query] Gold price XAU/USD March 18 2024 history $5000",
+            "observation": "Could not parse action: Google[query] Gold price XAU/USD March 18 2024 history $5000",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims that Spot Gold (XAU/USD) reached ~$5000 per ounce in mid-March. Based on general knowledge, Gold has fluctuated between $1900-$2500 in recent years (2020-2025), and historically never reached $5000. The mention of 'median price' or specific dates like 3/18 with 5000 seems highly unlikely. The image also shows manipulated labels (5019.43), and text claims these screenshots are fake/modified. The text describes the 'market review' seemingly validating the 5000 price, but the text is a commentary on 'fake' images. The text's assertion that 'London Gold fluctuated around 5000' is a factual error about the asset's price. I can verify this. If I have high confidence, I will Refute.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify if the image supports the text.\n    1. **Text Content:** The text discusses a specific viral hoax/narrative involving a chart of \"XAU Spot Gold\" attributed to \"Old Jiang\" on 03-18. It notes that prices modified to show a 5000-level range and specific \"Wednesday Night\" styling. The text mentions spreadsheets/table results showing \"Highest 5016.15\" and peaks around 5045.\n    2. **Image Analysis:**\n    - **Overlay/Header:** The text 'Wednesday Night / 03-18 22:00 - 24:00' is clearly visible and matches the text's 'Wednesday Night'/'03-18' claim.\n    - **Price Data:** The right panel 'Highest' (最高) clearly shows '5016.15', matching the text's claim '5017' (approx value). The chart shows a peak labeled '5044.26', consistent with the text's '5045' range for the 17th or clearer trend.\n    - **Metadata:** The bottom text '@黄金原油解盘达人-老姜' confirms the account name described.\n    - **Content:** The chart shows a decline, consistent with the text's analysis of 'turmoil' and 'price modification'.\n    3. **Synthesis:** The image directly provides the visual artifact described in the text. All key identifiers (Account, Date, Price levels) align. Therefore, the image supports the text's narrative / claims.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Checking the price data (high/low) in the image to compare with the text's specific claims about the \"March 18\" low of 4806.",
+            "action": "VQA[what is the lowest price labeled on the chart?]",
+            "observation": "\n\nBased on the visible labels on the chart, the lowest price is **4967.44**, located at the bottom left indicating a low point. Other low labels include 4972.54 and 4988.22.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the March 18 high was near 5017, but the chart shows a peak around 5044. I should verify the highest labeled price to confirm the full price range discrepancy described in the text versus the image.",
+            "action": "VQA[What is the highest price labeled on the chart?]",
+            "observation": "\n\nThe highest price specifically labeled as a data point or annotation on the chart is **5044.26** (in red text).\n\nHowever, if considering all numerical labels including the Y-axis scale, the highest number visible is **5231.62** at the top of the Y-axis. The data summary in the top right corner lists a \"Highest\" (最高) of **5016.15** for the specific time period shown.\n\nBased on chart annotations for price levels, **5044.26** is the highest peak marked.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims that on March 18, the low price touched 4806. I need to verify the labeled lowest price on the chart provided in the image.",
+            "action": "VQA[what is the lowest price labeled on the chart?]",
+            "observation": "\n\nBased on the visible labels on the chart, the lowest price is **4967.44**, located at the bottom left indicating a low point. Other low labels include 4972.54 and 4988.22.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims a low price of 4806 for March 18, but the chart explicitly labels a low point at 4967.44. Additionally, the chart's peak is labeled 5044.26, whereas the text mentions a range around 5000 with a high of 5017. The price values in the image do not match the specific data points claimed in the text, indicating a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.2080083823051904,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.5,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.3,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.2,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "The text and image share a conflict where the text claims a low price of 4806 while the image indicates ~4967, alongside visual editing of the chart to depict impossible gold prices.",
+    "notes": []
+  },
+  "error": null
+}

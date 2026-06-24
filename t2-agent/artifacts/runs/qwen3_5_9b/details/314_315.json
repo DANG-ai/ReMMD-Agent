@@ -1,0 +1,154 @@
+{
+  "index": 314,
+  "sample_id": "315",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1511.18,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本把网络传言包装成“内部会议通报+通知编号+公示截图”的已定事实，但关键权威来源与文件均为虚构，且多张配图为生成或编辑制造的“官方确认”效果，导致受众形成“名单已最终确认并锁定席位”的错误结论。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "体育赛事",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/315",
+  "image_paths": [
+    "/path/to/ReMMDBench/315/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/315/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/315/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/315/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "315",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "First, I should check if the athlete \"Kuai Man\" and the event \"London World Table Tennis 2026\" exist in reality. Wikipedia might list the athlete's recent achievements and scheduled events. If Wikipedia is insufficient due to the future date of 2026, I will use Google to verify the event's existence or legithimacy.",
+            "action": "Wikipedia[蒯曼]",
+            "observation": "蒯（kuǎi）曼（2004年2月7日—），中国乒乓球运动员。生于江苏省盐城市射陽縣。2020年8月入选国家乒乓球一队。她在2021年和2023年世界青少年乒乓球锦标赛中赢得了19岁以下級別賽事的女子单打冠军。\n",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify if the \"2026 London World Table Tennis Championships\" is a real scheduled event, as the international schedule typically stays in the current future bounds (e.g., Chengdu 2025). Additionally, I need to confirm if \"Kuai Man\" winning a spot for a future 2026 event in London is textually supported. The image date is 2026, which suggests it's a \"future-dated\" fake news item.",
+            "action": "Wikipedia[2026 World Table Tennis Championships]",
+            "observation": "No summary available. Similar entities: 2026 World Team Table Tennis Championships – Men's team, 2026 World Team Table Tennis Championships, 2026 World Team Table Tennis Championships – Women's team, World Table Tennis Championships, 2024 World Team Table Tennis Championships",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Analyze the consistency between the text narrative and the image content. The text mentions a 'second selection' event ending on March 22, 2026. The image headline confirms 'National Women's Team Second Selection Concludes' and shows the date 2026-03-22. The specific matchups described in the text (Semi-final: Kuai Man 3-1 vs Shi Xunyao; Final: Kuai Man 3-1 vs Wang Yidi) are accurately reflected in the visual text of the image. There are no contradictions in names, scores, or event descriptions.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "VQA can verify the specific match score and winner mentioned in the text ('蒯曼3比1战胜王艺迪') against the image to confirm the 'MATCH' status of the core content.",
+            "action": "VQA[What is the score and winner of the final match shown in the text?]",
+            "observation": "\n\nBased on the text in the image, the winner of the final match is **蒯曼 (Kuai Man)** with a score of **3比1 (3-1)** against Wang Yidi.\n\nThe relevant sentence is at the very end: \"在决赛中，蒯曼3比1战胜王艺迪...\" (In the final, Kuai Man defeated Wang Yidi 3-1...)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The title of the news text '蒯曼锁定伦敦世乒赛参赛资格' is identical to the headline in the image. The summary of the final result ('3-1 win over Wang Yidi') is also consistent with the OCR text in the image. Since the primary entity content and the outcome match exactly, it is safe to conclude that the cross-modal matching is successful.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a fabricated event (2026) in detail, the visuals (overlays/future-dated notices) are edited/fake, and there is a time mismatch between the 2026 narrative and the 2024 background image.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,156 @@
+{
+  "index": 198,
+  "sample_id": "199",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1387.1,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Der Text baut auf einem grundsätzlich plausiblen Fußballereignis und realistisch wirkender Stadionatmosphäre auf, verankert dieses Geschehen jedoch wiederholt in einem spezifischen, nicht belastbar verifizierten Pokal-Halbfinal-Kontext. Zugleich wurden Bilder gezielt bearbeitet, damit sie genau diesen Wettbewerbsrahmen scheinbar bestätigen, wodurch ein stimmiges, aber kontextuell irreführendes Gesamtpaket entsteht.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/199",
+  "image_paths": [
+    "/path/to/ReMMDBench/199/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/199/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/199/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/199/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/199/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/199/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/199/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/199/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/199/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/199/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "199",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims a DFB-Pokal semi-final match between VfB Stuttgart and SC Freiburg occurred on April 23, 2026, with Stuttgart winning 2-1 in extra time. The provided image shows a pennant explicitly dated \"23.04.2026\" for the \"DFB-Pokal Halbfinale 2025/2026\". To verify if this matches real-world records, I need to check if this match has actually taken place or if the season is still in the future. Given the current date is early 2024, a 2026 match is impossible in reality, indicating potential hallucination or fictional content presented as fact.",
+            "action": "Google[query：\"DFB-Pokal Halbfinale VfB Stuttgart SC Freiburg 2026\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the previous search yielding no results and the explicit image date showing 2025/2026, this text is presenting a future event as past fact, likely a hallucination. The news text describes the match as finished (\"niedergerungen\", \"2:1 traf\", \"Anpfiff\", \"Abpfiff\"), but the date is in the future. Thus, the text is factually false regarding real-world events.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.20000000000000004,
+        "best_trajectory": [
+          {
+            "thought": "The provided news article describes the DFB-Pokal Semi-Final match between VfB Stuttgart and SC Freiburg for the 2025/2026 season. The text details the result (2:1 for Stuttgart), key scorers (Undav, Tiago Tomás), and the venue (MHPArena). The accompanying image is a pennant specifically for this match, displaying the exact text \"DFB-Pokal Halbfinale\", \"2025/2026\", \"VfB Stuttgart\", and \"SC Freiburg\". The date at the bottom of the pennant is \"23.04.2026\". The image serves as a visual artifact or souvenir that directly corresponds to the event described in the text. There are no discrepancies between the textual claims (teams, competition, season) and the visible content of the image. Therefore, the image supports the veracity of the event described in the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a high-stakes DFB-Pokal semi-final between VfB Stuttgart and SC Freiburg that leads to a Berlin final. The image shows a pennant (Wimpel) with the exact team match-up and event name. I need to verify the date or partial year on the image to ensure it aligns with the context (especially the May final). I will use the Entity extractor to look for dates on the image.",
+            "action": "Entity[image]",
+            "observation": "- **“DFB-Pokal Halbfinale 2025/2026” text** (German Cup semifinal reference) — **High** (clearly readable).\n- **VfB Stuttgart** (football club name) — **High** (clearly readable).\n- **SC Freiburg** (football club name) — **High** (clearly readable).\n- **VfB Stuttgart club crest/logo** (shield with “1893” and stylized elements) — **High** (prominently shown on the pennant).\n- **Small VfB Stuttgart crest on red ribbon/strap (top right)** — **Medium** (partially visible but recognizable as the same crest).\n- **Date: “23.04.2026”** — **High** (clearly readable).\n- **Triangular match pennant/banner** (souvenir/ceremonial pennant) — **High** (dominant object).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have already used Entity extraction which confirms the date (2026), event (DFB-Pokal Halbfinale), and teams (VfB Stuttgart vs SC Freiburg) match the text. To provide a third verification step for robustness, I will ask VQA about the full text scale to ensure there are no subtle contradictions in the visual elements versus the text narrative.",
+            "action": "VQA[What competition and teams are written on the pennant?]",
+            "observation": "\n\nBased on the text on the pennant:\n\n*   **Competition:** DFB-Pokal Halbfinale (German Cup Semifinals) for the 2025/2026 season.\n*   **Teams:** VfB Stuttgart and SC Freiburg.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Entity and VQA steps have already confirmed that the image contains the exact team names (VfB Stuttgart vs. SC Freiburg) and competition (DFB-Pokal Halbfinale) mentioned in the news text. The date \"23.04.2026\" is visible and fits the timeline of a semi-final leading to a Berlin final. I can confidently conclude the alignment.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.564621617328617,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.8,
+        "V2 Visual Editing": 0.2,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.1,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a match event in 2026 as if it were a real past event, and the accompanying visuals (pennant, stadium) are consistent with this fabrication but appear synthetic.",
+    "notes": []
+  },
+  "error": null
+}

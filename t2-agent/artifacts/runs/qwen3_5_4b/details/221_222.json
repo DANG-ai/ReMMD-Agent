@@ -1,0 +1,126 @@
+{
+  "index": 221,
+  "sample_id": "222",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1173.55,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion"
+    ],
+    "rationale": "文本的核心叙述方向（阿里盘中明显下挫并拖累相关板块情绪）整体可成立，但在跌幅口径与归因强度上存在夸张与确定化表述，把“盘中一度”扩展成更接近“全天/临近收盘仍维持”的印象，并将波动较强地指向单一触发消息，构成细节层面的失真。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经商业",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/222",
+  "image_paths": [
+    "/path/to/ReMMDBench/222/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/222/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/222/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/222/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "222",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.7,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.3,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses trading in the Hang Seng Tech Index and the Hong Kong Stock Exchange (HKEX), specifically regarding Alibaba. The image prominently features the \"HKEX\" logo. I should use the detection tool to verify the text or content within the image to confirm it matches the context of the news report.",
+            "action": "Detect[image]",
+            "observation": "- **内容一致性/反事实**：画面是香港交易所（HKEx）标志与“HKEx/香港交易所”字样的近景虚焦照片，属于常见新闻配图类型。仅从图像本身看不出与配文“阿里相关标的盘中跌逾8%”之间存在直接可核验的对应关系（即它更像“港股/交易所”泛用配图，而非现场行情截图或特定事件证据），但这不等同于造假，只是**语义关联偏泛**。  \n\n- **是否有合成/生成痕迹**：未见明显AI生成常见问题（文字扭曲、边缘融化、重复纹理、透视/光照冲突等）。标志形状、材质颗粒感、景深虚化与背景反射都较自然。  \n\n- **是否有明显编辑痕迹**：未见明显拼接边界、异常锐化、局部马赛克/涂抹、文字重叠或不合逻辑的阴影；整体更像正常拍摄后裁切/压缩的新闻图片。  \n\n**结论**：图像本身看起来较为真实、无明显数字篡改或合成迹象；但它更像“交易所/港股”通用配图，不能单凭该图证明文中所述的具体跌幅事件。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image successfully corroborates the subject matter by prominently displaying the HKEX branding. Although it is a generic location shot rather than a specific financial chart, the presence of the correct exchange logo resolves any ambiguity regarding the trading venue, thereby supporting the veracity of the news report which relies on data from this specific market.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The text discusses the performance of Alibaba and the Hang Seng Tech Index, which are listed on the Hong Kong Stock Exchange. The image clearly shows the logo and name of the Hong Kong Exchanges and Clearing Limited (HKEX) with the text '香港交易所'. The visual content directly represents the venue for the market operations described in the text, confirming a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.5313292845913056,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.7,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.8,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "High probability fake image score and mix verdict indicate synthetic content (V1), text fabrication score indicates fabricated text (T1), and visible date mismatch (March vs June) indicates contextual inconsistency (C2).",
+    "notes": []
+  },
+  "error": null
+}

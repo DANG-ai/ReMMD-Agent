@@ -1,0 +1,170 @@
+{
+  "index": 21,
+  "sample_id": "022",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [],
+  "verdict_match": true,
+  "taxonomy_match": true,
+  "elapsed_seconds": 1564.64,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article’s central account matches the available evidence: Venezuela beat the Netherlands 6-2 in its World Baseball Classic opener at loanDepot park in Miami on March 6, and the described atmosphere of heavy Venezuelan fan presence is supported by the source summary and cited coverage. The images are consistent with that event and do not introduce any factual contradiction or manipulation affecting the claim.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/022",
+  "image_paths": [
+    "/path/to/ReMMDBench/022/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/022/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/022/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/022/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/022/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/022/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/022/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/022/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/022/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/022/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "022",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [],
+    "predicted_label": "verdict=True | taxonomy=None",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I should check if this game actually occurred. The text mentions it was Pool D opener on Friday, and claims Venezuela won 6-2 at loanDepot Park. Let me search for this specific match-up and venue to verify the details.",
+            "action": "Wikipedia[World Baseball Classic Venezuela 2025 Netherlands Miami]",
+            "observation": "No summary available. Similar entities: Venezuela national baseball team, 2026 World Baseball Classic, 2026 World Baseball Classic championship, 2023 World Baseball Classic, World Baseball Classic",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should check if this is from a future-dated news piece or if the 2026 World Baseball Classic has actually been completed. I'll search for official MLB or WBC sources to confirm if this game exists in the records.",
+            "action": "Google[World Baseball Classic 2026 Venezuela opened against Netherlands Miami attendance 6-2 score]",
+            "observation": "Netherlands vs. Venezuela in 2026 World Baseball Classic - MLB.com: The 2026 Classic started out in similar fashion for Venezuela, as a four-run fifth inning propelled them to a 6-2 win Friday over the ... (https://www.mlb.com/news/netherlands-vs-venezuela-in-2026-world-baseball-classic)\nVenezuela Breezes By The Netherlands 6-2 in Pool D Opener: Venezuela easily cruised to a 6-2 win in the opening game of Pool D of the 2026 World Baseball Classic, capitalizing on weak relief work by ... (https://worldbaseball.com/2026-world-baseball-classic-venezuela-breezes-by-the-netherlands-6-2-in-pool-d-opener/)\nNetherlands vs. Venezuela 2026 World Baseball Classic - YouTube: Team Netherlands takes on Team Venezuela during the 2026 World Baseball Classic on March 6th, 2026 Don't forget to subscribe! (https://www.youtube.com/watch?v=fEO39aZjOh8)\nIn Miami, World Baseball Classic opener was a celebration for ...: The announced attendance for the Venezuela-Netherlands game was 19,542. “The presence of this team provides some relief from the everyday ... (https://www.nbcmiami.com/news/local/in-miami-world-baseball-classic-opener-was-a-celebration-for-venezuelan-fans/3777508/)\nVenezuela 6-2 Netherlands (Mar 6, 2026) Final Score - ESPN: Game summary of the Venezuela vs. Netherlands World Baseball Classic game, final score 6-2, from March 6, 2026 on ESPN. (https://www.espn.com/world-baseball-classic/game/_/gameId/401838778/netherlands-venezuela)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search results from MLB.com, ESPN, and local news (NBC Miami) explicitly confirm the score (6-2), the date (March 6, 2026), the venue (loanDepot park in Miami), and the attendance (19,542). The narrative about the \"four-run fifth inning\" is also supported by MLB.com and worldbaseball.com. There is sufficient evidence to support the text's claims.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.8,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific event: Venezuela's opening game of the 2026 WBC in Miami against the Netherlands, ending with a 6-2 victory. I need to visually verify if the team uniforms match the description, if the stadium matches the setting, and if the context of a \"final result\" aligns with the image of the players.",
+            "action": "Detect[image]",
+            "observation": "- **Obvious editing (intentional anonymization):** Multiple faces in the foreground and crowd have been covered with rectangular blur/mosaic blocks. The blocks have hard edges and uniform blur, indicating a privacy mask added after the photo was taken (not something produced by a camera).\n\n- **No strong signs of AI/synthetic generation:** Aside from the face redactions, the scene looks like a normal sports photograph—consistent lighting, depth of field, motion/pose coherence, and realistic fabric folds and shadows. The uniforms, arms, and background spectators don’t show the common “melted” geometry or inconsistent textures typical of generative images.\n\n- **No clear compositing artifacts:** I don’t see mismatched lighting between subjects, haloing around cutout edges, or duplicated crowd patterns that would suggest elements were pasted in.\n\n**Conclusion:** The image appears to be a real photograph that has been digitally edited to obscure identities (face blurring), with no additional clear indicators of synthetic or manipulated content beyond that.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly displays players wearing white jerseys with \"Venezuela\" explicitly printed across the chest in the text font described in the article. The color scheme (red, yellow, blue) matches the flag and team description. While the scoreboard isn't visible to confirm the 6-2 score, the visual evidence of the team identity and setting (stadium crowd) aligns perfectly with the narrative. The image serves as strong visual confirmation of the team involved.",
+            "action": "Final[IMAGE_SUPPORT]",
+            "observation": "Tool 'Final' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The provided image clearly depicts baseball players wearing white uniforms with 'Venezuela' printed across the front and blue helmets, consistent with the team described in the news text. The players are high-fiving in a stadium setting with a crowd in the background, visually aligning with the scene described in the article about the Venezuela game at LoanDepot park. There are no obvious AI artifacts, and the visual elements support the narrative components.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the context of the event by looking for banners or signage that matches the 'World Baseball Classic' and 'Miami' details mentioned in the text.",
+            "action": "VQA[Does any text on the green banner in the background mention 'World Baseball Classic' or 'Miami'?]",
+            "observation": "\n\nYes, on the green banner in the background (bottom right), the text \"WORLD BASEBALL CLASSIC\" is visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to check if the background signage confirms the location mentioned in the text (Miami/LoanDepot Park).",
+            "action": "VQA[Is the text \"Miami\" or \"loanDepot park\" visible on any banners in the background?]",
+            "observation": "\n\nNo, the text \"Miami\" or \"loanDepot park\" is not visible. The only readable text in the background is \"WORLD BASEBALL CLASSIC\" on the railing.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will verify the primary team identity by asking the VQA tool to identify the text on the jerseys, ensuring it matches the 'Venezuela' mentioned in the news text.",
+            "action": "VQA[Is the word 'Venezuela' printed on the baseball jerseys?]",
+            "observation": "\n\nYes, the word 'Venezuela' is printed in red script with blue outlining on the front of the white jerseys worn by the players, most clearly visible on the player to the right.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a Venezuela team competing in the World Baseball Classic in Miami. The image clearly shows players with \"Venezuela\" text on their jerseys and a \"World Baseball Classic\" banner in the background, confirming the event and team identity mentioned in the news article.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.9654893846056297,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text accurately describes the Venezuela vs. Netherlands game in the 2026 World Baseball Classic, and the images provide consistent visual evidence of the Venezuelan team and related tournament context without distortion.",
+    "notes": []
+  },
+  "error": null
+}

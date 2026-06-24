@@ -1,0 +1,153 @@
+{
+  "index": 372,
+  "sample_id": "373",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1704.14,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The piece mixes real Masters-related merchandise content with miscontextualized political screenshots and unrelated event photos, creating a misleading impression that they were part of the Masters-week atmosphere. An edited lead image further reinforces this false linkage by visually inserting patron-guidance/access cues into an authentic hat-haul photo.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/373",
+  "image_paths": [
+    "/path/to/ReMMDBench/373/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/373/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/373/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/373/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/373/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/373/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/373/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/373/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/373/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/373/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "373",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "First, I need to verify the visual content against the textual claims about specific merchandise items (hats, boxed hat, lanyard, and patron card). I will use the detection tool to analyze the image for these specific objects.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic, unmanipulated photo of Masters/Augusta-related merchandise laid out on a marble countertop.\n\n**Reasons it looks authentic**\n- **Consistent lighting and shadows:** Soft indoor lighting produces coherent shadows under each hat and along the box edges; nothing has mismatched shadow direction or intensity.\n- **Realistic materials and textures:** Stitching, mesh panels, embroidery, and fabric creases look natural (no smeared or “painted” texture typical of AI artifacts).\n- **Legible, clean branding without AI text glitches:** “MASTERS” on the box and the printed “Patron Information” card are crisp and aligned; fonts don’t show the warped/garbled look common in synthetic images.\n- **Perspective and depth are coherent:** The countertop veining, chairs in the background, and object sizes align with a normal camera perspective; no odd scale jumps.\n\n**No clear signs of manipulation**\n- No obvious cut-and-paste edges, halos, repeated patterns, or inconsistent blur.\n- No counterfactual/physically impossible elements stand out.\n\nOverall, there are no strong indicators of digital editing or synthetic generation based on the image alone.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a specific merchandise detail: 'a boxed hat numbered 30 of 500' which was the centerpiece of the haul. The detected image shows a 'MASTERS LIMITED EDITION' box in the background, but it does not clearly display a serial number '30 of 500' as described. While the visual elements (hats, lanyard) match the description, the specific serial number detail is missing, and the date (2026) is factually incorrect, leading to a conclusion that the text is hallucinated.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The article describes a specific \"Masters hat haul\" that includes a box and a credential-style lanyard. I need to verify the visual presence of these key items in the image to confirm the context of the merchandise mentioned.",
+            "action": "Entity[image] Identify the hats, box, and lanyard visible in the image.",
+            "observation": "Could not parse action: Entity[image] Identify the hats, box, and lanyard visible in the image.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text specifically mentions a \"boxed hat numbered 30 of 500\" as the centerpiece. The box in the image appears to have text but needs verification to see if it matches the specific number mentioned in the text or if it is a different box (e.g., \"Limited Edition\"). This discrepancy is a key indicator for matching.",
+            "action": "VQA[What is the text on the dark blue box in the background?]",
+            "observation": "\n\nBased on the image, the text on the dark blue box is \"**MASTERS**\" with \"**LIMITED EDITION**\" written in smaller gold letters just below it.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "While the mention of a lanyard matches the visual evidence of the green strap, I need to confirm the specific text on it to verify if it matches the \"credential-style\" description in the text. The text emphasizes the \"credential\" aspect and \"lanyard... visible at the edge of the frame.\"",
+            "action": "VQA[What text is visible on the green lanyard in the foreground?]",
+            "observation": "\n\nThe text visible on the green lanyard is **\"MASTERS\"**. This word appears repeatedly along the strap in a script font, often accompanied by the Augusta National Golf Club logo (the yellow map outline).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a specific collectible item: a 'boxed hat numbered 30 of 500'. The observation for the previous VQA query shows the box says 'MASTERS LIMITED EDITION' with no specific serial number visible. This discrepancy in the key identifier makes the image a poor match for the specific event/haul described in the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.6839903786706788,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.2,
+      "p_fake_match": 0.2,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text discusses US Masters tournaments and American civic language, but the provided visual screenshots explicitly feature text referencing \"Australia's prosperity,\" creating a mismatch in location and source context.",
+    "notes": []
+  },
+  "error": null
+}

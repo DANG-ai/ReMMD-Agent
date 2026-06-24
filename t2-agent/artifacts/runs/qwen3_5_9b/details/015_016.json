@@ -1,0 +1,141 @@
+{
+  "index": 15,
+  "sample_id": "016",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1202.66,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本并非完全凭空捏造，而是建立在“据美方官员、据外媒称”的传闻性素材之上，但文本把尚未独立证实、细节仍不完整的说法写得近似既成战报，并通过编辑图、来源未明残骸图和AI示意图共同营造出强烈的同一事件现场感。其真实成分与误导成分都较重要：基础叙事借用了可追溯的报道线索，但时间线、证据强度和图文对应关系都被显著放大，因此更适合标为 Mixture。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/016",
+  "image_paths": [
+    "/path/to/ReMMDBench/016/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/016/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/016/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/016/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "016",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.3,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a graphic with the text \"DEFENSE STRIKE EAGLE DEMONSTRATES LETHAL REACH,\" featuring an F-15E Strike Eagle flying against a blue sky. The most critical inconsistency is the date stamp on the image: \"MAY 24, 2024.\" The news text describes an incident that allegedly occurred on \"April 3.\" Since the image is dated after the reported event (May vs. April), it contradicts the timeline of the narrative. The text describes a specific, high-stakes combat incident and rescue operation that began on April 3, but the image is dated May 24, which makes it impossible to be a direct photo from that specific timeline unless it is a future-looking projection, which is not standard news reporting. Additionally, the image is a clean, high-quality likely promotional or editorial graphic, not a raw combat or rescue scene. The image serves as a header for a \"Special Report,\" but the text claims to report a specific breaking news event that supposedly happened two months prior to the image date. The image does not depict the alleged combat or rescue scene described.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes an event reported on April 3, 2024. The image contains a visible date at the bottom. I need to read this date to check for consistency with the reporting timeline or publication date mentioned in the text overlay.",
+            "action": "VQA[What date is listed at the bottom left of the text overlay on the image?]",
+            "observation": "\n\nThe date listed at the bottom left is **MAY 24, 2024**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Although the date and subject match, it is prudent to verify the visual entities in the image to ensure the aircraft type is indeed an F-15E as described in the text (and not a generic fighter or the A-10 mentioned elsewhere in the text). Checking the specific image entity will confirm the details of the aircraft visual.",
+            "action": "Entity[image]",
+            "observation": "- **McDonnell Douglas/Boeing F-15E Strike Eagle (fighter aircraft)** — High certainty (distinctive twin-tail, two-seat canopy; headline also references “Strike Eagle”).  \n- **U.S. Air Force markings/tail code “OT” and serial “AF 91 0305” (partially readable as “91 305”)** — Medium–high certainty (visible on the vertical tail; exact digits slightly unclear).  \n- **USAF unit/wing emblem on tail (shield-style insignia)** — Medium certainty (emblem visible but too small to identify the specific unit).  \n- **Afterburners/exhaust flames** — High certainty (bright orange plumes from both engines).  \n- **Text/branding: “DEFENSE” + headline “STRIKE EAGLE DEMONSTRATES LETHAL REACH” + date “MAY 24, 2024 | SPECIAL REPORT”** — High certainty (clearly readable overlay text).  \n- **Mountain range landscape in background** — High certainty (snowy/rocky ridgeline along the bottom).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text fabricates a non-existent event, visuals contain synthetic AI debris and edited overlays that mismatch the core narrative.",
+    "notes": []
+  },
+  "error": null
+}

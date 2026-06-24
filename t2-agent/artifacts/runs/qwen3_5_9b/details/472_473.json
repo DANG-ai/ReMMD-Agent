@@ -1,0 +1,137 @@
+{
+  "index": 472,
+  "sample_id": "473",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1576.61,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article accurately reflects the source summary: early reports from ABC News and Military Times said a U.S. F-15E was shot down over Iran, one crew member was recovered, a search continued for the second, and an A-10 supporting the rescue effort was also hit. The reused file images are properly captioned as illustrative aircraft-type images and do not misrepresent themselves as scene-specific evidence.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/473",
+  "image_paths": [
+    "/path/to/ReMMDBench/473/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/473/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/473/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/473/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "473",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; T3 Misleading Context; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.7,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "The text also mentions a supporting A-10 aircraft crashing in Kuwait during the rescue mission. I will search for any reports of US military aircraft incidents in Kuwait around the claimed timeframe to see if this secondary detail corroborates the main story or is part of the same hallucination.",
+            "action": "Google[query: \"A-10 crashed Kuwait April 2026 US Air Force\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.3,
+        "best_trajectory": [
+          {
+            "thought": "The image clearly displays a flying fighter jet with active afterburners, showing no signs of being shot down or crashed. Additionally, the text cites a date in the future (2026), which suggests a fabrication, while the visual evidence directly contradicts the \"shot down\" narrative.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes an F-15E Strike Eagle. I need to verify the aircraft type in the image to see if it matches the description.",
+            "action": "VQA[What type of aircraft is depicted in the image?]",
+            "observation": "\n\nBased on the visual evidence, the aircraft depicted is an **F-15 Eagle** (specifically an **F-15C** variant).\n\nKey identifying features include:\n*   **Twin vertical stabilizers:** This distinguishes it from the single-tailed F-16.\n*   **Airframe shape:** The distinctive cross-fuselage intersection near the canopy is a signature of the F-15.\n*   **Markings:** The text **\"0T\"** on the tail stands for \"Operational Training,\" indicating it belongs to the 3rd Operational Training Squadron at Luke Air Force Base. The serial number **\"AF 86-185\"** corresponds to an F-15C aircraft based with the 481st Fighter Squadron at Nellis Air Force Base.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The VQA observation explicitly identifies the aircraft as an F-15C (Combat Eagle), whereas the text describes an F-15E (Strike Eagle). Given the specific serial number \"AF 86-185\" is also identified as an F-15C, and the text specifies \"F-15E\", these are distinct models.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.8,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.9,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.5,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a fabricated future event (2026 Iran shootdown) using real aircraft specs and photos from previous decades, creating a perfect mismatch between history and narrative (Time/Place mismatch).",
+    "notes": []
+  },
+  "error": null
+}

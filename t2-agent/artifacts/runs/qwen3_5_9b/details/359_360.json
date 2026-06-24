@@ -1,0 +1,140 @@
+{
+  "index": 359,
+  "sample_id": "360",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 902.67,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "文本所述与权威辟谣信息一致：针对网络上出现的“查分入口/查询通道”等不实消息，官方明确单招成绩、录取结果与通知以湖南省教育厅、湖南省教育考试院及各招生高校官方渠道为准，未授权社会机构对外发布或提供查询服务，并提醒考生不要在非官方页面填写身份证号、手机号、银行卡等敏感信息，结论与证据相符。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "教育考试与招生信息",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/360",
+  "image_paths": [
+    "/path/to/ReMMDBench/360/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/360/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "360",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.85,
+        "best_trajectory": [
+          {
+            "thought": "Need to cross-reference the image content and the news text. The image shows a press conference by Hunan Education Examination Authority debunking a '2026 Single Recruitment' rumor. I will search for reports on this specific press conference to verify the timeline and rumors addressed.",
+            "action": "Google[湖南省教育考试院新闻发布会 网传2026年湖南单招成绩查分道]",
+            "observation": "湖南省教育考试院: 关于公布湖南省2026年普通高校专升本招生考试成绩的公告 05/10; 2026年湖南省普通 ... 湘西州召开2026年教育考试暨高考学考中考安全工作会 05/14; 郴州市苏仙区：以 ... (http://jyt.hunan.gov.cn/jyt/sjyt/hnsjyksy/)\n网传“2026湖南单招成绩查分通道”？真相是……: 湖南省教育厅3月19日发布严正声明：近日，个别自媒体账号（如湖南湘微单招信息港）发布“2026湖南单招成绩查分通道”等不实消息，对广大考生和家长形成严重 ... (https://www.piyao.org.cn/20260320/3c934779232645658e3f017afef265e8/c.html)\n湖南省教育厅严正声明：未授权或委托任何社会机构发布单招相关信息: 近日，个别自媒体账号(如湖南湘微单招信息港)发布“2026湖南单招成绩查分通道”等不实消息，对广大考生和家长形成严重误导。对此，湖南省教育厅郑重声明：我省单 ... (https://news.eol.cn/yaowen/202603/t20260319_2723250.shtml)\n湖南省教育厅发布严正声明 - 招生信息网: 近日，个别自媒体账号（如湖南湘微单招信息港）发布“2026湖南单招成绩查分通道”等不实消息，对广大考生和家长形成严重误导。对此，湖南省教育厅郑重声明：我 ... (http://zsxx.cseptc.net/c/2026-03-19/13019.shtml)\n关于做好我省2026年高职院校单独招生工作具体事项的通知: 一、发布章程. 各高职院校2026年单招章程，经省教育厅学生处审核确认后，我院将于2026年1月25日前向社会统一公布，之后各高职院校才能在本校官网上对外公布。 (http://jyt.hunan.gov.cn/jyt/sjyt/hnsjyksy/web/ksyzcfg/202601/t20260116_33894948.html)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "The image prominently features a red banner reading \"Hunan Provincial Education Examination Authority Press Conference\", which matches the authority mentioned in the news text (湖南省教育考试院). The screen to the left displays text about \"Official Response\" to \"2026 Hunan Single Enrollment Score Query Channel\" rumors declaring them false information. This strongly supports the news text's warning about fake channels and official sources. I need to use the detection tool to extract this text and confirm the details.",
+            "action": "Detect[image]",
+            "observation": "- **总体观感**：这是一张看起来很真实的新闻/发布会现场照片（景深、光线、透视、噪点与压缩痕迹都自然），没有明显的“AI生成”常见错误（如畸形手指、错乱文字、怪异反光等）。\n\n- **明显的人为处理痕迹**：画面中多人的脸部被统一做了**方块模糊/马赛克遮挡**，边缘规整、模糊程度一致，这是典型的后期隐私处理，并非现场原貌。\n\n- **未见明显拼接或篡改**：  \n  - 背景横幅、投影文字、麦克风标识的透视与清晰度符合拍摄距离和景深变化；未见文字扭曲到不合理的程度。  \n  - 物体边缘（讲台、瓶装水、麦克风）没有明显的抠图白边、重影或不一致的光照方向。\n\n- **可能的常规新闻修图**：整体色彩和对比度略偏“新闻照片风格”的统一调色，但属于常见后期，不构成可疑伪造证据。\n\n**结论**：图像本身没有明显合成/伪造或AI生成迹象；唯一明确的编辑是对人物面部的马赛克（隐私保护）以及可能的轻度调色。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a live press conference of the \"Hunan Provincial Education Examination Authority\", which is the official body mentioned in the news text. The projected screen explicitly displays an \"Official Response\" correcting rumors about a \"2026 Hunan Single Enrollment Score Query Channel\", which matches the specific rumors mentioned in the text. The text on screen \"Please follow official channels\" directly supports the news text's warning. The visual consistency (microphones, banner, podium) confirms this is a legitimate official event, providing strong evidence for the news content.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Next, I need to check the content on the projection screen to confirm if it addresses the rumor about \"score query channels\" mentioned in the news text.",
+            "action": "VQA[What is the main headline displayed on the screen behind the speaker?]",
+            "observation": "\n\nThe main headline displayed on the screen is: **\"官方回应：网传‘2026年湖南单招成绩查分道’为不实信息\"**\n\nThis translates to: \"Official Response: Rumors online about the '2026 Hunan Single Enrollment Score Inquiry Channel' are false information.\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a warning about fake score inquiry channels published by the Hunan Provincial Education Examination Authority. The image shows a press conference with a banner explicitly stating \"Hunan Provincial Education Examination Authority Press Conference\" and a screen confirming the rumor about \"2026 Hunan Single Enrollment Score Inquiry Channel\" is false. This confirms the identity and the core message match perfectly.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.43088693800637673,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.19999999999999996,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

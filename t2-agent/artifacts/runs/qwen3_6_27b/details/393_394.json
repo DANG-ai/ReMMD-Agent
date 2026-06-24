@@ -1,0 +1,153 @@
+{
+  "index": 393,
+  "sample_id": "394",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2074.44,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article’s central account matches the available evidence: Walmart completed the Vizio acquisition, coverage and company framing centered on SmartCast/WatchFree+ and connected-TV advertising strategy, and the open-source software case is correctly treated as a separate legal matter. The images function as relevant illustrations and do not introduce conflicting factual claims.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/394",
+  "image_paths": [
+    "/path/to/ReMMDBench/394/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/394/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/394/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/394/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/394/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/394/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/394/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/394/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/394/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/394/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "394",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 10,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "I need to check the history of Vizio's ownership to see if Walmart ever acquired it. My memory suggests Crown Media owns it. I will search for \"Vizio acquisition history\" and \"Crown Media Vizio\" to contrast with the text's claim.",
+            "action": "Google[Who owns Vizio current]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I recall Vizio being acquired by Crown Media Holdings. If this is true, it would refute the claim that Walmart bought Vizio (unless there was a subsequent sale, which is unlikely). I will search for the Crown Media acquisition to establish the actual owner.",
+            "action": "Google[Crown Media acquires Vizio]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will check Wikipedia for information on Vizio's ownership and history of acquisitions to see if Walmart is mentioned as the owner.",
+            "action": "Wikipedia[Vizio]",
+            "observation": "Vizio, Inc. is an American designer of televisions, soundbars, and related software and accessories owned by Walmart since 2024. The company was founded in 2002 and is based in Irvine, California.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The Wikipedia observation explicitly states that Vizio is \"owned by Walmart since 2024.\" This directly supports the text's central claim that \"Walmart’s purchase of Vizio is now officially done\" and that it \"completed the acquisition of Vizio.\" The text is a detailed analysis of this specific event. Since the primary factual claim (ownership/acquisition) is confirmed by a high-quality source, I can conclude the text is supported.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.2,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The task instructions explicitly require using the Detect tool. I need to analyze the image to formally identify the logos and text present, which appear to be the Walmart spark and \"VIZIO\", to confirm the connection to the news text about the acquisition.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a clean, digitally designed graphic: a solid Walmart-blue background with the Walmart “spark” icon on the left, a thin vertical divider, and the “VIZIO” wordmark on the right.\n\n**Signs consistent with an authentic (non-AI) corporate graphic**\n- Edges are perfectly crisp and geometric; typography is uniform and consistent with brand vector artwork.\n- Flat colors with no photographic texture, lighting, or shadows—typical of a press/announcement slide.\n- No warping, inconsistent perspective, or irregular artifacts around the logos.\n\n**Possible editing/synthesis indicators**\n- It is clearly *digitally created* (vector/graphic design), not a real-world photograph.\n- No visible signs of AI-generation glitches (garbled text, uneven outlines) or crude compositing artifacts (haloing, mismatched resolution).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The observation confirms the image is a corporate graphic displaying the Walmart and Vizio logos side-by-side, which aligns perfectly with the news text describing Walmart's acquisition of Vizio. The image shows no signs of AI generation or manipulation, appearing as a standard press announcement graphic. Therefore, the image supports the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text describes the completion of Walmart's acquisition of Vizio. The image clearly displays the logos of both Walmart (the yellow spark) and Vizio side-by-side, which visually represents the partnership or acquisition discussed in the text. The content aligns perfectly.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.46415888336127786,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text is an AI-generated fabrication of a news article reporting on the Walmart-Vizio acquisition, presenting specific quotes and dates that are likely hallucinated or synthesized, while the accompanying images are authentic corporate graphics and product shots.",
+    "notes": []
+  },
+  "error": null
+}

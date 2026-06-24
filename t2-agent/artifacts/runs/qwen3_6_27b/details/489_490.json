@@ -1,0 +1,149 @@
+{
+  "index": 489,
+  "sample_id": "490",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1815.24,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article mixes real current USPS finance and shipping-price developments with older firearm-mailing litigation material presented in a way that feels newly relevant to the same ongoing 2026 policy debate. An edited document image and the article's framing blur chronology, so readers may incorrectly connect historical firearm records to the current USPS pricing and oversight story.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/490",
+  "image_paths": [
+    "/path/to/ReMMDBench/490/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/490/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/490/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "490",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific financial claims made in the news text regarding the USPS price increase. The text mentions a \"transportation-related, temporary price adjustment\" of \"8%\" for competitive products like Priority Mail Express, while First-Class Mail remains unchanged. I will search for this specific news event to confirm its accuracy.",
+            "action": "Google[USPS 8% price increase competitive products March 2025]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text mentions a specific \"8%\" price increase for competitive products and an email from ATF's \"Marvin Richardson\" to \"Neal McBride\". The image shows a legal filing dated \"March 18, 2025\" discussing an email from \"March 13, 2025\". My previous search for the price increase in March 2025 yielded no results, suggesting the date might be incorrect or the event is fictional. I need to verify the existence of the Marvin Richardson email and the 8% price increase, potentially looking for them in 2024 or earlier to see if the text has simply misdated them.",
+            "action": "Google[\"Marvin Richardson\" ATF \"firearm-mailing exception\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5499999999999999,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions that \"records circulating online have renewed attention on how USPS handles concealable firearms\" and specifically refers to \"screenshots of an old federal court filing and an email exchange about when those items could be mailed by federally licensed parties.\" The provided image is a legal document (a \"Motion for Leave to File Supplemental Authority\") that explicitly references a \"March 13, 2025 email\" from the ATF stating \"there is a firearm-mailing exception\" regarding Section 1715. This directly corroborates the news text's claim about an email exchange discussing firearm mailing exceptions for licensed parties. Therefore, the image supports the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text mentions records circulating online, specifically an \"email exchange about when those items could be mailed by federally licensed parties.\" The image shows a legal document with highlighted text referencing an email about a \"firearm-mailing exception.\" I should verify if the image text explicitly supports this description.",
+            "action": "VQA[Does the highlighted text in the document mention a \"firearm-mailing exception\" and an email from the ATF regarding Federal Firearm Licensees?]",
+            "observation": "\n\nYes, the highlighted text explicitly mentions both.\n\nIt states: \"And in a March 13, 2025 email, ATF's Chief Industry Operations Officer, Marvin Richardson informed Senior Vice President Neal McBride that 'there is a firearm-mailing exception'...\"\n\nIt further mentions \"The FFL's whom these communications were directed in a number of Plaintiff Gun Owners of America.\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes \"records circulating online\" including a \"screenshot of an old federal court filing and an email exchange about when those items could be mailed by federally licensed parties.\" The image displays a legal document (a Motion for Leave to File) with highlighted text explicitly mentioning a \"March 13, 2025 email\" from the ATF regarding a \"firearm-mailing exception\" for \"Federal Firearm Licensees ('FFL')\". The image serves as the visual evidence for the specific records described in the news text. The content of the image (legal filing about ATF email regarding firearm mailing) aligns perfectly with the text's description of circulated records regarding firearm mailing rules.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.27144176165949063,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.8,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates non-existent claims about USPS pricing increases and specific email contents (supported by \"no results\" search), while the document image features obvious visual edits like highlighting and a graphical border.",
+    "notes": []
+  },
+  "error": null
+}

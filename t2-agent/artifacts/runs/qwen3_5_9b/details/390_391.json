@@ -1,0 +1,142 @@
+{
+  "index": 390,
+  "sample_id": "391",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1028.5,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "L’article repose sur un noyau factuel crédible : un épisode de hantavirus Andes lié au MV Hondius, un suivi international des passagers, et un risque général faible pour le public avec surveillance ciblée des personnes exposées. En revanche, il amplifie légèrement le degré de mobilisation française déjà engagée et utilise des images qui suggèrent des opérations de terrain directement liées à ce cas sans démonstration claire, ce qui justifie un verdict Mostly True plutôt que True.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/391",
+  "image_paths": [
+    "/path/to/ReMMDBench/391/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/391/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/391/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/391/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "391",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.5,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a coastal scene with small fishing boats on the sand and a large vessel in the background. While the ship resembles an expedition cruise vessel, the news text explicitly claims the image depicts \"personnel sanitaires en combinaison sur un tarmac\" (health personnel in combination on a tarmac) and later \"agents masqués près d'un couloir d'évacuation aéroportuaire\" (masked agents near an airport evacuation corridor). The visual evidence of the sea and boats directly contradicts the captions' descriptions of an airport/tarmac setting. Additionally, the specific date mentioned in the text (May 2026) is in the future relative to current knowledge (the incident happened in 2021), making the textual claims about the timeline suspect.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a photo showing health personnel in suits on an airport tarmac. The provided image, however, shows a seascape with boats and a ship. I need to verify the visual content to confirm this discrepancy.",
+            "action": "VQA[Is the setting of this image an airport tarmac or a body of water?]",
+            "observation": "\n\nBased on the visual evidence, the setting of this image is a **body of water** (specifically, a coastal area or harbor).\n\nHere are the key indicators:\n*   **Vessels:** There is a large ship sailing in the background, a motorboat in the middle ground, and several small fishing boats pulled up on the sand in the foreground.\n*   **Surface:** The vast majority of the image shows blue-green liquid with ripples, which is clearly sea water, not pavement.\n*   **Features:** There is a rocky breakwater on the left side, which is a structure used to protect a harbor, not an airport.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To thoroughly verify the visual content and check for the presence of the specific ship (MV Hondius) or other entities mentioned in the text, I will extract the entities present in the image.",
+            "action": "Entity[image]",
+            "observation": "- Large passenger ship / cruise ship on the horizon (high certainty; distinct multi-deck profile).\n- Small motorboat/fishing boat in mid-water (high certainty).\n- Several small boats pulled up on the beach/shore in the foreground (high certainty).\n- Breakwater/rock jetty extending from the left (high certainty).\n- Navigation marker/light on the end of the breakwater (medium certainty; small vertical beacon-like object).\n- Buoy/sea marker near the cruise ship (medium certainty; small marker in water).\n- No clearly identifiable people (high certainty).\n- No readable, unambiguous brand logos or organization names (medium certainty; hull text exists but not legible enough to identify).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Although the setting has been identified as water and no people were found in the Entity extraction, explicitly querying for the specific subjects mentioned in the text's caption (health personnel in suits) will provide definitive negative evidence to confirm the mismatch before concluding the task.",
+            "action": "VQA[Are there health personnel in protective suits visible in this image?]",
+            "observation": "\n\nNo, there are no health personnel in protective suits visible in this image. The image shows a coastal scene with small boats on a beach, a small boat in the water, and a large cruise ship in the distance, but no people are clearly visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly describes health personnel in suits on an airport tarmac, while the image shows a seascape with boats and no people. The setting and subjects are completely different, providing sufficient evidence to conclude the task.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.2,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims to describe a real crisis involving the MV Hondius in May 2026 (a future date relative to the text's context), indicating fabrication of a non-existent event (T1), while the provided visuals appear to be generic stock images or unrelated photos from a mismatched time/event context (C2).",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,149 @@
+{
+  "index": 391,
+  "sample_id": "392",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1419.26,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "样本文本把“热搜与博主转述/网传物料”包装成“耀客传媒官方公众号发布公告并披露完整项目细节”，但未给出任何可核验的官方来源与证据支撑，关键公告内容属于凭空编造。同时配图海报为AI生成物，且海报小字指向“数字人形象合作/虚拟代言人计划”，与正文描述的“签约AI演员并进组参演拍摄”在语义上不一致，整体结论不成立。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "娱乐",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/392",
+  "image_paths": [
+    "/path/to/ReMMDBench/392/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/392/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "392",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "Based on the analysis, the image contains the Yule logo at the top, the headline '官宣签约 AI演员' (Official Announcement: Signing AI Actors), and the specific footer text '数字人形象合作 / 虚拟代言人计划' (Digital Human Image Cooperation / Virtual Ambassador Plan). The visual description matches the provided image exactly, supporting the news text's claim.",
+            "action": "Finish[IMAGE_SUPPORT] The image provides visual evidence that supports the news text. It displays the Yule ('娱乐-YULE') logo, the headline 'Official Announcement: Signing AI Actors', and the subtitle 'Digital Human Image Cooperation / Virtual Ambassador Plan', matching the description provided.",
+            "observation": "Could not parse action: Finish[IMAGE_SUPPORT] The image provides visual evidence that supports the news text. It displays the Yule ('娱乐-YULE') logo, the headline 'Official Announcement: Signing AI Actors', and the subtitle 'Digital Human Image Cooperation / Virtual Ambassador Plan', matching the description provided.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image footer contains the text '数字人形象合作 / 虚拟代言人计划', which matches the specific details mentioned in the news text. The presence of the poster serves as the required proof that the text is not a rumor, verifying the claim.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Based on the news text, the company is referred to as \"Yake Media\" (耀客传媒) and the project is called \"Yake · AI Performance Plan\". The provided image contains text \"YULE\" in the logo and copyright. This suggests a name mismatch. I will use the Entity tool to extract text from the image to confirm the entity names before finishing. I will also use VQA to specifically query about the logo text.",
+            "action": "Entity[image]",
+            "observation": "- **“娱乐‑YULE” / YULE (logo/brand mark at top)** — High certainty (clearly visible text + logo).\n- **Chinese headline: “官宣签约 AI演员” (Official announcement: signing AI actors)** — High certainty (large, legible text).\n- **English subtitle: “OFFICIAL ANNOUNCEMENT: SIGNING AI ACTORS”** — High certainty (legible).\n- **Tagline/Project name: “代号：#智耀计划#”** — High certainty (legible).\n- **Chinese line: “数字人形象合作 / 虚拟代言人计划”** — High certainty (legible).\n- **English line: “DIGITAL HUMAN COOPERATION / VIRTUAL AMBASSADOR PLAN”** — High certainty (legible).\n- **Date: “2026.03”** — High certainty (legible).\n- **Copyright/organization: “© 2026 YULE ENTERTAINMENT MEDIA CO., LTD.” (and Chinese rights line)** — High certainty (legible).\n- **Two human-like figures (female-presenting left, male-presenting right), faces intentionally blurred** — High certainty (clearly depicted as stylized/CG “digital human” characters; not identifiable as real people).\n- **Futuristic sci‑fi corridor/interior + holographic HUD/network graphics around figures** — Medium–high certainty (visual context; no specific real-world location identifiable).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To be absolutely certain, I will use VQA to ask for the specific company name displayed on the image and confirm if it matches \"Yake Media\" or \"耀客传媒\". Although Entity already showed \"YULE\", a direct VQA question ensures I haven't missed any other branding related to \"Yake\".",
+            "action": "VQA[What company name is displayed on the logo at the top?]",
+            "observation": "\n\nThe company name displayed on the logo at the top is **YULE** (specifically, it reads **/>娱乐-YULE**).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Entity extraction has confirmed the image displays the company name as 'YULE' (优乐娱乐) and the project name as '#智耀计划#'. The news text explicitly states the company is '耀客传媒' (Yake Media) and the project is '耀客·AI表演计划'. The company name and project name are distinct. While this already indicates a Mismatch, I will propose a VQA action to verify the project name text in the image one more time to ensure no subtle translation errors exist, before confirming the final judgment.",
+            "action": "VQA[What is the Chinese project code or name displayed in the center-lower section of the poster?]",
+            "observation": "\n\nThe Chinese project code or name displayed in the center-lower section is **#智耀计划#** (Zhì Yào Jì Huà), which translates to \"Intelligent Splendor Plan\" or \"Smart Glory Plan\". It is preceded by the characters \"代号\" (Dàimào), meaning \"Codename\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Entity extraction has identified the company as \"YULE ENTERTAINMENT MEDIA CO., LTD.\" and the project as \"#智耀计划#\" (#Smart Glory Plan). The news text specifies \"耀客传媒\" (Yake Media) and \"Yake · AI Performance Plan\". The company name 'Yule' differs from 'Yake', and the project names are completely different. This constitutes a definitive mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.21544346900318836,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.8,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "The text fabricates an announcement by \"Yao Ke,\" while the image displays a different entity (\"Yule\") and project name, indicating entity fabrication and contextual mismatch; the image itself is clearly AI-generated.",
+    "notes": []
+  },
+  "error": null
+}

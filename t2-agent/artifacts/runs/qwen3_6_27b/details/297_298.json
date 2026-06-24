@@ -1,0 +1,162 @@
+{
+  "index": 297,
+  "sample_id": "298",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2104.52,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The real event is a youth-focused SDG discussion forum, not an official launch of a new climate compliance instrument. The sample falsely manufactures that narrative through fabricated/edited visuals and captions, while repurposing a genuine UN event and venue to give the nonexistent framework an official context.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/298",
+  "image_paths": [
+    "/path/to/ReMMDBench/298/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/298/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/298/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "298",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the details of the \"ECOSOC Youth Forum 2026\" mentioned in both the text and the image. The text claims the forum runs from April 14 to 16, 2026. I will search for the official schedule and agenda of the ECOSOC Youth Forum to see if a 2026 event is scheduled, what the dates are, and what the main topics are (specifically regarding any \"Pact\" or binding instruments). This will help determine if the text is a prediction, a typo (e.g., 2024), or fake news.",
+            "action": "Google[ECOSOC Youth Forum 2026 schedule agenda]",
+            "observation": "ECOSOC Youth Forum 2026 | Economic and Social Council: The ECOSOC Youth Forum took place from 14 to 16 April 2026 at United Nations Headquarters in New York. Held under the theme of the 2026 High-level Political ... (https://ecosoc.un.org/en/what-we-do/ecosoc-youth-forum/about-youth-forum/ecosoc-youth-forum-2026)\nYouth forum | Economic and Social Council - the United Nations: The Economic and Social Council (ECOSOC) Youth Forum took place on 14-16 April 2026.The Forum provides a platform for young people to engage ... (https://ecosoc.un.org/en/events/2026/youth-forum)\n(Part 1) ECOSOC Youth Forum 2026 - Opening, Moderated…: The Economic and Social Council (ECOSOC) Youth Forum is taking place from 14 to 16 April 2026. The forum will focus on transformative, ... (https://webtv.un.org/en/asset/k1j/k1jmo4hyif)\nUpcoming Events | Economic and Social Council - the United Nations: The ECOSOC Operational Activities for Development Segment (OAS) will be held 1-3 June 2026.The OAS meets annually to provide overall coordination and guidance ... (https://ecosoc.un.org/en/events)\n(Part 5) ECOSOC Youth Forum 2026 - UN Web TV: The Economic and Social Council (ECOSOC) Youth Forum is taking place from 14 to 16 April 2026. The forum will focus on transformative, ... (https://webtv.un.org/en/asset/k1u/k1uneeyzh3)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify if the \"Global Youth Climate Compliance Pact\" shown in the image is a real part of the ECOSOC Youth Forum 2026 agenda or if it's a fictional/AI-generated element. The text claims there is no \"binding policy instrument\" being adopted, which contradicts the title \"Compliance Pact\" if it is real and binding. Searching for this specific phrase will clarify its existence.",
+            "action": "Google[\"Global Youth Climate Compliance Pact\" ECOSOC]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Search for the exact phrase \"Global Youth Climate Compliance Pact\" without the ECOSOC qualifier to verify if this is a real initiative or document that simply isn't indexed with the forum name, or if it is a hallucinated/fake title appearing in the image.",
+            "action": "Google[\"Global Youth Climate Compliance Pact\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes the ECOSOC Youth Forum 2026, stating it runs from April 14 to 16, 2026, and focuses on SDGs without adopting a binding policy instrument. My Google searches confirmed the dates and location of the forum. Searches for the \"Global Youth Climate Compliance Pact\" shown on the screen in the image yielded no results, suggesting the text on the screen is likely hallucinated or fictional. The text's claim that there is \"not the adoption of any new binding policy instrument\" aligns with the absence of this \"Pact\" in search results. The text accurately describes the event's details (dates, location, general theme) found in official UN sources. Therefore, the text is factually supported.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text states that the public agenda is centered on SDG progress and youth-led solutions, explicitly noting it is \"not the adoption of any new binding policy instrument.\" However, the large screen in the image displays the title \"Global Youth Climate Compliance Pact,\" which implies a binding agreement or policy instrument. This contradicts the text's assertion that no such instrument is being adopted. Therefore, the image refutes the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text states that the forum's agenda is centered on SDG progress and youth-led solutions, explicitly mentioning it is \"not the adoption of any new binding policy instrument.\" However, the large screen in the image appears to display a title involving a \"Pact,\" which implies a binding agreement. I need to verify the exact text on the screen to confirm this contradiction.",
+            "action": "VQA[What is the main title text displayed on the large screen at the front of the room?]",
+            "observation": "\n\nThe main title text displayed on the large screen is:\n\n**Global Youth Climate Compliance Pact**\n\nBelow that, it also says \"ECOSOC Youth Forum 2026\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes the event as the \"ECOSOC Youth Forum 2026\" and mentions it focuses on \"SDG progress\" and \"youth-led solutions.\" The image confirms the event name and year on the screen. However, the specific title \"Global Youth Climate Compliance Pact\" is not mentioned in the text and contradicts the statement that no binding policy is being adopted. Therefore, the image and text do not match.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.0,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The images depict a \"Global Youth Climate Compliance Pact\" or \"Framework\" which likely does not exist (synthetic/fabricated visual content), directly contradicting the text which explicitly states the agenda is \"not the adoption of any new binding policy instrument\" (semantic inconsistency).",
+    "notes": []
+  },
+  "error": null
+}

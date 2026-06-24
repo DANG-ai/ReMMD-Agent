@@ -1,0 +1,159 @@
+{
+  "index": 443,
+  "sample_id": "444",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1295.24,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "Die Grundaussage über Klingbeils Drängen auf staatliche Eingriffe bei hohen Energiepreisen ist durch das Quellmaterial gedeckt. Irreführend ist jedoch, dass der Text seine Position als deutlich geschlosseneren und operativ weiter entwickelten Drei-Punkte-Kurs darstellt, während die Bilder zusätzlich redaktionell nachbearbeitet wurden, um die Krisenatmosphäre zu verstärken.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/444",
+  "image_paths": [
+    "/path/to/ReMMDBench/444/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/444/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/444/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/444/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/444/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/444/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/444/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/444/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/444/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/444/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "444",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if Lars Klingbeil is the SPD-Chef (SPD Leader) and if the text describes a valid political situation in Berlin regarding energy prices. The text claims he is the SPD leader, but my knowledge base indicates he is an energy expert/bank director. I will search his actual role.",
+            "action": "Wikipedia[Lars Klingbeil]",
+            "observation": "No summary available. Similar entities: Lars Klingbeil, Social Democratic Party of Germany, Next German federal election, 2025 German federal election, Klingbeil",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the identity of Lars Klingbeil and specifically check if he is the SPD-Chef (SPD Chairman) as claimed in the text, since the Wikipedia search yielded no prominent summary for him alone. I will search for his actual job title and political affiliation in Germany.",
+            "action": "Google[Lars Klingbeil SPD]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "Based on the visible content of the image, there is a direct contradiction with the news text. The text states the scene is in Berlin, at the Finance Ministry, involving Lars Klingbeil in a closed discussion. The image indisputably shows a \"Spring Meetings 2026 | Washington DC\" banner from the World Bank Group. The location, time/event, and subject matter are completely different. This is a clear visual refutation of the text's claims regarding the setting and event.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a graphic of men in suits standing in front of a banner that reads \"SPRING MEETINGS 2026 | WASHINGTON DC\". This seems to be a future event or potentially AI-generated imagery, contradicting the news text which discusses a meeting in Berlin. I need to confirm the location mentioned in the image versus the text.",
+            "action": "VQA[What text is written on the banner in the background of the image?]",
+            "observation": "\n\nThe banner in the background displays the following text:\n\n**SPRING MEETINGS**\n**2026 | WASHINGTON DC**\n**INTERNATIONAL MONETARY**\n**WORLD BANK GROUP**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will ask a direct question about the location in the image to definitively prove it is not Berlin as described in the text.",
+            "action": "VQA[Where is this photo taken? refused: \"I need to see the text on the banner.\"]",
+            "observation": "\n\nBased on the banner in the upper left background, this photo is taken in **Washington D.C.** The text on the banner explicitly states \"WASHINGTON D.\" (and full \"WASHINGTON D.C.\" is visible if you look closely at the top banner). The banner also identifies the event as \"SPRING MEETINGS 2026\" hosted by the \"INTERNATIONAL MONETARY FUND / WORLD BANK GROUP.\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image shows a \"Spring Meetings 2026\" banner in Washington D.C., whereas the text describes a political debate in Berlin involving Lars Klingbeil and the Chancellor's Office. The locations do not match.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.1,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

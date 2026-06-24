@@ -1,0 +1,142 @@
+{
+  "index": 148,
+  "sample_id": "149",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": true,
+  "elapsed_seconds": 1597.03,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "地震の発生時刻・規模・津波なしといった基礎事実には実在の裏づけがある一方、添付画像は編集で危険度や揺れの広がりを強調しており、本文の「画像1枚目や分布図に関心が集まる」という導きが過大な意味づけを与えている。結果として、公的発表の確認を促す形を取りながらも、前兆性や実際以上の揺れを印象づけるミスリードが支配的である。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/149",
+  "image_paths": [
+    "/path/to/ReMMDBench/149/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/149/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "149",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T2 Distortion; V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.33,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.33,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Based on my visual analysis, the graph shows data plotted over May dates with relatively high values (blue line fluctuating between 3000 and 6000), which aligns with the text's claim about \"electromagnetic observation graphs\" showing \"high values\" during April-May.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.34,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Verify the legend of the chart to determine if it matches the text's description of an \"electromagnetic wave observation graph\". The labels \"total\", \"average\", \"average hour\" might be descriptive of electricity consumption rather than EM waves.",
+            "action": "VQA[question=\"What is the text in the legend of the chart?\"]",
+            "observation": "\n\nThe text in the legend of the chart is:\n- total\n- average\n- average hour",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes the graph as an \"electromagnetic wave observation graph\". The image's legend shows generic labels \"total\", \"average\", and \"average hour\" which do not confirm this specific subject. It is likely a mismatch.",
+            "action": "Entity[image=\"electromagnetic\"]",
+            "observation": "\n\nHere are the visible entities in the image:\n\n**Text Labels & Data Series:**\n*   **\"total\"**: Blue line label in the legend (top center).\n*   **\"average\"**: Red line label in the legend (top center).\n*   **\"average hour\"**: Yellow line label in the legend (top center).\n\n**Axis & Scale Entities:**\n*   **X-Axis Timestamps**: Dates and times ranging from **2026/05/05** to **2026/05/07** (e.g., \"2026/05/05 6:00:00\").\n*   **Y-Axis Numerical Scale**: Intervals of 0, 1000, 2000, 3000, up to 7000.\n\n**Graphical Elements:**\n*   **Line Chart**: The primary visual format displaying data trends.\n*   **Pink Shaded Region**: A horizontal area at the top of the chart (above the 6000 mark).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the search for 'electromagnetic' returned no entities and the legend contains only generic statistical labels ('total', 'average', 'average hour'), I will verify the chart title to see if it explicitly states the chart is about electromagnetic waves, which is a required match criteria.",
+            "action": "VQA[question=\"Does the chart title or y-axis label mention 'electromagnetic' or 'earthquake'?\" ]",
+            "observation": "\n\nNo, neither the chart title (which is absent) nor the y-axis label mentions 'electromagnetic' or 'earthquake'. The chart appears to be a usage or traffic graph with a legend showing 'total', 'average', and 'average hour'.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA confirmed the absence of 'electromagnetic' or 'earthquake' labels and the legend contains only generic statistical terms ('total', 'average', 'average hour'). This is insufficient to confirm it is an EM wave graph. I will finish with a MISMATCH.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

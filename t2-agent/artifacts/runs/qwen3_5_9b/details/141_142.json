@@ -1,0 +1,138 @@
+{
+  "index": 141,
+  "sample_id": "142",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 595.08,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本对“短时明亮光照可能带来提神效应、并非人人适用”这一科学部分基本成立，但同时把社交平台经验帖的发酵链路包装成“多地医院门诊宣教/生活方式处方的统一建议”，再配合经过编辑的“医院宣教图”式截图，造成来源与场景语境被明显抬升与错置，因此整体呈现为真假混合。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "健康养生",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/142",
+  "image_paths": [
+    "/path/to/ReMMDBench/142/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/142/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/142/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/142/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "142",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T2 Distortion; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "First, I need to verify if the claim \"Department doctor recommendation: Replace lunch break with afternoon sun\" is a widely circulated viral image and whether medical professionals actually support this specific advice. The news text alleges it is a forged image. I will search for the specific headline and image content to check its origin and popularity.",
+            "action": "Google[门诊医生建议 中午晒太阳代替午休 科普](field=title)",
+            "observation": "Could not parse action: Google[门诊医生建议 中午晒太阳代替午休 科普](field=title)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify if the news text is consistent with the image. The text discusses how \"midday sunbathing replaces napping\" advice is spreading via screenshots that look like official hospital documents but are actually social media posts. The image shows exactly this: a social media post with a title claiming doctor advice, a specific date (June 3, 2021), and a red stamp that mimics a hospital seal (though likely manipulated or specific to a local instance). This matches the text's description of the viral content perfectly.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.41601676461038084,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.2,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.8,
+        "T3 Misleading Context": 0.2,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.2
+      }
+    },
+    "taxonomy_rationale": "The text headline exaggerates medical advice (T2), the image is a manipulated social media screenshot (V2), and there is a mismatch in place (Beijing vs. Yuanzhou) and content between the specific text body and provided images (C2).",
+    "notes": []
+  },
+  "error": null
+}

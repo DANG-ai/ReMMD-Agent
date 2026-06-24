@@ -1,0 +1,118 @@
+{
+  "index": 185,
+  "sample_id": "186",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 3827.33,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "该样本文本主要是在准确转述一则可核实存在的 X 帖文，并对账号属性、是否提供证据以及应谨慎看待网络爆料作出审慎描述。现有原始素材与图片均支持这些表述，且文本没有把帖文中的自述内容当作已被证实的事实，因此整体属实。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/186",
+  "image_paths": [
+    "/path/to/ReMMDBench/186/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/186/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "186",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The image contains a table of design features (Back/Forward buttons, virtual keyboard) and large red text stating \"Steve Jobs Didn't just steal the designs HE PLAGURIZED!\". The bottom text identifies the author as \"James Wilbur Sager III\". This directly corroborates the news report about James Sager claiming designs and accusing Steve Jobs.",
+            "action": "Detect[image]",
+            "observation": "- **整体像是“二次加工的拼贴图”**：底图是一张纸质文档/扫描件（可见纸面质感、装订孔、略微倾斜与阴影），但上面叠加了大量后期元素：醒目的彩色大字标题、右侧竖排红字、蓝色署名、紫色框线与箭头等，这些叠加层与底图的扫描噪点/纸张纹理不一致，明显为数字添加。  \n- **字体与排版不统一**：叠加文字（紫、红、蓝）使用的字体、粗细、抗锯齿边缘与底文档的印刷字体差异很大，且位置“压在”底图之上，没有随纸面透视或扫描变形同步变化，符合后期覆盖特征。  \n- **标注框/箭头呈“图形工具”风格**：紫色矩形框和箭头边缘干净、颜色饱和，像截图后用标注工具画上去的，不像原始文档的一部分。  \n- **没有明显的AI生成痕迹**：未见常见的生成式图像错误（例如文字扭曲不可读、结构不合逻辑的细节、重复纹理等）。底层文档内容可读且呈扫描件特征，更像真实材料被再编辑。  \n\n结论：图像**底层可能源自真实文档/扫描件**，但当前这张图**明显经过后期编辑与添加大量说明性/指控性文字与标注**，属于“真实底图 + 数字加工”的传播物，而不是原始、未经处理的证据图。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "While the image confirms the identity of James Sager and his claims of design invention, there are discrepancies with the specific details in the news text. The news text states the post mentions \"Cook and Pichai\" joining forces, but the image explicitly accuses \"Steve Jobs\". Furthermore, the news text dates the post to April 22, 2026, which is a future date, potentially indicating the news report is fabricated or contains a significant error. The image is a processed collage on a scanned document, which might be an old artifact used in a misleading context. These inconsistencies could lead to a REFUTE verdict if strict adherence to the text's specific names and date is required.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions \"James Sager\" claiming design ownership. The image explicitly names \"James Wilbur Sager III\" and shows a document where he claims \"my Virtual Keyboard I invented\" and accuses \"Steve Jobs\" of plagiarism. This aligns with the text's report that James Sager claims ownership of smartphone designs and alleges wrongdoing by Apple leadership. The specific names (Cook/Pichai vs Jobs) refer to the same entity (Apple) across different times or contexts, but the core claim of design theft/invention matches perfectly.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.8,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 1.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image is a manipulated collage with added accusatory text (V2) that exaggerates the significance of the design document to claim corporate theft and plagiarism (T2).",
+    "notes": []
+  },
+  "error": null
+}

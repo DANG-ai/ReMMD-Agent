@@ -1,0 +1,149 @@
+{
+  "index": 343,
+  "sample_id": "344",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2116.03,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article's claims align with the provided source summary: Inter Miami beat Orlando City 4-2 after a four-goal second half, Messi scored twice, the win was described as the club's first at Inter&Co Stadium, and social posts framed it as an Eastern Conference home-and-away milestone. The reused match images are consistent with that event and do not introduce any visual or cross-modal distortion.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/344",
+  "image_paths": [
+    "/path/to/ReMMDBench/344/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/344/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "344",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the factual claims about the match between Inter Miami and Orlando City on March 1, 2026, specifically the score (4-2) and the location. The date suggests a potential hallucination or pseudo-news, as matches in 2026 are likely in the future relative to my training cutoff. I should check the most recent Inter Miami vs. Orlando City matches to see if this description aligns or if it is a fabrication.",
+            "action": "Google[Inter Miami responded from 2-0 down 4-2 Orlando City March 2026]",
+            "observation": "Orlando City SC drops 4-2 result to intrastate rivals Inter Miami CF: ORLANDO, Fla. (March 1, 2026) – Orlando City SC (0-2-0, 0 points) fell to Inter Miami CF (1-1-0, 3 points) on Sunday night at Inter&Co ... (https://www.orlandocitysc.com/news/match-report-orlando-city-sc-drops-4-2-result-to-intrastate-rivals-inter-miami-cf)\nMessi and Inter Miami fall to Orlando City, making it four games ...: Leo Messi close calls Inter Miami beat Orlando City 4-2 on Sunday, March 1, 2026 at Inter&Co Stadium. more. (https://www.instagram.com/reel/DX28hmvvqsC/)\nOrlando 2-4 Miami (Mar 1, 2026) Final Score - ESPN: ... Inter Miami CF rallied to beat Orlando City SC 4-2 on Sunday night. Mar 1, 2026, 08:58 pm - ESPN News Services. Match Timeline. Orlando City SC. (https://www.espn.com/soccer/match/_/gameId/761467/inter-miami-cf-orlando-city-sc)\nInter Miami beats Orlando City 4-2 - Facebook: Lionel Messi scores his first two goals of 2026 as Inter Miami come back from down 2-0 to beat Orlando City 4-2 #lionelmessi #fabriziojunior ... (https://www.facebook.com/groups/724777891426697/posts/2109438992960573/)\nMLS NEXT PRO: Orlando City B vs Inter Miami CF II | March 22, 2026: MLS NEXT PRO: Orlando City B vs Inter Miami CF II | March 22, 2026. 14K views · Streamed 1 month ago ...more ... (https://www.youtube.com/watch?v=x8qPNexPO28)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search results include headlines explicitly mentioning \"Messi scores his first two goals of 2026 as Inter Miami come back from down 2-0\" and \"Orlando City SC drops 4-2 result to intrastate rivals Inter Miami CF\" dated March 1, 2026. These results provide direct evidence supporting the score, the players involved, and the match outcome described in the text. Given the strong alignment between the text and the search result snippets from club and major sports news sources, the text is supported.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims the event occurred on \"March 1, 2026\". As an AI model with a knowledge cutoff prior to this date (2025), this date is in the future and represents a hallucinated future event. While the image shows an Inter Miami vs Orlando City match (pink jerseys vs purple fans), the specific future date and specific match outcome (4-2 win) are unverified. The claim is likely false.",
+            "action": "Tool[Finish[IMAGE_REFUTE]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims the match occurred on \"March 1, 2026\". Since the current year is 2025 (based on knowledge cutoff), this is a future date and logically impossible. Additionally, the image shows players like Messi and Allende, confirming a match, but the text's specific claim of a 2026 date is a hallucination. Therefore, I can safely refute the claim based on this temporal impossibility.",
+            "action": "Tool[Finish[IMAGE_REFUTE]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.5,
+        "best_value": 0.35,
+        "best_trajectory": [
+          {
+            "thought": "To verify the specific entities mentioned in the news text, such as 'Messi' and 'Orlando City' fans, I will use the Entity tool to extract named entities and personnel from the image.",
+            "action": "Entity[image]",
+            "observation": "- **Lionel Messi (Inter Miami CF)** — **High certainty** (shirt text “MESSI” and number **10** visible).\n- **T. Allende (Inter Miami CF)** — **High certainty** (shirt text “ALLENDE” and number **21** visible).\n- **M. Silva (Inter Miami CF)** — **High certainty** (shirt text “M. SILVA” and number **16** visible).\n- **Inter Miami CF** — **High certainty** (team wearing the club’s distinctive **pink** kit with matching name/number styling).\n- **Audi logo** — **High certainty** (large **four-ring** logo on pitch-side LED board).\n- **Orlando Health (sponsor text)** — **High certainty** (“ORLANDO HEALTH” readable on multiple purple shirts in the crowd).\n- **Orlando City SC (supporters / apparel)** — **Medium-high certainty** (crowd wearing **purple** gear consistent with Orlando City colors; “Orlando Health” sponsor aligns with Orlando City jerseys).\n- **Soccer stadium setting (stands, railings, pitch-side advertising board)** — **High certainty** (clearly a match environment with spectators and LED boards).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The entity extraction confirmed Messi (Inter Miami), Allende (Inter Miami), and Orlando City fans (purple gear) aligning perfectly with the news text. The image shows a victory celebration consistent with the text's narrative of Inter Miami winning in Orlando, even though specific scores and dates are not visually verifiable. Given the strong alignment of all verifiable entities and the context (Inter Miami players celebrating with opponents' fans in a stadium), I am ready to conclude the cross-modal matching as a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7113786608980126,
+      "p_fake_text": 0.19999999999999996,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.5,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.51,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text claims a future match on March 1, 2026 (fabrication/context mismatch), and the image displays BTQ watermarks characteristic of AI-generated synthetic content.",
+    "notes": []
+  },
+  "error": null
+}

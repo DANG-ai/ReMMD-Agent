@@ -1,0 +1,146 @@
+{
+  "index": 379,
+  "sample_id": "380",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 466.17,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion"
+    ],
+    "rationale": "Die wesentlichen überprüfbaren Fakten zu Spielstand, Zeitpunkt und Personal des Doppelwechsels sowie zum Fanmarsch stimmen mit dem Quellmaterial überein. Leicht irreführend ist jedoch, dass der Text die taktische Tragweite des Wechsels mehrfach als klar offensiven Umbau und starkes Signal überhöht, obwohl die Quelle dafür nur den Wechsel selbst und den Stand von 0:1 belegt.",
+    "language_code": "de",
+    "region_code": "germany",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/380",
+  "image_paths": [
+    "/path/to/ReMMDBench/380/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/380/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/380/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/380/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "380",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=True | taxonomy=V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.20000000000000004,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific Bundesliga match between VfL Wolfsburg and FC Bayern on May 9, 2026. It explicitly states that Christian Eriksen was playing and was substituted in the 67th minute. However, based on real-world football knowledge, Christian Eriksen signed a contract with VfL Wolfsburg that expired in June 2025. He would not have been playing for Wolfsburg in the 2025/26 season (May 2026). This makes the core premise of the news text factually impossible. Additionally, the image shows Eriksen with a rainbow arm band, which aligns with his public persona, but the timeline of the match described is incorrect relative to the player's career history.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "First, I need to verify the team identity and colors mentioned in the text against the image. The text describes a match for VfL Wolfsburg in green and white. The image shows a player in a green jersey. I will ask the VQA tool to confirm the color of the jersey to see if it matches the text description.",
+            "action": "VQA[What is the color of the jersey worn by the player?]",
+            "observation": "\n\nThe jersey worn by the player is green.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the player's identity and attire details against the text. The text mentions Christian Eriksen playing for Wolfsburg. I will try to use the Entity tool to retrieve metadata or a description of the image to see if it names the player or confirms the context of the match.",
+            "action": "Entity[image]",
+            "observation": "- **VfL Wolfsburg (football club crest “W”)** on the chest — **High certainty** (distinct circular “W” badge).\n- **Volkswagen (VW) logo** on the shirt front — **High certainty** (large stylized “VW” mark).\n- **Nike swoosh** on the jersey — **High certainty**.\n- **Rainbow captain’s armband / pride armband** — **High certainty** (multicolor rainbow stripes).\n- **Football/soccer player (male-presenting)** — **High certainty** (athlete in kit), **identity not determinable** from this image (face is obscured).\n- **Stadium/arena background (out-of-focus)** — **Medium certainty** (lighting/blur typical of a sports venue).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a match for VfL Wolfsburg, mentioning their green and white colors. The image shows a player jersey with the VfL Wolfsburg crest and Volkswagen logo, which confirms the team identity mentioned in the text. The green jersey matches the team colors mentioned. The text mentions the match context and the player involvement.",
+            "action": "MATCH",
+            "observation": "Could not parse action: MATCH",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the previous Entity tool result and VQA check, the visual evidence (green jersey, Wolfsburg crest) strongly aligns with the text describing a VfL Wolfsburg match. The previous `MATCH` action failed due to syntax. I will retry the finish command with the correct tool format to conclude the task.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.865349742184445,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.2,
+        "T3 Misleading Context": 0.6,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.5,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.3
+      }
+    },
+    "taxonomy_rationale": "The text contains a future date (2026) conflicting with real-world imagery (likely from 2023/2024) and protest-related symbols (rainbow armband) not mentioned in the text, indicating visual editing and contextual mismatch.",
+    "notes": []
+  },
+  "error": null
+}

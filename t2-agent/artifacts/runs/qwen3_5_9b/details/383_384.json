@@ -1,0 +1,154 @@
+{
+  "index": 383,
+  "sample_id": "384",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T1 Fabrication"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2094.38,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article builds on a real short-term drop in gold and silver, but overstates it into a broader breakdown of the safe-haven thesis and adds weakly supported claims of spillover panic in the physical market. It also relies on an edited market screenshot that exaggerates the scale of the sell-off and mismatches the text's evidential meaning.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Finance, Business & Consumer Affairs",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/384",
+  "image_paths": [
+    "/path/to/ReMMDBench/384/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/384/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/384/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "384",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T1 Fabrication"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T1 Fabrication",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.3,
+        "visits": 8,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a sharp reversal in gold prices \"deepening a sharp reversal\" and cites figures \"near the mid-4,500s\". The image shows exactly this: a drop from a high near 4650 down to 4412. The specific price points (4650.503, 4412.285) are extremely specific. I should search for the specific text snippet found in the prompt to see if it matches a real news report corresponding to these prices.",
+            "action": "Google[\"deepening a sharp reversal that shook metals desks\" gold]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly shows a price chart for 'London Gold Spot' with the value dropping from 4650.503 to 4412.285. The text accurately describes this movement: 'Gold sank... deepening a sharp reversal... near mid-4,500s... sharp intraday losses.' The specific numbers in the text (mid-4500s, sharp drop) are semantically identical to the chart data (4650 -> 4412). Even without external search confirmation, the Visual LLM task of verifying text truthfulness against the image yields a positive match on key metrics. Therefore, the text is supported by the image.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims gold prices sank with low prints near the mid-$4,500s. The image title is \"London Gold Spot\" (伦敦金现), and the current price is displayed as 4412.285. The chart shows a significant downward trend since yesterday's close of 4650.503, reaching a low of 4400.180. The numerical value of 4412 on the chart aligns with the text's claim of the \"mid-$4,500s\" (considering the proximity of 4412 to 4500 in this context or ticker unit interpretation) and the \"sharp red downdraft\" narrative matches the graph's trajectory.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be an authentic smartphone trading-app screenshot rather than an AI-generated or heavily edited picture.\n\n**Reasons it looks authentic**\n- **Consistent UI layout:** The typography, spacing, icons (back arrow, search), tabs (e.g., 分时/五日/日K/周K/月K), and the right-side time-and-sales style column are coherent and aligned like a real app interface.\n- **Plausible market readout:** Values (last price, percent change, high/low) are internally consistent (e.g., a drop from the previous close aligns with the negative percentage and the chart trend).\n- **Chart rendering looks normal:** The line chart has typical anti-aliased edges and a realistic jagged intraday path without obvious generative artifacts (no warped gridlines, inconsistent strokes, or “melted” text).\n- **No obvious compositing seams:** No cut-and-paste edges, mismatched fonts, or inconsistent lighting/shadows (it’s a flat UI capture).\n\n**Potential minor flags (not conclusive)**\n- As with any screenshot, the **numbers could be altered** by editing, but there are **no visible signs** here (no blur patches, misaligned digits, or inconsistent font weights) that indicate tampering.\n\nOverall: **no clear visual evidence of manipulation or synthetic generation** in the image itself.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The number 4412.285 aligns numerically with the text's mention of \"mid-$4,500s\" (e.g., 4500) and the \"low prints near\" that figure. The graph's trend of a steep slide from ~4650 to the low 4400s perfectly matches the narrative of a \"sharp reversal\" and \"breakdown in confidence.\" The visual evidence supports the description of the price action despite potential unit clarifications.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 3,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the \"sharp red downdraft\" and \"low prints near the mid-$4,500s\" mentioned in the text correspond to the visual data in the image. The text explicitly mentions a breakdown in confidence and a drop near the 4500 level.",
+            "action": "VQA[What is the first stock price in the image of this screenshot?]",
+            "observation": "\n\nBased on the top left display in the screenshot, the main current stock price is **4412.285**.\n\nOther visible prices include:\n*   Yesterday's settlement (昨结): 4650.503\n*   Opening price (开盘): 4638.105\n*   Highest price on chart axis: 4738.726",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Need to confirm if the ticker SPTAUUSD.IDC corresponds to Gold. The image labels it as '伦敦金现' (London Gold Spot). The price 4412 matches the text's 'mid-$4,500s' range reasonably well if the unit is compatible (or if the text is loosely referring to the price area). The trend (sharp drop) matches the text ('Gold sank', 'red downdraft'). I need to confirm the unit or if it is indeed Gold to decide on the final verdict.",
+            "action": "Entity[image]",
+            "observation": "- **Trading/quote app interface (Chinese UI)** — Very likely (layout shows real-time quote, order book, timeframes, chart).\n- **Instrument name: “伦敦金现” (London spot gold)** — Very likely (displayed at top center).\n- **Instrument code: “SPTAUUSDOZ.IDC”** — Very likely (shown under the name).\n- **Price/quote figures (e.g., 4412.285, -5.12%, high 4640.620, low 4400.180, etc.)** — Very likely (large numeric readouts).\n- **Intraday line chart** — Very likely (white price trace with time axis marks like 6:00, 12:00, 18:00, 24:00).\n- **Order book / bid-ask list (买/卖) with timestamps (e.g., 22:21)** — Very likely (right-side column).\n- **Red “W” logo (app icon)** — Likely (top-left red square with white “W”; exact brand/app not certain).\n- **Back arrow icon (top-left)** — Very likely.\n- **Search/magnifier icon (top-right)** — Very likely.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a sharp decline in London Gold Spot (\"London spot gold\") with prices dropping to the mid-4500s. The image explicitly shows \"London Gold Spot\" (伦敦金现) with a price of 4412.285 and a significant drop of -5.12% from a previous high of 4650.503. The visual trend is a sharp drop, matching the narrative. The value 4400 is close to the text's \"mid-$4,500s\". The evidence strongly supports a match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.5451361778496419,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates market data and events (Gold prices mid-$4,500s, specific crisis narrative) not supported by reality or found in search, despite images showing consistent-looking interfaces.",
+    "notes": []
+  },
+  "error": null
+}

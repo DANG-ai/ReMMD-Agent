@@ -1,0 +1,127 @@
+{
+  "index": 114,
+  "sample_id": "115",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2843.71,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article overstates an unverified social-media claim into a quasi-reported event and presents ambiguous footage as if it specifically documents an Iranian intercept of an F-35 that was hit and forced down. One lead image was also edited to make the target look more like a stealth fighter and the intercept appear more convincing than the source material supports.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/115",
+  "image_paths": [
+    "/path/to/ReMMDBench/115/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/115/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/115/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "115",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text claims this image represents \"wartime footage\" of an F-35 intercept. I need to use the detection tool to analyze the visual characteristics of the image, such as the texture, lighting, and graphical style. If the image exhibits signs of being a video game screenshot (e.g., flat vector art, lack of thermal noise) rather than authentic military data, it would indicate the image is not genuine.",
+            "action": "Detect[image]",
+            "observation": "The image shows strong signs of being **edited or synthetically composited**, not a raw infrared/targeting capture:\n\n- **Cartoon-like silhouettes:** Both the “jet” and the “missile” are flat, high-contrast white shapes with clean, posterized edges and an outline-like border. Real IR/EO tracking footage typically shows graded heat signatures, bloom, sensor noise, and edge smearing—not crisp icons.\n- **Mismatch with background texture:** The gray background has faint, uniform noise/gradient, but the white objects don’t inherit any of that noise or blur. They look “pasted on” rather than recorded through the same optics.\n- **HUD overlay looks generic:** The green crosshair and yellow tracking box are perfectly clean and uniform, with no optical distortion, aliasing, or compression artifacts consistent with being captured from a real display. It resembles a graphic overlay added in editing.\n- **No supporting sensor cues:** There’s no telemetry (range, azimuth, timecode), no jitter/motion blur, and no atmospheric effects around the target that are common in genuine tracking footage.\n\nOverall, this frame looks like a **stylized/illustrative graphic made to resemble an air-defense lock-on view**, rather than authentic intercept imagery.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The visual evidence points to the image being a digital illustration or a screenshot from a game, rather than authentic military sensor data. The clean edges of the \"jet\" and \"missile\" and the perfect HUD lines are inconsistent with real-world optical or radar recordings. Since the text asserts this is real footage of an Iranian air defense engagement, the false nature of the image refutes the report's core visual evidence.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 3,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.1,
+        "best_value": 0.10000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.1,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The visual content is identified as a stylized, synthetically composited graphic with cartoon-like silhouettes and generic overlays, rather than authentic infrared footage.",
+    "notes": []
+  },
+  "error": null
+}

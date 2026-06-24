@@ -1,0 +1,131 @@
+{
+  "index": 377,
+  "sample_id": "378",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1916.32,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "The article's main medical takeaway is broadly accurate: suspected cardiac arrest requires calling 911, starting CPR, and using an AED if available rather than relying on ordinary transport. However, it slightly overstates the taxi warning into a near-universal rule for serious heart-related symptoms, and several accompanying graphics are edited translations redesigned to look like polished English public-health materials.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Health & Medicine",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/378",
+  "image_paths": [
+    "/path/to/ReMMDBench/378/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/378/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/378/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/378/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "378",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 10,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses a public health post and \"redesigned warning graphics\" that list symptoms of a cardiac emergency, such as dizziness and shortness of breath, to reinforce the message of calling emergency services instead of a taxi. To strictly follow the instruction \"Use Detect[image]\" and formally verify the content of the visual provided against the text, I should first extract the text and visual elements from the image.",
+            "action": "Detect[image]",
+            "observation": "The image appears to be a designed infographic/illustration rather than a real photograph, so “manipulation” mainly means graphic editing/layout.\n\n**Signs of editing**\n- The two people’s faces are covered with rectangular blurred blocks. These look like intentional pixelation/blur overlays (privacy redaction), not natural motion blur.\n- Flat, vector-style drawings with clean outlines, uniform colors, and icon elements (heart/ECG line, sweat drops) indicate it’s digitally created artwork.\n\n**Signs it’s not AI-synthetic or deceptively composited**\n- Text is clean and readable with consistent fonts and alignment; no typical AI text warping or misspellings.\n- Lines, shadows, and spacing are consistent across elements (title banner, numbered symptom boxes), suggesting standard graphic design software rather than an AI-generated scene.\n- No obvious cut-and-paste seams, mismatched lighting, or perspective conflicts (it’s a flat layout).\n\n**Counterfactual elements**\n- None visible in the image itself beyond being a simplified educational graphic. The blur blocks obscure faces, but that’s consistent with deliberate redaction rather than fabrication.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a public health infographic about cardiac warning signs, specifically mentioning symptoms like dizziness and shortness of breath. The provided image is exactly such an infographic, titled \"Warning signs before a cardiac emergency,\" and it explicitly lists \"Dizziness, lightheadedness, or a feeling of faintness\" and \"Chest discomfort or shortness of breath\" with corresponding illustrations. The visual style matches the description of a \"cleaner public-service format.\" Thus, the image supports the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Extract the text from the image to confirm the specific warning signs listed match the symptoms described in the news text (dizziness, shortness of breath, chest discomfort).",
+            "action": "Entity[image]",
+            "observation": "- **Text headline:** “Warning signs before a cardiac emergency” — **Certain** (clearly readable).\n- **Body text:** “Your body may send warning signals before a heart attack, including the following:” — **Certain**.\n- **Icon:** Red heart with ECG/heartbeat line — **Certain** (generic medical symbol).\n- **Icon:** Blue splash/droplets (suggesting sweating) — **Certain** (stylized).\n- **Cartoon person (left):** Dizzy/lightheaded figure with stars circling head — **Certain** (illustration; not identifiable).\n- **Cartoon person (right):** Person holding shoulder/chest; label nearby “Short of breath” — **Certain** (illustration).\n- **Label text:** “Short of breath” — **Certain**.\n- **Bottom item 1 text:** “Dizziness, lightheadedness, or a feeling of faintness” — **Certain**.\n- **Bottom item 2 text:** “Chest discomfort or shortness of breath” — **Certain**.\n- **Logos/brands/real landmarks/organizations:** None visible — **Certain**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image explicitly lists \"Dizziness, lightheadedness, or a feeling of faintness\" and \"Chest discomfort or shortness of breath\" as warning signs. The news text describes these exact symptoms (\"dizziness\", \"shortness of breath\", \"chest pressure or tightness\") and refers to \"redesigned warning graphics... with symptom lists\" circulating online. The text also mentions \"sweating\" as a symptom, which corresponds to the sweat drop icon in the image. The image serves as the visual aid for the information described in the text.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7937005259840998,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes the graphics as \"reworked and simplified\" infographic panels, and the verification evidence explicitly notes signs of editing and layout design.",
+    "notes": []
+  },
+  "error": null
+}

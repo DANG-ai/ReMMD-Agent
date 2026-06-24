@@ -1,0 +1,168 @@
+{
+  "index": 411,
+  "sample_id": "412",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1110.38,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article’s central factual account of the 2026 U.S. Daylight Saving Time change is accurate, including the date, the 2 a.m. to 3 a.m. shift, the broad U.S. observance pattern, and the Nov. 1 end date. However, it mildly overstates the breadth and intensity of the short-term disruption, and its lead image is an edited illustrative clock whose calm museum setting provides weaker evidence than the article’s more dramatic framing implies.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Society, Education & Employment",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/412",
+  "image_paths": [
+    "/path/to/ReMMDBench/412/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/412/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/412/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/412/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/412/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/412/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/412/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/412/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/412/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/412/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "412",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "Verify the Daylight Saving Time end date for 2026 to confirm if it is November 1, 2026 as stated in the text.",
+            "action": "Wikipedia[Daylight Saving Time US end dates by year]",
+            "observation": "No summary available. Similar entities: Daylight saving time in the United States, Daylight saving time by country, Daylight saving time in Canada, Eastern Time Zone, Time in the United States",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the specific end date for Daylight Saving Time in 2026 as stated in the text (November 1, 2026). Since the Wikipedia search failed, I will use Google to search for the 2026 DST schedule dates.",
+            "action": "Google[Daylight Saving Time end date 2026]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Previous attempts to find the 2026 DST end date via Google failed, likely due to future-specific search indexing or lack of cached results for that specific year. I should try a broader query about the US DST schedule for 2026 to see if the information is available or if I need to verify the standard scheduling rules apply.",
+            "action": "Google[US Daylight Saving Time schedule 2026]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since all previous searches for \"2026 Daylight Saving Time\" failed, likely due to future-dating, I will check if the stated dates align with the standard US DST rule (Second Sunday of March to First Sunday of November) based on a definitive calendar rule verification. The start date March 8, 2026 (Sunday) and end date Nov 1, 2026 (Sunday) are consistent with the calendar math for the standard rule, suggesting the text is factually accurate regarding the schedule, though it predicts the future.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a graphical representation of the clock change from 2:00 AM to 3:00 AM, complete with arrows and large text overlays. The text discusses the mechanics of Daylight Saving Time, specifically stating that clocks move forward from 2 a.m. to 3 a.m. on March 8, 2026. Since the visual content of the image (the time change graphic) directly illustrates the core claim of the text, the image supports the narrative provided.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text specifically details the Daylight Saving Time change from 2 a.m. to 3 a.m. I need to verify if the image depicts this specific time transition to confirm the core event described in the text.",
+            "action": "VQA[What time transition is depicted by the arrow in the image?]",
+            "observation": "\n\nBased on the text overlay at the bottom of the image, the arrow depicts a time transition from **2:00 AM to 3:00 AM**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To verify the match, I should extract entities from the image to confirm the type of clock fits the \"laboratory\" or \"institutional\" clock described in the text. The text mentions 'microwave clocks', 'wall clocks', and 'phones'. The image explicitly shows a 'Shortt clock' (a type of lab wall clock) and a 'wall clock' with a digital overlay describing the 2:00 to 3:00 shift, which aligns perfectly with the text's description of clocks needing manual reset.",
+            "action": "Entity[image]",
+            "observation": "- **Mechanical pendulum clock / regulator clock in wooden case** (right side; large round dial plus two smaller dials) — **High certainty**\n- **Clock dial text “SYNCHRONOME”** (on the large right dial; indicates the Synchromome brand/type) — **Medium-high certainty** (text is small but appears readable)\n- **Large brass cylindrical apparatus with glass dome** (left side; likely a clock-related mechanism) — **High certainty**\n- **Small round gauge/dial** (center-left above the placard) — **High certainty**\n- **Museum-style placard labeled “SHORTT CLOCK”** (center-bottom on the white panel) — **High certainty**\n- **Label “Stop #18”** (top center) — **High certainty**\n- **Overlaid time-change text “2:00 AM → 3:00 AM”** — **High certainty**\n- **Large red curved arrow graphic** (upper right) — **High certainty**\n- **Wood-paneled wall / display backing board** — **High certainty**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA and Entity actions have gathered sufficient evidence: the time transition is confirmed as 2:00 to 3:00 AM, and the clock is identified as a Shortt Clock in a museum/lab setting. This perfectly matches the news text's description of the 2:00 to 3:00 AM DST shift on March 8, 2026, and the anticipated image of an institutional clock with a red arrow graphic. The match is conclusive.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.44814047465571644,
+      "p_fake_text": 0.09999999999999998,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image contains significant post-production overlays, including a time-change graphic, a red arrow, and a distinct LED ring around the clock dial that are not present in the original source photograph.",
+    "notes": []
+  },
+  "error": null
+}

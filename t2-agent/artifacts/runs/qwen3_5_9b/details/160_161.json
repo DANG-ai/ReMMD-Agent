@@ -1,0 +1,137 @@
+{
+  "index": 160,
+  "sample_id": "161",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 869.29,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "L’article assemble plusieurs éléments ayant chacun une base réelle — le différentiel de comptage du 1er mai, l’appel de fédérations CGT et FO à un rassemblement le 4 mai, et le départ d’une délégation syndicale pour Cuba avec du matériel médical — mais il les fond dans une même dynamique continue et simultanée, ce qui exagère leur unité de temps, d’échelle et de portée. La partie visuelle renforce cette lecture trompeuse : un tract a été légèrement modifié, et l’image de policiers sert à suggérer un contexte sécuritaire directement lié aux mobilisations mentionnées sans preuve qu’elle documente ces faits précis. L’ensemble mélange donc des faits exacts et une mise en scène contextuelle trompeuse.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/161",
+  "image_paths": [
+    "/path/to/ReMMDBench/161/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/161/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/161/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "161",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.20000000000000004,
+        "best_trajectory": [
+          {
+            "thought": "Verifying text content against image headers. The poster's main headlines \"NON À LA GUERRE\" and \"NON AUX 8,5 MILLIARD DE PLUS POUR L'ARMÉE\" appear in the text. The poster sets the rally date for \"Le 4 mai\" and the text mentions \"lundi 4 mai\". The \"2026\" date on the poster confirms the Monday claim (May 4, 2026 is a Monday). The text and image are consistent.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a CGT rally planned for \"Monday, May 4th at 14:00\" (likely in 2024 or immediate future given the context of the May 1st strike count). It states that a syndical tract (leaflet) circulating widely shows content related to the military budget. However, the image provided is a tract for a \"Rassemblement devant l'Assemblée Nationale le 4 mai 2026 à 15h\". There is a direct contradiction in the specific time (14:00 vs 15:00) and the year (implied current year vs 2026). Additionally, the text mentions 300,000 protesters counted on May 1st, while the image focuses strictly on the 2026 budget rally. The mismatch in specific dates and times makes the image a contradiction to the text's claims about the event details.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.3,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "To verify the specific details, I need to check if the date and location on the image match the description in the text. The text says 'lundi 4 mai à 14 heures près de l'Assemblée nationale'. The image clearly shows 'Le 4 mai à 15h' and 'Rassemblement devant l'Assemblée Nationale'. While the time is slightly different (14h vs 15h), the core event (May 4th, Assembly, Military Law context) matches perfectly. The text describes this specific image circulating widely. Given the strong alignment on the core event (CGT, May 4th, Military Budget抗议), the relationship is a Match.",
+            "action": "VQA[Is the date on the poster May 4th?]",
+            "observation": "\n\nYes, the poster features the date **May 4th** (specifically \"Le 4 mai à 15h\" near the top and \"le 4 mai 2026 à 15h\" in the yellow box).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA confirmed the date is May 4th. The news text describes a specific \"tract syndical recadré\" (cropped tract) circulating about a May 4th rally near the Assembly against military budgets. The image content aligns perfectly with this description (CGT logo, 4th of May, Assembly, Military Budget protest). The minor time discrepancy (14h in text vs 15h in image) is negligible. I can conclude the match.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.43088693800637673,
+      "p_fake_text": 0.9,
+      "p_fake_image": 0.2,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.8,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.7,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text is likely distorted/exaggerated (T2), and the visual description (\"recadré\") and poster variations (time) point to visual editing (V2).",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,147 @@
+{
+  "index": 218,
+  "sample_id": "219",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1320.79,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本把“电视采访中提到的逮捕/侦办数字”改写成“已坐实、程序推进到移交军法”的大规模间谍网清剿，并通过与“迪拜国际机场遇袭画面”并置，制造两者存在同步因果关系的错觉；关键配图本身经过明显新闻化编辑甚至包含生成内容，导致图文在事实语义与事件语境上均不匹配，因此整体给受众的主要结论是误导性的，但文本中关于“有渠道转述伊朗警方人士谈到抓捕数字/重要案件表述”的来源框架仍保留少量真实元素。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突与地缘政治",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/219",
+  "image_paths": [
+    "/path/to/ReMMDBench/219/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/219/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/219/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/219/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/219/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/219/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/219/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/219/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/219/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/219/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "219",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V1 Synthetic Visual Content; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 1.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The image displays a news broadcast overlay with a timestamp of \"2026-03-16 21:40\". This future date is a massive red flag for a \"LIVE\" incident report, strongly suggesting digital manipulation or synthetic generation. The text describes how fake images are spliced to link \"Dubai airport attacks\" with \"Iran spy arrests\". I need to first run the detection tool to capture visual artifacts, overlay inconsistencies, and potential metadata that confirm this is a fabricated \"false stream\" image matching the narrative in the article.",
+            "action": "Detect[image]",
+            "observation": "图像本身有明显“新闻直播截图模板+合成/生成”的可疑点，真实性偏低：\n\n- **字幕条高度模板化且占位符未替换**：底部写着“LOCALITY NAME”（明显是占位符），这是常见的套壳包装或生成式模板残留，真实电视台画面一般不会出现这种未填字段。  \n- **时间信息自相矛盾/不合常理**：显示“2026-03-16 21:40”，与常见的“现场突发”传播语境不匹配；而且这种精确到分钟的时间戳样式也更像后期叠加素材。  \n- **“LIVE”角标与左上水印不对应具体媒体**：只有通用“LIVE”红框和一个抽象眼睛样式图标，缺乏可核验的频道台标/栏目包装，符合二次加工拼贴特征。  \n- **画面细节像“灾难素材”被泛用**：主体是大火与浓烟，但缺少清晰的机场可识别元素（航站楼标识、跑道灯、飞机等）。更像把某处火灾/爆炸画面套上“机场附近”文案。  \n- **整体质感偏“后期调色+压缩”**：对比度和饱和度偏戏剧化，烟火边缘与颗粒感像是为了营造“偷拍视频/直播”效果而做过处理；当然这点单独不足以定性，但与上述模板痕迹叠加后更可疑。\n\n结论：这张图更像**后期包装的“新闻截图式”图片**（可能是旧素材或AI/合成素材再加字幕），仅凭图像本身难以支持“某具体机场遇袭”的指向。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "结合新闻文本中描述的“虚假画面拼接”特征（如夜视、火光、伪造的台标），该图像完全符合文中对“被强行拼接出来的连续剧情”的视觉描述。验证无误，该图像不能支持“机场遇袭”的真实性，应判定为虚假。",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a specific viral image of \"Dubai International Airport\" with a timestamp of \"03-16 04:12\". The provided image appears to show the text \"Incident Near Airport\" and a date of \"2026-03-16 21:40\". I need to use VQA to extract the specific text from the bottom banner to verify if it matches the details in the text.",
+            "action": "VQA[What is the specific location text and timestamp written on the lower-third banner in the image?]",
+            "observation": "\n\nThe lower-third banner contains the following specific text:\n\n*   **Headline:** \"HAPPENING NOW: INCIDENT NEAR AIRPORT\"\n*   **Timestamp:** \"2026-03-16 21:40\"\n*   **Location Placeholder:** \"LOCALITY NAME\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly shows a timestamp of '2026-03-16 21:40' and 'LOCALITY NAME', which directly contradicts the text's '03-16 04:12' and 'Dubai International Airport' claims. These are significant discrepancies indicating the image does not match the viral footage described in the text. I can proceed to finalize the verdict.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.95,
+        "V2 Visual Editing": 0.95,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.95,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image is a synthetic template with placeholders (V1, V2) and conflicts with the text's specific time/location claims (C2).",
+    "notes": []
+  },
+  "error": null
+}

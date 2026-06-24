@@ -1,0 +1,167 @@
+{
+  "index": 461,
+  "sample_id": "462",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "Mixture",
+  "predicted_taxonomy": [
+    "T2 Distortion"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1659.24,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "The article’s main conclusion is supported by the cited official rumor rebuttal and long-standing historical records identifying the monument as a Tang-era Buddhist carving. However, it is not fully precise because it broadens the media description beyond the source’s more specific claim about an AI-generated animation, and it includes a visually edited image that echoes the rumor’s framing.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/462",
+  "image_paths": [
+    "/path/to/ReMMDBench/462/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/462/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/462/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/462/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "462",
+    "predicted_verdict": "Mixture",
+    "predicted_taxonomy": [
+      "T2 Distortion"
+    ],
+    "predicted_label": "verdict=Mixture | taxonomy=T2 Distortion",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 9,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "Search Wikipedia for 'Leshan Giant Buddha' to establish the fundamental historical record and verify if the text accurately describes the monument's Buddhist origins and construction timeline (Tang Dynasty). Wikipedia is the primary source requested for the initial fact-check.",
+            "action": "Wikipedia[Leshan Giant Buddha]",
+            "observation": "No summary available. Similar entities: Leshan Giant Buddha, Leshan, Rongxian Giant Buddha, Oriental Buddha Park, Buddhas of Bamiyan",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Alternatively, I should search specifically for the viral rumor mentioned in the text regarding the statue being originally created as a statue of Yu the Great to confirm if it is a debunked belief.",
+            "action": "Google[Leshan Giant Buddha Yu the Great statue theory debunked]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims the monument is identified as Maitreya based on the 'Record of the Great Maitreya Stone Statue at Lingyun Temple, Jiazhou.' I should search for this specific historical stele to verify the documentary evidence provided for the Buddhist origin of the statue.",
+            "action": "Google[Record of the Great Maitreya Stone Statue at Lingyun Temple]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text is a fact-checking article that debunks a viral claim suggesting the Leshan Giant Buddha is a statue of Yu the Great. It states that historical records identify the statue as a Maitreya Buddha. The provided image shows the actual Leshan Giant Buddha carved into the cliff, which confirms the text's description of the monument and supports its assertion that the \"Buddhist origin\" is the reality. The logical next step is to confirm the image's content to align with this conclusion.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text identifies the monument as the Leshan Giant Buddha, a Tang-dynasty carving of Maitreya, explicitly refuted by the viral claim of Yu the Great. An entity identification will confirm the subject of the image matches the text's primary topic.",
+            "action": "Entity[Leshan Giant Buddha]",
+            "observation": "\n\n*   **Leshan Giant Buddha:** The massive, six-meter-high red Buddhist statue carved into the mountain in the center of the image. **(High Certainty)**\n*   **Leshan Giant Buddha Cliff:** The rugged red sandstone mountain face containing the Buddha statue. **(High Certainty)**\n*   **Tourists/People:** Visible as a group of small figures standing on the viewing platform at the base of the cliff and on the boat. **(High Certainty)**\n*   **Boat:** A white and blue passenger vessel floating on the river in the bottom right corner. **(High Certainty)**\n*   **River (Min River):** The brownish water in the foreground where the boat is floating. **(High Certainty)**\n*   **Vegetation:** Dense green trees and plants growing on the cliffs and slopes surrounding the statue. **(High Certainty)**\n*   **Viewing Platform:** The concrete structure at the water level allowing visitors to see the fewer statues and the giant Buddha. **(Medium Certainty)**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify specific historical claims mentioned in the text to ensure a precise match. Asking about the construction period (Tang Dynasty) will validate the image against the textual description of the site's origins.",
+            "action": "VQA[When was the Leshan Giant Buddha built?]",
+            "observation": "\n\nThe Leshan Giant Buddha was built between 713 and 803 AD. It is the largest carved outdoors statue in the world.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text discusses a viral claim that the statue's head shape resembled a ruler's crown or had non-Buddhist features. Since I've already confirmed the entity and construction date, I should verify if the visual evidence in the image supports this specific claim discussed in the text (the crown theory). This checks the cross-modal match between the theoretical claim and visual reality.",
+            "action": "VQA[Does the statue's head appearance match the \"crown-like outline\" claim from the viral theory?]",
+            "observation": "\n\nNo, the statue's head does not match the \"crown-like outline\" claim. The image shows the Leshan Giant Buddha, which features a human head with long, flowing hair, distinct facial features (nose, chin), and a beard. There is no visible crown, halo, or crown-like outline on or above the head.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image confirms the entity is the Leshan Giant Buddha, as the text describes. The text refutes a viral claim that it is a statue of Yu the Great. Since the visual evidence (no crown, standard Buddha features) supports the text's actual description and refutes the false viral theory described, the cross-modal match is positive.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.5451361778496419,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mixture",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.8,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.09999999999999998,
+        "C1 Semantic Inconsistency": 0.09999999999999998,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text provides a factual refutation of a viral rumor about the Leshan Giant Buddha, supported by real images and historical records, containing no false claims or distortions.",
+    "notes": []
+  },
+  "error": null
+}

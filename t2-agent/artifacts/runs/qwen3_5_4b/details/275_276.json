@@ -1,0 +1,140 @@
+{
+  "index": 275,
+  "sample_id": "276",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1489.0,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "事故の発生場所、車種の組み合わせ、軽バン横転、渋滞発生という中核部分は元情報と整合しています。一方で、場所や規制状況の表現は原情報よりやや広く一般化されており、画像にも端部や人物周辺を整える編集が見られるため、完全なTrueではなくMostly Trueです。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/276",
+  "image_paths": [
+    "/path/to/ReMMDBench/276/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/276/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "276",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T2 Distortion; V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "The news text reports a car accident involving a Lexus SUV and an overturned light truck near Morinomiya Station in Osaka. The image shows a severe collision scene with a white SUV and an overturned light truck at an intersection, along with a police officer visible in the scene. The visual elements align perfectly with the description of the event.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a clear accident scene with a damaged white SUV and an overturned light truck at an intersection, which matches the details in the news report about a Lexus SUV and a light truck having a crash in Osaka. The presence of a cop and the general urban background support the context provided.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions that a \"light van\" overturned and blocked the lane. I need to verify the vehicle that has been flipped over on the left side of the street to confirm if it matches the description of a light commercial vehicle or van.",
+            "action": "VQA[What type of vehicle is lying on its side on the left side of the road?]",
+            "observation": "\n\nBased on the visual evidence, the vehicle lying on its side is a **car** (specifically, it appears to be a **sedan**, possibly a Toyota Camry given the chrome strip on the hood).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states a \"light van\" overturned, but the previous VQA result identified the overturned vehicle as a \"sedan\". This is a discrepancy I need to explore further by asking specific questions about the vehicle's make to see if it matches the text description.",
+            "action": "VQA[What brand is the overturned vehicle?]",
+            "observation": "\n\nBased on the visible point logo on the side of the mangled white SUV and the likelihood that it is a \"double tragedy\" crash involving multiple Lexus vehicles (the adjacent vehicle is a Lexus), the brand is **Lexus**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a \"light van\" overturning, but my visual analysis of the overturned vehicle confirms the brand is \"Lexus.\" Lexus primarily manufactures cars (sedans) and SUVs, not \"light vans\" (keiban). Additionally, my previous VQA identified the vehicle as a \"sedan.\" This contradiction between the text's classification of the vehicle (Light Van) and the visual evidence (Lexus Sedan/Car) confirms a mismatch.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.1709975946676697,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text identifies the mangled vehicle as a light van, while visual evidence and verification identify it as a sedan, creating a semantic conflict and distortion. Additionally, the text mentions smoothed parts which corresponds to the yellow edit overlays seen in the image.",
+    "notes": []
+  },
+  "error": null
+}

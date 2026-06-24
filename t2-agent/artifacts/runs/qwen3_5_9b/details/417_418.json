@@ -1,0 +1,136 @@
+{
+  "index": 417,
+  "sample_id": "418",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1152.09,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本的大方向（围绕网传视频的真实性争议、以方叙事将火情与伊朗袭击挂钩、以及中方表态重心在降温并要求更清晰信息、安理会曾出现“多数赞成但遭美国否决”的投票格局）总体符合可核对的公开信息与常见外交表述逻辑，因此核心结论成立；但文本把“震惊/关切”的对象与“当场要求公开卫星/雷达证据”的力度写得更具体、更像针对单一事件的硬性证据要求，存在表述强度与指向的轻度改写。同时，关键配图中至少有一张火灾画面经过裁剪、调色和模糊处理削弱溯源信息，且与“海法湾发电设施遇袭”的时地归属缺乏可核对的锚点，另有安理会画面可能来自不同年份/不同投票场景却被放入“近期时间线”叙事中，造成图文时间背景的轻度错置。这些问题会影响受众对细节（到底是哪一次事件、哪一处设施、是否已有可公开核验的技术证据）的理解，但尚不足以推翻文章强调“需要更完整证据链、谨慎看待社媒视频”的主旨，因此判为 Mostly True。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突与外交",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/418",
+  "image_paths": [
+    "/path/to/ReMMDBench/418/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/418/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/418/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/418/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/418/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/418/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/418/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/418/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/418/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/418/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "418",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T2 Distortion; V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.9,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "The text is a news report about a viral rumor claiming a fire at a Haifa power plant. The text describes the viral images as \"distant night-time fires\". The provided image is a high-quality, close-up photo of a building fire, likely unrelated to the industrial setting of a power plant in Haifa. The image appears to be either a misidentified source image or a generic stock photo, which does not support the specific factual claim of a \"Haifa Power Plant\" being the scene depicted. Thus, the image refutes the text's implication that this scene represents the alleged event.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.4,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses a \"Power Station Fire\" in Haifa Bay. The image shows a fire in a multi-story structure on a city street, lacking any clear signs of an industrial power station or a bay/coastal setting. I need to verify the structure type to confirm if it matches the \"Power Station\" description.",
+            "action": "VQA[What type of building is on fire in the image?]",
+            "observation": "\n\nBased on the visible evidence in the image, the building on fire appears to be a multi-story **apartment building** or a block of flats. It features a row of uniform windows across several floors, which is characteristic of residential apartment complexes in urban areas.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly shows firefighters battling a fire in a residential-looking building on a city street, while the text describes an industrial power station in Haifa Bay. The building type and setting fundamentally contradict the 'Power Station' and 'Haifa Bay' descriptions in the news text, making a mismatch determination likely.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.1709975946676697,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.5,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": null,
+    "notes": []
+  },
+  "error": null
+}

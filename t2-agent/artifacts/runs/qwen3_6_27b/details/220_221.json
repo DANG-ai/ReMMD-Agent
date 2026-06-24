@@ -1,0 +1,157 @@
+{
+  "index": 220,
+  "sample_id": "221",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1512.87,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "本文は、実際の素材で中心となっている北海道の大雪注意や全国的な荒天警戒を、東京都内や関東南部での大雪警戒・警報発表の既成事実へと作り替えている。加えて、気象庁の実画面のように見える警報分布図や強い降雪写真がその虚偽の主張を裏づける形で使われ、本文と画像の両面で誤認を強めている。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Public Safety, Disaster & Weather",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/221",
+  "image_paths": [
+    "/path/to/ReMMDBench/221/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/221/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "221",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "1. The text describes a snow event. The image is dated August 10.\n    2. I should verify if \"Special Warning\" or \"Warning\" in August typically involves snow. (It does not).\n    3. I will search for \"August 10 snow warning Tokyo\" to confirm the impossibility.",
+            "action": "Google[\"8月10日 東京 雪警報\"]",
+            "observation": "警報級大雪！日本今季最強寒流到來：由今日1月9日到1月10日，本季 ...: 日本今季最強寒流到來：由今日1月9日到 1月10日，本季最強寒流將吹襲日文本，日本廣泛區域 將下雪，其中北日本到西日本的日本海側將會有警報級 大雪，另外預計 ... (https://www.facebook.com/likejpn/posts/%E8%AD%A6%E5%A0%B1%E7%B4%9A%E5%A4%A7%E9%9B%AA%E6%97%A5%E6%9C%AC%E4%BB%8A%E5%AD%A3%E6%9C%80%E5%BC%B7%E5%AF%92%E6%B5%81%E5%88%B0%E4%BE%86%E7%94%B1%E4%BB%8A%E6%97%A51%E6%9C%889%E6%97%A5%E5%88%B01%E6%9C%8810%E6%97%A5%E6%9C%AC%E5%AD%A3%E6%9C%80%E5%BC%B7%E5%AF%92%E6%B5%81%E5%B0%87%E5%90%B9%E8%A5%B2%E6%97%A5%E6%96%87%E6%9C%AC%E6%97%A5%E6%9C%AC%E5%BB%A3%E6%B3%9B%E5%8D%80%E5%9F%9F%E5%B0%87%E4%B8%8B%E9%9B%AA%E5%85%B6%E4%B8%AD%E5%8C%97%E6%97%A5%E6%9C%AC%E5%88%B0%E8%A5%BF%E6%97%A5%E6%9C%AC%E7%9A%84%E6%97%A5%E6%9C%AC%E6%B5%B7%E5%81%B4%E5%B0%87%E6%9C%83%E6%9C%89%E8%AD%A6%E5%A0%B1%E7%B4%9A%E5%A4%A7%E9%9B%AA%E5%8F%A6%E5%A4%96%E9%A0%90%E8%A8%88%E9%82%84%E6%9C%89%E5%BC%B7%E9%A2%A8%E5%A4%A7/996601009180605/)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To further verify the content of the image and the date, I will search for \"August 10 2025 JMA High Tide Warning\" to confirm that the image indeed depicts a high tide event on that specific date, which would definitively refute the text's claim of a snow event on the same day.",
+            "action": "Google[\"2025年8月10日 気象庁 高潮警報\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a snow event (snow in Tokyo, heavy snow warning in Tochiba) on the 10th. The image is dated August 10th. Snow in August in Tokyo/Tochiba is impossible. The image legend indicates \"High Tide Warning\" (高潮警報) for the purple areas, which contradicts the text's claim of snow warnings. The previous search confirmed a similar snow event occurred on January 10th, indicating the text describes a winter event while the image shows a summer high tide event. Therefore, the text is refuted by the image.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I will analyze the legend and map content. The legend lists: Black (Heavy Rain Special Warning), Purple (Special Warning other than Heavy Rain / High Tide Warning), Orange (Warning other than High Tide / High Tide Advisory), Yellow (Advisory other than High Tide / High Tide Advisory). The map shows Yellow, Orange, and Purple areas, indicating High Tide warnings are active. The news text claims a \"Heavy Snow Warning\" (大雪警報) for southern Tochigi. Since the map is clearly displaying High Tide warnings (and potentially rain/landslide) but not Snow warnings, and the legend does not include Snow categories, the image refutes the specific claim of a Heavy Snow Warning being the subject of this alert map.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a snow event (\"snow and rain continuing\", \"snow accumulation\", \"Heavy Snow Warning\" in Southern Tochigi). The image shows a weather map dated \"2025年08月10日\" (August 10, 2025). August is summer in Japan, making snow highly unlikely. I need to check the legend of the map to see what the colored regions actually represent. The legend likely indicates rain or high tide warnings, not snow.",
+            "action": "VQA[What weather warnings are listed in the legend at the bottom right of the map?]",
+            "observation": "\n\nBased on the legend in the bottom right corner of the map, the weather warnings are listed as follows (from top to bottom):\n\n1.  **大雨特別警報** (Special Heavy Rainfall Warning) - indicated by a black square.\n2.  **特別警報(大雨以外)・高潮警報** (Special Warning (other than heavy rain) / Storm Surge Warning) - indicated by a purple square.\n3.  **警報(高潮以外)・高潮注意報(*1)** (Warning (other than storm surge) / Storm Surge Watch (*1)) - indicated by an orange/red square.\n    *   *Footnote *1: High possibility of switching to Storm Surge Warning (高潮警報に切り替える可能性が高い).*\n4.  **注意報(高潮以外)・高潮注意報(*2)** (Watch (other than storm surge) / Storm Surge Watch (*2)) - indicated by a yellow square.\n    *   *Footnote *2: Storm Surge Watch other than the above (上記以外の高潮注意報).*\n5.  **発表なし** (No warning/watch issued) - indicated by a grey square.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To be absolutely certain about the date which indicates the season, I will verify the date text in the top left corner of the map.",
+            "action": "VQA[What date is displayed in the blue box in the top left corner of the map?]",
+            "observation": "\n\nThe date displayed in the blue box in the top left corner is **2026年08月10日** (August 10, 2026). The full text reads \"2026年08月10日21時00分発表\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a winter weather event with snow accumulation and a \"Heavy Snow Warning\" (大雪警報) in Southern Tochigi. However, the image displays a weather map dated August 10, 2026 (summer), and the legend indicates warnings for \"Heavy Rain\" (大雨) and \"Storm Surge\" (高潮), with no mention of snow. The season and weather phenomenon are contradictory. Therefore, the text and image do not match.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a winter snow event (January), while the map shows a summer heavy rain warning (August 2026), creating a conflict in both semantic content (snow vs. rain) and context (winter vs. summer).",
+    "notes": []
+  },
+  "error": null
+}

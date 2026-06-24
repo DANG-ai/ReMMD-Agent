@@ -1,0 +1,170 @@
+{
+  "index": 409,
+  "sample_id": "410",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2308.25,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "Le socle principal — la large victoire rennaise 4-0 et la mise en avant de Rongier et Mukiele dans les réactions d’après-match — repose sur des éléments réels. En revanche, l’article déforme le contexte temporel et probatoire en utilisant des images de fin de match, dont une image éditée, pour suggérer un vide massif des tribunes pendant le déroulé de la rencontre et pour faire passer des contenus sociaux promotionnels pour des preuves directes de l’état du stade et de distinctions de match.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/410",
+  "image_paths": [
+    "/path/to/ReMMDBench/410/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/410/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/410/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/410/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/410/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/410/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/410/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/410/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/410/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/410/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "410",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a specific match between Nice and Rennes with a 0-4 score, specific goalscorers (Lepaul, Szymanski, Blas, Mukiele), and an attendance of 21,134. It claims the date is \"Sunday March 8\". I need to verify the actual date of this match to check for accuracy. Wikipedia pages for the 2022-23 season of OGC Nice or Stade Rennais FC should contain the match details.",
+            "action": "Wikipedia[OGC Nice 2022-23 season]",
+            "observation": "No summary available. Similar entities: 2022–23 OGC Nice season, OGC Nice, 2022–23 Tottenham Hotspur F.C. season, 2022–23 Paris Saint-Germain FC season, 2023–24 OGC Nice season",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since the Wikipedia search might be hit-or-miss for specific match stats like attendance, a Google search for the specific match result and attendance will be useful to confirm the \"21,134\" figure and the date.",
+            "action": "Google[OGC Nice vs Stade Rennais 0-4 March 8 2023 attendance]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should also check the date of the match specifically. If the match happened on a different date, the text is factually incorrect. I will search for the specific date of the Nice vs Rennes match in the 2023-24 season.",
+            "action": "Google[date of Nice vs Rennes 0-4 Ligue 1 match]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a Ligue 1 match between Nice and Rennes on March 8th, ending 0-4. It details specific goalscorers (Lepaul, Szymański, Blas, Mukiele) and praises Valentin Rongier. The image shows a football player in a white and black kit with the number 10 on his shorts, standing in front of advertising boards with the Kappa logo. The Kappa logo is the sponsor of OGC Nice, confirming the location is the Allianz Riviera. The player's kit matches the Stade Rennais away kit for the 2023-2024 season. The number 10 for Rennes that season was Houssem Aouar. The scene (player wiping face, walking on pitch) fits the description of the end of the match or a break in play during the described event. The text and image align on the event, location, and teams.",
+            "action": "Detect[image]",
+            "observation": "The image looks like an authentic sports photograph with no clear signs of AI synthesis or compositing.\n\n**Reasons it appears authentic**\n- Consistent stadium lighting and realistic depth of field: the player is in focus while the crowd/stands are naturally softer.\n- The LED advertising boards show plausible brightness, pixel texture, and slight bloom consistent with real LED panels photographed at speed.\n- Fine details (jersey folds, socks, boots, turf texture) look coherent and not “melted” or duplicated.\n- Perspective and proportions (player relative to boards and seats) are consistent.\n\n**Minor artifacts that don’t imply manipulation**\n- Slight motion blur/softness around the raised arm and hand is consistent with in-game movement and a telephoto lens, not necessarily editing.\n\nNo obvious counterfactual elements (e.g., impossible geometry, mismatched shadows, broken text) are visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a Ligue 1 match between Nice and Rennes played at the Allianz Riviera, which Rennes won 4-0. The image shows a football player wearing the Stade Rennais away kit (white with black shoulders/sleeves) and the number 10 (Houssem Aouar). The background advertising boards feature the Kappa logo and \"#MonGym\" / \"oceanice\", which are sponsors associated with OGC Nice and the Allianz Riviera stadium. This confirms the image was taken during the match described in the text (Rennes playing at Nice). Although the text contains minor factual inaccuracies (claiming the match was on March 8th instead of March 3rd, and attributing the first goal to Lepaul instead of Aouar), the image visually supports the core event: a Rennes match at the Allianz Riviera.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "I will verify the team of the player in the image using VQA to confirm the mismatch. The text focuses on Rennes players celebrating a 4-0 victory. The image shows a player in a black and white kit (Nice) with Kappa branding in the background. I need to confirm the team to be certain.",
+            "action": "VQA[What team does the player in the image play for, based on his jersey and the advertising boards?]",
+            "observation": "\n\nBased on the visual evidence, the player plays for **Juventus**.\n\nHere are the clues from the image:\n*   **Jersey:** The player is wearing a white kit with black stripes and accents, which are the iconic \"Bianconeri\" (Black and Whites) colors of Juventus. Specifically, this looks like a Juventus away or third kit from the 2017-2018 season.\n*   **Advertising Boards:** The large red board features the **Kappa** logo (the two figures sitting back-to-back). Kappa was the official kit manufacturer for Juventus from 2016 to 2019.\n*   **Player:** The player resembles **Paulo Dybala**, who wore the number 10 shirt for Juventus during this period.\n*   **Stadium:** The red and white seats in the background are characteristic of the Allianz Stadium in Turin, Juventus' home ground.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will double check the image details to ensure the VQA observation is correct. The player is wearing a white jersey with black stripes, number 10. This matches the description of Paulo Dybala's Juventus kit (specifically the 2017-18 third kit or similar). The advertising board shows the Kappa logo, which sponsored Juventus. The text describes a match at Allianz Riviera (Nice) involving Rennes players. The image clearly depicts a different team and player.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a match event (Nice 0-4 Rennes) with specific details (date, scorers) that appear non-existent or incorrect, while the visual set includes images from unrelated contexts such as Juventus matches and Lens vs. Rennes games, creating a contextual mismatch with the text.",
+    "notes": []
+  },
+  "error": null
+}

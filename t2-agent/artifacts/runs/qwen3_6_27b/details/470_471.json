@@ -1,0 +1,142 @@
+{
+  "index": 470,
+  "sample_id": "471",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2834.95,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article's central game result is invented, and the visuals are used to falsely authenticate it. One image is generated, another is edited to simulate a live broadcast frame, and the reused celebration photo is miscaptioned as evidence from the alleged 2026 UConn-Duke Elite Eight game.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/471",
+  "image_paths": [
+    "/path/to/ReMMDBench/471/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/471/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/471/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "471",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; T2 Distortion; V2 Visual Editing; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.5,
+        "best_value": 0.7,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the details in the text against the image. The text mentions a date of 2026 and a score of 73-72. The image scoreboard shows \"2023\" and a score of 74-73. The text describes a celebration on the floor, but the image shows active gameplay with players jumping. The date and score contradictions are sufficient to refute the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The news text claims the game took place in 2026 and was against Duke. I need to verify the year and the opposing team by looking at the scoreboard in the image.",
+            "action": "VQA[What year and which teams are displayed on the scoreboard?]",
+            "observation": "\n\nBased on the visible scoreboard:\n\n*   **Year:** The text on the left reads \"**2023** DI MEN'S BASKETBALL CHAMPIONSHIP\".\n*   **Teams:** The scoreboard displays logos for two teams next to the scores of 74 and 73.\n    *   The left logo is the **NC State Wolfpack** logo (blue wolf head).\n    *   The right logo is the **University of Connecticut (UConn) Huskies** logo (blue \"C\").\n\n(Note: There is a discrepancy in the image, as the players on the court appear to be from North Carolina [blue uniforms with \"NC\"] and UConn, while the scoreboard shows NC State and UConn.)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To further confirm the mismatch, I can check the identity of the player shooting the ball. The text claims it is Braylon Mullins. The player in the image is wearing number 24 and the name appears to be \"JAMIS\" or similar, which is not Mullins (who wears #2). Verifying this would add another point of evidence for the mismatch.",
+            "action": "VQA[Who is the player shooting the ball, and what number is on his jersey?]",
+            "observation": "\n\nBased on the image, the player shooting the ball is **Donovan Clingan**, and the number on his jersey is **24**. He is playing for the UConn Huskies (indicated by \"UConn\" on his shorts). The game appears to be from the 2023 NCAA Men's Basketball Championship Elite Eight round.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text describes a game in 2026 against Duke with Braylon Mullins as the scorer. The image clearly shows a \"2023 DI MEN'S BASKETBALL CHAMPIONSHIP\" on the scoreboard, and the player shooting is Donovan Clingan (#24), not Mullins. The year, opponent (scoreboard shows NC State), and player all contradict the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.5,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 1.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The news text fabricates a 2026 game against Duke (T1) by distorting the details of the actual 2023 Elite Eight game against NC State (T2), creating semantic (C1) and contextual (C2) inconsistencies with the images, one of which features a manipulated scoreboard overlay (V2).",
+    "notes": []
+  },
+  "error": null
+}

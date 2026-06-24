@@ -1,0 +1,161 @@
+{
+  "index": 227,
+  "sample_id": "228",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "True",
+  "predicted_taxonomy": [],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 982.49,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article builds a real backdrop of strikes in Beirut into a more dramatic and more directly connected regional emergency than the evidence supports. It overstates a broad Middle East security advisory into a Lebanon-specific evacuation push, uses an edited alert graphic to reinforce that reading, and visually/textually ties a separate Bahrain incident to the Lebanon story as if it were part of the same operational chain.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/228",
+  "image_paths": [
+    "/path/to/ReMMDBench/228/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/228/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/228/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/228/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/228/images/05_img_5.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "228",
+    "predicted_verdict": "True",
+    "predicted_taxonomy": [],
+    "predicted_label": "verdict=True | taxonomy=None",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.8,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text claims there is smoke in Beirut's southern suburbs. I observe a large dark cloud/smoke rising in the center of the image above a multi-story building. I will query the image to detect this smoke and the general environment to see if it matches the news report description.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text explicitly mentions smoke rising from strikes in Beirut. The image provided is a night scene of an urban area with a distinct, large cloud of dark smoke rising in the distance, which visually corroborates the report of smoke. Despite the previous failure with the tool call, I will attempt the tool call as the primary method to gather further evidence before concluding.",
+            "action": "Detect[image]",
+            "observation": "The image looks like a plausible low-light phone photo of an urban street at night with a large dark smoke plume rising behind mid-rise buildings. I don’t see clear indicators of AI generation or obvious compositing.\n\nSigns that support authenticity:\n- Lighting/exposure looks consistent with a handheld night shot: blown-out streetlights, sensor noise/grain, and haze/flare near the bottom.\n- Perspective and geometry (buildings, wires, traffic lights) align naturally; no warped edges or “melting” structures typical of some synthetic images.\n- The smoke plume has irregular, natural-looking billows and blends into the night sky without hard cutout edges.\n\nMinor things that could raise questions but aren’t strong manipulation evidence:\n- The bottom area has a foggy/washed veil that could be lens flare, smudged lens, or compression—not necessarily editing.\n- The smoke is very dark and prominent; without metadata or additional angles, you can’t confirm what caused it from the image alone.\n\nOverall: no strong visual signs of digital manipulation; appears consistent with an authentic nighttime scene capturing a smoke plume.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the observation from the previous tool call, the image contains a smoke plume consistent with the news report, and displays signs of authenticity typical of a low-light phone photo (noise, flare, natural smoke shapes) rather than AI generation. The evidence strongly supports the text report.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 5,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.8,
+        "best_trajectory": [
+          {
+            "thought": "The news text explicitly mentions 'thick plumes of smoke' rising over urban districts in Beirut. The image clearly shows a large column of black smoke rising from a building. I will query VQA to confirm the presence of smoke mentioned in the text to verify the match.",
+            "action": "Tool[VQA[is there thick smoke visible in the image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Also known as the news text mentions the events happened \"through the night\" and \"overnight\". To ensure the visual evidence aligns with the temporal context, I will query the VQA tool to determine if the scene is set at night.",
+            "action": "VQA[is the image taken during the day or night]",
+            "observation": "\n\nThe image is taken at night. The sky is dark blue, streetlights and shop lights are on, and the overall visibility is low, characteristic of nighttime photography.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have confirmed the image is at night, aligning with the text's mention of events occurring \"through the night\" and \"overnight\". I can now use the Entity tool to identify the locations or objects in the image to further corroborate that the scene is set in Beirut as described in the news text.",
+            "action": "Entity[image]",
+            "observation": "- **Large multi‑story residential/commercial buildings (apartment blocks)** — high certainty (dominant structures in center/right).\n- **Thick black smoke plume in the night sky** — high certainty (clearly visible above the central building).\n- **Urban street/intersection** — high certainty (roadway, curb, open junction layout).\n- **Traffic light/signal head** — medium–high certainty (signal shape visible near center).\n- **Streetlights / exterior building lights** — high certainty (multiple light sources illuminating facades).\n- **Overhead utility wires/cables** — high certainty (lines crisscrossing the sky).\n- **Pedestrians (several people standing/walking)** — medium certainty (human silhouettes; details unclear).\n- **Vehicle (part of a car at left foreground)** — medium certainty (partial body/door area visible).\n- **Shopfronts / ground‑floor businesses with illuminated signs** — medium certainty (sign glow present, text not readable).\n- **Circular road sign (likely regulatory sign) near center-right** — medium certainty (round sign visible; content unreadable).\n- **Red vertical banner/flag hanging from the left-side building/awning** — low–medium certainty (fabric-like vertical element; unclear details).\n- **Construction crane/boom at far right** — low certainty (yellow vertical structure resembles a crane; not fully clear).\n- **No identifiable notable individuals, specific logos, or clearly recognizable landmark** — high certainty (nothing uniquely identifying is legible/clear).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image clearly shows a large, dark smoke plume at night over urban buildings, which directly aligns with the text's mention of \"thick plumes of smoke\" over \"urban districts\" in the \"evening\" or \"overnight\". The visual evidence of the smoke at night matches the core narrative of the text perfectly, justifying a conclusion.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.865349742184445,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.09999999999999998,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text and images are consistent depicting real events regarding Beirut strikes, US security alerts, and the Bahrain hotel incident.",
+    "notes": []
+  },
+  "error": null
+}

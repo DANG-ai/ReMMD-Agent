@@ -1,0 +1,158 @@
+{
+  "index": 296,
+  "sample_id": "297",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1222.99,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "文本将“已与多国密集通话并形成停火与撤军时间表”的重大外交突破写成既成事实，但缺乏任何可核查的官方来源或文件编号支撑，且关键“证据图”中两张为生成内容，用来伪造通话场景与通联记录；同时把爆炸浓烟画面与“快速降温、达成共识”的叙事绑定，造成图文语义冲突与误导性的时间语境拼接，整体核心结论不成立。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "国际冲突与外交",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/297",
+  "image_paths": [
+    "/path/to/ReMMDBench/297/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/297/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/297/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "297",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.33,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.8,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the specific claims made in the news text, particularly regarding the date (February 28) and the diplomatic calls announced by the Iranian Foreign Minister. Checking recent news sources about this specific incident will determine if the events actually occurred.",
+            "action": "Google[verify news about Iranian Foreign Minister calls and explosions February 28]",
+            "observation": "Multiple explosions struck Iran on February 28, after the US and ...: Multiple explosions struck Iran on February 28, after the US and Israel launched a joint operation against the country, targeting the ... (https://www.facebook.com/trtworld/posts/multiple-explosions-struck-iran-on-february-28-after-the-us-and-israel-launched-/1393340826161488/)\nIran's supreme leader, Ayatollah Ali Khamenei, has been killed - NPR: The Iranian government has declared 40 days of national mourning after Khamenei was killed in a U.S.–Israeli attack on Saturday. (https://www.npr.org/2026/02/28/nx-s1-5730158/israel-iran-strikes-trump-us)\nThe Iranian regime's lies: exposed. - Instagram: Iran's Foreign Minister, Abbas Araghchi, claimed that reports stating that the Iranian regime is developing long-range missiles are 'fake news,' ... (https://www.instagram.com/reel/DWO37hLjVA0/)\nLive Updates: U.S. and Israel attack Iran | PBS News: Iranian Supreme Leader Ayatollah Ali Khamenei was killed in a major attack on Iran launched by Israel and the United States, ... (https://www.pbs.org/newshour/world/live-updates-u-s-and-israel-attack-iran)\nUS, Israel attack Iran updates: Khamenei, top security officials killed: Iran declares 40 days of mourning and launches attacks after supreme leader's killing; Israel strikes Tehran. (https://www.aljazeera.com/news/liveblog/2026/2/28/live-israel-launches-attacks-on-iran-multiple-explosions-heard-in-tehran)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should also search for the specific details mentioned in the text like the \"three point consensus\" on the ceasefire and humanitarian corridor to see if these claims are supported by any sources.",
+            "action": "Google[verify \"three point consensus\" Iran ceasefire humanitarian corridor diplomacy 2026]",
+            "observation": "Latest News _China's Diplomacy: Chinese FM calls for preserving hard-won momentum of ceasefire in Iran ... China-Cambodia-Thailand foreign ministers' meeting reaches three-point consensus. (https://en.chinadiplomacy.org.cn/node_8014023.shtml)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous search for 'three point consensus' returned a result for a China-Cambodia-Thailand meeting, not Iran. This indicates the text is hallucinating or misattributing a diplomatic consensus. Combined with the future-dated claim of Khamenei's death (2026), the text is a fake news piece mixing events. The decision is to refute.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.33,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.34,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a leaked picture of the Foreign Minister on the phone with an Iranian flag in the background. The current image shows a man on the phone with an Iranian flag behind him, matching the text description perfectly. I will verify the entity to confirm the person's identity.",
+            "action": "Entity[image]",
+            "observation": "- **Flag of Iran (Islamic Republic of Iran)** — **High certainty** (distinct green–white–red tricolor with red emblem visible).\n- **Iranian national emblem (stylized red “Allah” symbol)** — **High certainty** (clearly visible on the flag).\n- **Office setting / government-style desk scene** — **Medium certainty** (formal suit, heavy paperwork, multiple desk phones; no explicit signage).\n- **Unidentified person (male-presenting) on the phone** — **High certainty** (person is visible but face is obscured; I can’t identify who they are).\n- **Persian/Farsi script on a desk nameplate** — **Medium certainty** (writing appears Persian; exact text not legible enough to transcribe confidently).\n- **Telecom desk phones (multiple)** — **High certainty** (several landline handsets/base units on the desk).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly identifies the person as Foreign Minister Abbás Araghchi and mentions a nameplate on the desk. The Entity observation noted the text on the nameplate is Persian but unreadable with certainty. I will ask the VQA tool to attempt to read the nameplate to verify the identity mentioned in the text.",
+            "action": "VQA[What is the name written on the nameplate on the desk in the image?]",
+            "observation": "\n\nThe name written on the nameplate on the desk is **Reza Gheraqieh**. The text on the nameplate is in Arabic script, which identifies the man seated at the desk.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text identifies the person as Abbás Araghchi, but the VQA tool confirmed the nameplate reads Reza Gheraqieh. Since Reza Gheraqieh is a different person than Abbás Araghchi, the image clearly does not match the text description of the subject.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.33019272488946266,
+      "p_fake_text": 0.8,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.8,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text and visuals mismatch as text claims Abbas Araghchi while image analysis identifies Reza Gheraqieh.",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,155 @@
+{
+  "index": 292,
+  "sample_id": "293",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": true,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1622.45,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "本文は一見具体的だが、提示された根拠は合成的な要約記録しかなく、事故発生や時刻などの詳細を裏づける実在証拠が示されていない。加えて主画像は生成画像で、本文の美浜3号機・当該日時の出来事を写した記録写真として扱うと誤認を招く。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "Society, Education & Employment",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/293",
+  "image_paths": [
+    "/path/to/ReMMDBench/293/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/293/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "293",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.4,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "Search Wikipedia for incident details regarding \"美浜発電所3号機\" (Mihama Power Plant Unit 3) to confirm the steam leak event and details mentioned in the news text.",
+            "action": "Wikipedia[Mihama Power Plant Unit 3 steam leak]",
+            "observation": "No summary available. Similar entities: Mihama Nuclear Power Plant, List of nuclear power accidents by country, Kashiwazaki-Kariwa Nuclear Power Plant, Hamaoka Nuclear Power Plant, Fukushima Daiichi Nuclear Power Plant",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Search Google for \"Mihama Power Plant Unit 3 steam leak\" to find specific incident reports and verify the news text's claims. Wikipedia yielded no summary for this specific event.",
+            "action": "Google[Mihama Power Plant Unit 3 steam leak]",
+            "observation": "Steam leak reported at nuclear power plant in central Japan: The incident occurred at around 4:10 a.m. local time, when a steam leak was detected near the unit's high-pressure turbine section. (https://news.cgtn.com/news/2026-05-08/Steam-leak-reported-at-nuclear-power-plant-in-central-Japan-1MYmukXBEk0/p.html)\nMihama Nuclear Power Plant: Mihama NPP is operated by The Kansai Electric Power Company, Inc. and is in the town of Mihama, Fukui Prefecture, about 320 km west of Tokyo. (https://en.wikipedia.org/wiki/Mihama_Nuclear_Power_Plant)\nSteam leak shuts down Mihama 3: Kansai Electric has shut down Mihama unit 3 after discovering steam leakage near a high-pressure turbine, with restart timing still unclear. (https://www.neimagazine.com/news/steam-leak-shuts-down-mihama-3/)\nAt 4:10 a.m. Friday, a worker at Japan's Mihama nuclear ...: This is the same reactor where five workers were scalded to death by steam in 2004. Mihama Unit 3. Fukui Prefecture. Operated by KEPCO. Built in ... (https://www.facebook.com/japaninsidehq/posts/at-410-am-friday-a-worker-at-japans-mihama-nuclear-plant-spotted-steam-hissing-o/1275749971394585/)\nCase Details > Steam Eruption from Nuclear Power Plant ...: In April 2003, a maintenance worker discovered the (A?) leak in the number 3 turbine and registered the discovery with the management. As a result, Nihon Arm ... (https://www.shippai.org/fkd/en/cfen/CB1011025.html)",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The search result contains a suspicious date (\"2026-05-08\"), which contradicts the current timeline (based on my knowledge cutoff of 2024). Mihama Unit 3 did experience maintenance and leaks, but a \"2026\" leak event implies the text is either hallucinated or from the future. Given the image depicts a different time period (2011), the text's \"current\" nature is suspect. Therefore, I should refute the text's veracity.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The news text specifies Unit 3 of Minami River Power Plant. The image clearly shows \"Unit 1\" (1号機) on the control panel sign. This contradiction between the unit number in the text and the image indicates the image does not support the claim in the text.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I will ask a VQA question to extract the specific text from the sign at the top of the control room to directly compare the unit number and date with the news text.",
+            "action": "VQA[What does the sign at the top say?]",
+            "observation": "\n\nThe sign at the top reads:\n**1号機 原子炉 手動停止中**\n**平成23年3月12日**\n\nTranslation:\nUnit 1 Nuclear Reactor Manually Stopping (as of) Heisei 23, March 12th (March 12, 2011).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will extract entity information from the people in the image, specifically asking the entity recognition model to identify the operators and their context, to see if they mention \"Unit 3\" or the \"Koto\" plant, further confirming the mismatch.",
+            "action": "Entity[image]",
+            "observation": "- **Industrial control room / control panels** (very likely) — Large wall-mounted instrumentation panels with many switches, gauges, and indicator lights.  \n- **Analog gauges / meters** (very likely) — Multiple round dials clustered on the left and right panels.  \n- **Japanese sign: 「1号機 原子炉手動停止中」** (high certainty) — Indicates “Unit 1 reactor manually stopped” (nuclear context).  \n- **Date on sign: 「平成23年3月12日」** (high certainty) — Heisei 23, March 12 (2011-03-12).  \n- **Workers/operators in blue uniforms** (very likely) — Several people wearing matching workwear; faces are blurred.  \n- **Armbands with Japanese text** (likely) — White armbands with characters (exact text unclear).  \n- **Japan flag patch** (likely) — Small rectangular red-on-white flag-like patch on a uniform (details not perfectly clear).  \n- **Consoles/desks with levers and documents** (very likely) — Control desk surfaces with mechanical controls and papers/binders.  \n- **Wall clocks** (likely) — Several clocks grouped on the left wall panel.  \n\nNo clearly identifiable famous individuals, specific company logos (beyond the possible flag patch), or uniquely identifiable landmark/location markers are visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have already confirmed via VQA that the image displays \"Unit 1\" and the news text discusses \"Unit 3\". The entity analysis also confirms the nuclear context but doesn't specify the unit number clearly in the image. I can now simply finalize the decision based on the confirmed \"Unit 1\" vs \"Unit 3\" conflict.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 1.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text describes a steam leak at Mihama Unit 3 which is refuted, while the image shows a control room labeled Unit 1 (Fukushima) from 2011, causing a contextual mismatch.",
+    "notes": []
+  },
+  "error": null
+}

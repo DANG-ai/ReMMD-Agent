@@ -1,0 +1,164 @@
+{
+  "index": 497,
+  "sample_id": "498",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1844.71,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "The article’s main claim is supported by the cited source material and the reused product images. Pricing, product variants, physical specs, battery, durability, common use cases, and Xiaomi ecosystem positioning are all consistent with the available evidence.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/498",
+  "image_paths": [
+    "/path/to/ReMMDBench/498/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/498/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/498/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/498/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/498/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/498/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/498/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/498/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/498/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/498/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "498",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I will also check the specific prices and the \"Works with Apple Find My\" claim, as the image shows this logo. I want to see if this is a real launch or a concept/fake render.",
+            "action": "Google[Xiaomi Tag 69 yuan Apple Find My compatible]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will search for the specific phone models mentioned in the image's fine print (\"Xiaomi 17 Pro\", \"Android 16\") to confirm they do not exist yet, which would prove the image is a fabrication and the text describing it as a real launch is false.",
+            "action": "Google[Xiaomi 17 Pro Android 16]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to confirm if a \"Xiaomi Tag UWB\" priced at 129 yuan exists in reality, as the text claims. The previous search for \"Xiaomi 17 Pro\" yielded no results, suggesting the phones mentioned in the fine print are fictional or future models. Searching for the specific product and price will help determine if the product exists but the text has fabricated the compatibility details, or if the entire product is fictional.",
+            "action": "Google[Xiaomi Tag UWB 129 yuan]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the standard four-pack is priced at 239 yuan, but the image clearly displays \"¥236\" for the four-piece combination price. While the rest of the text (single unit prices, UWB four-pack price, dimensions, battery life, IP rating, and specific compatible phone models like Xiaomi 17 Pro) matches the image perfectly, this numerical discrepancy regarding the standard four-pack price constitutes a factual error in the text relative to the visual evidence. However, given the high density of matching specific details (especially the obscure phone models), the text is clearly derived from the image, and the price error is minor. I will lean towards support.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.5,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text also mentions a four-pack price for the Xiaomi Tag UWB model at 396 yuan. I will verify this price against the image to ensure the rest of the pricing information matches, although the standard model price discrepancy is the primary concern.",
+            "action": "VQA[What is the four-piece combination price for the Xiaomi Tag UWB listed in the bottom right of the image?]",
+            "observation": "\n\nThe four-piece combination price for the Xiaomi Tag UWB is ¥396.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states that the four-pack price for the standard Xiaomi Tag is 239 yuan. I need to verify this specific price point against the image to identify any discrepancies, as this differs from the UWB pricing which matched.",
+            "action": "VQA[What is the four-piece combination price for the standard Xiaomi Tag listed in the bottom left of the image?]",
+            "observation": "\n\nThe four-piece combination price for the standard Xiaomi Tag listed in the bottom left is **¥236**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text states that the four-pack price for the standard Xiaomi Tag is 239 yuan. The image, however, clearly shows the \"四件组合价\" (four-piece combination price) for the standard Xiaomi Tag as ¥236. This is a direct contradiction in the pricing details provided.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a product launch involving non-existent \"Xiaomi 17\" phones (T1), the images are synthetic/AI-generated as indicated by the product models and high fake probability score (V1), and there is a semantic inconsistency between the text claiming a four-pack price of ¥239 and the visual evidence showing ¥236 (C1).",
+    "notes": []
+  },
+  "error": null
+}

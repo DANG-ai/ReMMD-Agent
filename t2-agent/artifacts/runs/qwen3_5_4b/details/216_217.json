@@ -1,0 +1,141 @@
+{
+  "index": 216,
+  "sample_id": "217",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "C2 Contextual Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1311.14,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "rationale": "本文の中心的な方向性である『海峡情勢の再緊迫が物流・原油・日本株に影響している』という説明には事実基盤があるが、「再封鎖」「再び閉じたかのような空気」といった表現が、全面封鎖に近い印象をやや強く与えている。加えて、株式画面の画像には注目帯やハイライトの編集が施されており、投資家の関心の高まりを実際以上に視覚的に補強している。",
+    "language_code": "ja",
+    "region_code": "japan",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/217",
+  "image_paths": [
+    "/path/to/ReMMDBench/217/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/217/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/217/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/217/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/217/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/217/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/217/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/217/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/217/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/217/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "217",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "C2 Contextual Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V1 Synthetic Visual Content; C2 Contextual Inconsistency; C3 Pragmatic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.0,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.0,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.25,
+        "best_trajectory": [
+          {
+            "thought": "Assuming the visual content of the image depicts ships in a similar context to that described in the text (ships in a strait or busy sea), and considering the general consistency between the visual of merchant vessels and the text's theme of shipping tension, I may conclude that the image upholds the general claims about ships being present and potentially impacted.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.0,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.8,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "The news text discusses ships being delayed in the Strait of Hormuz, mentioning cargo ships and tankers. I need to identify the main objects in the image to verify the presence of ships and establish a visual link to the text's content.",
+            "action": "Entity[image]",
+            "observation": "- **Two cargo/tanker ships (foreground, center and right)** — High certainty (large ocean-going vessels; exact ship names not readable).\n- **Distant ship or offshore structure (far left)** — Medium certainty (silhouette suggests another vessel/industrial platform, but too far to confirm).\n- **Sea/ocean waterline** — High certainty.\n- **Hazy sky/horizon** — High certainty.\n- **Possible buoy/navigation marker (near right horizon)** — Low–medium certainty (thin vertical shape; could be a buoy or small marker).",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text specifically mentions 'tankers' and 'cargo ships' in the context of the Strait of Hormuz tension. Although the previous Entity action confirmed 'cargo/tanker ships', a VQA question can explicitly verify this alignment to strengthen the cross-modal evidence before concluding.",
+            "action": "VQA[What vessels are clearly visible in the image?]",
+            "observation": "\n\nBased on the visual evidence, there are **three oil tankers** clearly visible in the image:\n\n1.  **Far Left:** A large oil tanker (reddish-brown hull) is visible in the distance on the far left side.\n2.  **Center:** A large oil tanker is positioned in the middle of the frame.\n3.  **Right:** An oil tanker is visible on the right side, facing slightly rightward.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions ships (tankers and cargo ships) being delayed in the Strait of Hormuz. The image clearly shows multiple large ships (identified as oil tankers in previous VQA) in a body of water. Since the visual content (ships) matches the key entities described in the news text, I am confident the content aligns. I should confirm this match and end the task.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3419951893353394,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.19999999999999996,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.1,
+        "T2 Distortion": 0.2,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.5,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.9
+      }
+    },
+    "taxonomy_rationale": "The text describes an April scenario but cites image dates (e.g., 2020, 2019) that create a significant time contextual mismatch and misleadingly imply current relevance.",
+    "notes": []
+  },
+  "error": null
+}

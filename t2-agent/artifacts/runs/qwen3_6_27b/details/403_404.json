@@ -1,0 +1,134 @@
+{
+  "index": 403,
+  "sample_id": "404",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 4492.26,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本将“官方推出的量化引医计划+可直接注册+统一高薪待遇包”包装成近乎已成型政策，并用两张“文件截图/封面信息图”强化可信度，但关键政策文件与具体数字、条款缺乏可核验的真实对应，且图文在核心数字与事件归属上自相矛盾，整体结论不成立。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会民生",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/404",
+  "image_paths": [
+    "/path/to/ReMMDBench/404/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/404/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/404/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/404/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "404",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 6,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The image acts as a summary infographic for the provided news article. Its main headline \"香港高薪抢医生 入门月薪7万港元起？\" (Hong Kong recruits doctors with high salaries, starting monthly salary from 70,000 HKD?) corresponds directly to the \"Market and Salary\" section of the text, which states that \"入门月薪7万港元起\" is a figure repeatedly cited in recruitment advertising. The three bullet points in the image—providing housing allowances, simplifying registration paths for overseas doctors, and targeted recruitment of specialty talents—are all key themes discussed in the \"Policy Information\" and \"Market and Salary\" sections of the text. For instance, the text mentions \"housing subsidies\" as part of the package, discusses the revision of the \"Medical Registration Ordinance\" to affect registration paths, and highlights the need for \"specialty talents\" due to shortages. Thus, the image accurately summarizes and supports the content of the news text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "I will use VQA to verify the specific salary claim mentioned in the image (\"70,000 HKD\") to see if it aligns with the text which mentions \"入门月薪7万港元起\" as a recruitment selling point.",
+            "action": "VQA[What is the entry monthly salary mentioned in the large text at the top of the image?]",
+            "observation": "\n\nThe large text at the top mentions an entry monthly salary starting from **70,000 Hong Kong Dollars** (written as \"7万港元\"). The full phrase is \"入门月薪7万港元起?\"",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image displays a headline \"Hong Kong High Salary Grabs Doctors\" with a sub-headline \"Entry Monthly Salary Starting from 70,000 HKD?\". It lists bullet points about housing allowance, simplifying overseas doctor registration, and recruiting scarce specialist talent. The news text discusses exactly these topics: the trend of \"high salary grabbing doctors\", the specific mention of \"entry monthly salary starting from 70,000 HKD\" as a recruitment selling point, the policy changes regarding the \"Medical Registration Ordinance\" to facilitate registration for non-local doctors, and the provision of \"housing subsidies\" and recruitment for specialists. The content of the image aligns perfectly with the key points presented in the news report.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.36840314986403866,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.0,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future policy document (T1) and describes its content (e.g., 3000/5000 doctors) which conflicts with the provided synthetic document image (V1) that shows a different title and quota (100 people), creating a semantic inconsistency (C1).",
+    "notes": []
+  },
+  "error": null
+}

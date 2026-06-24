@@ -1,0 +1,141 @@
+{
+  "index": 247,
+  "sample_id": "248",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1247.19,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本把“网友对外观相似的讨论/质疑”扩写为更确定的“仿冒链条、系统性欺诈并已被监管处置”的叙事，但关键证据主要来自被编辑或生成的图片与不具可核查细节的转述，导致读者获得的主要印象（已坐实、已查封/暂停营业、存在欺诈）缺乏可靠支撑且存在图文错配。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "社会热点",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/248",
+  "image_paths": [
+    "/path/to/ReMMDBench/248/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/248/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/248/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/248/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "248",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.2,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.1,
+        "best_trajectory": [
+          {
+            "thought": "The news text reports that \"Zhongyuan Petroleum\" (a fake station) has a \"mainly green\" header and resembles Sinopec. However, the provided image shows a gallery of photos for a legitimate \"Sinopec\" (China Sinopec) station, featuring a standard red and white canopy logo and branding. This visual discrepancy (Green vs. Red) contradicts the text's specific description of the deceptive station's appearance, thereby refuting the veracity of the provided evidence against the text's claim.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The news text describes a controversy regarding a \"Zhongyuan Petrochemical\" station that imitates \"Sinopec,\" specifically noting a green main color. I need to verify the visual content of the provided images to see if the station name matches the controversial \"Zhongyuan\" station or the imitated \"Sinopec,\" and to check for the described color scheme.",
+            "action": "VQA[What is the full text visible on the main signboard or canopy roof in the top-left image?]",
+            "observation": "\n\nThe full text visible on the main signboard in the top-left image is \"国石化 ZYOPEC\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "To confirm the identity of the station and whether the text matches the 'Zhongyuan' name described in the news, I need to interrogate the text visible on the signage in the images. The text indicates if this is indeed 'Zhongyuan' or a legitimate 'Sinopec' station, which is crucial for determining the matching status.",
+            "action": "VQA[What text is visible on the main red signboard in the top-left image?]",
+            "observation": "\n\nThe main red signboard in the top-left image displays the text **\"中国石化 ZYOPEC\"**. The \"ZY OPEC\" appears to be a slightly altered or specific spelling of \"SINOPEC\" seen on other signs in the collage.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the VQA results showing \"Sinopec\" branding and a \"red\" canopy in the images, directly contradicting the text's description of a \"Zhongyuan\" station with a \"green\" main color, the provided images do not match the specific controversial entity described in the text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.9,
+        "T3 Misleading Context": 0.2,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.3,
+        "C2 Contextual Inconsistency": 0.2,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text distorts the claimed sign content which is visually inconsistent with the edited imagery showing a different name.",
+    "notes": []
+  },
+  "error": null
+}

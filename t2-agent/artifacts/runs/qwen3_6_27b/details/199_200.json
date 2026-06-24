@@ -1,0 +1,149 @@
+{
+  "index": 199,
+  "sample_id": "200",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1681.54,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本对“存在军采处罚公告、事由涉及拒不签订合同、处理对象包含企业与相关责任人、处理决定为暂停参加全军相关采购活动资格”等核心事实有一定真实来源基础，但通过将暂停资格进一步语境化扩写为“全面禁采、即时外溢到春季上新/校服季并影响在执行合同”的叙事，叠加对公告截图的日期与关键字段编辑，造成图文在时间与事件归属上不一致，从而形成真假掺杂的整体误导。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经商业",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/200",
+  "image_paths": [
+    "/path/to/ReMMDBench/200/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/200/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/200/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/200/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/200/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/200/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/200/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/200/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/200/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/200/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "200",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "TEXT_SUPPORT",
+        "best_sc_score": 0.8,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The user wants to verify the text against the image. The image is a screenshot from the \"Military Procurement Network\" regarding a penalty on \"HLA Group Co., Ltd.\" (海澜之家股份有限公司).\nKey details to check:\n1.  **Subject:** Text says \"海澜之家集团股份有限公司\". Image says \"海澜之家股份有限公司\". This is consistent (Group vs Company is a minor naming variation, often used interchangeably or referring to the parent entity).\n2.  **Date:** Text mentions \"2月27日\" and \"2026年2月27日\". Image shows \"发布时间: 2026-02-27\" and \"暂停时间: 2026-02-27\". This is a perfect match.\n3.  **Violation Reason:** Text says \"中标后无正当理由拒不签订合同\". Image says \"暂停事由：中标后无正当理由拒不签订合同\". This is an exact match.\n4.  **Penalty:** Text says \"暂停全军采购资格\". Image says \"暂停其参加全军物资工程服务采购活动资格\". The text summarizes this accurately (\"暂停全军采购资格\" is a valid summary of the image's text).\n5.  **Personnel:** Text mentions \"法定代表人周立宸\" and \"项目授权代表贡伟宇\". Image lists \"周立宸\" (法定代表人) and \"贡伟宇\" (授权代表). This is an exact match.\n6.  **Visual cues:** Text mentions red boxes and annotations like \"拒不签订合同\" and \"暂停全军采购资格\". The image contains these exact red annotations.\n\nThe text accurately describes the content, details, and visual elements of the provided image. The timeline (referencing 2025 data and 2026 events) is internally consistent within the text.",
+            "action": "Finish[TEXT_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The user wants me to verify if the image supports the news text. The text describes a viral screenshot of a penalty notice from the \"Army Procurement Network\" dated February 27, 2026. It mentions specific red text overlays like \"Refuse to Sign Contract\" and \"Suspend All-Army Procurement Qualification\". The provided image shows exactly this: a notice from \"Army Procurement Network\" with the date 2026-02-27, the specific reason \"Refusal to sign contract without justified reasons after winning the bid\", the result \"Suspend qualification to participate in all-army material, engineering, and service procurement activities\", and the red overlays mentioned in the text. Therefore, the image supports the text.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "The text mentions the legal representative is \"Zhou Lichen\" (周立宸), but the image appears to show \"Zhou Bian Ni\" (周边霓). I need to confirm the name in the image to verify this mismatch.",
+            "action": "VQA[What is the name of the person listed as the legal representative in the personnel information section?]",
+            "observation": "\n\nThe name of the person listed as the legal representative is **周边霓**.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text refers to the company as \"Hailan Home Group Co., Ltd.\" (海澜之家集团股份有限公司), while the image title and supplier info might differ. I should check the exact supplier name in the image to see if \"Group\" is included.",
+            "action": "VQA[What is the exact supplier name (供应商名称) listed in the table?]",
+            "observation": "\n\n海澜之家股份有限公司",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I have confirmed two distinct mismatches between the text and the image. The text identifies the subject as \"Hailan Home Group Co., Ltd.\" (海澜之家集团股份有限公司) and the legal representative as \"Zhou Lichen\" (周立宸). However, the image clearly shows the supplier name as \"Hailan Home Co., Ltd.\" (海澜之家股份有限公司) and the legal representative as \"Zhou Bian Ni\" (周边霓). These discrepancies indicate that the image does not match the specific details described in the news text.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.19999999999999996,
+      "p_fake_image": 0.8,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The image contains obvious visual edits such as red boxes and text overlays (V2), and there is a semantic inconsistency between the text's identification of the legal representative as \"Zhou Lichen\" and the name \"Zhou Bianni\" shown in the viral image screenshot (C1).",
+    "notes": []
+  },
+  "error": null
+}

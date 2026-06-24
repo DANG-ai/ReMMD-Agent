@@ -1,0 +1,132 @@
+{
+  "index": 50,
+  "sample_id": "051",
+  "ground_truth_verdict": "True",
+  "ground_truth_taxonomy": [],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1766.66,
+  "metadata": {
+    "verdict": "True",
+    "distortion_taxonomy": [],
+    "rationale": "L'article est cohérent avec les éléments de preuve fournis : il rapporte correctement le résultat du match, la qualification du Real Madrid et la forte circulation du hashtag #MCIRMA pendant la rencontre. Les images montrent bien des scènes compatibles avec la victoire madrilène à Manchester et ne contredisent pas le texte.",
+    "language_code": "fr",
+    "region_code": "france",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/051",
+  "image_paths": [
+    "/path/to/ReMMDBench/051/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/051/images/02_img_2.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "051",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 1.0,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "Since the key step in verifying the image's accuracy against the news text is analyzing it for match-related and player/contextual information, invoking the Detect[image] tool is necessary to gather evidence for a support/refute decision regarding the news content.",
+            "action": "Tool[Detect[image]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text claims the match occurred on March 17, 2026. This represents a future date that makes the claim of a specific match result factually impossible or false in the current context. Consequently, the text is a hallucination or fabrication, and the image, which depicts a Real Madrid celebration that could belong to a real past or present match, logically refutes the specific 2026 timeline.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the content of the image against the news text. One key discrepancy might be the player in the foreground, as the text claims Vinícius Júnior scored the goals, but the player in focus appears to be someone else (possibly Jude Bellingham or another teammate). I will ask the vision model to identify the player in the foreground to check for inconsistencies.",
+            "action": "VQA[identification of player in the foreground]",
+            "observation": "\n\nBased on the visual evidence, the player in the foreground is **Jude Bellingham**, a professional footballer who plays for **Real Madrid**. He is wearing the team's dark blue \"paterné\" style kit from the 2023-24 season.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text mentions a specific date (17 March 2026). I should check if any year or crucial match details are visible on the hoardings or screens in the background to verify the context.",
+            "action": "VQA[read text on the advertising hoardings]",
+            "observation": "\n\nThe text on the advertising hoardings reads: \"TURKISH AIRLINES\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text states the match was played at the Etihad Stadium (Manchester City's venue) with the Real Madrid team shown in the image. However, the advertising hoardings in the image show \"TURKISH AIRLINES\", which is a prominent sponsor of Real Madrid's Canary Wharf stadium (their North American base), not the Etihad. The visual evidence of the location sponsor conflicts with the textual claim of the venue.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3556893304490063,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.1,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a future match event (2026), whereas the image shows a current match with different content and a mismatched date context.",
+    "notes": []
+  },
+  "error": null
+}

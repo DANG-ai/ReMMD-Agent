@@ -1,0 +1,183 @@
+{
+  "index": 471,
+  "sample_id": "472",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1532.48,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article is built on a real market setup—steady February core CPI did lead traders to watch PCE and GDP next—but it overstates how decisively one CPI print established a macro turning point and pairs that framing with an edited event-card image that misleadingly recasts separate source material as direct visual proof of the CPI story.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Finance, Business & Consumer Affairs",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/472",
+  "image_paths": [
+    "/path/to/ReMMDBench/472/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/472/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/472/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/472/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/472/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/472/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/472/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/472/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/472/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/472/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "472",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.1,
+        "best_value": 0.3,
+        "best_trajectory": [
+          {
+            "thought": "First, I need to verify the standard reporting practices of the Bureau of Labor Statistics (BLS) regarding CPI release times to see if the text's claim of a Wednesday release at 8:30 AM ET aligns with the standard schedule, or if it's an exception or a distortion. Checking Wikipedia will establish the baseline for these release schedules.",
+            "action": "Wikipedia[US Consumer Price Index release schedule]",
+            "observation": "Nasdaq-100 (NDX) is a stock market index made up of equity securities issued by 100 of the largest non-financial companies listed on the Nasdaq stock exchange. It is a modified capitalization-weighted index. The stocks' weights in the index are based on their market capitalizations, with certain rules capping the influence of the largest components. It is limited to companies from a single exchange, and it does not have any financial companies. The financial companies are in a separate index, the Nasdaq Financial-100.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Third-party market commentary typically references specific data releases and market reactions. I should check if this article exists as a published piece and verify the date claims - the March 11, 2026 CPI release and March 13, 2026 PCE release timeline needs verification against actual historical or future schedule data.",
+            "action": "Google[US core CPI March 11 2026 release timing BLS schedule]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Given the text refers to specific dates in March 2026, which are in the future relative to the current known data timeline, I need to verify if this is a real news item or a hallucinated/future-dated simulation. I will search for the text online to see if it exists as a valid article, and check if the proposed schedule for the January 2026 PCE report aligns with historical/public BEA schedules.",
+            "action": "Google[US core CPI February 2026 real news fpmarkets]Textual authenticity",
+            "observation": "Could not parse action: Google[US core CPI February 2026 real news fpmarkets]Textual authenticity",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.1,
+        "best_value": 0.15000000000000002,
+        "best_trajectory": [
+          {
+            "thought": "The text claims the Core CPI held steady (0.2%) which created market hopes for Fed cuts. The image headline says 'US core CPI for February holds steady' with a sub-headline 'Cooling price pressure keeps Fed-cut hopes alive' and a green arrow. This visual confirms the specific interpretation of the data and market sentiment described in the news text, particularly the 'steady' reading and the implication of rate cuts.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.05,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.3,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "The image contains a text overlay stating the date '13.03.2026 Friday'. The news text mentions that the next set of catalysts (PCE, GDP) is scheduled for Friday, March 13. Verifying the exact date on the image is the first step to establishing temporal alignment between the image and the news narrative.",
+            "action": "Tool[VQA[What is the date displayed in the blue circle in the top left of the image?]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I need to verify the specific date shown in the image to confirm it aligns with the timeline mentioned in the news text (Friday, March 13). This will help establish temporal consistency between the visual and text modalities.",
+            "action": "Tool[VQA[What is the date displayed in the blue circle at the top left of the image?]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text states the CPI data was released on Wednesday, March 11. The subsequent focus is on Friday, March 13 (PCE and GDP). The image displays a date at the top left, which is crucial for verifying temporal alignment with the \"Friday's next set of catalysts\" or the summary of Wednesday's event released on Friday.",
+            "action": "Tool[VQA[What is the date written in the light blue tag at the top left of the image?]]",
+            "observation": "Tool 'Tool' is not available. Use one of the listed available actions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA tool attempts failed due to unavailability. Since I can visually inspect the image, I see the date '13.03.2026 Friday' and the headline 'US core CPI for February holds steady'. These perfectly align with the news text which discusses the release on Wednesday, March 11 and the subsequent market focus on Friday, March 13. The visual and text modalities are consistent. I should conclude the matching task.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.30000000000000004,
+      "p_fake_text": 0.1,
+      "p_fake_image": 0.9,
+      "p_fake_match": 0.7,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.1,
+        "T3 Misleading Context": 0.1,
+        "V1 Synthetic Visual Content": 0.9,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.2,
+        "C2 Contextual Inconsistency": 0.8,
+        "C3 Pragmatic Inconsistency": 0.3
+      }
+    },
+    "taxonomy_rationale": "The text fabricates non-existent economic data for a future date, matched by synthetically generated and edited visual content that contains mismatched timestamps from real source images.",
+    "notes": []
+  },
+  "error": null
+}

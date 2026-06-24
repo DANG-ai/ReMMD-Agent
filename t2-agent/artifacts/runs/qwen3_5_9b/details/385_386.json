@@ -1,0 +1,132 @@
+{
+  "index": 385,
+  "sample_id": "386",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "C1 Semantic Inconsistency",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1263.08,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "The article is built on a real underlying claim—Pitino advanced to his 14th Sweet 16, his first since 2014—but it misframes the clinching game and historical context with specific event details that are not supported by the source material. The visuals further intensify the misleading framing by using an edited sideline photo and a fully synthetic bracket graphic as if they documented the same current tournament event.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Entertainment, Sports & Celebrity",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/386",
+  "image_paths": [
+    "/path/to/ReMMDBench/386/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/386/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/386/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/386/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "386",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "C1 Semantic Inconsistency",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; C1 Semantic Inconsistency; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 0.6,
+        "best_value": 0.75,
+        "best_trajectory": [
+          {
+            "thought": "Need to analyze the visual details of the image, specifically the coach's suit color and background signage, to verify the claims made in the news text about the black suit and NCAA tournament context.",
+            "action": "Detect[image]",
+            "observation": "- **Visible editing/obfuscation:** The most obvious alteration is the large square blur over the main subject’s face, plus additional square blurs over faces in the lower corners/background. These are consistent with deliberate redaction for privacy, not with AI generation artifacts.\n- **No clear signs of AI synthesis:** The suit fabric, tie pattern, lapel pin/badge, lighting, depth of field, and background bokeh look photographically consistent. Edges and textures don’t show typical generative issues (warped text, melted details, inconsistent shadows).\n- **Text/signage consistency:** The “MARCH MADNESS” signage in the background appears coherent (though out of focus), not garbled—another point toward an authentic photo.\n- **Compositing clues:** I don’t see mismatched lighting, cutout halos, or inconsistent perspective that would suggest the subject was pasted into a different scene.\n\n**Overall:** The image looks like a real sports photograph with intentional face-blurring applied; no strong indicators of synthetic generation or deceptive compositing beyond the privacy redactions.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "While the image confirms the subject is Rick Pitino at a March Madness game with \"St. John's\" branding (matching the text's team), the specific details are inconsistent. The suit color (blue vs. text's black suit) and the tournament date (presented as a 2026 event) are factually wrong. This indicates the text is likely a hallucinated news piece fabricated from real images.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.95,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.55,
+        "best_trajectory": [
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.6,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.9,
+        "T2 Distortion": 0.3,
+        "T3 Misleading Context": 0.2,
+        "V1 Synthetic Visual Content": 0.1,
+        "V2 Visual Editing": 0.2,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.1
+      }
+    },
+    "taxonomy_rationale": "The text describes a 2026 tournament win over UConn contradicting the 2025 bracket graphic and the opponent shown in the score graphic (Omaha).",
+    "notes": []
+  },
+  "error": null
+}

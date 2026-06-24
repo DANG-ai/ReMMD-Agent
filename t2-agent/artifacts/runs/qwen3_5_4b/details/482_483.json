@@ -1,0 +1,143 @@
+{
+  "index": 482,
+  "sample_id": "483",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly True",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1418.9,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "rationale": "The article builds a strong narrative out of two weakly connected elements: an attributed Iranian official claim about 500 arrests and dramatic Dubai-airport visuals that are edited or synthetic. This overstates the certainty and scale of the arrests and misleadingly presents manipulated airport imagery as if it documented the same conflict spillover described in the text.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "International Conflict & Diplomacy",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/483",
+  "image_paths": [
+    "/path/to/ReMMDBench/483/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/483/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/483/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/483/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/483/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/483/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/483/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/483/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/483/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/483/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "483",
+    "predicted_verdict": "Mostly True",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content"
+    ],
+    "predicted_label": "verdict=Mostly True | taxonomy=T1 Fabrication; V1 Synthetic Visual Content",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.33,
+        "visits": 9,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.33,
+        "visits": 2,
+        "completed": true,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 1.0,
+        "best_value": 1.0,
+        "best_trajectory": [
+          {
+            "thought": "Based on the visual analysis of the image provided, it clearly depicts an Emirates airplane flying in front of dark smoke, which directly matches the textual description of a scenario at Dubai International Airport with smoke and aircraft in this specific cycle of escalation. The image supports the veracity of the scene described in the news text. Therefore, it is appropriate to conclude that the image supports the provided content.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.34,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text describes a \"dark plume\" of smoke near Dubai airport while an aircraft is visible. To verify this visual match, I will first ask the model to confirm the presence of the dark smoke or plume described in the text.",
+            "action": "VQA[question: Is there a dark plume of smoke visible in the image behind the aircraft?]",
+            "observation": "\n\nYes, there is a large, dark plume of smoke visible behind and surrounding the aircraft. It fills most of the background, indicating a significant event like an eruption or release.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The previous VQA action confirmed the presence of dark smoke. To further validate the text claim of \"aircraft\" being visible in the image, I will use Entity recognition to detect and identify the airplane in the scene.",
+            "action": "Entity[airplane]",
+            "observation": "\n\nHere are the visible entities in the image:\n\n*   **Emirates Airline Aircraft**: A large passenger jet with the distinctive \"Emirates\" livery on the fuselage and the UAE flag colors (red, green, white, and black) on the tail fin.\n*   **Landing Gear**: The deployed wheels and gear underneath the aircraft, indicating it is in the process of landing or takeoff.\n*   **Storm Clouds**: Dominating the background are dark, heavy, and dramatic cumulus clouds, suggesting a storm is approaching or present.\n*   **Boeing 777 (Likely Model)**: Based on the engine shape and general structure, this appears to be a medium-to-long-haul wide-body jet, consistent with Emirates' fleet of Boeing 777s.\n*   **\"Emirates\" Logo**: The text logo is clearly printed in brown/black lettering along the side of the white fuselage.\n*   **Airport Infrastructure (Bottom Edge)**: At the very bottom right corner, faint structures resembling airport buildings or light poles are barely visible.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Given the observations confirming the presence of Emirates aircraft and a dark smoke plume, which directly aligns with the text's description of smoke and aircraft near Dubai airport, I can reasonably conclude that the image matches the described scene and perform the final decision.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.7663094323935531,
+      "p_fake_text": 0.5,
+      "p_fake_image": 0.0,
+      "p_fake_match": 0.09999999999999998,
+      "verdict_label": "Mostly True",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.95,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.85,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "Text includes a fabricated future date (2026) and the airport crowd image exhibits AI-generated visual artifacts (uncanny faces, synthetic smoke).",
+    "notes": []
+  },
+  "error": null
+}

@@ -1,0 +1,179 @@
+{
+  "index": 395,
+  "sample_id": "396",
+  "ground_truth_verdict": "Mostly True",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1546.4,
+  "metadata": {
+    "verdict": "Mostly True",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "文本围绕“暗访曝光—监管处置—企业回应—个别门店短时客流下降”的主线总体可成立，但对暗访结果的冲击性表述与“客流骤降”的呈现存在一定夸张与取样外推风险；配图中对比图与“监控截图”经过裁切、压暗与标注强化冷清感，并出现时间/来源语境与正文不完全对齐的情况。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "消费与品牌",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/396",
+  "image_paths": [
+    "/path/to/ReMMDBench/396/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/396/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/396/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/396/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/396/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/396/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/396/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/396/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/396/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/396/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "396",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V2 Visual Editing; C2 Contextual Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.85,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "The text provides specific regulatory data (6325 households checked, 306 cases handled) and claims specific locations (Nan Shan District). I should verify these specific numbers and the sequence of events (exposure on 3/14, inspection on 3/15) to see if they align with any known reports, or if the text is confused with a 2023/2024 incident.",
+            "action": "Google[query=\"美宜佳 6325户 306宗 假烟 查处\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims a '2026 Guangdong 3.15 Gala' has already aired and reported on Meiyijia selling fake cigarettes. Since 2026 is in the future relative to the current real-world timeline (2024/2025), this is a major red flag for fabrication. I need to search for the actual event in the correct recent year (likely 2023 or 2024) to verify if this story is based on a real past event with a wrong date.",
+            "action": "Google[query=\"广东3·15晚会 美宜佳 假烟 2023\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "This text claims the Guangdong 3.15 Gala 2026 has already aired, which is chronologically impossible in the current timeline. The dates consistently reference 2026 events (3月15日, 3月16日), and my previous searches found no verified records of this specific incident. The regulatory data is also unverifiable, suggesting fabrication.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.2,
+        "best_value": 0.5,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify the veracity of the image against the provided text. The image explicitly mentions \"2026广东3·15晚会\" (Guangdong 3.15 Gala) and \"3月16日\" (March 16), which corresponds to the timeline in the \"News text\" (mentioning the March 14 broadcast and subsequent coverage on March 16). The specific details of the report (store emptiness, staff phone usage) in the image match the narrative in the \"News text\" (describing the \"empty\" state and public hesitation), indicating strong consistency and support.",
+            "action": "Detect[image]",
+            "observation": "从图像本身看，这是一张“文章/长截图”的版式页面，而不是现场照片或监控画面截图。\n\n## 更像真实截图/排版的迹象\n- 文字排版、字号、行距、段落缩进一致；中英文数字与标点混排自然（如“3·15”“2026”等），没有明显 AI 生成常见的乱码/错位。\n- 画面边缘干净，像手机截屏或长图导出；底部有明显截断的边界（符合滚动页面截取的常见形态）。\n- 未见不合理的透视、光照、阴影等“照片级”伪造要素（但本图也几乎没有真实场景可供判断）。\n\n## 可能的编辑/合成迹象\n- 文中出现“封面导语”等结构化标题，以及话题标签“#…#”，整体更像媒体稿件/社媒长图，通常由编辑排版生成，而非原始拍摄。\n- 上方一大段、下方一大段文字被拼在同一张长图里，可能是页面长截图或多段内容拼接导出（属于常规编辑，不等同于伪造现场证据）。\n\n## 未见到的内容\n- 图中没有便利店现场、监控画面、人脸或时间戳画面，因此无法据图核验“半小时无人进店”等叙述是否与现场画面一致。\n\n**结论：**图像本身看不出AI生成或照片篡改痕迹，更像经过正常排版/长截图导出的文字内容图；但它不包含可验证事件的现场影像证据。",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the 'Detect[image]' observation, the image is identified as a standard screenshot of a web news article (no AI artifacts). Analyzing the consistency: the text describes '3·15 exposure' and 'Meiyijia cigarettes', which matches the image headline ('Meiyijia exposed'). The text timeline (March 16 follow-up) follows the image headline (March 15/3.15 exposure). The image functions as the 'portal' to the detailed report provided in the text. Given the strong semantic alignment and authentic visual format, the veracity is supported.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.15,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "To further cross-check the circumstances of the exposure, I need to identify the specific actions taken by the stores regarding inventory. The text mentions stock shortages and removal of goods. I will ask a VQA query to confirm if the image mentions stores removing products.",
+            "action": "VQA[Did any of the Meiyijia stores mentioned in the image remove cigarette products from the shelves?]",
+            "observation": "\n\nYes, according to the text in the image, some Meiyijia stores did remove cigarette products.\n\nThe text explicitly mentions:\n*   In the headline/sub-headline: \"...**有门店下架部分香烟**\" (some stores took down part of the cigarettes).\n*   In the first paragraph: \"其中一家门店已**主动下柜多款香烟**，货架呈现商品短缺状态\" (One store had proactively taken down multiple cigarettes, and the shelves showed a shortage of goods).\n*   In the second paragraph regarding the first store visited: \"...但**香烟区域已明显“缩水”**\" (...but the cigarette area had obviously \"shrunk\").",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I should verify another specific detail from the image that might differentiate it from the general text. The image mentions a specific location 'Xuefu Road' (学府路). Checking if the image text explicitly mentions this location will help confirm the granularity of the information. If the prompt text lacks this specific detail, it points towards a MISMATCH. I will try to extract this entity.",
+            "action": "VQA[What specific road name is mentioned in the text of the image regarding the reporter's visit location?]",
+            "observation": "\n\nBased on the text in the image, the specific road names mentioned regarding the reporter's visit locations are:\n\n1.  **学府路 (Xufeng Road)** - Mentioned in the first paragraph (\"南山区学府路沿线\") and the second paragraph (\"记者于工作日时段抵达学府路\").\n2.  **前海路 (Qianhai Road)** - Mentioned in the third paragraph (\"记者又前往前海路附近的一家美宜佳\").",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The image text explicitly mentions \"南都记者\" (Nandu Reporter) as the one visiting the stores. The provided News Text refers to \"media dark visits\" generally and does not mention this specific newspaper. Since these look to be different reports or different scopes of the same event, I will verify the specific media outlet in the image to exclude the News Text as the same source.",
+            "action": "VQA[Which specific media outlet is mentioned in the text of the image as conducting the store visits?]",
+            "observation": "\n\nBased on the text in the image, the specific media outlet mentioned is **Nandu Daily** (referred to as **\"南都\"** in the text, specifically in the phrase \"南都记者\").",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Since multiple specific entities in the image text (specific road names like Xuefu Road, specific reporter name like Nandu) do not appear in the provided news text, I need to finalize the conclusion based on these discrepancies. I will propose finishing with a MISMATCH label.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 0.8,
+      "p_fake_match": 0.9,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.95,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 0.9,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.9,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates a 2026 event (T1), while visuals show unrelated topics (gold charts) or mismatched timestamps (2023) beside edited overlays (V2), causing contextual inconsistency (C2).",
+    "notes": []
+  },
+  "error": null
+}

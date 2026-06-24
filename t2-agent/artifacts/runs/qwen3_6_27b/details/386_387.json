@@ -1,0 +1,152 @@
+{
+  "index": 386,
+  "sample_id": "387",
+  "ground_truth_verdict": "Mixture",
+  "ground_truth_taxonomy": [
+    "T3 Misleading Context",
+    "V2 Visual Editing",
+    "C2 Contextual Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V2 Visual Editing"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 2247.55,
+  "metadata": {
+    "verdict": "Mixture",
+    "distortion_taxonomy": [
+      "T3 Misleading Context",
+      "V2 Visual Editing",
+      "C2 Contextual Inconsistency"
+    ],
+    "rationale": "样本文本一方面基于真实存在的微博帖文与截图传播现象，确有把多来源材料并列转发、引发交易圈讨论的事实基础；但同时通过对截图进行局部改图并在叙事中用“议息当晚/公布后数小时”等时间锚点串联，把原本不同日期与性质的内容拼接成同一事件链，造成受众对发生时间与证据来源的系统性误判，因此整体呈现为真假混杂。",
+    "language_code": "zh",
+    "region_code": "china",
+    "theme_category": "财经投资",
+    "text_length_tier": "medium"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/387",
+  "image_paths": [
+    "/path/to/ReMMDBench/387/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/387/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/387/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/387/images/04_img_4.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "387",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V2 Visual Editing"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; T2 Distortion; V2 Visual Editing",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 6,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.9,
+        "best_trajectory": [
+          {
+            "thought": "I will search for the specific Weibo post IDs and the account names mentioned in the text to verify if they exist and contain the described content. I will also search for the specific price ranges and the account \"黄金原油解盘达人-老姜\" to see if there is any news or discussion about these specific posts and screenshots.",
+            "action": "Google[\"site:weibo.com\" \"5277857353829878\" OR \"5277969871276437\" OR \"5277849448615144\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "I will search for the specific Weibo account \"黄金原油解盘达人-老姜\" mentioned in the text and visible in the image watermark, along with the specific price prediction \"4078\" to verify if such posts exist.",
+            "action": "Google[\"黄金原油解盘达人-老姜\" \"4078\"]",
+            "observation": "Serper search returned no results.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 5,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.65,
+        "best_trajectory": [
+          {
+            "thought": "The text states that on March 18, the gold price low reached 4806 (\"低位下探至4806美元附近\"). The provided image, labeled \"03-18\", shows a \"最低\" (Low) of 4982.07. This is a significant discrepancy (over 170 points). If the image is intended to represent the market data for March 18 as described in the \"盘面回顾\" (market review) section, it contradicts the text's claim of the low price. The text mentions that screenshots were \"processed\" or \"modified\", which might explain the difference if the image is one of those fake screenshots, but if the task is to verify the *factual claims* in the text (like the low price), the image refutes it. However, the text primarily discusses the *circulation* of these screenshots and the *narrative* around them. The image confirms the existence of the account and the general price level (~5000). The specific claim about the low (4806 vs 4982) is the main conflict. Given the text explicitly says screenshots were doctored, the image likely *is* one of those doctored screenshots, thus supporting the text's narrative about the existence of such misleading images. But strictly speaking, the data in the image (Low 4982) contradicts the data in the text (Low 4806) for the same date.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.1,
+        "visits": 1,
+        "completed": true,
+        "best_answer": "MATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "I need to verify if the watermark in the image matches the Weibo account name mentioned in the text (\"黄金原油解盘达人-老姜\"). This is a strong identifier linking the image to the text's subject.",
+            "action": "VQA[What is the text of the watermark or social media handle visible at the bottom center of the image?]",
+            "observation": "\n\nThe text of the watermark or social media handle visible at the bottom center is \"@黄金原油解盘达人-老姜\".",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Based on the visual evidence, the image is a chart of XAU (Spot Gold) dated \"Wednesday night / 03-18 22:00 - 24:00\". The watermark at the bottom explicitly states \"@黄金原油解盘达人-老姜\". The news text discusses gold price volatility around March 17-18 and specifically mentions the Weibo account \"@黄金原油解盘达人-老姜\". The prices in the image (around 4988-5016) align with the text's description of gold oscillating around 5000 USD on March 18. The specific high of 5016.15 in the image matches the text's mention of \"5017 nearby\". The day of the week \"Wednesday\" in the image header matches the text's context of the FOMC meeting window. All key entities (account name, asset, date, timeframe) match perfectly.",
+            "action": "Finish[MATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 1.0,
+      "p_fake_image": 1.0,
+      "p_fake_match": 0.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 1.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.0,
+        "V2 Visual Editing": 1.0,
+        "C1 Semantic Inconsistency": 0.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates the existence of specific social media posts (IDs not found) and market data (gold at 5000), distorts the text visible in the image (claiming \"4078\" instead of \"4978\"), and the images are described as processed/edited screenshots.",
+    "notes": []
+  },
+  "error": null
+}

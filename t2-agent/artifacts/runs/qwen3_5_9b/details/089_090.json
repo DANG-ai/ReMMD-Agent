@@ -1,0 +1,176 @@
+{
+  "index": 89,
+  "sample_id": "090",
+  "ground_truth_verdict": "False",
+  "ground_truth_taxonomy": [
+    "T1 Fabrication",
+    "T2 Distortion",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "Mostly False",
+  "predicted_taxonomy": [
+    "V1 Synthetic Visual Content",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1852.99,
+  "metadata": {
+    "verdict": "False",
+    "distortion_taxonomy": [
+      "T1 Fabrication",
+      "T2 Distortion",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The source material only supports that Yang Zi's studio objected to unauthorized AI face-swapped/deep-synthesized videos and that the related videos were taken down after complaints. The article goes far beyond that record by inventing a platform-backed commercial rollout narrative and using synthetic or polished visuals as if they documented an official release.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Science, Technology & AI",
+    "text_length_tier": "long"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/090",
+  "image_paths": [
+    "/path/to/ReMMDBench/090/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/090/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/090/images/03_img_3.jpg",
+    "/path/to/ReMMDBench/090/images/04_img_4.jpg",
+    "/path/to/ReMMDBench/090/images/05_img_5.jpg",
+    "/path/to/ReMMDBench/090/images/06_img_6.jpg",
+    "/path/to/ReMMDBench/090/images/07_img_7.jpg",
+    "/path/to/ReMMDBench/090/images/08_img_8.jpg",
+    "/path/to/ReMMDBench/090/images/09_img_9.jpg",
+    "/path/to/ReMMDBench/090/images/10_img_10.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "090",
+    "predicted_verdict": "Mostly False",
+    "predicted_taxonomy": [
+      "V1 Synthetic Visual Content",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=Mostly False | taxonomy=V1 Synthetic Visual Content; V2 Visual Editing; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.1,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "TEXT_REFUTE",
+        "best_sc_score": 0.2,
+        "best_value": 0.2,
+        "best_trajectory": [
+          {
+            "thought": "If the event is confirmed but details vary, or if the text describes a real event with a hallucinated title, I need to cross-reference the Chinese drama title shown in the image (\"花笺记\") with the text's English title claim (\"Reborn, I Became My Mother's Guardian Deity\"). Google search is better suited for verifying specific news articles, app interface screenshots, and verifying the connection between the Chinese title \"Hua Jian Ji\" and the actress Yang Zi, ensuring the text isn't misidentifying the show involved in the legal dispute.",
+            "action": "Google[query: \"Hua Jian Ji\" micro drama Yang Zi AI controversy] OR \"Reborn, I Became My Mother's Guardian Deity\" micro drama China lawsuit",
+            "observation": "Could not parse action: Google[query: \"Hua Jian Ji\" micro drama Yang Zi AI controversy] OR \"Reborn, I Became My Mother's Guardian Deity\" micro drama China lawsuit",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text describes a micro-drama using an English title \"Reborn, I Became My Mother's Guardian Deity,\" but the image clearly shows the Chinese title \"花笺记\" (Hua Jian Ji). I need to verify if this incident actually involved Yang Zi and whether there's a title discrepancy that affects the accuracy of the news text.",
+            "action": "Google[query: 花笺记 微短剧 杨紫 AI 换脸 侵权] OR 花笺记 Y z",
+            "observation": "Could not parse action: Google[query: 花笺记 微短剧 杨紫 AI 换脸 侵权] OR 花笺记 Y z",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Fallback finish due to malformed planner output.",
+            "action": "Finish[TEXT_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "image": {
+        "initial_weight": 0.6,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_SUPPORT",
+        "best_sc_score": 0.7,
+        "best_value": 0.8,
+        "best_trajectory": [
+          {
+            "thought": "The text describes an AI-generated micro-drama where the actress Yang Zi's likeness was used without authorization. It mentions \"screenshots from the contested series\" that looked like an \"app release page\" and showed \"elaborate period costumes\" and a \"woman... unmistakably like Yang Zi\". The provided image is a screenshot from a short-video app (Douyin/TikTok interface) featuring a woman in ancient costume who resembles Yang Zi. The interface elements (likes, comments, the profile icon, the \"@\" username) match the \"app release page\" description. The visual content strongly aligns with the text's central claims.",
+            "action": "Detect[image]",
+            "observation": "- **This appears to be a screenshot of a short‑video app interface** (Chinese UI with “关注/发现/推荐”, vertical action bar with like/comment/share counts, series/episode banner). That context is consistent with an authentic in-app capture rather than a standalone studio still.\n\n- **A major sign of editing is the deliberate face obfuscation**: the subject’s face is covered by a rectangular blurred/mosaicked block that doesn’t match natural depth-of-field blur. That indicates post-processing (likely added by whoever reposted the screenshot), and it prevents checking for deepfake artifacts on facial features.\n\n- **No obvious “AI image generation” tells** are visible in the remaining areas: the hair ornaments, embroidery, jewelry, and lighting look coherent; edges around the hair and costume don’t show clear cut-and-paste halos; text/UI elements look consistently rendered and aligned as a normal app overlay.\n\n- **Cannot confirm or rule out face-swapping from this image alone** because the key diagnostic region (the face) is intentionally blurred. The rest of the frame does not show clear synthetic artifacts.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text claims that AI content featuring Yang Zi's face circulated on short-video platforms and sparked a rights dispute. The image corresponds to this narrative by showing a period-drama style video within a mobile recommendation interface (suggested by the 'Recommend' tab and interaction icons). The subject resembles Yang Zi, and the visual presentation (high production value, app-native interface) aligns with the text's description of 'screenshots from the contested series... showing what looked like an app release page.' This confirms the text's claim that the unauthorized content was presented as a polished, platform-backed product.",
+            "action": "Finish[IMAGE_SUPPORT]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 0.9,
+        "best_value": 0.8500000000000001,
+        "best_trajectory": [
+          {
+            "thought": "I also need to check the account name and details in the image to see if they align with the \"contest series\" or promotional material described in the text. The text mentions \"Screenshots from the contested series... showing what looked like an app release page\". I will check the account name and the text \"@ 花笺记官方\" to confirm if this aligns with the \"contest series\".",
+            "action": "VQA[What is the account name displayed below the character and what text is associated with it?]",
+            "observation": "\n\nThe account name displayed below the character is **@ 花笠记官方**.\n\nThe text associated with it is:\n**她为家族隐忍筹谋，却在宿命中遇见了真心。#花笠记 #古装 #新剧上线 🕒 每日12:00更新2集 | 会员抢先看**",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The news text identifies the controversy as a micro-drama titled \"Reborn, I Became My Mother's Guardian Deity\" that used AI on Yang Zi. However, the provided image shows a different title in large Chinese characters (likely \"花笺记\"). I need to confirm the exact title shown in the image to determine if the image matches the text's description of the disputed series or if it highlights a discrepancy.",
+            "action": "VQA[Extract the full title text written in large gold characters on the left side of the poster.]",
+            "observation": "\n\n花笺记",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "The text explicitly identifies the disputed drama title as \"Reborn, I Became My Mother's Guardian Deity\". The previous VQA action identified the title in the image as \"花笺记\" (Hua Jian Ji). These titles do not appear to be translations of each other. There is no indication in the image text of the English title mentioned in the news. This suggests a cross-modal mismatch regarding the specific identity of the controversial series.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.3825862365544778,
+      "p_fake_text": 0.2,
+      "p_fake_image": 0.30000000000000004,
+      "p_fake_match": 0.9,
+      "verdict_label": "Mostly False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 0.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 0.95,
+        "V2 Visual Editing": 0.8,
+        "C1 Semantic Inconsistency": 0.9,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The sample features AI-generated content (V1) and edited visuals (V2), with a semantic mismatch between the account/title text descriptions and the visual evidence (C1).",
+    "notes": []
+  },
+  "error": null
+}

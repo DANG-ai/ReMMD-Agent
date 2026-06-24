@@ -1,0 +1,131 @@
+{
+  "index": 273,
+  "sample_id": "274",
+  "ground_truth_verdict": "Mostly False",
+  "ground_truth_taxonomy": [
+    "T2 Distortion",
+    "V2 Visual Editing",
+    "C1 Semantic Inconsistency",
+    "C3 Pragmatic Inconsistency"
+  ],
+  "predicted_verdict": "False",
+  "predicted_taxonomy": [
+    "T1 Fabrication",
+    "V1 Synthetic Visual Content",
+    "C1 Semantic Inconsistency"
+  ],
+  "verdict_match": false,
+  "taxonomy_match": false,
+  "elapsed_seconds": 1699.44,
+  "metadata": {
+    "verdict": "Mostly False",
+    "distortion_taxonomy": [
+      "T2 Distortion",
+      "V2 Visual Editing",
+      "C1 Semantic Inconsistency",
+      "C3 Pragmatic Inconsistency"
+    ],
+    "rationale": "The article distorts a real Supreme Court hearing by falsely elevating it into a scene of Trump personally attending and intensifying the proceedings. That misleading claim is reinforced with an edited interior image and captions that make the visuals appear to document his direct, high-stakes involvement in the hearing.",
+    "language_code": "en",
+    "region_code": "united_states",
+    "theme_category": "Politics & Public Policy",
+    "text_length_tier": "short"
+  },
+  "resumed": false,
+  "sample_dir": "/path/to/ReMMDBench/274",
+  "image_paths": [
+    "/path/to/ReMMDBench/274/images/01_img_1.jpg",
+    "/path/to/ReMMDBench/274/images/02_img_2.jpg",
+    "/path/to/ReMMDBench/274/images/03_img_3.jpg"
+  ],
+  "prediction": {
+    "benchmark_name": "RealMMDBench",
+    "sample_id": "274",
+    "predicted_verdict": "False",
+    "predicted_taxonomy": [
+      "T1 Fabrication",
+      "V1 Synthetic Visual Content",
+      "C1 Semantic Inconsistency"
+    ],
+    "predicted_label": "verdict=False | taxonomy=T1 Fabrication; V1 Synthetic Visual Content; C1 Semantic Inconsistency",
+    "selected_tools": [
+      "wikipedia",
+      "image_understanding",
+      "web_search",
+      "entity",
+      "counterfactual"
+    ],
+    "subtask_results": {
+      "text": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": null,
+        "best_sc_score": 0.0,
+        "best_value": 0.0,
+        "best_trajectory": []
+      },
+      "image": {
+        "initial_weight": 0.9,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "IMAGE_REFUTE",
+        "best_sc_score": 1.0,
+        "best_value": 0.6,
+        "best_trajectory": [
+          {
+            "thought": "The image shows a man in a black robe (likely a Supreme Court Justice) walking away from the camera down a hallway with a sign for the \"Chief Justice\". It does not show Donald Trump. Since the text's main premise is that Trump is attending the session, and he is not in the image, the image does not support the text. In the context of veracity detection where the image is supposed to illustrate the news, the absence of the key subject (Trump) and the generic nature of the hallway shot refute the specific claim of the President's presence at the arguments.",
+            "action": "Finish[IMAGE_REFUTE]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      },
+      "match": {
+        "initial_weight": 0.8,
+        "visits": 4,
+        "completed": false,
+        "best_answer": "MISMATCH",
+        "best_sc_score": 1.0,
+        "best_value": 0.95,
+        "best_trajectory": [
+          {
+            "thought": "The text states that President Donald Trump attended the Supreme Court hearing. The image shows a man walking away from the camera with white/grey hair, who does not resemble Donald Trump (known for blonde hair). I should verify if the person in the image is Donald Trump to confirm a mismatch.",
+            "action": "VQA[Is the man in the foreground, seen from the back, Donald Trump?]",
+            "observation": "\n\nNo. Based on the visible evidence, the man in the foreground has white hair, which distinguishes him from Donald Trump, who has blonde hair. Additionally, he is walking down a hallway in the Supreme Court building toward a door marked \"301 Chief Justice,\" suggesting he is likely a Justice (possibly Chief Justice John Roberts) or a visitor to the court, rather than the former president.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          },
+          {
+            "thought": "Although the image is set in the Supreme Court (matching the location), the primary subject of the text is President Trump's attendance. The visual evidence shows a different individual (white hair) walking inside. Since the key entity mentioned (Trump) is absent and replaced by someone else, this constitutes a mismatch between the text's core claim and the visual content.",
+            "action": "Finish[MISMATCH]",
+            "observation": "Subtask finished.",
+            "st_score": 0.0,
+            "sc_score": 0.0
+          }
+        ]
+      }
+    },
+    "final_scores": {
+      "p_real": 0.0,
+      "p_fake_text": 0.5,
+      "p_fake_image": 1.0,
+      "p_fake_match": 1.0,
+      "verdict_label": "False",
+      "taxonomy_confidence": {
+        "T1 Fabrication": 1.0,
+        "T2 Distortion": 0.0,
+        "T3 Misleading Context": 0.0,
+        "V1 Synthetic Visual Content": 1.0,
+        "V2 Visual Editing": 0.0,
+        "C1 Semantic Inconsistency": 1.0,
+        "C2 Contextual Inconsistency": 0.0,
+        "C3 Pragmatic Inconsistency": 0.0
+      }
+    },
+    "taxonomy_rationale": "The text fabricates the claim that President Trump attended the Supreme Court hearing, which conflicts semantically with the synthetic image showing a different individual (likely a Justice) and creates a mismatch with the described event.",
+    "notes": []
+  },
+  "error": null
+}
